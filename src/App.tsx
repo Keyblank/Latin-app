@@ -6,7 +6,7 @@ import { LessonPlayer } from './components/LessonPlayer'
 import type { Lesson } from './types'
 
 export default function App() {
-  const { progress, completeLesson, reset } = useProgress()
+  const { progress, completeLesson, reset, toggleFreeMode } = useProgress()
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
 
   if (activeLesson) {
@@ -28,6 +28,7 @@ export default function App() {
       progress={progress}
       onStartLesson={setActiveLesson}
       onReset={reset}
+      onToggleFreeMode={toggleFreeMode}
     />
   )
 }

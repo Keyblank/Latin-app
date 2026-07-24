@@ -11,6 +11,8 @@ export interface Progress {
   streak: number
   /** Data (YYYY-MM-DD) dell'ultima attività. */
   lastDay: string | null
+  /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
+  freeMode: boolean
 }
 
 const emptyProgress: Progress = {
@@ -18,6 +20,7 @@ const emptyProgress: Progress = {
   xp: 0,
   streak: 0,
   lastDay: null,
+  freeMode: false,
 }
 
 function load(): Progress {
@@ -59,6 +62,7 @@ export function useProgress() {
         ? prev.completed
         : [...prev.completed, lessonId]
       return {
+        ...prev,
         completed,
         xp: prev.xp + xpEarned,
         streak,
@@ -67,7 +71,15 @@ export function useProgress() {
     })
   }, [])
 
-  const reset = useCallback(() => setProgress(emptyProgress), [])
+  /** Attiva/disattiva lo sblocco di tutte le lezioni. */
+  const toggleFreeMode = useCallback(() => {
+    setProgress((prev) => ({ ...prev, freeMode: !prev.freeMode }))
+  }, [])
 
-  return { progress, completeLesson, reset }
+  // "Ricomincia da capo" azzera i progressi ma mantiene la scelta della modalità.
+  const reset = useCallback(() => {
+    setProgress((prev) => ({ ...emptyProgress, freeMode: prev.freeMode }))
+  }, [])
+
+  return { progress, completeLesson, reset, toggleFreeMode }
 }

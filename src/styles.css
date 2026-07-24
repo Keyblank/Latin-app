@@ -118,11 +118,18 @@ button { font-family: inherit; cursor: pointer; }
   50% { box-shadow: 0 5px 0 rgba(0,0,0,0.18), 0 0 0 6px rgba(88,204,2,0.25); }
 }
 
-.home-footer { text-align: center; margin-top: 20px; }
+.home-footer { text-align: center; margin-top: 20px; display: flex; flex-direction: column; gap: 16px; align-items: center; }
 .link-btn {
   background: none; border: none; color: var(--text-soft);
   font-weight: 700; text-decoration: underline; font-size: 14px;
 }
+.free-toggle {
+  border: 2px solid var(--gray); border-bottom-width: 4px; border-radius: 14px;
+  background: #fff; color: var(--text); font-weight: 800; font-size: 15px;
+  padding: 12px 18px; max-width: 320px; width: 100%;
+}
+.free-toggle:active { transform: translateY(2px); }
+.free-toggle.on { border-color: var(--green); background: #d7ffb8; color: var(--green-dark); }
 
 /* ───────────── Lezione ───────────── */
 

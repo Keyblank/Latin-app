@@ -6,9 +6,10 @@ interface Props {
   progress: Progress
   onStartLesson: (lesson: Lesson) => void
   onReset: () => void
+  onToggleFreeMode: () => void
 }
 
-export function Home({ units, progress, onStartLesson, onReset }: Props) {
+export function Home({ units, progress, onStartLesson, onReset, onToggleFreeMode }: Props) {
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
@@ -41,12 +42,13 @@ export function Home({ units, progress, onStartLesson, onReset }: Props) {
               {unit.lessons.map((lesson) => {
                 const done = progress.completed.includes(lesson.id)
                 const isCurrent = currentLesson?.id === lesson.id
-                const locked = !done && !isCurrent
+                // In modalità libera nulla è bloccato.
+                const locked = !done && !isCurrent && !progress.freeMode
                 return (
                   <button
                     key={lesson.id}
                     className={`lesson-node ${done ? 'done' : ''} ${isCurrent ? 'current' : ''}`}
-                    style={done || isCurrent ? { background: unit.color } : undefined}
+                    style={!locked ? { background: unit.color } : undefined}
                     disabled={locked}
                     onClick={() => onStartLesson(lesson)}
                     title={locked ? 'Completa prima le lezioni precedenti' : lesson.title}
@@ -61,9 +63,17 @@ export function Home({ units, progress, onStartLesson, onReset }: Props) {
         ))}
 
         <footer className="home-footer">
-          <button className="link-btn" onClick={onReset}>
-            Ricomincia da capo
+          <button
+            className={`free-toggle ${progress.freeMode ? 'on' : ''}`}
+            onClick={onToggleFreeMode}
+          >
+            {progress.freeMode ? '🔓 Tutte le lezioni sbloccate' : '🔒 Sblocca tutte le lezioni'}
           </button>
+          <div>
+            <button className="link-btn" onClick={onReset}>
+              Ricomincia da capo
+            </button>
+          </div>
         </footer>
       </main>
     </div>
