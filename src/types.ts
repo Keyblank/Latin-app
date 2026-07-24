@@ -41,7 +41,24 @@ export interface MatchExercise {
   pairs: [string, string][]
 }
 
-export type Exercise = InfoExercise | ChoiceExercise | BuildExercise | MatchExercise
+/** Tabella di grammatica (es. una declinazione): didattica, non richiede risposta. */
+export interface TableExercise {
+  type: 'table'
+  title: string
+  /** Intestazioni di colonna (es. ["Caso", "Singolare", "Plurale"]). */
+  columns: string[]
+  /** Righe della tabella; ogni riga ha una cella per colonna. */
+  rows: string[][]
+  /** Nota o spiegazione mostrata sotto la tabella. */
+  note?: string
+}
+
+export type Exercise =
+  | InfoExercise
+  | ChoiceExercise
+  | BuildExercise
+  | MatchExercise
+  | TableExercise
 
 export interface Lesson {
   id: string

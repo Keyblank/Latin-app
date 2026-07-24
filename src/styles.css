@@ -211,6 +211,29 @@ button { font-family: inherit; cursor: pointer; }
 .info-card h2 { font-size: 26px; margin: 0 0 16px; }
 .info-card p { font-size: 18px; line-height: 1.5; margin: 4px 0; text-align: left; white-space: pre-wrap; }
 
+/* Tabella di grammatica */
+.table-card { padding: 4px 0; }
+.grammar-table-wrap { overflow-x: auto; margin: 8px 0 4px; }
+.grammar-table {
+  width: 100%; border-collapse: collapse; font-size: 17px;
+}
+.grammar-table th, .grammar-table td {
+  padding: 12px 14px; text-align: center; border: 2px solid var(--gray);
+}
+.grammar-table th {
+  background: var(--blue); color: #fff; font-weight: 800;
+}
+.grammar-table th:first-child { background: #0d8fd6; }
+.grammar-table td.row-label {
+  background: #f0f9ff; font-weight: 800; color: var(--blue); text-align: left;
+}
+.grammar-table tbody tr:nth-child(even) td:not(.row-label) { background: #fafafa; }
+.table-note {
+  font-size: 15px; line-height: 1.5; color: var(--text-soft);
+  background: #fff8e1; border-left: 4px solid #ffd43b;
+  padding: 12px 14px; border-radius: 8px; margin-top: 14px; white-space: pre-wrap;
+}
+
 /* Footer con pulsante */
 .lesson-foot {
   position: fixed; bottom: 0; left: 0; right: 0;

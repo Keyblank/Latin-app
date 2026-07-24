@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { Lesson } from '../types'
-import { InfoCard, Choice, Build, Match, type AnswerState } from './Exercises'
+import { InfoCard, TableCard, Choice, Build, Match, type AnswerState } from './Exercises'
 
 const START_HEARTS = 5
 const XP_PER_EXERCISE = 10
@@ -24,7 +24,8 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
 
   const ex = lesson.exercises[idx]
   const total = lesson.exercises.length
-  const isInfo = ex.type === 'info'
+  // Schermate didattiche: nessuna risposta, solo "Continua".
+  const isReadOnly = ex.type === 'info' || ex.type === 'table'
   const isMatch = ex.type === 'match'
 
   function goNext() {
@@ -114,6 +115,7 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
 
       <main className="lesson-body" key={idx}>
         {ex.type === 'info' && <InfoCard ex={ex} />}
+        {ex.type === 'table' && <TableCard ex={ex} />}
         {ex.type === 'choice' && <Choice ex={ex} disabled={phase === 'checked'} onChange={setAnswer} />}
         {ex.type === 'build' && <Build ex={ex} disabled={phase === 'checked'} onChange={setAnswer} />}
         {ex.type === 'match' && <Match ex={ex} onComplete={onMatchComplete} />}
@@ -143,7 +145,7 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
           </div>
         )}
 
-        {isInfo ? (
+        {isReadOnly ? (
           <button className="btn btn-primary" onClick={goNext}>
             Continua
           </button>

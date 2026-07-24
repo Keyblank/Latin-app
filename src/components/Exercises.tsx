@@ -4,6 +4,7 @@ import type {
   BuildExercise,
   MatchExercise,
   InfoExercise,
+  TableExercise,
 } from '../types'
 
 /** Mescola una copia dell'array (Fisher–Yates). */
@@ -31,6 +32,39 @@ export function InfoCard({ ex }: { ex: InfoExercise }) {
       {ex.body.split('\n').map((line, i) => (
         <p key={i}>{line || ' '}</p>
       ))}
+    </div>
+  )
+}
+
+// ─────────────────────────── Tabella grammatica ───────────────────────────
+
+export function TableCard({ ex }: { ex: TableExercise }) {
+  return (
+    <div className="table-card">
+      <h2 className="prompt">{ex.title}</h2>
+      <div className="grammar-table-wrap">
+        <table className="grammar-table">
+          <thead>
+            <tr>
+              {ex.columns.map((c, i) => (
+                <th key={i}>{c}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {ex.rows.map((row, r) => (
+              <tr key={r}>
+                {row.map((cell, c) => (
+                  <td key={c} className={c === 0 ? 'row-label' : ''}>
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {ex.note && <p className="table-note">{ex.note}</p>}
     </div>
   )
 }

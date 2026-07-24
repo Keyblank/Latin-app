@@ -8,7 +8,8 @@ per chi non ha mai studiato la lingua. Interfaccia in italiano.
 - **Percorso a lezioni** organizzato in unità (come la mappa di Duolingo).
 - **Esercizi interattivi** di più tipi:
   - carte didattiche che spiegano i concetti;
-  - scelta multipla;
+  - tabelle di grammatica (es. le declinazioni);
+  - scelta multipla (anche per l'analisi: «che caso è questa parola?»);
   - costruzione della frase toccando le parole;
   - abbinamento parola ↔ significato.
 - **Gamification**: punti XP ⭐, vite ❤️, giorni di fila 🔥 (streak).
@@ -43,8 +44,22 @@ src/data/curriculum.ts
 
 Ogni **unità** contiene delle **lezioni**, e ogni lezione contiene una lista di
 **esercizi**. I tipi di esercizio disponibili (`info`, `choice`, `build`, `match`)
+tipi di esercizio disponibili (`info`, `table`, `choice`, `build`, `match`)
 sono documentati in `src/types.ts`. Per aggiungere contenuti basta seguire gli
 esempi già presenti.
+
+## Contenuto attuale
+
+- **Unità 1–3** — primo contatto: saluti, persone, cose, il verbo *essere*,
+  aggettivi e prime frasi complete (livello «mai visto il latino»).
+- **Unità 4 — I casi latini** — cosa sono i casi, la funzione di ognuno,
+  soggetto/oggetto e i complementi (genitivo, dativo, ablativo).
+- **Unità 5 — La prima declinazione** — il modello *rosa, rosae*, le desinenze,
+  e i primi esercizi di analisi e traduzione (livello base universitario).
+
+Le unità 4 e 5 sono pensate per chi deve affrontare un corso universitario di
+letteratura latina partendo da zero: introducono la morfologia e l'analisi, il
+vero cuore dello studio del latino.
 
 ## Struttura del progetto
 
