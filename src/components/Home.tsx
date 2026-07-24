@@ -1,15 +1,24 @@
 import type { Unit, Lesson } from '../types'
 import type { Progress } from '../useProgress'
+import { StatusCard } from './StatusCard'
 
 interface Props {
   units: Unit[]
   progress: Progress
   onStartLesson: (lesson: Lesson) => void
+  onStartReview: () => void
   onReset: () => void
   onToggleFreeMode: () => void
 }
 
-export function Home({ units, progress, onStartLesson, onReset, onToggleFreeMode }: Props) {
+export function Home({
+  units,
+  progress,
+  onStartLesson,
+  onStartReview,
+  onReset,
+  onToggleFreeMode,
+}: Props) {
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
@@ -35,6 +44,21 @@ export function Home({ units, progress, onStartLesson, onReset, onToggleFreeMode
       </header>
 
       <main className="path">
+        <StatusCard progress={progress} />
+
+        {progress.mistakes.length > 0 && (
+          <button className="review-btn" onClick={onStartReview}>
+            <span className="review-icon">🔁</span>
+            <span className="review-text">
+              <span className="latin-label">Repetitio · ripassa gli errori</span>
+              <span className="review-count">
+                {progress.mistakes.length}{' '}
+                {progress.mistakes.length === 1 ? 'parola da ripassare' : 'parole da ripassare'}
+              </span>
+            </span>
+          </button>
+        )}
+
         {progress.completed.length > 0 && progress.completed.length === allLessons.length && (
           <div className="banner">
             🎉 Hai completato tutto il corso! Bravissimə. Presto arriveranno nuove lezioni.

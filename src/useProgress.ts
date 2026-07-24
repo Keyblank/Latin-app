@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
+import type { Exercise } from './types'
 
 const STORAGE_KEY = 'latino-app-progress-v1'
+const MAX_MISTAKES = 40
 
 export interface Progress {
   /** ID delle lezioni completate. */
@@ -11,6 +13,12 @@ export interface Progress {
   streak: number
   /** Data (YYYY-MM-DD) dell'ultima attività. */
   lastDay: string | null
+  /** XP guadagnati oggi (per l'obiettivo giornaliero). */
+  dailyXp: number
+  /** Data (YYYY-MM-DD) a cui si riferisce dailyXp. */
+  dailyDate: string | null
+  /** Esercizi sbagliati da ripassare (solo scelta multipla e costruzione). */
+  mistakes: Exercise[]
   /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
   freeMode: boolean
 }
@@ -20,6 +28,9 @@ const emptyProgress: Progress = {
   xp: 0,
   streak: 0,
   lastDay: null,
+  dailyXp: 0,
+  dailyDate: null,
+  mistakes: [],
   freeMode: false,
 }
 
@@ -43,6 +54,32 @@ function isYesterday(dateStr: string): boolean {
   return y.toISOString().slice(0, 10) === dateStr
 }
 
+const exKey = (e: Exercise) => JSON.stringify(e)
+
+/** Aggiorna l'elenco degli errori: toglie quelli indovinati, aggiunge i nuovi. */
+function updateMistakes(prev: Exercise[], wrong: Exercise[], correct: Exercise[]): Exercise[] {
+  const correctKeys = new Set(correct.map(exKey))
+  let list = prev.filter((m) => !correctKeys.has(exKey(m)))
+  const present = new Set(list.map(exKey))
+  for (const w of wrong) {
+    const k = exKey(w)
+    if (!present.has(k)) {
+      list.push(w)
+      present.add(k)
+    }
+  }
+  if (list.length > MAX_MISTAKES) list = list.slice(list.length - MAX_MISTAKES)
+  return list
+}
+
+interface FinishArgs {
+  /** ID della lezione completata, oppure null per il ripasso (Repetitio). */
+  lessonId: string | null
+  xp: number
+  wrong: Exercise[]
+  correct: Exercise[]
+}
+
 export function useProgress() {
   const [progress, setProgress] = useState<Progress>(load)
 
@@ -50,25 +87,39 @@ export function useProgress() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
   }, [progress])
 
-  /** Registra una lezione completata, aggiornando XP e streak. */
-  const completeLesson = useCallback((lessonId: string, xpEarned: number) => {
+  /** Lezione completata con successo: XP, streak, obiettivo del giorno, errori. */
+  const finishLesson = useCallback(({ lessonId, xp, wrong, correct }: FinishArgs) => {
     setProgress((prev) => {
       const today = todayKey()
       let streak = prev.streak
       if (prev.lastDay !== today) {
         streak = prev.lastDay && isYesterday(prev.lastDay) ? prev.streak + 1 : 1
       }
-      const completed = prev.completed.includes(lessonId)
-        ? prev.completed
-        : [...prev.completed, lessonId]
+      const dailyBase = prev.dailyDate === today ? prev.dailyXp : 0
+      const completed =
+        lessonId && !prev.completed.includes(lessonId)
+          ? [...prev.completed, lessonId]
+          : prev.completed
       return {
         ...prev,
         completed,
-        xp: prev.xp + xpEarned,
+        xp: prev.xp + xp,
         streak,
         lastDay: today,
+        dailyXp: dailyBase + xp,
+        dailyDate: today,
+        mistakes: updateMistakes(prev.mistakes, wrong, correct),
       }
     })
+  }, [])
+
+  /** Uscita senza completare: registra solo gli errori (per il ripasso). */
+  const recordMistakes = useCallback((wrong: Exercise[], correct: Exercise[]) => {
+    if (wrong.length === 0 && correct.length === 0) return
+    setProgress((prev) => ({
+      ...prev,
+      mistakes: updateMistakes(prev.mistakes, wrong, correct),
+    }))
   }, [])
 
   /** Attiva/disattiva lo sblocco di tutte le lezioni. */
@@ -81,5 +132,5 @@ export function useProgress() {
     setProgress((prev) => ({ ...emptyProgress, freeMode: prev.freeMode }))
   }, [])
 
-  return { progress, completeLesson, reset, toggleFreeMode }
+  return { progress, finishLesson, recordMistakes, reset, toggleFreeMode }
 }

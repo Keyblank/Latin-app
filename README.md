@@ -13,9 +13,17 @@ la lingua. Interfaccia in italiano.
   - scelta multipla (anche per l'analisi: «che caso è questa parola?»);
   - costruzione della frase toccando le parole;
   - abbinamento parola ↔ significato.
-- **Gamification**: punti XP ⭐, vite ❤️, giorni di fila 🔥 (streak).
+- **Gamification a tema romano**:
+  - punti XP ⭐, vite ❤️, giorni di fila 🔥 (streak);
+  - **ranghi latini** legati agli XP (Tiro → Discipulus → Scriba → … → Imperator);
+  - **obiettivo giornaliero** (*Pensum diei*);
+  - **ripasso degli errori** (*Repetitio*): le domande sbagliate ritornano
+    finché non le indovini (ripetizione dilazionata di base).
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
 - **Responsive**: funziona bene anche da telefono.
+
+Le regole di gioco (ranghi e obiettivo) sono in `src/gamification.ts`, facili da
+ritoccare.
 
 ## Come avviarla
 

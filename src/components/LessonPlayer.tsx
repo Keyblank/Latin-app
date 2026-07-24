@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import type { Lesson } from '../types'
+import { useRef, useState } from 'react'
+import type { Lesson, Exercise } from '../types'
 import { InfoCard, TableCard, Choice, Build, Match, type AnswerState } from './Exercises'
 
 const START_HEARTS = 5
@@ -7,13 +7,17 @@ const XP_PER_EXERCISE = 10
 
 interface Props {
   lesson: Lesson
-  onExit: () => void
-  onFinish: (xp: number) => void
+  /** true se è una sessione di ripasso (Repetitio). */
+  reviewMode?: boolean
+  /** Uscita/abbandono: registra solo gli errori raccolti finora. */
+  onQuit: (wrong: Exercise[], correct: Exercise[]) => void
+  /** Completamento: XP guadagnati + errori e risposte esatte. */
+  onFinish: (xp: number, wrong: Exercise[], correct: Exercise[]) => void
 }
 
 type Phase = 'answering' | 'checked'
 
-export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
+export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: Props) {
   const [idx, setIdx] = useState(0)
   const [hearts, setHearts] = useState(START_HEARTS)
   const [xp, setXp] = useState(0)
@@ -21,6 +25,10 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
   const [answer, setAnswer] = useState<AnswerState>({ ready: false, correct: false })
   const [lastCorrect, setLastCorrect] = useState(false)
   const [finished, setFinished] = useState(false)
+
+  // Esercizi (a risposta) affrontati, per il ripasso degli errori.
+  const wrong = useRef<Exercise[]>([])
+  const correct = useRef<Exercise[]>([])
 
   const ex = lesson.exercises[idx]
   const total = lesson.exercises.length
@@ -43,9 +51,11 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
     if (answer.correct) {
       setXp((x) => x + XP_PER_EXERCISE)
       setLastCorrect(true)
+      correct.current.push(ex)
     } else {
       setHearts((h) => h - 1)
       setLastCorrect(false)
+      wrong.current.push(ex)
     }
     setPhase('checked')
   }
@@ -63,7 +73,8 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
       <div className="app lesson">
         <div className="end-screen win">
           <div className="end-emoji">🎉</div>
-          <h1>Lezione completata!</h1>
+          <h1 className="latin-shout">Optime!</h1>
+          <p className="end-sub">{reviewMode ? 'Ripasso completato' : 'Lezione completata'}</p>
           <p className="end-lesson-name">{lesson.icon} {lesson.title}</p>
           <div className="end-stats">
             <div className="end-stat">
@@ -75,7 +86,10 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
               <span className="end-stat-label">vite rimaste</span>
             </div>
           </div>
-          <button className="btn btn-primary" onClick={() => onFinish(xp)}>
+          <button
+            className="btn btn-primary"
+            onClick={() => onFinish(xp, wrong.current, correct.current)}
+          >
             Continua
           </button>
         </div>
@@ -89,9 +103,16 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
       <div className="app lesson">
         <div className="end-screen fail">
           <div className="end-emoji">💔</div>
-          <h1>Vite finite!</h1>
-          <p>Niente paura: sbagliare fa parte dell’imparare. Riprova con calma.</p>
-          <button className="btn btn-primary" onClick={onExit}>
+          <h1 className="latin-shout">Vae!</h1>
+          <p className="end-sub">Vite finite</p>
+          <p>
+            Niente paura: sbagliare fa parte dell’imparare. Le parole che hai
+            mancato le ritroverai nel <b>Ripasso</b>. Riprova con calma.
+          </p>
+          <button
+            className="btn btn-primary"
+            onClick={() => onQuit(wrong.current, correct.current)}
+          >
             Torna alla mappa
           </button>
         </div>
@@ -104,7 +125,11 @@ export function LessonPlayer({ lesson, onExit, onFinish }: Props) {
   return (
     <div className="app lesson">
       <header className="lesson-top">
-        <button className="close-btn" onClick={onExit} aria-label="Esci">
+        <button
+          className="close-btn"
+          onClick={() => onQuit(wrong.current, correct.current)}
+          aria-label="Esci"
+        >
           ✕
         </button>
         <div className="progress-bar">

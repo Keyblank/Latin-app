@@ -14,6 +14,8 @@
   --text: #3c3c3c;
   --text-soft: #777;
   --bg: #fff;
+  --gold-dark: #a9791d;
+  --serif: 'Georgia', 'Times New Roman', 'Cambria', serif;
   font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
@@ -286,3 +288,58 @@ button { font-family: inherit; cursor: pointer; }
 .end-stat-num { font-size: 24px; font-weight: 800; color: #e6a700; }
 .end-stat-label { font-size: 12px; font-weight: 700; color: var(--text-soft); text-transform: uppercase; }
 .end-screen .btn { max-width: 320px; }
+.latin-shout { font-family: var(--serif); font-size: 42px !important; letter-spacing: 1px; }
+.end-sub { font-size: 15px; font-weight: 800; color: var(--text-soft); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 6px; }
+
+/* ───────────── Etichette latine (stile iscrizione) ───────────── */
+.latin-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 1.3px;
+  text-transform: uppercase; color: var(--gold-dark);
+}
+
+/* ───────────── Tabula di stato (rango + obiettivo) ───────────── */
+.status-card {
+  background: linear-gradient(180deg, #fbf6ec, #f4ebd7);
+  border: 2px solid var(--gold);
+  border-radius: 18px; padding: 16px; margin-bottom: 18px;
+  box-shadow: 0 3px 0 rgba(169, 121, 29, 0.18);
+}
+.status-rank { display: flex; align-items: center; gap: 12px; }
+.rank-medal {
+  width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
+  background: var(--primary); color: #fff; border: 3px solid var(--gold);
+  display: grid; place-items: center; font-size: 26px;
+}
+.rank-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.rank-name { font-family: var(--serif); font-size: 25px; font-weight: 800; color: var(--primary); line-height: 1.1; }
+.rank-gloss { font-size: 13px; color: var(--text-soft); font-style: italic; }
+.rank-xp { font-weight: 800; color: var(--gold-dark); font-size: 16px; }
+
+.rank-progress { margin-top: 12px; }
+.rank-progress-bar { height: 12px; background: #e6d9bd; border-radius: 8px; overflow: hidden; }
+.rank-progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), #f0c14b); border-radius: 8px; transition: width 0.3s; }
+.rank-progress-label { display: block; font-size: 12px; color: var(--text-soft); margin-top: 5px; font-weight: 700; }
+
+.status-row { display: flex; gap: 12px; margin-top: 14px; }
+.mini-goal, .mini-streak {
+  flex: 1; background: #fff; border: 2px solid #ebdfc4; border-radius: 12px;
+  padding: 10px 12px; display: flex; flex-direction: column; gap: 6px;
+}
+.mini-bar { height: 8px; background: #ebdfc4; border-radius: 6px; overflow: hidden; }
+.mini-fill { height: 100%; background: var(--primary); border-radius: 6px; transition: width 0.3s; }
+.mini-val { font-size: 13px; font-weight: 800; color: var(--text); }
+.mini-goal.done .mini-fill { background: var(--green); }
+.mini-goal.done .mini-val { color: var(--green-dark); }
+.streak-big { font-size: 22px; font-weight: 800; }
+
+/* ───────────── Pulsante Repetitio (ripasso errori) ───────────── */
+.review-btn {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: left;
+  background: linear-gradient(180deg, #fff, #f6eefc);
+  border: 2px solid var(--primary); border-bottom-width: 5px;
+  border-radius: 16px; padding: 14px 18px; margin-bottom: 20px;
+}
+.review-btn:active { transform: translateY(2px); }
+.review-icon { font-size: 30px; flex-shrink: 0; }
+.review-text { display: flex; flex-direction: column; gap: 2px; }
+.review-count { font-weight: 800; color: var(--primary); font-size: 15px; }
