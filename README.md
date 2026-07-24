@@ -1,11 +1,12 @@
-# 🏛️ Latino — impara da zero
+# 🏛️ Ianua — impara il latino da zero
 
-Un'app in stile **Duolingo** per imparare il **latino** partendo da zero, pensata
-per chi non ha mai studiato la lingua. Interfaccia in italiano.
+**Ianua** (in latino «porta, ingresso») è un'app di apprendimento **gamificata**
+per imparare il **latino** partendo da zero, pensata per chi non ha mai studiato
+la lingua. Interfaccia in italiano.
 
 ## Cosa fa
 
-- **Percorso a lezioni** organizzato in unità (come la mappa di Duolingo).
+- **Percorso a lezioni** organizzato in unità, con progressione a tappe.
 - **Esercizi interattivi** di più tipi:
   - carte didattiche che spiegano i concetti;
   - tabelle di grammatica (es. le declinazioni);
@@ -72,7 +73,7 @@ src/
     Home.tsx           → mappa delle lezioni
     LessonPlayer.tsx   → svolgimento di una lezione
     Exercises.tsx      → i quattro tipi di esercizio
-  styles.css           → grafica in stile Duolingo
+  styles.css           → grafica e identità visiva di Ianua
 ```
 
 ## Idee per il futuro

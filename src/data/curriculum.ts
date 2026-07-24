@@ -9,7 +9,7 @@ export const curriculum: Unit[] = [
     id: 'u1',
     title: 'Unità 1 — Prime parole',
     subtitle: 'Saluti e parole di tutti i giorni',
-    color: '#58cc02',
+    color: '#6a3fb5',
     lessons: [
       {
         id: 'u1l1',
@@ -134,7 +134,7 @@ export const curriculum: Unit[] = [
     id: 'u2',
     title: 'Unità 2 — Il verbo «essere»',
     subtitle: 'Costruisci le prime frasi',
-    color: '#1cb0f6',
+    color: '#3a6ea5',
     lessons: [
       {
         id: 'u2l1',
@@ -225,7 +225,7 @@ export const curriculum: Unit[] = [
     id: 'u3',
     title: 'Unità 3 — Azioni',
     subtitle: 'Verbi e frasi complete',
-    color: '#ce82ff',
+    color: '#2e9e8f',
     lessons: [
       {
         id: 'u3l1',
@@ -313,7 +313,7 @@ export const curriculum: Unit[] = [
     id: 'u4',
     title: 'Unità 4 — I casi latini',
     subtitle: 'Il cuore della grammatica latina',
-    color: '#ff9600',
+    color: '#c9821f',
     lessons: [
       {
         id: 'u4l1',
@@ -453,7 +453,7 @@ export const curriculum: Unit[] = [
     id: 'u5',
     title: 'Unità 5 — La prima declinazione',
     subtitle: 'Il modello «rosa, rosae»',
-    color: '#2ec4b6',
+    color: '#b5432f',
     lessons: [
       {
         id: 'u5l1',
@@ -602,7 +602,7 @@ export const curriculum: Unit[] = [
     id: 'u6',
     title: 'Unità 6 — La seconda declinazione',
     subtitle: 'I maschili e i neutri',
-    color: '#ff4b6e',
+    color: '#9b3b6a',
     lessons: [
       {
         id: 'u6l1',

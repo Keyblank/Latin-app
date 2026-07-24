@@ -1,9 +1,9 @@
 {
-  "name": "latino-app",
+  "name": "ianua",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Un'app in stile Duolingo per imparare il latino da zero",
+  "description": "Ianua — app di apprendimento gamificata per imparare il latino da zero",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

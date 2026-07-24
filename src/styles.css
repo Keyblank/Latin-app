@@ -1,6 +1,11 @@
 :root {
-  --green: #58cc02;
-  --green-dark: #58a700;
+  /* Colore del marchio: porpora imperiale + oro */
+  --primary: #6a3fb5;
+  --primary-dark: #512d8f;
+  --gold: #e0a52e;
+  /* Verde = solo "risposta corretta" (convenzione universale) */
+  --green: #4caf50;
+  --green-dark: #3d8b40;
   --blue: #1cb0f6;
   --purple: #ce82ff;
   --red: #ff4b4b;
@@ -47,7 +52,8 @@ button { font-family: inherit; cursor: pointer; }
   border-bottom: 2px solid var(--gray);
 }
 
-.brand { font-size: 22px; font-weight: 800; }
+.brand { display: flex; align-items: center; gap: 9px; font-size: 23px; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; }
+.brand svg { width: 26px; height: 26px; display: block; }
 
 .stats { display: flex; gap: 14px; }
 .stat { font-weight: 800; font-size: 17px; }
@@ -115,7 +121,7 @@ button { font-family: inherit; cursor: pointer; }
 
 @keyframes pulse {
   0%, 100% { box-shadow: 0 5px 0 rgba(0,0,0,0.18); }
-  50% { box-shadow: 0 5px 0 rgba(0,0,0,0.18), 0 0 0 6px rgba(88,204,2,0.25); }
+  50% { box-shadow: 0 5px 0 rgba(0,0,0,0.18), 0 0 0 6px rgba(106,63,181,0.30); }
 }
 
 .home-footer { text-align: center; margin-top: 20px; display: flex; flex-direction: column; gap: 16px; align-items: center; }
@@ -148,7 +154,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 10px; overflow: hidden;
 }
 .progress-fill {
-  height: 100%; background: var(--green);
+  height: 100%; background: var(--primary);
   border-radius: 10px; transition: width 0.3s ease;
 }
 .hearts { font-weight: 800; color: var(--red); font-size: 16px; }
@@ -228,11 +234,11 @@ button { font-family: inherit; cursor: pointer; }
   padding: 12px 14px; text-align: center; border: 2px solid var(--gray);
 }
 .grammar-table th {
-  background: var(--blue); color: #fff; font-weight: 800;
+  background: var(--primary); color: #fff; font-weight: 800;
 }
-.grammar-table th:first-child { background: #0d8fd6; }
+.grammar-table th:first-child { background: var(--primary-dark); }
 .grammar-table td.row-label {
-  background: #f0f9ff; font-weight: 800; color: var(--blue); text-align: left;
+  background: #f3eefb; font-weight: 800; color: var(--primary); text-align: left;
 }
 .grammar-table tbody tr:nth-child(even) td:not(.row-label) { background: #fafafa; }
 .table-note {
@@ -260,7 +266,7 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: 0.5px; box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 .btn:not(:disabled):active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); }
-.btn-primary { background: var(--green); box-shadow: 0 4px 0 var(--green-dark); }
+.btn-primary { background: var(--primary); box-shadow: 0 4px 0 var(--primary-dark); }
 .btn:disabled { background: var(--gray); color: var(--gray-dark); box-shadow: 0 4px 0 #d0d0d0; cursor: not-allowed; }
 
 /* Schermate finali */

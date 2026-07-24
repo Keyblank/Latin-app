@@ -17,7 +17,17 @@ export function Home({ units, progress, onStartLesson, onReset, onToggleFreeMode
   return (
     <div className="app">
       <header className="topbar">
-        <div className="brand">🏛️ Latino</div>
+        <div className="brand">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#6a3fb5" />
+            <g fill="#e0a52e">
+              <rect x="28" y="23" width="44" height="9" rx="2" />
+              <rect x="44" y="32" width="12" height="36" />
+              <rect x="26" y="68" width="48" height="10" rx="2" />
+            </g>
+          </svg>
+          Ianua
+        </div>
         <div className="stats">
           <span className="stat" title="Giorni di fila">🔥 {progress.streak}</span>
           <span className="stat" title="Punti esperienza">⭐ {progress.xp}</span>
