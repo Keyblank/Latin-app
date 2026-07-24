@@ -6,6 +6,123 @@ import type { Unit } from '../types'
 
 export const curriculum: Unit[] = [
   {
+    id: 'u0',
+    title: 'Pronuntiatio — Come si legge',
+    subtitle: 'Ascolta e impara i suoni (tocca 🔊)',
+    color: '#a9791d',
+    lessons: [
+      {
+        id: 'u0l1',
+        title: 'I suoni del latino',
+        icon: '🔊',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗣️',
+            title: 'Buona notizia',
+            body: 'Useremo la pronuncia «ecclesiastica», quella usata in Italia. Il latino si legge quasi come l’italiano!\n\nCi sono solo poche regole particolari. Le vediamo — e puoi ascoltarle toccando il pulsante 🔊.',
+          },
+          {
+            type: 'table',
+            title: 'Lettere e suoni particolari',
+            columns: ['Lettera', 'Come si legge', 'Esempio'],
+            rows: [
+              ['c + e, i', 'dolce, come «cena»', 'Cicero'],
+              ['c + a, o, u', 'dura, come «cane»', 'caput'],
+              ['g + e, i', 'dolce, come «gelo»', 'gens'],
+              ['gn', 'come «gnocchi»', 'magnus'],
+              ['ae, oe', 'si leggono «e»', 'caelum'],
+              ['ti + vocale', 'come «tsi»', 'natio'],
+              ['v', 'come «vino»', 'vinum'],
+              ['h', 'muta, non si sente', 'hora'],
+            ],
+            speakCols: [2],
+            note: 'Regola d’oro: leggi come in italiano e ricorda queste eccezioni. Tocca 🔊 sugli esempi per sentirli.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si pronuncia «Cicero»?',
+            focus: 'Cicero',
+            options: ['Cì-ce-ro (c dolce)', 'Kì-ke-ro', 'Sì-se-ro'],
+            answer: 'Cì-ce-ro (c dolce)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Il gruppo «ae» in «caelum» si legge…',
+            focus: 'caelum',
+            options: ['«e» (célum)', '«ai» (cailum)', 'a-e separate'],
+            answer: '«e» (célum)',
+          },
+          {
+            type: 'choice',
+            prompt: 'La «h» di «hora» come si pronuncia?',
+            focus: 'hora',
+            options: ['non si sente (muta)', 'come una «k»', 'come una «f»'],
+            answer: 'non si sente (muta)',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina la lettera al suo suono',
+            pairs: [
+              ['c + i', 'dolce (cena)'],
+              ['gn', 'gnocchi'],
+              ['ae', 'e'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u0l2',
+        title: 'L’accento',
+        icon: '🎵',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🎵',
+            title: 'Dove cade la voce',
+            body: 'In latino l’accento non si scrive, ma la voce cade su una sillaba precisa.\n\n• Parole di 2 sillabe → sempre sulla PRIMA: RÒ-sa, PÙ-er.\n• Parole più lunghe → di solito sulla penultima o terzultima sillaba.\n\nAll’inizio te lo indichiamo noi (in MAIUSCOLO), finché non ci fai l’orecchio.',
+          },
+          {
+            type: 'table',
+            title: 'Dove cade l’accento',
+            columns: ['Parola', 'Si legge'],
+            rows: [
+              ['rosa', 'RÒ-sa'],
+              ['puella', 'pu-ÈL-la'],
+              ['dominus', 'DÒ-mi-nus'],
+              ['amicus', 'a-MÌ-cus'],
+              ['templum', 'TÈM-plum'],
+              ['femina', 'FÈ-mi-na'],
+            ],
+            speakCols: [0],
+            note: 'Tocca 🔊 sulla parola per sentirla. La sillaba in maiuscolo è quella su cui batte la voce.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Dove cade l’accento in «puella»?',
+            focus: 'puella',
+            options: ['pu-ÈL-la', 'PU-el-la', 'pu-el-LA'],
+            answer: 'pu-ÈL-la',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «dominus» la voce batte su…',
+            focus: 'dominus',
+            options: ['DÒ- (terzultima)', 'do-MÌ- (penultima)', '-NÙS (ultima)'],
+            answer: 'DÒ- (terzultima)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Una parola di 2 sillabe come «puer»: dove cade l’accento?',
+            focus: 'puer',
+            options: ['sulla prima: PÙ-er', 'sull’ultima: pu-ÈR'],
+            answer: 'sulla prima: PÙ-er',
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: 'u1',
     title: 'Unità 1 — Prime parole',
     subtitle: 'Saluti e parole di tutti i giorni',
@@ -478,6 +595,7 @@ export const curriculum: Unit[] = [
               ['Ablativo', 'rosā', 'rosīs'],
               ['Vocativo', 'rosa', 'rosae'],
             ],
+            speakCols: [1, 2],
             note: 'La -a dell’ablativo singolare è lunga (rosā) ma si scrive come le altre. Nota che alcune forme si ripetono: rosae vale per genitivo e dativo singolare e nominativo plurale — il contesto della frase chiarisce quale sia.',
           },
           {
@@ -627,6 +745,7 @@ export const curriculum: Unit[] = [
               ['Ablativo', 'dominō', 'dominīs'],
               ['Vocativo', 'domine', 'dominī'],
             ],
+            speakCols: [1, 2],
             note: 'Attenzione al VOCATIVO singolare: è l’unico caso «strano», finisce in -e (domine!, «o padrone!»). Tutti gli altri seguono lo schema qui sopra.',
           },
           {
@@ -694,6 +813,7 @@ export const curriculum: Unit[] = [
               ['Accusativo', 'templum', 'templa'],
               ['Ablativo', 'templō', 'templīs'],
             ],
+            speakCols: [1, 2],
             note: 'Nota il colpo d’occhio: nominativo = accusativo (templum… templum; templa… templa). Solo genitivo, dativo e ablativo distinguono i neutri dai maschili.',
           },
           {

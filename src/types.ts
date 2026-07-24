@@ -51,6 +51,8 @@ export interface TableExercise {
   rows: string[][]
   /** Nota o spiegazione mostrata sotto la tabella. */
   note?: string
+  /** Indici delle colonne le cui celle sono pronunciabili (pulsante 🔊). */
+  speakCols?: number[]
 }
 
 export type Exercise =

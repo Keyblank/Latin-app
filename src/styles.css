@@ -168,10 +168,26 @@ button { font-family: inherit; cursor: pointer; }
 
 .prompt { font-size: 22px; margin: 0 0 20px; }
 .focus-word {
-  font-size: 28px; font-weight: 800; text-align: center;
-  padding: 20px; background: #f0f9ff; border: 2px solid var(--blue);
+  font-size: 28px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  padding: 18px 20px; background: #f0f9ff; border: 2px solid var(--blue);
   border-radius: 16px; margin-bottom: 20px; color: var(--blue);
 }
+
+/* Pulsanti audio (pronuncia) */
+.speak-btn {
+  flex-shrink: 0; border: 2px solid var(--blue); background: #fff;
+  width: 44px; height: 44px; border-radius: 50%; font-size: 20px;
+  display: grid; place-items: center; line-height: 1;
+}
+.speak-btn:active { transform: scale(0.92); }
+.cell-speak {
+  background: none; border: none; font: inherit; color: var(--primary);
+  font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+  padding: 2px 4px; border-radius: 6px;
+}
+.cell-speak:active { background: #f3eefb; }
+.cell-speak .spk { font-size: 0.78em; opacity: 0.65; }
 
 .options { display: flex; flex-direction: column; gap: 12px; }
 .option {

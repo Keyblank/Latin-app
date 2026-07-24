@@ -19,6 +19,9 @@ la lingua. Interfaccia in italiano.
   - **obiettivo giornaliero** (*Pensum diei*);
   - **ripasso degli errori** (*Repetitio*): le domande sbagliate ritornano
     finché non le indovini (ripetizione dilazionata di base).
+- **Pronuncia con audio** 🔊: sezione *Pronuntiatio* (suoni e accento) e pulsanti
+  per ascoltare parole e declinazioni. Usa la sintesi vocale del browser con voce
+  italiana → pronuncia **ecclesiastica/italiana**, gratis e senza account.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
 - **Responsive**: funziona bene anche da telefono.
 

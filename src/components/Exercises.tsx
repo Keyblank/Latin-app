@@ -6,6 +6,8 @@ import type {
   InfoExercise,
   TableExercise,
 } from '../types'
+import { SpeakButton } from './SpeakButton'
+import { speak } from '../speak'
 
 /** Mescola una copia dell'array (Fisher–Yates). */
 function shuffle<T>(arr: T[]): T[] {
@@ -54,11 +56,20 @@ export function TableCard({ ex }: { ex: TableExercise }) {
           <tbody>
             {ex.rows.map((row, r) => (
               <tr key={r}>
-                {row.map((cell, c) => (
-                  <td key={c} className={c === 0 ? 'row-label' : ''}>
-                    {cell}
-                  </td>
-                ))}
+                {row.map((cell, c) => {
+                  const speakable = ex.speakCols?.includes(c) && cell
+                  return (
+                    <td key={c} className={c === 0 ? 'row-label' : ''}>
+                      {speakable ? (
+                        <button className="cell-speak" onClick={() => speak(cell)} title="Ascolta">
+                          {cell} <span className="spk">🔊</span>
+                        </button>
+                      ) : (
+                        cell
+                      )}
+                    </td>
+                  )
+                })}
               </tr>
             ))}
           </tbody>
@@ -92,7 +103,12 @@ export function Choice({
   return (
     <div className="exercise">
       <h2 className="prompt">{ex.prompt}</h2>
-      {ex.focus && <div className="focus-word">{ex.focus}</div>}
+      {ex.focus && (
+        <div className="focus-word">
+          <span>{ex.focus}</span>
+          <SpeakButton text={ex.focus} />
+        </div>
+      )}
       <div className="options">
         {options.map((opt) => (
           <button
