@@ -388,7 +388,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '💬',
             title: 'Soggetto + verbo + oggetto',
-            body: 'In latino l’oggetto spesso finisce in «-am»:\n\n• «rosam» = la rosa (come oggetto)\n• «aquam» = l’acqua (come oggetto)\n\nEsempio: «Puella rosam amat» = La ragazza ama la rosa.',
+            body: 'Finora le parole erano il soggetto (chi compie l’azione). Ora aggiungiamo l’OGGETTO: chi o che cosa subisce l’azione.\n\nPiccola magia del latino: quando una parola è oggetto, cambia la sua fine. Molte parole femminili prendono la desinenza «-am»:\n• «rosa» → «rosam» (la rosa, come oggetto)\n• «aqua» → «aquam» (l’acqua, come oggetto)\n\nEsempio: «Puella rosam amat» = La ragazza ama la rosa.\n(«puella» è soggetto, «rosam» è oggetto: lo vedi dalla -m finale.)\n\nStudieremo tutto questo con calma più avanti: per ora basta riconoscere la -m dell’oggetto.',
           },
           {
             type: 'build',
@@ -441,13 +441,13 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🧩',
             title: 'La grande idea',
-            body: 'In italiano capiamo il ruolo di una parola dalla sua posizione e dalle preposizioni:\n\n«La ragazza vede la rosa» ≠ «La rosa vede la ragazza».\n\nIn latino, invece, è la FINE della parola (la desinenza) a dirci il suo ruolo. Queste diverse forme si chiamano CASI.',
+            body: 'Partiamo dall’italiano, che già conosci.\n\nIn una frase, il SOGGETTO è chi compie l’azione; l’OGGETTO è chi o che cosa la subisce:\n«La ragazza vede la rosa» → «la ragazza» è il soggetto (vede lei), «la rosa» è l’oggetto (è vista).\n\nIn italiano capiamo chi è chi dall’ORDINE delle parole. Se lo cambi, cambia il senso: «La rosa vede la ragazza» dice il contrario!\n\nIl latino fa diversamente: non conta l’ordine, ma la FINE della parola. Questa parte finale che cambia si chiama DESINENZA. È la desinenza a dirti se una parola è soggetto, oggetto, ecc.\n\nLe diverse forme che una parola assume si chiamano CASI. Impararli è il cuore del latino: partiamo con calma.',
           },
           {
             type: 'info',
             icon: '📋',
             title: 'I sei casi',
-            body: 'Ogni caso risponde a una domanda:\n\n• NOMINATIVO → chi? (il soggetto)\n• GENITIVO → di chi? (specificazione)\n• DATIVO → a chi? (il termine)\n• ACCUSATIVO → chi/che cosa? (l’oggetto)\n• ABLATIVO → con/da/in che cosa?\n• VOCATIVO → per chiamare qualcuno',
+            body: 'I casi in latino sono sei. Il modo più facile per ricordarli è legarli a una DOMANDA: la risposta a quella domanda va in quel caso.\n\n• NOMINATIVO → chi? (il soggetto)\n• GENITIVO → di chi? («la casa DI Marco»)\n• DATIVO → a chi? («do il libro A Marco»)\n• ACCUSATIVO → chi/che cosa? (l’oggetto)\n• ABLATIVO → con/da/in che cosa?\n• VOCATIVO → per chiamare qualcuno («o Marco!»)\n\nNon spaventarti: non vanno imparati tutti oggi. Li incontreremo uno alla volta, con calma.',
           },
           {
             type: 'table',
@@ -461,7 +461,7 @@ export const curriculum: Unit[] = [
               ['Ablativo', 'con che cosa?', 'mezzo, modo, luogo, tempo'],
               ['Vocativo', '—', 'per chiamare («o Marco!»)'],
             ],
-            note: 'Non serve impararli a memoria adesso: li vedremo uno alla volta. Per ora ricorda i due più importanti: NOMINATIVO (soggetto) e ACCUSATIVO (oggetto).',
+            note: '«Complemento» è solo il nome tecnico di un pezzo di frase che aggiunge un’informazione (di chi?, a chi?, con che cosa?). Non serve imparare tutto adesso: per ora bastano i due più importanti — NOMINATIVO (soggetto) e ACCUSATIVO (oggetto).',
           },
           {
             type: 'choice',
@@ -490,7 +490,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🎯',
             title: 'Nominativo vs Accusativo',
-            body: 'Osserva la parola «puella» (ragazza):\n\n• soggetto → «puella» (nominativo)\n• oggetto → «puellam» (accusativo)\n\nLa desinenza -am segnala l’oggetto. Ecco perché «Puella rosam videt» = la ragazza (sogg.) vede la rosa (ogg.).',
+            body: 'Vediamo la stessa parola, «puella» (ragazza), nei due casi più importanti:\n\n• quando è SOGGETTO (compie l’azione) → «puella». Questo caso si chiama NOMINATIVO.\n• quando è OGGETTO (subisce l’azione) → «puellam». Questo caso si chiama ACCUSATIVO.\n\nHai visto? È bastato cambiare la fine: -a → -am. Quella -am è il segnale dell’oggetto.\n\nPerciò «Puella rosam videt» = la ragazza (soggetto) vede la rosa (oggetto). E siccome è la desinenza a contare, in latino l’ordine delle parole può cambiare senza confondere il senso.',
           },
           {
             type: 'choice',
@@ -581,7 +581,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🌹',
             title: 'La prima declinazione',
-            body: 'Le parole come «rosa», «puella», «aqua», «villa» seguono tutte lo stesso schema: la PRIMA declinazione. Sono quasi tutte femminili.\n\nDeclinare vuol dire elencare tutte le forme di una parola, caso per caso. Vediamo il modello.',
+            body: 'Abbiamo detto che ogni caso ha la sua desinenza. Ma non tutte le parole usano le stesse desinenze: i nomi latini si dividono in gruppi, chiamati DECLINAZIONI.\n\nUna «declinazione» è semplicemente una famiglia di nomi che cambiano le desinenze allo stesso modo. Se impari lo schema di un gruppo, sai declinare tutte le parole di quel gruppo.\n\n«Declinare» vuol dire elencare le forme di una parola caso per caso (nominativo, genitivo, dativo…).\n\nParole come «rosa», «puella», «aqua», «villa» appartengono alla PRIMA declinazione, e sono quasi tutte femminili. Vediamo il modello.',
           },
           {
             type: 'table',
@@ -794,7 +794,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🏛️',
             title: 'Il genere neutro',
-            body: 'Il latino ha un terzo genere: il NEUTRO (né maschile né femminile), per molte cose e concetti.\n\nParole nuove:\n• «templum» = tempio\n• «bellum» = guerra\n• «donum» = dono\n• «verbum» = parola',
+            body: 'In italiano le parole hanno due generi: maschile (il libro) e femminile (la casa). Il «genere» è appunto questa categoria.\n\nIl latino ne ha uno in più: il NEUTRO — né maschile né femminile. Si usa per molte cose e concetti (spesso oggetti, luoghi, idee).\n\nParole nuove, tutte neutre:\n• «templum» = tempio\n• «bellum» = guerra\n• «donum» = dono\n• «verbum» = parola',
           },
           {
             type: 'info',
@@ -922,7 +922,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🗣️',
             title: 'La desinenza dice CHI',
-            body: 'In latino il verbo cambia la fine a seconda di chi compie l’azione: la desinenza ti dice già «io, tu, lui…», senza bisogno del pronome.\n\nEsempio, dal verbo «amāre» (amare):\n• «amō» = (io) amo\n• «amās» = (tu) ami\n• «amat» = (lui/lei) ama',
+            body: 'Il VERBO è la parola dell’azione (amare, leggere, essere).\n\nUn verbo può riferirsi a persone diverse: io, tu, lui/lei, noi, voi, loro. In grammatica queste si chiamano le sei PERSONE del verbo.\n\nAnche in italiano il verbo cambia con la persona: am-o, am-i, am-a… Il latino fa lo stesso, e anzi la fine del verbo (la desinenza) basta da sola a dirti chi agisce — così il pronome «io, tu…» spesso non serve nemmeno.\n\nEsempio, dal verbo «amāre» (amare):\n• «amō» = (io) amo\n• «amās» = (tu) ami\n• «amat» = (lui/lei) ama',
           },
           {
             type: 'table',
@@ -986,7 +986,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🧭',
             title: 'Quattro gruppi',
-            body: 'I verbi latini si dividono in 4 coniugazioni, che riconosci dalla fine dell’infinito:\n\n• 1ª: -āre (amāre)\n• 2ª: -ēre (monēre = avvertire)\n• 3ª: -ere (legere = leggere)\n• 4ª: -īre (audīre = ascoltare)\n\nCambia la vocale, ma le desinenze delle persone restano quelle di prima.',
+            body: 'Come i nomi si dividono in declinazioni, i verbi si dividono in gruppi chiamati CONIUGAZIONI: verbi che si comportano allo stesso modo.\n\nPer capire a quale gruppo appartiene un verbo si guarda il suo INFINITO — la forma base, quella che in italiano finisce in «-are, -ere, -ire» (amare, leggere, dormire) ed è come lo trovi sul vocabolario.\n\nIn latino le coniugazioni sono 4, riconoscibili dalla fine dell’infinito:\n• 1ª: -āre (amāre = amare)\n• 2ª: -ēre (monēre = avvertire)\n• 3ª: -ere (legere = leggere)\n• 4ª: -īre (audīre = ascoltare)\n\nCambia la vocale del gruppo, ma le desinenze delle persone (-o, -s, -t, -mus, -tis, -nt) restano quelle che già conosci.',
           },
           {
             type: 'table',
