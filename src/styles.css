@@ -333,9 +333,9 @@ button { font-family: inherit; cursor: pointer; }
 .end-sub { font-size: 15px; font-weight: 800; color: var(--text-soft); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 6px; }
 
 /* ───────────── Mascotte ───────────── */
-.mascot { width: 92px; display: inline-block; transform-origin: center bottom; }
-.mascot svg { width: 100%; height: auto; display: block; }
-.mascot--lg { width: 148px; }
+.mascot { width: 84px; display: inline-block; transform-origin: center bottom; }
+.mascot svg, .mascot img { width: 100%; height: auto; display: block; }
+.mascot--lg { width: 132px; }
 
 .mascot--idle { animation: mascot-bob 2.8s ease-in-out infinite; }
 @keyframes mascot-bob {
