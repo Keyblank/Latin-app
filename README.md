@@ -89,7 +89,9 @@ esempi già presenti.
   analisi e traduzione.
 - **Unità 6 — La seconda declinazione** — maschili in *-us* (*dominus*) e neutri
   in *-um* (*templum*), con la regola dei neutri.
-- **Unità 7 — I verbi (presente)** — le 4 coniugazioni (*amāre, monēre, legere,
+- **Unità 7 — Gli aggettivi** — la concordanza (genere, numero, caso) con il
+  modello *bonus, bona, bonum*.
+- **Unità 8 — I verbi (presente)** — le 4 coniugazioni (*amāre, monēre, legere,
   audīre*) e il verbo *esse*, con tabelle, audio e traduzione.
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso

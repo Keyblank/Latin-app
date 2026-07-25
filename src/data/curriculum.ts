@@ -302,7 +302,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '✨',
             title: 'Aggettivi',
-            body: 'Ora aggiungiamo qualche qualità:\n\n• «bona» = buona\n• «magna» = grande\n• «parva» = piccola\n\nEsempio: «Puella bona est» = La ragazza è buona.',
+            body: 'Un aggettivo è una parola che descrive: buona, grande, piccola. Aggiungiamone qualcuna, per ora con parole femminili:\n\n• «bona» = buona\n• «magna» = grande\n• «parva» = piccola\n\nEsempio: «Puella bona est» = La ragazza è buona.\n\n(Per ora usiamo la forma femminile con parole femminili. La regola completa — la «concordanza» — la vedremo per bene nell’Unità 7.)',
           },
           {
             type: 'choice',
@@ -934,12 +934,137 @@ export const curriculum: Unit[] = [
   },
   {
     id: 'u7',
-    title: 'Unità 7 — I verbi (presente)',
+    title: 'Unità 7 — Gli aggettivi',
+    subtitle: 'Descrivere: la concordanza',
+    color: '#d98324',
+    lessons: [
+      {
+        id: 'u7l1',
+        title: 'La concordanza',
+        icon: '🎨',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🎨',
+            title: 'Che cos’è un aggettivo',
+            body: 'L’AGGETTIVO è una parola che descrive un nome: grande, buono, piccolo, bello…\n\nGià in italiano l’aggettivo si adatta al nome: diciamo «un bambino buono» ma «una bambina buona». Questo adattarsi si chiama CONCORDANZA.\n\nIl latino fa lo stesso, ma in modo ancora più preciso. Vediamo come.',
+          },
+          {
+            type: 'info',
+            icon: '🧩',
+            title: 'Concordare in 3 cose',
+            body: 'In latino l’aggettivo deve concordare con il suo nome in TRE cose:\n\n1) GENERE (maschile, femminile o neutro)\n2) NUMERO (singolare o plurale)\n3) CASO (nominativo, accusativo, genitivo…)\n\nPer farlo, l’aggettivo cambia la desinenza — proprio come i nomi.',
+          },
+          {
+            type: 'table',
+            title: 'bonus, bona, bonum (buono) — nominativo',
+            columns: ['Genere', 'Aggettivo', 'Esempio'],
+            rows: [
+              ['maschile', 'bonus', 'dominus bonus'],
+              ['femminile', 'bona', 'puella bona'],
+              ['neutro', 'bonum', 'templum bonum'],
+            ],
+            speakCols: [1, 2],
+            note: 'Riconosci le desinenze? -us / -a / -um: sono quelle della 2ª declinazione (maschile e neutro) e della 1ª (femminile), che già conosci. Un aggettivo di questo tipo si dice «della 1ª classe».',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale forma di «buono» va con «puella» (femminile)?',
+            focus: 'puella …',
+            options: ['bona', 'bonus', 'bonum'],
+            answer: 'bona',
+          },
+          {
+            type: 'choice',
+            prompt: 'E quale va con «templum» (neutro)?',
+            focus: 'templum …',
+            options: ['bonum', 'bonus', 'bona'],
+            answer: 'bonum',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «dominus bonus»?',
+            focus: 'dominus bonus',
+            options: ['il buon padrone', 'il padrone c’è', 'i buoni padroni'],
+            answer: 'il buon padrone',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il genere alla forma di «magnus» (grande)',
+            pairs: [
+              ['maschile', 'magnus'],
+              ['femminile', 'magna'],
+              ['neutro', 'magnum'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u7l2',
+        title: 'L’aggettivo segue il caso',
+        icon: '🔗',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🔗',
+            title: 'Cambiano insieme',
+            body: 'Il nome cambia desinenza a seconda del caso. Ebbene: quando il nome cambia, l’aggettivo lo SEGUE, per restare in accordo.\n\nEsempio con «puella bona» (la brava ragazza):\n• soggetto: «puella bona» (nominativo)\n• oggetto: «puellam bonam» (accusativo)\n• «della…»: «puellae bonae» (genitivo)\n\nHai notato? Qui nome e aggettivo prendono la stessa desinenza: -a…-a, -am…-am, -ae…-ae.',
+          },
+          {
+            type: 'table',
+            title: 'puella bona — insieme, caso per caso',
+            columns: ['Caso', 'Nome + aggettivo'],
+            rows: [
+              ['Nominativo', 'puella bona'],
+              ['Genitivo', 'puellae bonae'],
+              ['Dativo', 'puellae bonae'],
+              ['Accusativo', 'puellam bonam'],
+              ['Ablativo', 'puellā bonā'],
+            ],
+            speakCols: [1],
+            note: 'Nome e aggettivo concordano nel CASO. Attenzione però: con nomi di declinazioni diverse le desinenze possono sembrare diverse pur essendo lo stesso caso — conta che il caso coincida, non la «rima».',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si dice «Vedo la brava ragazza»? («video» = vedo)',
+            options: ['Puellam bonam video', 'Puella bona video', 'Puellae bonae video'],
+            answer: 'Puellam bonam video',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «Amo la grande casa» («villa» = casa)',
+            source: 'Amo la grande casa',
+            answer: ['Villam', 'magnam', 'amo'],
+            extra: ['magna', 'villa'],
+          },
+          {
+            type: 'choice',
+            prompt: 'In «templum magnum est», perché «magnum» e non «magnus»?',
+            focus: 'templum magnum est',
+            options: ['perché templum è neutro', 'perché è plurale', 'perché è genitivo'],
+            answer: 'perché templum è neutro',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina la coppia al suo caso',
+            pairs: [
+              ['puella bona', 'nominativo'],
+              ['puellam bonam', 'accusativo'],
+              ['puellae bonae', 'genitivo'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'u8',
+    title: 'Unità 8 — I verbi (presente)',
     subtitle: 'Le 4 coniugazioni e il verbo essere',
     color: '#3f7a52',
     lessons: [
       {
-        id: 'u7l1',
+        id: 'u8l1',
         title: 'Le persone del verbo',
         icon: '🗣️',
         exercises: [
@@ -1003,7 +1128,7 @@ export const curriculum: Unit[] = [
         ],
       },
       {
-        id: 'u7l2',
+        id: 'u8l2',
         title: 'Le quattro coniugazioni',
         icon: '🧭',
         exercises: [
@@ -1067,7 +1192,7 @@ export const curriculum: Unit[] = [
         ],
       },
       {
-        id: 'u7l3',
+        id: 'u8l3',
         title: 'Il verbo essere',
         icon: '⭐',
         exercises: [
