@@ -25,8 +25,9 @@ la lingua. Interfaccia in italiano.
   L'app sceglie automaticamente la voce migliore (es. «Google italiano» su Chrome)
   e permette di sceglierne una dal menù *Vox*.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
-- **Mascotte animata** 🎭: un piccolo romano studioso che ti accoglie, esulta
-  quando indovini e si rattrista quando finiscono le vite.
+- **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
+  tre umori animati e **battute ironiche** a rotazione (saluti, feedback,
+  fine lezione). Le frasi sono in `src/quips.ts`, facilissime da modificare.
 - **Responsive**: funziona bene anche da telefono.
 
 Le regole di gioco (ranghi e obiettivo) sono in `src/gamification.ts`, facili da

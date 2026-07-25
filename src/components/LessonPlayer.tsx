@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import type { Lesson, Exercise } from '../types'
 import { InfoCard, TableCard, Choice, Build, Match, type AnswerState } from './Exercises'
 import { Mascot } from './Mascot'
+import { pickQuip } from '../quips'
 
 const START_HEARTS = 5
 const XP_PER_EXERCISE = 10
@@ -26,6 +27,11 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
   const [answer, setAnswer] = useState<AnswerState>({ ready: false, correct: false })
   const [lastCorrect, setLastCorrect] = useState(false)
   const [finished, setFinished] = useState(false)
+  const [feedbackQuip, setFeedbackQuip] = useState('')
+
+  // Una battuta finale per sessione (non cambia a ogni render).
+  const winQuip = useMemo(() => pickQuip('win'), [])
+  const failQuip = useMemo(() => pickQuip('fail'), [])
 
   // Esercizi (a risposta) affrontati, per il ripasso degli errori.
   const wrong = useRef<Exercise[]>([])
@@ -52,10 +58,12 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
     if (answer.correct) {
       setXp((x) => x + XP_PER_EXERCISE)
       setLastCorrect(true)
+      setFeedbackQuip(pickQuip('correct'))
       correct.current.push(ex)
     } else {
       setHearts((h) => h - 1)
       setLastCorrect(false)
+      setFeedbackQuip(pickQuip('wrong'))
       wrong.current.push(ex)
     }
     setPhase('checked')
@@ -76,6 +84,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
           <Mascot mood="happy" className="mascot--lg" />
           <h1 className="latin-shout">Optime!</h1>
           <p className="end-sub">{reviewMode ? 'Ripasso completato' : 'Lezione completata'}</p>
+          <p className="end-quip">{winQuip}</p>
           <p className="end-lesson-name">{lesson.icon} {lesson.title}</p>
           <div className="end-stats">
             <div className="end-stat">
@@ -106,9 +115,9 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
           <Mascot mood="sad" className="mascot--lg" />
           <h1 className="latin-shout">Vae!</h1>
           <p className="end-sub">Vite finite</p>
+          <p className="end-quip">{failQuip}</p>
           <p>
-            Niente paura: sbagliare fa parte dell’imparare. Le parole che hai
-            mancato le ritroverai nel <b>Ripasso</b>. Riprova con calma.
+            Comunque: le parole che hai mancato le ritroverai nel <b>Ripasso</b>.
           </p>
           <button
             className="btn btn-primary"
@@ -155,17 +164,20 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
         {phase === 'checked' && !isMatch && (
           <div className="feedback">
             {lastCorrect ? (
-              <span className="fb-ok">✔ Perfetto!</span>
+              <span className="fb-ok">✔ {feedbackQuip}</span>
             ) : (
               <span className="fb-no">
-                ✘ Risposta giusta:{' '}
-                <b>
-                  {ex.type === 'choice'
-                    ? ex.answer
-                    : ex.type === 'build'
-                    ? ex.answer.join(' ')
-                    : ''}
-                </b>
+                <span className="fb-quip">✘ {feedbackQuip}</span>
+                <span className="fb-answer">
+                  Giusto:{' '}
+                  <b>
+                    {ex.type === 'choice'
+                      ? ex.answer
+                      : ex.type === 'build'
+                      ? ex.answer.join(' ')
+                      : ''}
+                  </b>
+                </span>
               </span>
             )}
           </div>

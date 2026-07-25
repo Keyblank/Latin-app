@@ -1,8 +1,10 @@
 import type { Unit, Lesson } from '../types'
 import type { Progress } from '../useProgress'
+import { useState } from 'react'
 import { StatusCard } from './StatusCard'
 import { VoicePicker } from './VoicePicker'
 import { Mascot } from './Mascot'
+import { pickQuip } from '../quips'
 
 interface Props {
   units: Unit[]
@@ -24,6 +26,13 @@ export function Home({
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
+
+  // Battuta della mascotte, scelta una volta per visita alla home.
+  const [greeting] = useState(() =>
+    progress.completed.length === 0
+      ? 'Ave. Nuovo qui? Iniziamo dalle basi, senza fretta. Tanto tempo ne ho.'
+      : pickQuip('home'),
+  )
 
   return (
     <div className="app">
@@ -48,12 +57,7 @@ export function Home({
       <main className="path">
         <div className="home-greeting">
           <Mascot mood="idle" />
-          <div className="speech-bubble">
-            <span className="speech-latin">Salve!</span>{' '}
-            {progress.completed.length === 0
-              ? 'Sono il tuo compagno di studi. Cominciamo dal latino!'
-              : 'Bentornatə! Pronto a imparare qualcosa di nuovo?'}
-          </div>
+          <div className="speech-bubble">{greeting}</div>
         </div>
 
         <StatusCard progress={progress} />

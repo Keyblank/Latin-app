@@ -295,7 +295,13 @@ button { font-family: inherit; cursor: pointer; }
 .lesson-foot.foot-wrong { background: #ffdfe0; border-color: var(--red); }
 .feedback { margin-bottom: 12px; font-size: 17px; font-weight: 800; }
 .fb-ok { color: var(--green-dark); }
-.fb-no { color: var(--red); font-weight: 700; }
+.fb-no { color: var(--red); font-weight: 700; display: flex; flex-direction: column; gap: 3px; }
+.fb-quip { font-weight: 800; }
+.fb-answer { font-weight: 700; font-size: 15px; }
+.end-quip {
+  font-family: var(--serif); font-style: italic; font-size: 16px;
+  color: var(--text-soft); max-width: 320px; margin: 2px 0 14px;
+}
 
 .btn {
   width: 100%; padding: 16px; border: none; border-radius: 14px;
