@@ -80,16 +80,21 @@ esempi già presenti.
 
 ## Contenuto attuale
 
+- **Pronuntiatio** — come si legge il latino: suoni particolari e accento (con audio).
 - **Unità 1–3** — primo contatto: saluti, persone, cose, il verbo *essere*,
   aggettivi e prime frasi complete (livello «mai visto il latino»).
 - **Unità 4 — I casi latini** — cosa sono i casi, la funzione di ognuno,
   soggetto/oggetto e i complementi (genitivo, dativo, ablativo).
 - **Unità 5 — La prima declinazione** — il modello *rosa, rosae*, le desinenze,
-  e i primi esercizi di analisi e traduzione (livello base universitario).
+  analisi e traduzione.
+- **Unità 6 — La seconda declinazione** — maschili in *-us* (*dominus*) e neutri
+  in *-um* (*templum*), con la regola dei neutri.
+- **Unità 7 — I verbi (presente)** — le 4 coniugazioni (*amāre, monēre, legere,
+  audīre*) e il verbo *esse*, con tabelle, audio e traduzione.
 
-Le unità 4 e 5 sono pensate per chi deve affrontare un corso universitario di
-letteratura latina partendo da zero: introducono la morfologia e l'analisi, il
-vero cuore dello studio del latino.
+Le unità di grammatica sono pensate per chi deve affrontare un corso
+universitario di letteratura latina partendo da zero: introducono la morfologia
+e l'analisi, il vero cuore dello studio del latino.
 
 ## Struttura del progetto
 
