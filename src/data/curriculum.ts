@@ -530,8 +530,33 @@ export const curriculum: Unit[] = [
           {
             type: 'info',
             icon: '🔑',
-            title: 'Genitivo, Dativo, Ablativo',
-            body: 'Con la parola «puella»:\n\n• GENITIVO: «puellae» = della ragazza\n  → «villa puellae» = la casa della ragazza\n• DATIVO: «puellae» = alla ragazza\n  → «Femina puellae rosam dat» = la donna dà la rosa alla ragazza\n• ABLATIVO: «puellā» = con/dalla ragazza\n  → «in villā» = nella casa',
+            title: 'Oltre soggetto e oggetto',
+            body: 'Finora abbiamo visto due casi: nominativo (soggetto) e accusativo (oggetto). Ma nelle frasi diciamo anche «DI chi», «A chi», «CON che cosa»…\n\nIn italiano queste sfumature le rendiamo con le preposizioni (di, a, con, da, in). Il latino, invece, usa altri tre casi. Vediamoli uno alla volta, con calma.',
+          },
+          {
+            type: 'info',
+            icon: '📎',
+            title: 'Il genitivo — «di chi?»',
+            body: 'Il GENITIVO indica a chi appartiene qualcosa, o di che cosa si parla. In italiano lo diciamo con «DI»:\n• il libro DI Marco\n• la porta DELLA casa\n• il re DEI Romani\n\nÈ il caso del possesso e dell’appartenenza. Risponde alla domanda «di chi? di che cosa?».\n\nIn latino, «puella» (la ragazza) al genitivo diventa «puellae» (della ragazza):\n→ «villa puellae» = la casa della ragazza.\n\nLa desinenza del genitivo (1ª declinazione) è «-ae».',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «rosa puellae»? («rosa» = la rosa)',
+            focus: 'rosa puellae',
+            options: ['la rosa della ragazza', 'la ragazza e la rosa', 'la ragazza rosa'],
+            answer: 'la rosa della ragazza',
+          },
+          {
+            type: 'info',
+            icon: '🎁',
+            title: 'Il dativo — «a chi?»',
+            body: 'Il DATIVO indica a chi (o per chi) è diretta l’azione: chi riceve qualcosa. In italiano lo diciamo con «A» o «PER»:\n• do il libro A Marco\n• scrivo A mia madre\n• è un regalo PER te\n\nRisponde alla domanda «a chi? per chi?».\n\nIn latino «puella» al dativo è «puellae» (alla ragazza):\n→ «Femina puellae rosam dat» = la donna dà la rosa alla ragazza.\n(«dat» = dà.)',
+          },
+          {
+            type: 'info',
+            icon: '🛠️',
+            title: 'L’ablativo — «con / da / in»',
+            body: 'L’ABLATIVO è il più versatile: dice CON che cosa, DA dove, IN quale luogo, QUANDO… In italiano usiamo preposizioni come «con, da, in»:\n• scrivo CON la penna (mezzo)\n• vengo DA Roma (origine)\n• sono IN casa (luogo)\n\nIn latino «puella» all’ablativo è «puellā», e spesso lo trovi dopo una preposizione:\n→ «in villā» = nella casa.\n\nNon preoccuparti di tutti i suoi usi ora: per iniziare, pensa «con / da / in».',
           },
           {
             type: 'choice',
