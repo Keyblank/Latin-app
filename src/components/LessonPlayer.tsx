@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import type { Lesson, Exercise } from '../types'
 import { InfoCard, TableCard, Choice, Build, Match, type AnswerState } from './Exercises'
+import { Mascot } from './Mascot'
 
 const START_HEARTS = 5
 const XP_PER_EXERCISE = 10
@@ -72,7 +73,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
     return (
       <div className="app lesson">
         <div className="end-screen win">
-          <div className="end-emoji">🎉</div>
+          <Mascot mood="happy" className="mascot--lg" />
           <h1 className="latin-shout">Optime!</h1>
           <p className="end-sub">{reviewMode ? 'Ripasso completato' : 'Lezione completata'}</p>
           <p className="end-lesson-name">{lesson.icon} {lesson.title}</p>
@@ -102,7 +103,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
     return (
       <div className="app lesson">
         <div className="end-screen fail">
-          <div className="end-emoji">💔</div>
+          <Mascot mood="sad" className="mascot--lg" />
           <h1 className="latin-shout">Vae!</h1>
           <p className="end-sub">Vite finite</p>
           <p>

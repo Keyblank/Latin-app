@@ -25,10 +25,25 @@ la lingua. Interfaccia in italiano.
   L'app sceglie automaticamente la voce migliore (es. «Google italiano» su Chrome)
   e permette di sceglierne una dal menù *Vox*.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
+- **Mascotte animata** 🎭: un piccolo romano studioso che ti accoglie, esulta
+  quando indovini e si rattrista quando finiscono le vite.
 - **Responsive**: funziona bene anche da telefono.
 
 Le regole di gioco (ranghi e obiettivo) sono in `src/gamification.ts`, facili da
 ritoccare.
+
+### Sostituire la mascotte con una tua immagine
+
+La mascotte (`src/components/Mascot.tsx`) è un **segnaposto** disegnato in SVG.
+Per usare una tua illustrazione (es. creata con un generatore text-to-image):
+
+1. Prepara le immagini con **sfondo trasparente**, una per umore:
+   `mascot-idle.png`, `mascot-happy.png`, `mascot-sad.png`.
+2. Mettile in `src/assets/`.
+3. In `Mascot.tsx`, sostituisci l'SVG con un tag `<img>` che punta a
+   `../assets/mascot-<mood>.png` (istruzioni nel commento in cima al file).
+
+Le animazioni (dondolio, salto, tremolio) continuano a funzionare da sole.
 
 ## Come avviarla
 

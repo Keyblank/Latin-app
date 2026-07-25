@@ -2,6 +2,7 @@ import type { Unit, Lesson } from '../types'
 import type { Progress } from '../useProgress'
 import { StatusCard } from './StatusCard'
 import { VoicePicker } from './VoicePicker'
+import { Mascot } from './Mascot'
 
 interface Props {
   units: Unit[]
@@ -45,6 +46,16 @@ export function Home({
       </header>
 
       <main className="path">
+        <div className="home-greeting">
+          <Mascot mood="idle" />
+          <div className="speech-bubble">
+            <span className="speech-latin">Salve!</span>{' '}
+            {progress.completed.length === 0
+              ? 'Sono il tuo compagno di studi. Cominciamo dal latino!'
+              : 'Bentornatə! Pronto a imparare qualcosa di nuovo?'}
+          </div>
+        </div>
+
         <StatusCard progress={progress} />
 
         {progress.mistakes.length > 0 && (
