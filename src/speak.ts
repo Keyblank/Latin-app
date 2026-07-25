@@ -11,12 +11,28 @@ const MACRONS: Record<string, string> = {
   Ā: 'A', Ē: 'E', Ī: 'I', Ō: 'O', Ū: 'U', Ȳ: 'Y',
 }
 
-/** Toglie i segni di lunga (rosā → rosa) e simboli: la voce legge meglio. */
-function normalize(text: string): string {
-  return text
-    .replace(/[āēīōūȳĀĒĪŌŪȲ]/g, (c) => MACRONS[c] ?? c)
-    .replace(/[«»·]/g, ' ')
-    .trim()
+function stripMacrons(text: string): string {
+  return text.replace(/[āēīōūȳĀĒĪŌŪȲ]/g, (c) => MACRONS[c] ?? c)
+}
+
+/**
+ * Riscrive il latino in una grafia che la voce ITALIANA legge alla
+ * «ecclesiastica». La voce legge "come è scritto", quindi correggiamo la
+ * scrittura prima di darla in pasto alla sintesi vocale:
+ *   ae, oe → e      (caelum → celum → «chélum»; rosae → «rose»)
+ *   ph → f, th → t, ch → k   (philosophia → filosofia; pulcher → pulker)
+ *   ti + vocale → zi (tranne dopo s, t, x)   (natio → nazio; gratia → grazia)
+ *   y → i,  h muta → via   (hora → ora)
+ * Il testo MOSTRATO non cambia: si trasforma solo ciò che viene pronunciato.
+ */
+export function toEcclesiastical(text: string): string {
+  let t = stripMacrons(text).replace(/[«»·]/g, ' ').toLowerCase()
+  t = t.replace(/ph/g, 'f').replace(/th/g, 't').replace(/ch/g, 'k')
+  t = t.replace(/ae/g, 'e').replace(/oe/g, 'e')
+  t = t.replace(/y/g, 'i')
+  t = t.replace(/(?<![stx])ti(?=[aeiou])/g, 'zi')
+  t = t.replace(/h/g, '')
+  return t.replace(/\s+/g, ' ').trim()
 }
 
 export function speechSupported(): boolean {
@@ -83,7 +99,7 @@ export function speak(text: string): void {
   if (!speechSupported()) return
   const synth = window.speechSynthesis
   synth.cancel() // interrompe eventuale audio in corso
-  const utter = new SpeechSynthesisUtterance(normalize(text))
+  const utter = new SpeechSynthesisUtterance(toEcclesiastical(text))
   const voice = chosenVoice()
   utter.lang = voice?.lang ?? 'it-IT'
   try {
