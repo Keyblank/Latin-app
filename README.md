@@ -93,6 +93,9 @@ esempi già presenti.
   modello *bonus, bona, bonum*.
 - **Unità 8 — I verbi (presente)** — le 4 coniugazioni (*amāre, monēre, legere,
   audīre*) e il verbo *esse*, con tabelle, audio e traduzione.
+- **Unità 9 — La terza declinazione** — la più frequente: il ruolo del genitivo
+  e del tema (*rex, regis*), le desinenze, i neutri (*nomen, nominis*) e la
+  pratica di traduzione.
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia
