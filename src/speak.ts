@@ -26,7 +26,7 @@ function stripMacrons(text: string): string {
  * Il testo MOSTRATO non cambia: si trasforma solo ciò che viene pronunciato.
  */
 export function toEcclesiastical(text: string): string {
-  let t = stripMacrons(text).replace(/[«»·]/g, ' ').toLowerCase()
+  let t = stripMacrons(text).replace(/[«»·…—–]/g, ' ').toLowerCase()
   t = t.replace(/ph/g, 'f').replace(/th/g, 't').replace(/ch/g, 'k')
   t = t.replace(/ae/g, 'e').replace(/oe/g, 'e')
   t = t.replace(/y/g, 'i')
