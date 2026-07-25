@@ -22,6 +22,8 @@ la lingua. Interfaccia in italiano.
 - **Pronuncia con audio** 🔊: sezione *Pronuntiatio* (suoni e accento) e pulsanti
   per ascoltare parole e declinazioni. Usa la sintesi vocale del browser con voce
   italiana → pronuncia **ecclesiastica/italiana**, gratis e senza account.
+  L'app sceglie automaticamente la voce migliore (es. «Google italiano» su Chrome)
+  e permette di sceglierne una dal menù *Vox*.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
 - **Responsive**: funziona bene anche da telefono.
 

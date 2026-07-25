@@ -1,6 +1,7 @@
 import type { Unit, Lesson } from '../types'
 import type { Progress } from '../useProgress'
 import { StatusCard } from './StatusCard'
+import { VoicePicker } from './VoicePicker'
 
 interface Props {
   units: Unit[]
@@ -97,6 +98,7 @@ export function Home({
         ))}
 
         <footer className="home-footer">
+          <VoicePicker />
           <button
             className={`free-toggle ${progress.freeMode ? 'on' : ''}`}
             onClick={onToggleFreeMode}
