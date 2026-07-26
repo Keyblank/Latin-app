@@ -1,8 +1,10 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Lesson, Exercise } from '../types'
 import { InfoCard, TableCard, Choice, Build, Match, type AnswerState } from './Exercises'
 import { Mascot } from './Mascot'
+import { Confetti } from './Confetti'
 import { pickQuip } from '../quips'
+import { playCorrect, playWrong, playWin } from '../sfx'
 
 const START_HEARTS = 5
 const XP_PER_EXERCISE = 10
@@ -60,11 +62,13 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
       setLastCorrect(true)
       setFeedbackQuip(pickQuip('correct'))
       correct.current.push(ex)
+      playCorrect()
     } else {
       setHearts((h) => h - 1)
       setLastCorrect(false)
       setFeedbackQuip(pickQuip('wrong'))
       wrong.current.push(ex)
+      playWrong()
     }
     setPhase('checked')
   }
@@ -74,13 +78,20 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
     setXp((x) => x + XP_PER_EXERCISE)
     setLastCorrect(true)
     setPhase('checked')
+    playCorrect()
   }
+
+  // Suono di vittoria alla comparsa della schermata finale.
+  useEffect(() => {
+    if (finished) playWin()
+  }, [finished])
 
   // Schermata di completamento.
   if (finished) {
     return (
       <div className="app lesson">
         <div className="end-screen win">
+          <Confetti />
           <Mascot mood="happy" className="mascot--lg" />
           <h1 className="latin-shout">Optime!</h1>
           <p className="end-sub">{reviewMode ? 'Ripasso completato' : 'Lezione completata'}</p>

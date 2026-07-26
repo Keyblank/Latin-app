@@ -312,6 +312,23 @@ button { font-family: inherit; cursor: pointer; }
 .btn-primary { background: var(--primary); box-shadow: 0 4px 0 var(--primary-dark); }
 .btn:disabled { background: var(--gray); color: var(--gray-dark); box-shadow: 0 4px 0 #d0d0d0; cursor: not-allowed; }
 
+/* Coriandoli (schermata di vittoria) */
+.confetti {
+  position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 5;
+}
+.confetto {
+  position: absolute; top: -12%; border-radius: 2px;
+  animation-name: confetti-fall; animation-timing-function: linear;
+  animation-iteration-count: 1; opacity: 0.9;
+}
+@keyframes confetti-fall {
+  0% { top: -12%; opacity: 1; }
+  100% { top: 110%; opacity: 0.9; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confetti { display: none; }
+}
+
 /* Schermate finali */
 .end-screen {
   flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;

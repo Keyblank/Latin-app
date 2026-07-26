@@ -5,6 +5,7 @@ import { StatusCard } from './StatusCard'
 import { VoicePicker } from './VoicePicker'
 import { Mascot } from './Mascot'
 import { pickQuip } from '../quips'
+import { sfxEnabled, setSfxEnabled } from '../sfx'
 
 interface Props {
   units: Unit[]
@@ -26,6 +27,8 @@ export function Home({
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
+
+  const [sfxOn, setSfxOn] = useState(sfxEnabled)
 
   // Battuta della mascotte, scelta una volta per visita alla home.
   const [greeting] = useState(() =>
@@ -114,6 +117,16 @@ export function Home({
 
         <footer className="home-footer">
           <VoicePicker />
+          <button
+            className={`free-toggle ${sfxOn ? 'on' : ''}`}
+            onClick={() => {
+              const next = !sfxOn
+              setSfxEnabled(next)
+              setSfxOn(next)
+            }}
+          >
+            {sfxOn ? '🔔 Effetti sonori attivi' : '🔕 Effetti sonori spenti'}
+          </button>
           <button
             className={`free-toggle ${progress.freeMode ? 'on' : ''}`}
             onClick={onToggleFreeMode}
