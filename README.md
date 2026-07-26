@@ -169,6 +169,17 @@ esempi già presenti.
   le **interrogative indirette** e i verbi di chiedere e ordinare. Chiude con
   un diagramma di flusso: trovato un congiuntivo, chiediti *chi lo ha
   chiamato*.
+- **Unità 18 — Futuro e piuccheperfetto** — con questi l'indicativo è
+  completo. Il futuro nei suoi due modelli (*amābit* con il «-bi-» fratello
+  del «-bā-» dell'imperfetto; *leget* con la E), il piuccheperfetto come somma
+  (tema del perfetto + imperfetto di *esse* → *amāverat*), e una lezione sulle
+  **forme che si somigliano**: *legam* è «leggerò» ma anche «legga».
+- **Unità 19 — Le ultime declinazioni** — la **4ª** (*manus, manūs*: e con
+  essa *exercitus, impetus, adventus*) e la **5ª** (*rēs, reī* — la parola
+  passe-partout del latino: *rēs pūblica*, *rēs gestae*), gli **aggettivi
+  della 2ª classe** (*omnis, fortis, ingēns*) e **comparativi e superlativi**,
+  compreso l'ablativo di paragone e i cinque irregolari che in italiano sono
+  diventati ottimo, pessimo, massimo, minimo.
 
 ### Il lessico
 

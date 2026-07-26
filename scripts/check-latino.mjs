@@ -90,6 +90,30 @@ const PARADIGMI = {
     'amārētis', 'legerētis', 'audīrētis', 'essētis',
     'amārent', 'legerent', 'audīrent', 'essent',
   ],
+  'Futuro — 1ª e 2ª coniugazione': [
+    'amābō', 'monēbō', 'amābis', 'monēbis', 'amābit', 'monēbit',
+    'amābimus', 'monēbimus', 'amābitis', 'monēbitis', 'amābunt', 'monēbunt',
+  ],
+  'Futuro — 3ª e 4ª coniugazione': [
+    'legam', 'audiam', 'legēs', 'audiēs', 'leget', 'audiet',
+    'legēmus', 'audiēmus', 'legētis', 'audiētis', 'legent', 'audient',
+  ],
+  'esse — futuro': ['erō', 'eris', 'erit', 'erimus', 'eritis', 'erunt'],
+  'Piuccheperfetto indicativo di amāre': [
+    'amāveram', 'amāverās', 'amāverat', 'amāverāmus', 'amāverātis', 'amāverant',
+  ],
+  'manus, manūs (f.) — «la mano»': [
+    'manus', 'manūs', 'manūs', 'manuum', 'manuī', 'manibus',
+    'manum', 'manūs', 'manū', 'manibus',
+  ],
+  'rēs, reī (f.) — «la cosa»': [
+    'rēs', 'rēs', 'reī', 'rērum', 'reī', 'rēbus',
+    'rem', 'rēs', 'rē', 'rēbus',
+  ],
+  'fortis, forte — singolare': [
+    'fortis', 'forte', 'fortis', 'fortis', 'fortī', 'fortī',
+    'fortem', 'forte', 'fortī', 'fortī',
+  ],
   'Perfetto e piuccheperfetto congiuntivo di amāre': [
     'amāverim', 'amāvissem',
     'amāverīs', 'amāvissēs',

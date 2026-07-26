@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (18 sezioni, 70 lezioni, ~200 vocaboli + i pronomi)
+### Contenuti (20 sezioni, 79 lezioni, ~230 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -49,6 +49,8 @@ Principi guida:
 - ✅ **U15 — Il passivo** (presente, imperfetto, perfetto; agente e mezzo)
 - ✅ **U16 — Il congiuntivo** (le forme: i quattro tempi, e come riconoscerli)
 - ✅ **U17 — Le subordinate** (cum narrativo, finali, consecutive, interrogative indirette)
+- ✅ **U18 — Futuro e piuccheperfetto** (l'indicativo è completo)
+- ✅ **U19 — 4ª e 5ª declinazione**, aggettivi della 2ª classe, comparativi e superlativi
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
@@ -99,16 +101,16 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ✅ **Congiuntivo** (le forme) + subordinate: *cum* narrativo, finali
   (*ut/nē*), consecutive, interrogative indirette, verbi di chiedere e ordinare
 - ✅ **Il passivo** (presente, imperfetto e perfetto) + complemento d'agente
-- ⬜ Tempi restanti dell'indicativo: **futuro**, **piuccheperfetto**
+- ✅ Tempi restanti dell'indicativo: **futuro**, **piuccheperfetto**, futuro anteriore
 
 ### Fase D — completamento e pratica
-- ⬜ **4ª e 5ª declinazione**
-- ⬜ **Aggettivi della 2ª classe** (*fortis, acer*) e **comparativi/superlativi**
+- ✅ **4ª e 5ª declinazione** (*manus*, *rēs*)
+- ✅ **Aggettivi della 2ª classe** (*fortis, ācer*) e **comparativi/superlativi**
 - ⬜ **Verbi irregolari** (*possum, eo, fero, volo/nolo/malo*, *fio*) e **deponenti**
 - ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
 - ⬜ **Traduzione graduata**: dalle frasi ai **brani adattati** ad autori facili
   (Eutropio, *Fabulae*, Cesare semplificato)
-- ⬜ **Lessico, secondo giro**: da ~200 a ~400 vocaboli (è la soglia sotto cui
+- ⬜ **Lessico, secondo giro**: da ~230 a ~400 vocaboli (è la soglia sotto cui
   una versione resta illeggibile anche sapendo tutta la grammatica)
 
 ---
@@ -131,11 +133,11 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 - L'**accento** della pronuncia automatica non è sempre corretto (per le parole
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
-- I contenuti coprono le **fondamenta** più i primi costrutti (participi,
-  ablativo assoluto, acc.+inf.): per tradurre versioni vere manca ancora il
-  futuro e piuccheperfetto indicativi e la Fase D (4ª/5ª declinazione,
-  aggettivi della 2ª classe, verbi irregolari e deponenti). È un
-  percorso, non un traguardo già raggiunto.
+- La morfologia è ora **completa** (cinque declinazioni, due classi di
+  aggettivi, indicativo e congiuntivo attivi e passivi, participi, i costrutti
+  principali). Mancano i **verbi irregolari e deponenti**, e soprattutto il
+  **lessico**: ~230 vocaboli non bastano per una versione autentica, che ne
+  chiede almeno 400.
 
 ---
 

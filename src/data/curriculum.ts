@@ -5134,4 +5134,799 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u18',
+    title: 'Unità 18 — Futuro e piuccheperfetto',
+    subtitle: 'Completiamo l’indicativo',
+    color: '#365a8c',
+    lessons: [
+      {
+        id: 'u18l1',
+        title: 'Il futuro',
+        icon: '🔮',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🔮',
+            title: 'Due modi, secondo la coniugazione',
+            body:
+              'Il futuro latino si fa in due modi diversi, e quale dei due ' +
+              'dipende dalla CONIUGAZIONE del verbo. È l’unico punto scomodo: ' +
+              'per il resto è meccanico.\n\n' +
+              '• 1ª e 2ª coniugazione → si infila un «-bi-»\n' +
+              '  «amābō, amābis, amābit» = amerò, amerai, amerà\n' +
+              '• 3ª e 4ª coniugazione → niente «-bi-», ma le vocali A ed E\n' +
+              '  «legam, legēs, leget» = leggerò, leggerai, leggerà',
+          },
+          {
+            type: 'info',
+            icon: '👀',
+            title: 'Il «-bi-» è il fratello del «-bā-»',
+            body:
+              'Ti ricordi il segnale dell’imperfetto, il «-bā-» dell’unità 10? ' +
+              'Il futuro della 1ª e 2ª usa la stessa posizione con un’altra ' +
+              'vocale.\n\n' +
+              '«amābam» = amavo (passato)\n' +
+              '«amābō» = amerò (futuro)\n\n' +
+              'Stessa B, tempo opposto. Guarda la lettera dopo: A ti porta ' +
+              'indietro, I (o O) ti porta avanti.',
+          },
+          {
+            type: 'table',
+            title: 'Futuro — 1ª e 2ª coniugazione',
+            columns: ['Persona', 'amāre', 'monēre', 'Italiano'],
+            rows: [
+              ['io', 'amābō', 'monēbō', 'amerò'],
+              ['tu', 'amābis', 'monēbis', 'amerai'],
+              ['lui/lei', 'amābit', 'monēbit', 'amerà'],
+              ['noi', 'amābimus', 'monēbimus', 'ameremo'],
+              ['voi', 'amābitis', 'monēbitis', 'amerete'],
+              ['loro', 'amābunt', 'monēbunt', 'ameranno'],
+            ],
+            note: 'Solo la prima persona e la terza plurale escono dallo schema: «amābō» (non «amābiō») e «amābunt» (non «amābint»).',
+          },
+          {
+            type: 'table',
+            title: 'Futuro — 3ª e 4ª coniugazione',
+            columns: ['Persona', 'legere', 'audīre', 'Italiano'],
+            rows: [
+              ['io', 'legam', 'audiam', 'leggerò'],
+              ['tu', 'legēs', 'audiēs', 'leggerai'],
+              ['lui/lei', 'leget', 'audiet', 'leggerà'],
+              ['noi', 'legēmus', 'audiēmus', 'leggeremo'],
+              ['voi', 'legētis', 'audiētis', 'leggerete'],
+              ['loro', 'legent', 'audient', 'leggeranno'],
+            ],
+            note: 'Qui il segnale è la E lunga: legĒs, legĒmus. Solo la prima persona fa eccezione con la A: «legam».',
+          },
+          {
+            type: 'table',
+            title: 'esse — futuro',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['erō', 'sarò'],
+              ['eris', 'sarai'],
+              ['erit', 'sarà'],
+              ['erimus', 'saremo'],
+              ['eritis', 'sarete'],
+              ['erunt', 'saranno'],
+            ],
+            speakCols: [0],
+            note: 'Confronta con l’imperfetto «eram, erās, erat» (ero, eri, era): cambia una vocale e cambia il tempo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «amābit»?',
+            focus: 'amābit',
+            options: ['amerà', 'amava', 'ama'],
+            answer: 'amerà',
+          },
+          {
+            type: 'choice',
+            prompt: 'E «amābat»?',
+            focus: 'amābat',
+            options: ['amava', 'amerà', 'amò'],
+            answer: 'amava',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['erit', 'sarà'],
+              ['erat', 'era'],
+              ['leget', 'leggerà'],
+              ['legēbat', 'leggeva'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u18l2',
+        title: 'Il piuccheperfetto',
+        icon: '⏪',
+        exercises: [
+          {
+            type: 'info',
+            icon: '⏪',
+            title: 'Il passato del passato',
+            body:
+              'Il PIUCCHEPERFETTO indica un’azione avvenuta prima di un’altra ' +
+              'azione passata. In italiano è «avevo fatto»:\n\n' +
+              'Quando arrivai, lui era già partito.\n\n' +
+              'Nei racconti storici serve continuamente, perché il narratore ' +
+              'torna indietro a spiegare l’antefatto.\n\n' +
+              'Si fa così: TEMA DEL PERFETTO + l’imperfetto di «esse».\n' +
+              'amāv- + eram → «amāveram» = avevo amato',
+          },
+          {
+            type: 'table',
+            title: 'Piuccheperfetto indicativo di amāre',
+            columns: ['Persona', 'Latino', 'Italiano'],
+            rows: [
+              ['io', 'amāveram', 'avevo amato'],
+              ['tu', 'amāverās', 'avevi amato'],
+              ['lui/lei', 'amāverat', 'aveva amato'],
+              ['noi', 'amāverāmus', 'avevamo amato'],
+              ['voi', 'amāverātis', 'avevate amato'],
+              ['loro', 'amāverant', 'avevano amato'],
+            ],
+            speakCols: [1],
+            note: 'Leggilo come una somma: «amāv-» (il tema del perfetto, dall’unità 10) più «eram, erās, erat…» (l’imperfetto di esse). Da «esse»: «fueram» = ero stato.',
+          },
+          {
+            type: 'info',
+            icon: '⏩',
+            title: 'E il futuro anteriore',
+            body:
+              'Stessa ricetta, altro ingrediente: TEMA DEL PERFETTO + il futuro ' +
+              'di «esse».\n\n' +
+              'amāv- + erō → «amāverō» = avrò amato\n\n' +
+              'Indica un’azione futura ma già conclusa quando ne comincia ' +
+              'un’altra: «quando avrò letto, ti dirò». In latino si usa molto ' +
+              'più che in italiano, soprattutto dopo «cum», «sī», «ubi».',
+          },
+          {
+            type: 'table',
+            title: 'I tempi costruiti sul tema del perfetto',
+            columns: ['Tempo', 'Si aggiunge', 'Esempio'],
+            rows: [
+              ['perfetto', '-ī, -istī, -it…', 'amāvit (amò)'],
+              ['piuccheperfetto', 'eram, erās, erat…', 'amāverat (aveva amato)'],
+              ['futuro anteriore', 'erō, eris, erit…', 'amāverit (avrà amato)'],
+            ],
+            note: 'Tre tempi, un solo tema da imparare. È per questo che il vocabolario ti dà «amō, amāre, amāvī»: quel terzo pezzo apre tre tempi in una volta.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «vīderat»?',
+            focus: 'vīderat',
+            options: ['aveva visto', 'vedeva', 'vide'],
+            answer: 'aveva visto',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si costruisce il piuccheperfetto?',
+            options: [
+              'tema del perfetto + imperfetto di esse',
+              'infinito + desinenze',
+              'tema del presente + -ba-',
+            ],
+            answer: 'tema del perfetto + imperfetto di esse',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['amāvit', 'amò'],
+              ['amāverat', 'aveva amato'],
+              ['amābat', 'amava'],
+              ['amābit', 'amerà'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u18l3',
+        title: 'Forme che si somigliano',
+        icon: '🪤',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🪤',
+            title: 'Quando due tempi si scrivono uguali',
+            body:
+              'Adesso che i tempi sono tanti, alcune forme finiscono per ' +
+              'coincidere. Non è un errore del latino: è un’ambiguità vera, e ' +
+              'la sciogli con il contesto.\n\n' +
+              'Le due che contano davvero:\n\n' +
+              '«legam» = leggerò (futuro) oppure legga (congiuntivo presente)\n' +
+              '«amāverit» = avrà amato (futuro anteriore) oppure abbia amato ' +
+              '(congiuntivo perfetto)\n\n' +
+              'Come decidi? Guardi la frase. Se è una principale, è ' +
+              'indicativo. Se è retta da «ut», «cum», «nē» o da un verbo di ' +
+              'domandare, è congiuntivo.',
+          },
+          {
+            type: 'table',
+            title: 'Coppie da non confondere',
+            columns: ['Forma', 'Prima lettura', 'Seconda lettura'],
+            rows: [
+              ['amābat', 'amava (imperfetto)', '—'],
+              ['amābit', 'amerà (futuro)', '—'],
+              ['amāret', 'amasse (congiuntivo)', '—'],
+              ['legam', 'leggerò (futuro)', 'legga (congiuntivo)'],
+              ['amāverit', 'avrà amato (futuro ant.)', 'abbia amato (cong.)'],
+            ],
+            note: 'Le prime tre differiscono per una vocale o una sillaba: «-bā-» passato, «-bi-» futuro, «-re-» congiuntivo. Le ultime due sono davvero identiche e le decide la frase.',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Librum legam», che cos’è «legam»?',
+            focus: 'Librum legam',
+            options: [
+              'futuro: leggerò il libro',
+              'congiuntivo: che io legga il libro',
+              'imperfetto: leggevo il libro',
+            ],
+            answer: 'futuro: leggerò il libro',
+          },
+          {
+            type: 'choice',
+            prompt: 'E in «Vēnit ut librum legam»?',
+            focus: 'ut librum legam',
+            options: [
+              'congiuntivo: venne perché io legga il libro',
+              'futuro: venne e leggerò il libro',
+              'imperfetto',
+            ],
+            answer: 'congiuntivo: venne perché io legga il libro',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale di queste è un futuro?',
+            options: ['monēbit', 'monēbat', 'monēret'],
+            answer: 'monēbit',
+          },
+          {
+            type: 'choice',
+            prompt: 'E quale è un congiuntivo?',
+            options: ['monēret', 'monēbit', 'monēbat'],
+            answer: 'monēret',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla descrizione',
+            pairs: [
+              ['amābat', 'imperfetto indicativo'],
+              ['amābit', 'futuro'],
+              ['amāret', 'imperfetto congiuntivo'],
+              ['amāverat', 'piuccheperfetto indicativo'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u18l4',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Tutti i tempi dell’indicativo, in una riga',
+            body:
+              'Ora li hai tutti. Il riassunto sta in poche spie:\n\n' +
+              '• «-bā-» → imperfetto (amāva)\n' +
+              '• «-bi-» / «-b-» → futuro (amerà)\n' +
+              '• tema del perfetto nudo → perfetto (amò)\n' +
+              '• tema del perfetto + «era-» → piuccheperfetto (aveva amato)\n' +
+              '• tema del perfetto + «eri-» → futuro anteriore (avrà amato)\n\n' +
+              'Nelle versioni di storia i tempi del racconto restano perfetto e ' +
+              'imperfetto; il piuccheperfetto compare quando l’autore torna ' +
+              'indietro.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Hostēs urbem oppugnāverant»?',
+            focus: 'Hostēs urbem oppugnāverant',
+            options: [
+              'I nemici avevano assalito la città',
+              'I nemici assaliranno la città',
+              'I nemici assalivano la città',
+            ],
+            answer: 'I nemici avevano assalito la città',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Rēx epistulam mittet»?',
+            focus: 'Rēx epistulam mittet',
+            options: [
+              'Il re manderà una lettera',
+              'Il re mandava una lettera',
+              'Il re mandò una lettera',
+            ],
+            answer: 'Il re manderà una lettera',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Cum vēnissem, omnēs fūgerant»?',
+            focus: 'Cum vēnissem, omnēs fūgerant',
+            options: [
+              'Quando arrivai, erano già fuggiti tutti',
+              'Quando arriverò, fuggiranno tutti',
+              'Arrivo e tutti fuggono',
+            ],
+            answer: 'Quando arrivai, erano già fuggiti tutti',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «Il re sarà buono»',
+            source: 'Il re sarà buono',
+            answer: ['Rēx', 'bonus', 'erit'],
+            extra: ['erat', 'est'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina al tempo',
+            pairs: [
+              ['vidēbat', 'imperfetto'],
+              ['vīdit', 'perfetto'],
+              ['vīderat', 'piuccheperfetto'],
+              ['vidēbit', 'futuro'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'u19',
+    title: 'Unità 19 — Le ultime declinazioni',
+    subtitle: 'La 4ª, la 5ª e gli aggettivi che mancavano',
+    color: '#7a5c1f',
+    lessons: [
+      {
+        id: 'u19l1',
+        title: 'La quarta: manus',
+        icon: '✋',
+        exercises: [
+          {
+            type: 'info',
+            icon: '✋',
+            title: 'Poche parole, ma pesanti',
+            body:
+              'La quarta DECLINAZIONE è piccola: contiene poche parole. Il ' +
+              'guaio è che sono parole che nelle versioni di storia tornano a ' +
+              'ogni pagina — «exercitus» (esercito), «impetus» (assalto), ' +
+              '«adventus» (arrivo).\n\n' +
+              'Il segno di riconoscimento è il GENITIVO in «-ūs». Sul ' +
+              'vocabolario la trovi scritta «manus, manūs».\n\n' +
+              'Attenzione a non confonderla con la seconda: «dominus» fa ' +
+              '«dominī» al genitivo, «manus» fa «manūs». Il genitivo, come ' +
+              'sempre, è il giudice.',
+          },
+          {
+            type: 'table',
+            title: 'manus, manūs (f.) — «la mano»',
+            columns: ['Caso', 'Singolare', 'Plurale'],
+            rows: [
+              ['Nominativo', 'manus', 'manūs'],
+              ['Genitivo', 'manūs', 'manuum'],
+              ['Dativo', 'manuī', 'manibus'],
+              ['Accusativo', 'manum', 'manūs'],
+              ['Ablativo', 'manū', 'manibus'],
+            ],
+            speakCols: [1, 2],
+            note: 'Nominativo singolare, genitivo singolare, nominativo e accusativo plurale si scrivono tutti «manus» o «manūs»: qui più che mai è la frase a dirti il caso.',
+          },
+          {
+            type: 'table',
+            title: 'Parole della 4ª declinazione',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['exercitus', 'esercito'],
+              ['impetus', 'assalto, carica'],
+              ['adventus', 'arrivo'],
+              ['senātus', 'senato'],
+              ['metus', 'paura'],
+              ['portus', 'porto'],
+              ['cōnsulātus', 'consolato'],
+              ['manus', 'mano — ma anche schiera armata'],
+              ['cornū (n.)', 'corno — e ala dell’esercito'],
+            ],
+            speakCols: [0],
+            note: '«manus» e «cornū» hanno un secondo senso militare che nelle versioni è più frequente del primo: «manus mīlitum» è un drappello, «in dextrō cornū» vuol dire «all’ala destra».',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «exercitūs» (genitivo)?',
+            focus: 'exercitūs',
+            options: ['dell’esercito', 'all’esercito', 'con l’esercito'],
+            answer: 'dell’esercito',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione di guerra trovi «in dextrō cornū». Cosa vuol dire?',
+            focus: 'in dextrō cornū',
+            options: [
+              'all’ala destra dello schieramento',
+              'nel corno destro dell’animale',
+              'con la tromba a destra',
+            ],
+            answer: 'all’ala destra dello schieramento',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come riconosci una parola della 4ª declinazione?',
+            options: [
+              'dal genitivo in «-ūs»',
+              'dal nominativo in «-us»',
+              'dall’accusativo in «-um»',
+            ],
+            answer: 'dal genitivo in «-ūs»',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['exercitus', 'esercito'],
+              ['impetus', 'assalto'],
+              ['adventus', 'arrivo'],
+              ['metus', 'paura'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u19l2',
+        title: 'La quinta: rēs',
+        icon: '🌀',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🌀',
+            title: 'La più piccola, con la parola più grande',
+            body:
+              'La quinta DECLINAZIONE è ancora più piccola: praticamente due ' +
+              'parole importanti, «rēs» e «diēs». Ma «rēs» è forse il vocabolo ' +
+              'più camaleontico del latino.\n\n' +
+              'Il segno è il GENITIVO in «-eī» o «-ēī»: «rēs, reī».\n\n' +
+              'Quasi tutte sono femminili. «diēs» fa eccezione: di solito è ' +
+              'maschile («il giorno»), ma diventa femminile quando indica una ' +
+              'data stabilita.',
+          },
+          {
+            type: 'table',
+            title: 'rēs, reī (f.) — «la cosa»',
+            columns: ['Caso', 'Singolare', 'Plurale'],
+            rows: [
+              ['Nominativo', 'rēs', 'rēs'],
+              ['Genitivo', 'reī', 'rērum'],
+              ['Dativo', 'reī', 'rēbus'],
+              ['Accusativo', 'rem', 'rēs'],
+              ['Ablativo', 'rē', 'rēbus'],
+            ],
+            speakCols: [1, 2],
+            note: 'Come «diēs, diēī» (il giorno): diem, diē, diēs, diērum, diēbus.',
+          },
+          {
+            type: 'info',
+            icon: '🎭',
+            title: '«rēs» vuol dire tutto',
+            body:
+              'Tradurre «rēs» con «cosa» funziona quasi mai. È una parola ' +
+              'passe-partout, e il senso lo dà il contesto:\n\n' +
+              '• il fatto, l’avvenimento — «rēs gestae» = le imprese compiute\n' +
+              '• la situazione — «rēs male sē habet» = la cosa va male\n' +
+              '• l’interesse pubblico — «rēs pūblica» = lo Stato ' +
+              '(letteralmente «la cosa di tutti»: da lì «repubblica»)\n' +
+              '• i beni, il patrimonio — «rem familiārem» = il patrimonio\n\n' +
+              'Quando la incontri, non tradurla subito: chiediti di che cosa ' +
+              'sta parlando la frase.',
+          },
+          {
+            type: 'table',
+            title: 'Parole della 5ª declinazione',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['rēs', 'cosa, fatto, situazione'],
+              ['diēs', 'giorno'],
+              ['fidēs', 'fedeltà, lealtà — e fiducia'],
+              ['spēs', 'speranza'],
+              ['aciēs', 'schieramento di battaglia'],
+            ],
+            speakCols: [0],
+            note: '«fidēs» in Cesare è quasi sempre la lealtà o la parola data, non la fede religiosa. «aciēs» vale anche «sguardo acuto», ma nelle versioni è lo schieramento.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «rēs pūblica»?',
+            focus: 'rēs pūblica',
+            options: [
+              'lo Stato, la cosa pubblica',
+              'una cosa qualsiasi',
+              'la piazza',
+            ],
+            answer: 'lo Stato, la cosa pubblica',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «rēs gestae», cosa sono?',
+            focus: 'rēs gestae',
+            options: ['le imprese compiute', 'le cose portate', 'gli affari'],
+            answer: 'le imprese compiute',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che caso è «rem»?',
+            focus: 'rem',
+            options: ['accusativo singolare', 'nominativo plurale', 'genitivo'],
+            answer: 'accusativo singolare',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['diēs', 'giorno'],
+              ['spēs', 'speranza'],
+              ['fidēs', 'lealtà'],
+              ['aciēs', 'schieramento'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u19l3',
+        title: 'Aggettivi della 2ª classe',
+        icon: '💪',
+        exercises: [
+          {
+            type: 'info',
+            icon: '💪',
+            title: 'Gli altri aggettivi',
+            body:
+              'Gli aggettivi che conosci — «bonus, bona, bonum» — seguono la 1ª ' +
+              'e la 2ª declinazione: si chiamano di PRIMA classe.\n\n' +
+              'Ce n’è un secondo gruppo, che segue invece la 3ª declinazione. ' +
+              'Sono i più frequenti in assoluto: «omnis» (tutto), «fortis» ' +
+              '(forte), «gravis» (pesante, grave), «ingēns» (enorme).\n\n' +
+              'Li riconosci perché non finiscono in «-us, -a, -um».',
+          },
+          {
+            type: 'table',
+            title: 'Tre gruppi, secondo quante uscite hanno',
+            columns: ['Tipo', 'Come si presenta', 'Esempio'],
+            rows: [
+              ['due uscite', 'una per m./f., una per il neutro', 'fortis, forte'],
+              ['tre uscite', 'una per genere', 'ācer, ācris, ācre'],
+              ['una uscita', 'una sola, e il genitivo', 'ingēns, ingentis'],
+            ],
+            note: 'Sono differenze di facciata: si declinano tutti allo stesso modo, come i nomi della 3ª. Con tre particolarità: ablativo singolare in «-ī» (non -e), genitivo plurale in «-ium», neutro plurale in «-ia».',
+          },
+          {
+            type: 'table',
+            title: 'fortis, forte — singolare',
+            columns: ['Caso', 'm. e f.', 'neutro'],
+            rows: [
+              ['Nominativo', 'fortis', 'forte'],
+              ['Genitivo', 'fortis', 'fortis'],
+              ['Dativo', 'fortī', 'fortī'],
+              ['Accusativo', 'fortem', 'forte'],
+              ['Ablativo', 'fortī', 'fortī'],
+            ],
+            speakCols: [1, 2],
+            note: 'Al plurale: fortēs (m./f.) e fortia (n.) al nominativo, fortium al genitivo, fortibus per dativo e ablativo.',
+          },
+          {
+            type: 'table',
+            title: 'Aggettivi della 2ª classe da sapere',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['omnis, omne', 'tutto, ogni'],
+              ['fortis, forte', 'forte, coraggioso'],
+              ['gravis, grave', 'pesante, grave, serio'],
+              ['brevis, breve', 'breve'],
+              ['facilis, facile', 'facile'],
+              ['difficilis, difficile', 'difficile'],
+              ['nōbilis, nōbile', 'famoso, illustre'],
+              ['ācer, ācris, ācre', 'acuto, accanito'],
+              ['ingēns, ingentis', 'enorme'],
+              ['potēns, potentis', 'potente'],
+            ],
+            speakCols: [0],
+            note: '«nōbilis» non è il nobile di sangue ma chi è conosciuto, illustre (viene da «nōscere», conoscere). «ācer» descrive una battaglia accanita più spesso di un sapore acuto.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «omnēs mīlitēs»?',
+            focus: 'omnēs mīlitēs',
+            options: ['tutti i soldati', 'gli stessi soldati', 'i soldati forti'],
+            answer: 'tutti i soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale forma va con «bellum» (neutro)?',
+            focus: 'bellum …',
+            options: ['grave', 'gravis', 'gravem'],
+            answer: 'grave',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['ingēns', 'enorme'],
+              ['gravis', 'pesante'],
+              ['ācer', 'accanito'],
+              ['nōbilis', 'illustre'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u19l4',
+        title: 'Più di, il più di tutti',
+        icon: '🏆',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🏆',
+            title: 'Comparativo e superlativo',
+            body:
+              'In italiano diciamo «più alto» e «altissimo» aggiungendo parole ' +
+              'o desinenze. Il latino fa lo stesso, con due suffissi:\n\n' +
+              '• COMPARATIVO: tema + «-ior» (neutro «-ius») = più alto\n' +
+              '  altus → «altior, altius»\n' +
+              '• SUPERLATIVO: tema + «-issimus, -a, -um» = altissimo, il più alto\n' +
+              '  altus → «altissimus»\n\n' +
+              'Il comparativo si declina come un aggettivo della 2ª classe ' +
+              '(genitivo «altiōris»); il superlativo come «bonus».',
+          },
+          {
+            type: 'info',
+            icon: '⚖️',
+            title: 'Più alto DI chi?',
+            body:
+              'Per dire il secondo termine di paragone ci sono due modi, ed ' +
+              'entrambi si incontrano:\n\n' +
+              '• «quam» + lo stesso caso del primo termine\n' +
+              '  «Caesar fortior quam Pompēius» = Cesare più forte di Pompeo\n' +
+              '• l’ABLATIVO da solo, senza niente davanti\n' +
+              '  «Caesar fortior Pompēiō» = stessa cosa\n\n' +
+              'Il secondo si chiama ablativo di paragone, e spiazza: vedi un ' +
+              'ablativo isolato accanto a un comparativo e sembra un ' +
+              'complemento. È il termine di paragone.',
+          },
+          {
+            type: 'table',
+            title: 'I cinque irregolari da sapere a memoria',
+            columns: ['Positivo', 'Comparativo', 'Superlativo'],
+            rows: [
+              ['bonus (buono)', 'melior', 'optimus'],
+              ['malus (cattivo)', 'peior', 'pessimus'],
+              ['magnus (grande)', 'maior', 'maximus'],
+              ['parvus (piccolo)', 'minor', 'minimus'],
+              ['multus (molto)', 'plūs', 'plūrimus'],
+            ],
+            speakCols: [1, 2],
+            note: 'Li riconosci perché li usiamo ancora: ottimo, pessimo, massimo, minimo. Sono gli stessi identici aggettivi, arrivati in italiano senza passare dal comparativo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «altissimus mōns»?',
+            focus: 'altissimus mōns',
+            options: [
+              'il monte altissimo / il più alto',
+              'il monte più alto di quello',
+              'un monte alto',
+            ],
+            answer: 'il monte altissimo / il più alto',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Caesar fortior Pompēiō erat», che funzione ha «Pompēiō»?',
+            focus: 'fortior Pompēiō',
+            options: [
+              'è il secondo termine di paragone: più forte DI Pompeo',
+              'è il complemento di mezzo',
+              'è il soggetto',
+            ],
+            answer: 'è il secondo termine di paragone: più forte DI Pompeo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Qual è il comparativo di «bonus»?',
+            focus: 'bonus',
+            options: ['melior', 'bonior', 'optimus'],
+            answer: 'melior',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina al significato',
+            pairs: [
+              ['maior', 'più grande'],
+              ['maximus', 'il più grande'],
+              ['minor', 'più piccolo'],
+              ['pessimus', 'il peggiore'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u19l5',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Le cinque declinazioni, in una tabella sola',
+            body:
+              'Da qui in poi ogni nome latino che incontri appartiene a uno di ' +
+              'questi cinque gruppi, e a dirti quale è sempre il GENITIVO ' +
+              'singolare.\n\n' +
+              'Ecco l’unica cosa da ricordare per riconoscerli.',
+          },
+          {
+            type: 'table',
+            title: 'Riconoscere la declinazione dal genitivo',
+            columns: ['Genitivo', 'Declinazione', 'Modello'],
+            rows: [
+              ['-ae', '1ª', 'rosa, rosae'],
+              ['-ī', '2ª', 'dominus, dominī'],
+              ['-is', '3ª', 'rēx, rēgis'],
+              ['-ūs', '4ª', 'manus, manūs'],
+              ['-eī', '5ª', 'rēs, reī'],
+            ],
+            note: 'È per questo che il vocabolario dà sempre due forme: senza il genitivo non sapresti né la declinazione né il tema. Cinque desinenze e hai il quadro completo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Trovi «diēī» sul vocabolario. Che declinazione è?',
+            focus: 'diēs, diēī',
+            options: ['la 5ª', 'la 4ª', 'la 2ª'],
+            answer: 'la 5ª',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Hostium impetus ācer erat»?',
+            focus: 'Hostium impetus ācer erat',
+            options: [
+              'L’assalto dei nemici era accanito',
+              'I nemici assalirono l’accampamento',
+              'L’assalto era contro i nemici',
+            ],
+            answer: 'L’assalto dei nemici era accanito',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Omnēs rēs in manū rēgis erant»?',
+            focus: 'Omnēs rēs in manū rēgis erant',
+            options: [
+              'Tutto era nelle mani del re',
+              'Il re aveva tutte le cose in mano destra',
+              'Tutti i re avevano le cose',
+            ],
+            answer: 'Tutto era nelle mani del re',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «il giorno più lungo»',
+            source: 'il giorno più lungo',
+            answer: ['diēs', 'longior'],
+            extra: ['longus', 'diem'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla declinazione',
+            pairs: [
+              ['rosa, rosae', '1ª'],
+              ['dominus, dominī', '2ª'],
+              ['manus, manūs', '4ª'],
+              ['rēs, reī', '5ª'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]
