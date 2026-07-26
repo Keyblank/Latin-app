@@ -5,6 +5,7 @@ import { Home } from './components/Home'
 import { LessonPlayer } from './components/LessonPlayer'
 import { City } from './components/City'
 import { Versio } from './components/Versio'
+import { Grammatica } from './components/Grammatica'
 import type { Versio as VersioType } from './data/versiones'
 import type { Lesson, Exercise } from './types'
 
@@ -37,6 +38,7 @@ export default function App() {
   const [isReview, setIsReview] = useState(false)
   const [showCity, setShowCity] = useState(false)
   const [versio, setVersio] = useState<VersioType | null>(null)
+  const [showGrammatica, setShowGrammatica] = useState(false)
 
   function startLesson(lesson: Lesson) {
     setIsReview(false)
@@ -71,6 +73,10 @@ export default function App() {
         }}
       />
     )
+  }
+
+  if (showGrammatica) {
+    return <Grammatica onBack={() => setShowGrammatica(false)} />
   }
 
   if (versio) {
@@ -108,6 +114,7 @@ export default function App() {
       onStartReview={startReview}
       onOpenCity={() => setShowCity(true)}
       onStartVersio={setVersio}
+      onOpenGrammatica={() => setShowGrammatica(true)}
       onReset={reset}
       onToggleFreeMode={toggleFreeMode}
     />

@@ -31,6 +31,11 @@ la lingua. Interfaccia in italiano.
   si traduce davvero. Sette brani, dalla favola di Fedro all'oratoria di
   Cicerone, ognuno sbloccato solo dopo che il corso ha spiegato tutto quello
   che contiene. Sono in `src/data/versiones.ts`.
+- **Grammatica** 📚: un mini-manuale consultabile in qualunque momento, con
+  **tutte le 89 tabelle** del corso raccolte per unità e la ricerca per forma —
+  scrivi `eius` o `ibus` e trovi le tabelle che la contengono, senza doverti
+  ricordare le lineette. Non duplica niente: legge le tabelle dalle lezioni,
+  quindi resta sempre allineato al corso.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
 - **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
   tre umori animati e **battute ironiche** a rotazione (saluti, feedback,

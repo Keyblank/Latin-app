@@ -123,8 +123,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 ## 🛠️ Dove andiamo (piano funzionalità)
 
-- ⬜ **Sezione "Grammatica" consultabile** ⭐ — tutte le tabelle sempre a portata,
-  come un mini-manuale (fondamentale per chi traduce all'università)
+- ✅ **Sezione "Grammatica" consultabile** ⭐ — le 89 tabelle del corso raccolte
+  per unità, con ricerca per forma che ignora le lineette; generata dalle
+  lezioni, quindi sempre allineata
 - ✅ **Modalità "Versione"** ⭐ — sette brani adattati con il vocabolario al
   tocco, traduzione frase per frase e nota sul punto difficile
 - ⬜ **Badge / traguardi** latini da collezionare
@@ -143,8 +144,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   tutti i tempi dell'indicativo e del congiuntivo, attivi e passivi, participi,
   irregolari e deponenti, più i costrutti (ablativo assoluto, acc.+inf.,
   subordinate), il lessico è a ~375 vocaboli e ci sono sette versioni. Restano
-  aperti: il **ripasso del lessico a distanza** (oggi tornano solo gli errori)
-  e la **sezione «Grammatica» consultabile**.
+  aperto soprattutto il **ripasso del lessico a distanza**: oggi tornano solo
+  gli esercizi sbagliati, quindi una parola indovinata per caso non si rivede
+  più.
 
 ---
 

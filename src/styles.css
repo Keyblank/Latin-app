@@ -720,3 +720,43 @@ button { font-family: inherit; cursor: pointer; }
 .versio-card .versio-icona { font-size: 28px; flex-shrink: 0; }
 .versio-card .versio-nome { font-weight: 800; font-size: 16px; }
 .versio-card .versio-meta { font-size: 13px; color: var(--text-soft); margin-top: 2px; }
+
+/* ───────────── Grammatica: il mini-manuale ───────────── */
+
+.gram-conta { font-size: 13px; font-weight: 800; color: var(--text-soft); }
+.gram-body { padding: 16px 16px 60px; }
+
+.gram-cerca { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.gram-cerca input {
+  flex: 1; min-width: 0; font: inherit; font-weight: 700; font-size: 16px;
+  padding: 12px 14px; border-radius: 14px;
+  border: 2px solid var(--gray); border-bottom-width: 4px; background: #fff;
+  color: var(--text);
+}
+.gram-cerca input:focus { outline: none; border-color: var(--primary); }
+.gram-esito { font-size: 14.5px; color: var(--text-soft); margin: -6px 0 14px; }
+
+.gram-sezione { margin-bottom: 14px; }
+.gram-titolo {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 14px 18px; border: none; border-radius: 16px;
+  color: #fff; font-weight: 800; font-size: 16px; text-align: left;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+.gram-titolo:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.15); }
+.gram-freccia { font-size: 15px; opacity: 0.85; flex-shrink: 0; }
+.gram-tabelle { padding: 6px 2px 2px; }
+.gram-tabelle .table-card { margin-bottom: 22px; }
+.gram-tabelle .table-card .prompt { font-size: 18px; margin-bottom: 4px; }
+
+/* Il pulsante della Grammatica: stessa forma di quello dell'Urbs ma porpora,
+   perché è uno strumento di studio e non il premio del gioco. */
+.gram-btn {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: left;
+  background: linear-gradient(180deg, #fff, #f7f2fd);
+  border: 2px solid var(--primary); border-bottom-width: 5px;
+  border-radius: 16px; padding: 14px 18px; margin-bottom: 20px;
+  color: var(--text);
+}
+.gram-btn:active { transform: translateY(2px); }
+.gram-btn .urbs-count { color: var(--primary); }

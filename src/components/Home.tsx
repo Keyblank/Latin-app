@@ -16,6 +16,7 @@ interface Props {
   onStartReview: () => void
   onOpenCity: () => void
   onStartVersio: (v: Versio) => void
+  onOpenGrammatica: () => void
   onReset: () => void
   onToggleFreeMode: () => void
 }
@@ -27,6 +28,7 @@ export function Home({
   onStartReview,
   onOpenCity,
   onStartVersio,
+  onOpenGrammatica,
   onReset,
   onToggleFreeMode,
 }: Props) {
@@ -81,6 +83,14 @@ export function Home({
             <span className="urbs-count">
               {progress.city.length} edifici · 🪙 {progress.denarii} da spendere
             </span>
+          </span>
+        </button>
+
+        <button className="gram-btn" onClick={onOpenGrammatica}>
+          <span className="urbs-icon">📚</span>
+          <span className="urbs-text">
+            <span className="latin-label">Grammatica · tutte le tabelle</span>
+            <span className="urbs-count">Da consultare mentre traduci</span>
           </span>
         </button>
 
