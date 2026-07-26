@@ -1,7 +1,7 @@
 import { BUILDINGS } from '../data/city'
 import type { Progress } from '../useProgress'
 import { playCorrect } from '../sfx'
-import { IsoCity } from './IsoCity'
+import { City3D } from './City3D'
 
 interface Props {
   progress: Progress
@@ -28,7 +28,7 @@ export function City({ progress, onBuild, onBack }: Props) {
 
       <main className="city">
         <div className="cityscape">
-          <IsoCity built={built} />
+          <City3D built={built} />
           {built.length === 0 && (
             <div className="city-empty">
               Un terreno vuoto sul colle… <b>inizia a costruire la tua Roma!</b>
