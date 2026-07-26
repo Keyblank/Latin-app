@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (21 sezioni, 88 lezioni, 306 vocaboli + i pronomi)
+### Contenuti (21 sezioni, 93 lezioni, 390 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -61,7 +61,11 @@ audio, agganciate all'unità che ne insegna la forma — preposizioni (U4), nomi
 della 1ª (U5), della 2ª (U6), aggettivi (U7), verbi (U8), nomi della 3ª (U9),
 congiunzioni e avverbi (U11). Poi un **secondo giro** su temi: altri verbi
 (U12), la guerra e lo Stato (U15), il tempo e il luogo (U17), persone e
-società (U19), le parole astratte (U20). Ognuna segnala i **falsi amici**
+società (U19), le parole astratte (U20). E un **terzo giro** che copre quello
+che le versioni chiedono e la grammatica non porta con sé: i verbi del racconto
+(U10), i verbi che aprono l'accusativo + infinito (U13), numeri e quantità
+(U14), gli animali e la natura delle favole (U16), il corpo e i sentimenti
+(U18). Ognuna segnala i **falsi amici**
 (*virtūs* = valore, *cōnsilium* = decisione, *līberī* = i figli, *familia* =
 la servitù) e le trappole di forma (i plurali *castra*/*cōpiae*/*fīnēs*, i
 maschili della 1ª come *nauta* e *agricola*).
@@ -114,25 +118,26 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ✅ **4ª e 5ª declinazione** (*manus*, *rēs*)
 - ✅ **Aggettivi della 2ª classe** (*fortis, ācer*) e **comparativi/superlativi**
 - ✅ **Verbi irregolari** (*possum, eō, ferō, volō/nōlō/mālō*, *fīō*) e **deponenti**
-- ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
+- ✅ **Numerali** (uno-mille, e i nove aggettivi pronominali: ūnus, sōlus,
+  tōtus, nūllus, alter, alius…); avverbi e preposizioni erano già in U4 e U11
 - ✅ **Traduzione graduata**: sette **brani adattati**, dalla favola di Fedro
   all'oratoria di Cicerone, sbloccati man mano che il corso spiega ciò che
   contengono
-- ✅ **Lessico, secondo giro**: 306 voci (la soglia utile per leggere una
-  versione facile è intorno ai 400: ci siamo quasi)
+- ✅ **Lessico, terzo giro**: 390 voci — la soglia utile per leggere una
+  versione facile è intorno ai 400, e ci siamo
 
 ---
 
 ## 🛠️ Dove andiamo (piano funzionalità)
 
-- ✅ **Sezione "Grammatica" consultabile** ⭐ — le 89 tabelle del corso raccolte
+- ✅ **Sezione "Grammatica" consultabile** ⭐ — le 103 tabelle del corso raccolte
   per unità, con ricerca per forma che ignora le lineette; generata dalle
   lezioni, quindi sempre allineata
 - ✅ **Modalità "Versione"** ⭐ — sette brani adattati con il vocabolario al
   tocco, traduzione frase per frase e nota sul punto difficile
 - ✅ **Ripasso del lessico a distanza** (*Vocābula*) ⭐ — ogni parola ha una
   scadenza che si allunga se la ricordi (1, 3, 7, 16, 35, 90 giorni) e torna a
-  zero se la sbagli; 5 parole nuove al giorno, 12 per sessione. Le 306 voci
+  zero se la sbagli; 5 parole nuove al giorno, 12 per sessione. Le 390 voci
   sono lette dalle tabelle marcate `lessico: true`, non da un elenco a parte
 - ⬜ **Badge / traguardi** latini da collezionare
 - ⬜ Più esercizi **latino → italiano** e un esercizio di **analisi** dedicato
@@ -149,7 +154,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - La morfologia è **completa**: cinque declinazioni, due classi di aggettivi,
   tutti i tempi dell'indicativo e del congiuntivo, attivi e passivi, participi,
   irregolari e deponenti, più i costrutti (ablativo assoluto, acc.+inf.,
-  subordinate), il lessico è a 306 voci con il ripasso a distanza, e ci sono
+  subordinate), il lessico è a 390 voci con il ripasso a distanza, e ci sono
   sette versioni. Restano aperti soprattutto i **numerali** in modo sistematico
   e un esercizio di **analisi** dedicato (di' caso, numero, tempo…).
 

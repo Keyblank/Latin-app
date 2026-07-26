@@ -69,16 +69,11 @@ function estrai(): Vocabolo[] {
           // «rosa, rosae (f.) — «la rosa»». Sono le più importanti del corso.
           const m = ex.title.match(/^(.+?)\s+—\s+«(.+)»$/)
           if (m) aggiungi(m[1].replace(/\s*\((m|f|n)\.\)\s*$/, ''), m[2], u.id)
-          continue
         }
-        // Le prime unità non hanno tabelle di lessico: le parole nuove stanno
-        // negli elenchi delle schede.
-        if (ex.type === 'info') {
-          for (const riga of ex.body.split('\n')) {
-            const m = riga.match(/^\s*•\s*«([A-Za-zāēīōūĀĒĪŌŪ]{3,})»\s*=\s*([^(\n]{2,40})$/)
-            if (m) aggiungi(m[1], m[2].trim(), u.id)
-          }
-        }
+        // Le schede non si leggono: quello che mostrano è la parola CALATA in
+        // una frase — «amat», «magna», «est» — e nel ripasso una forma flessa
+        // non serve, perché sul vocabolario non la trovi. Le parole nuove delle
+        // prime unità stanno nelle loro tabelle, marcate come le altre.
       }
     }
   }
@@ -174,11 +169,21 @@ export function avanza(prec: Memoria | undefined, giusta: boolean): Memoria {
   return { liv, quando: fraGiorni(INTERVALLI[liv - 1]) }
 }
 
+/** Il primo significato di una glossa: «uccidere, abbattere» → «uccidere». */
+const sensoPrincipale = (ita: string) => ita.split(/[,;(]/)[0].trim().toLowerCase()
+
 /** Tre significati sbagliati, presi da parole della stessa unità quando
- *  possibile: distrattori troppo lontani rendono la domanda banale. */
+ *  possibile: distrattori troppo lontani rendono la domanda banale.
+ *
+ *  Sono esclusi i sinonimi: «interficere» = «uccidere» non può avere come
+ *  distrattore «uccidere, abbattere», perché non ci sarebbe modo di scegliere.
+ *  Una domanda senza risposta giusta non insegna niente e fa solo perdere la
+ *  parola, che tornerebbe indietro di livello per colpa nostra. */
 export function distrattori(v: Vocabolo, quanti = 3): string[] {
-  const vicini = vocabolario.filter((x) => x.unita === v.unita && x.ita !== v.ita)
-  const altri = vocabolario.filter((x) => x.unita !== v.unita && x.ita !== v.ita)
+  const senso = sensoPrincipale(v.ita)
+  const buono = (x: Vocabolo) => x.ita !== v.ita && sensoPrincipale(x.ita) !== senso
+  const vicini = vocabolario.filter((x) => x.unita === v.unita && buono(x))
+  const altri = vocabolario.filter((x) => x.unita !== v.unita && buono(x))
   const pool = [...mescola(vicini), ...mescola(altri)]
   const out: string[] = []
   for (const x of pool) {

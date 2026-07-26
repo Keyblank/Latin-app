@@ -92,7 +92,7 @@ export const curriculum: Unit[] = [
               ['dominus', 'DÒ-mi-nus'],
               ['amicus', 'a-MÌ-cus'],
               ['templum', 'TÈM-plum'],
-              ['femina', 'FÈ-mi-na'],
+              ['fēmina', 'FÈ-mi-na'],
             ],
             speakCols: [0],
             note: 'Tocca 🔊 sulla parola per sentirla. La sillaba in maiuscolo è quella su cui batte la voce.',
@@ -164,18 +164,29 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '👋',
             title: 'Si comincia',
-            body: 'Il latino usa poche parole per salutare.\n\n• «Salve» = Ciao / Salve\n• «Vale» = Arrivederci (a una persona)\n\nNon serve sapere altro: iniziamo!',
+            body: 'Il latino usa poche parole per salutare.\n\n• «Salvē» = Ciao / Salve\n• «Valē» = Arrivederci (a una persona)\n\nNon serve sapere altro: iniziamo!',
+          },
+          {
+            type: 'table',
+            title: 'I saluti',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['salvē', 'ciao, salve'],
+              ['valē', 'arrivederci, addio'],
+            ],
+            speakCols: [0],
           },
           {
             type: 'choice',
             prompt: 'Come si dice «Ciao»?',
-            options: ['Salve', 'Vale', 'Aqua'],
-            answer: 'Salve',
+            options: ['Salvē', 'Valē', 'Aqua'],
+            answer: 'Salvē',
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «Vale»?',
-            focus: 'Vale',
+            prompt: 'Cosa significa «Valē»?',
+            focus: 'Valē',
             options: ['Ciao (incontro)', 'Arrivederci', 'Grazie'],
             answer: 'Arrivederci',
           },
@@ -183,15 +194,15 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina le parole',
             pairs: [
-              ['Salve', 'Ciao'],
-              ['Vale', 'Arrivederci'],
+              ['Salvē', 'Ciao'],
+              ['Valē', 'Arrivederci'],
             ],
           },
           {
             type: 'choice',
             prompt: 'Saluti qualcuno che se ne va. Cosa dici?',
-            options: ['Vale', 'Salve'],
-            answer: 'Vale',
+            options: ['Valē', 'Salvē'],
+            answer: 'Valē',
           },
         ],
       },
@@ -204,7 +215,20 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🧒',
             title: 'Parole nuove',
-            body: 'In latino la parola cambia a seconda del genere:\n\n• «puer» = ragazzo, bambino\n• «puella» = ragazza, bambina\n• «vir» = uomo\n• «femina» = donna',
+            body: 'In latino la parola cambia a seconda del genere:\n\n• «puer» = ragazzo, bambino\n• «puella» = ragazza, bambina\n• «vir» = uomo\n• «fēmina» = donna',
+          },
+          {
+            type: 'table',
+            title: 'Le persone',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['puer', 'ragazzo, bambino'],
+              ['puella', 'ragazza, bambina'],
+              ['vir', 'uomo'],
+              ['fēmina', 'donna'],
+            ],
+            speakCols: [0],
           },
           {
             type: 'choice',
@@ -225,13 +249,13 @@ export const curriculum: Unit[] = [
             pairs: [
               ['puer', 'ragazzo'],
               ['puella', 'ragazza'],
-              ['femina', 'donna'],
+              ['fēmina', 'donna'],
             ],
           },
           {
             type: 'choice',
             prompt: 'Quale NON è una persona?',
-            options: ['puer', 'femina', 'aqua'],
+            options: ['puer', 'fēmina', 'aqua'],
             answer: 'aqua',
           },
         ],
@@ -248,14 +272,27 @@ export const curriculum: Unit[] = [
             body:
               'Alcune parole latine si riconoscono al volo, altre no. Queste no:\n\n' +
               '• «silva» = bosco, foresta\n' +
-              '• «ianua» = porta (sì: è il nome di questa app)\n' +
+              '• «iānua» = porta (sì: è il nome di questa app)\n' +
               '• «villa» = casa di campagna, fattoria\n' +
               '• «aqua» = acqua (questa era facile)',
           },
           {
+            type: 'table',
+            title: 'Cose e natura',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['silva', 'bosco, foresta'],
+              ['iānua', 'porta'],
+              ['villa', 'casa di campagna, fattoria'],
+              ['aqua', 'acqua'],
+            ],
+            speakCols: [0],
+          },
+          {
             type: 'choice',
             prompt: 'Quale significa «bosco»?',
-            options: ['silva', 'aqua', 'ianua'],
+            options: ['silva', 'aqua', 'iānua'],
             answer: 'silva',
           },
           {
@@ -270,6 +307,17 @@ export const curriculum: Unit[] = [
               'Regola d’oro: se una parola ti sembra ovvia, controllala lo stesso.',
           },
           {
+            type: 'table',
+            title: 'Dove si abita',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['casa', 'capanna, tugurio'],
+              ['domus', 'casa (di città)'],
+            ],
+            speakCols: [0],
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «casa» in latino?',
             focus: 'casa',
@@ -281,7 +329,7 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina le parole',
             pairs: [
               ['silva', 'bosco'],
-              ['ianua', 'porta'],
+              ['iānua', 'porta'],
               ['casa', 'capanna'],
               ['villa', 'casa di campagna'],
             ],
@@ -374,7 +422,7 @@ export const curriculum: Unit[] = [
             prompt: 'Traduci: «L’uomo è»',
             source: "L'uomo è",
             answer: ['Vir', 'est'],
-            extra: ['sunt', 'femina'],
+            extra: ['sunt', 'fēmina'],
           },
         ],
       },
@@ -588,8 +636,8 @@ export const curriculum: Unit[] = [
             type: 'choice',
             prompt: 'In «Femina aquam portat», qual è il SOGGETTO?',
             focus: 'Femina aquam portat',
-            options: ['femina', 'aquam', 'portat'],
-            answer: 'femina',
+            options: ['fēmina', 'aquam', 'portat'],
+            answer: 'fēmina',
           },
           {
             type: 'choice',
@@ -2461,6 +2509,103 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u10v',
+        title: 'I verbi del racconto',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Le azioni che tornano sempre',
+            body:
+              'Una versione narrativa è fatta di poche azioni ripetute: qualcuno ' +
+              'vede, sente, chiede, prende, fugge. Sono verbi che nell’Unità 8 non ' +
+              'c’erano e che invece ricorrono a ogni riga.\n\n' +
+              'Li diamo all’INFINITO, che è la forma con cui si cercano sul ' +
+              'vocabolario. Il tema del perfetto — quello dell’imperfetto e del ' +
+              'perfetto appena studiati — lo trovi lì accanto quando servirà.',
+          },
+          {
+            type: 'table',
+            title: 'Vedere, sentire, pensare',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['vidēre', 'vedere'],
+              ['audīre', 'ascoltare, sentire'],
+              ['legere', 'leggere; raccogliere'],
+              ['putāre', 'pensare, ritenere'],
+              ['crēdere', 'credere (+ dativo)'],
+              ['spērāre', 'sperare'],
+              ['rogāre', 'chiedere, domandare'],
+              ['clāmāre', 'gridare'],
+              ['ōrāre', 'pregare, supplicare'],
+              ['amāre', 'amare'],
+            ],
+            speakCols: [0],
+            note: '«crēdere» in latino regge il DATIVO, non l’accusativo: «crēdō amīcō» = credo all’amico. Lo stesso vale per «parcere» (risparmiare), «nocēre» (nuocere), «pārēre» (obbedire): sono verbi che in italiano vogliono «a», e il latino li tratta allo stesso modo.',
+          },
+          {
+            type: 'table',
+            title: 'Muoversi, prendere, dare',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['dare', 'dare'],
+              ['capere', 'prendere, catturare'],
+              ['trahere', 'trascinare, tirare'],
+              ['fugere', 'fuggire'],
+              ['currere', 'correre'],
+              ['movēre', 'muovere'],
+              ['vertere', 'volgere, girare'],
+              ['stāre', 'stare fermo, stare in piedi'],
+              ['vīvere', 'vivere'],
+              ['dēbēre', 'dovere'],
+            ],
+            speakCols: [0],
+            note: '«capere» e «fugere» finiscono in -ere come «legere», ma alla 1ª persona fanno «capiō» e «fugiō», con la -i-: sono i verbi della 3ª coniugazione detti «in -iō». Stessa cosa per «facere», «accipere», «incipere» che già conosci.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Dux mīlitibus crēdēbat»?',
+            focus: 'Dux mīlitibus crēdēbat',
+            options: [
+              'Il comandante credeva ai soldati',
+              'Il comandante credeva i soldati',
+              'I soldati credevano al comandante',
+            ],
+            answer: 'Il comandante credeva ai soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione trovi «hostēs fūgērunt». Che cosa hanno fatto i nemici?',
+            focus: 'hostēs fūgērunt',
+            options: ['Sono fuggiti', 'Hanno combattuto', 'Sono stati messi in fuga'],
+            answer: 'Sono fuggiti',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['audīre', 'ascoltare'],
+              ['putāre', 'pensare'],
+              ['ōrāre', 'pregare'],
+              ['rogāre', 'chiedere'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['capere', 'prendere'],
+              ['trahere', 'trascinare'],
+              ['vertere', 'volgere'],
+              ['vīvere', 'vivere'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u10l4',
         title: 'Analizza e traduci',
         icon: '📖',
@@ -3472,6 +3617,113 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u13v',
+        title: 'Dire, sapere, volere',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'I verbi che aprono l’accusativo + infinito',
+            body:
+              'Il costrutto appena studiato non arriva mai da solo: lo annuncia un ' +
+              'verbo. Sono sempre gli stessi — dire, sapere, credere, ordinare — e ' +
+              'riconoscerli è metà del lavoro.\n\n' +
+              'Quando in una versione vedi uno di questi verbi, fermati e cerca ' +
+              'subito la coppia ACCUSATIVO + INFINITO che lo segue: è lì che sta ' +
+              'la frase vera.',
+          },
+          {
+            type: 'table',
+            title: 'I verbi del dire',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['negāre', 'negare, dire di no'],
+              ['nūntiāre', 'annunciare, riferire'],
+              ['prōmittere', 'promettere'],
+              ['imperāre', 'comandare (+ dativo)'],
+              ['vetāre', 'vietare'],
+              ['monēre', 'avvertire, ammonire'],
+              ['ostendere', 'mostrare, far vedere'],
+              ['iūrāre', 'giurare'],
+              ['interrogāre', 'interrogare'],
+              ['cōnfirmāre', 'assicurare; rafforzare'],
+            ],
+            speakCols: [0],
+            note: '«negāre» non si traduce con «negare»: vale «dire che NON». «Negat sē vēnisse» non è «nega di essere venuto» ma, più naturalmente, «dice di non essere venuto». Il latino mette la negazione nel verbo, l’italiano nella subordinata.',
+          },
+          {
+            type: 'table',
+            title: 'Sapere, volere, bisognare',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['scīre', 'sapere'],
+              ['nescīre', 'non sapere, ignorare'],
+              ['cupere', 'desiderare, bramare'],
+              ['optāre', 'desiderare, scegliere'],
+              ['dubitāre', 'dubitare; esitare'],
+              ['iūdicāre', 'giudicare'],
+              ['reperīre', 'trovare, scoprire'],
+              ['appārēre', 'apparire; risultare chiaro'],
+              ['oportet', 'bisogna, si deve'],
+              ['licet', 'è permesso, è lecito'],
+            ],
+            speakCols: [0],
+            note: '«oportet» e «licet» si trovano solo alla 3ª persona singolare: sono verbi IMPERSONALI, come l’italiano «bisogna» e «si può». Non hanno un soggetto che agisce, e reggono l’accusativo + infinito: «oportet tē venīre» = bisogna che tu venga.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «Negat sē scīre»?',
+            focus: 'Negat sē scīre',
+            options: [
+              'Dice di non sapere',
+              'Nega di sapere di sé',
+              'Non sa di dire',
+            ],
+            answer: 'Dice di non sapere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Oportet mīlitēs pugnāre»?',
+            focus: 'Oportet mīlitēs pugnāre',
+            options: [
+              'Bisogna che i soldati combattano',
+              'I soldati devono essere combattuti',
+              'I soldati bisognano combattere',
+            ],
+            answer: 'Bisogna che i soldati combattano',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale di questi verbi è impersonale, cioè esiste solo alla 3ª singolare?',
+            options: ['licet', 'iūrāre', 'reperīre'],
+            answer: 'licet',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['nūntiāre', 'annunciare'],
+              ['vetāre', 'vietare'],
+              ['monēre', 'avvertire'],
+              ['ostendere', 'mostrare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['nescīre', 'ignorare'],
+              ['cupere', 'desiderare'],
+              ['reperīre', 'trovare'],
+              ['dubitāre', 'esitare'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u13l4',
         title: 'Analizza e traduci',
         icon: '📖',
@@ -3993,6 +4245,109 @@ export const curriculum: Unit[] = [
               ['sēcum', 'con sé'],
               ['suus', 'suo (del soggetto)'],
               ['eius', 'di lui (di un altro)'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u14v',
+        title: 'Quanti e quali',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Numeri e quantità',
+            body:
+              'I pronomi appena studiati hanno dei parenti stretti: le parole che ' +
+              'dicono QUANTI. Alcune sono numeri veri e propri, altre — «nessuno», ' +
+              '«un altro», «tutti e due» — si comportano come pronomi, e si ' +
+              'declinano come loro.\n\n' +
+              'Sono parole piccolissime che le versioni usano di continuo, e che ' +
+              'chi non le riconosce salta, perdendo il senso della frase.',
+          },
+          {
+            type: 'table',
+            title: 'I numeri',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['ūnus, ūna, ūnum', 'uno'],
+              ['duo, duae, duo', 'due'],
+              ['trēs, tria', 'tre'],
+              ['quattuor', 'quattro'],
+              ['quīnque', 'cinque'],
+              ['sex', 'sei'],
+              ['decem', 'dieci'],
+              ['centum', 'cento'],
+              ['mīlle', 'mille'],
+              ['prīmus, prīma, prīmum', 'primo'],
+            ],
+            speakCols: [0],
+            note: 'Solo i primi tre numeri si declinano: da «quattuor» in poi la parola non cambia mai, in nessun caso. «Mīlle» al singolare è invariabile, ma al plurale diventa un neutro («mīlia») che regge il genitivo: «decem mīlia mīlitum» = diecimila soldati, alla lettera «dieci migliaia DI soldati».',
+          },
+          {
+            type: 'table',
+            title: 'Quanti, quali, quanto',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['alius, alia, aliud', 'un altro (fra molti)'],
+              ['alter, altera, alterum', 'l’altro (fra due)'],
+              ['uterque, utraque, utrumque', 'l’uno e l’altro, entrambi'],
+              ['nūllus, nūlla, nūllum', 'nessuno'],
+              ['sōlus, sōla, sōlum', 'solo, unico'],
+              ['tōtus, tōta, tōtum', 'tutto intero'],
+              ['cēterī, cēterae, cētera', 'gli altri, i restanti'],
+              ['nēmō', 'nessuno (di persona)'],
+              ['nihil', 'niente'],
+              ['paucī, paucae, pauca', 'pochi'],
+            ],
+            speakCols: [0],
+            note: 'Questi aggettivi sembrano della 1ª classe, ma al genitivo e al dativo singolare seguono i PRONOMI: genitivo in -īus («ūnīus», «tōtīus», «alterīus»), dativo in -ī («ūnī», «tōtī», «alterī»). Sono nove in tutto e si imparano insieme: ūnus, sōlus, tōtus, ūllus, nūllus, alter, uter, neuter, alius.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Qual è la differenza fra «alius» e «alter»?',
+            options: [
+              '«alter» è l’altro di due, «alius» un altro fra molti',
+              '«alius» è maschile, «alter» femminile',
+              'Nessuna: sono sinonimi',
+            ],
+            answer: '«alter» è l’altro di due, «alius» un altro fra molti',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «decem mīlia mīlitum»?',
+            focus: 'decem mīlia mīlitum',
+            options: ['diecimila soldati', 'dieci soldati scelti', 'mille soldati per dieci volte'],
+            answer: 'diecimila soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «tōtīus urbis»?',
+            focus: 'tōtīus urbis',
+            options: ['di tutta la città', 'a tutta la città', 'in tutta la città'],
+            answer: 'di tutta la città',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['trēs', 'tre'],
+              ['quīnque', 'cinque'],
+              ['centum', 'cento'],
+              ['prīmus', 'primo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['uterque', 'entrambi'],
+              ['nēmō', 'nessuno'],
+              ['cēterī', 'i restanti'],
+              ['paucī', 'pochi'],
             ],
           },
         ],
@@ -4828,6 +5183,98 @@ export const curriculum: Unit[] = [
               ['amāret', 'imperfetto'],
               ['amāverit', 'perfetto'],
               ['amāvisset', 'piuccheperfetto'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u16v',
+        title: 'Animali e natura',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Le parole delle favole',
+            body:
+              'Non tutte le versioni sono battaglie. I brani più facili — quelli ' +
+              'che si danno a chi comincia — sono spesso FAVOLE: Fedro, Esopo ' +
+              'tradotto, gli animali che parlano.\n\n' +
+              'Hanno un vocabolario tutto loro, concreto e ristretto: una volpe, un ' +
+              'lupo, un albero, un fiume. Sono venti parole che aprono un intero ' +
+              'genere di testi.',
+          },
+          {
+            type: 'table',
+            title: 'Gli animali',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['canis, canis', 'cane'],
+              ['lupus, lupī', 'lupo'],
+              ['leō, leōnis', 'leone'],
+              ['agnus, agnī', 'agnello'],
+              ['ovis, ovis', 'pecora'],
+              ['bōs, bovis', 'bue'],
+              ['avis, avis', 'uccello'],
+              ['piscis, piscis', 'pesce'],
+              ['serpēns, serpentis', 'serpente'],
+              ['cervus, cervī', 'cervo'],
+            ],
+            speakCols: [0],
+            note: '«bōs, bovis» è irregolare: il tema del nominativo (bō-) non è quello degli altri casi (bov-), e al genitivo plurale fa «boum». È una delle poche parole che vanno imparate a memoria così com’è.',
+          },
+          {
+            type: 'table',
+            title: 'La natura',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['arbor, arboris', 'albero'],
+              ['flōs, flōris', 'fiore'],
+              ['herba, herbae', 'erba'],
+              ['ignis, ignis', 'fuoco'],
+              ['ventus, ventī', 'vento'],
+              ['mare, maris', 'mare'],
+              ['unda, undae', 'onda'],
+              ['saxum, saxī', 'sasso, roccia'],
+              ['umbra, umbrae', 'ombra'],
+              ['sōl, sōlis', 'sole'],
+            ],
+            speakCols: [0],
+            note: '«arbor» è FEMMINILE, anche se finisce in -or come «dolor» e «honor», che sono maschili: «alta arbor» = l’albero alto, con l’aggettivo al femminile. «Mare» è neutro e appartiene ai neutri della 3ª in -e, con l’ablativo in -ī: «in marī» = in mare.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si dice «l’albero alto»?',
+            options: ['alta arbor', 'altus arbor', 'altum arbor'],
+            answer: 'alta arbor',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una favola trovi «lupus et agnus». Chi sono?',
+            focus: 'lupus et agnus',
+            options: ['Il lupo e l’agnello', 'Il lupo e il cane', 'Il leone e l’agnello'],
+            answer: 'Il lupo e l’agnello',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['leō', 'leone'],
+              ['ovis', 'pecora'],
+              ['avis', 'uccello'],
+              ['bōs', 'bue'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['arbor', 'albero'],
+              ['ignis', 'fuoco'],
+              ['saxum', 'roccia'],
+              ['umbra', 'ombra'],
             ],
           },
         ],
@@ -5725,6 +6172,97 @@ export const curriculum: Unit[] = [
               ['amābit', 'futuro'],
               ['amāret', 'imperfetto congiuntivo'],
               ['amāverat', 'piuccheperfetto indicativo'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u18v',
+        title: 'Il corpo e i sentimenti',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Quello che si prova',
+            body:
+              'Fin qui il lessico è stato quasi tutto pubblico: eserciti, ' +
+              'magistrati, territori. Ma le versioni d’autore — Cicerone, Seneca, ' +
+              'e le pagine di storia in cui qualcuno ha paura o si vendica — ' +
+              'girano intorno a un vocabolario diverso.\n\n' +
+              'Il corpo e i sentimenti: sono parole che in italiano sopravvivono ' +
+              'quasi tutte, e che quindi si imparano in fretta.',
+          },
+          {
+            type: 'table',
+            title: 'Il corpo',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['caput, capitis', 'testa; capo'],
+              ['oculus, oculī', 'occhio'],
+              ['auris, auris', 'orecchio'],
+              ['ōs, ōris', 'bocca; volto'],
+              ['pēs, pedis', 'piede'],
+              ['cor, cordis', 'cuore'],
+              ['sanguis, sanguinis', 'sangue'],
+              ['vultus, vultūs', 'volto, espressione'],
+            ],
+            speakCols: [0],
+            note: 'Attenzione a «ōs, ōris» (bocca, neutro) e «os, ossis» (osso, neutro): cambia solo la lunghezza della vocale, che nei testi non è segnata. Le distingui dal genitivo — «ōris» contro «ossis» — e dal senso della frase.',
+          },
+          {
+            type: 'table',
+            title: 'I sentimenti',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['gaudium, gaudiī', 'gioia'],
+              ['dolor, dolōris', 'dolore'],
+              ['timor, timōris', 'paura'],
+              ['amor, amōris', 'amore'],
+              ['odium, odiī', 'odio'],
+              ['voluptās, voluptātis', 'piacere'],
+              ['cupiditās, cupiditātis', 'desiderio, brama'],
+              ['audācia, audāciae', 'audacia, sfrontatezza'],
+              ['superbia, superbiae', 'superbia, arroganza'],
+              ['invidia, invidiae', 'invidia; odio altrui'],
+            ],
+            speakCols: [0],
+            note: '«audācia» in latino è quasi sempre negativa: non il coraggio (che è «virtūs» o «fortitūdō») ma la sfrontatezza di chi osa troppo. E «invidia» spesso non è il sentimento di chi invidia, ma l’odio che uno si tira addosso: «in invidiā esse» = essere malvisto.',
+          },
+          {
+            type: 'choice',
+            prompt: 'In Cicerone «hominis audācia» ha un tono...',
+            focus: 'hominis audācia',
+            options: ['negativo: la sfrontatezza', 'positivo: il coraggio', 'neutro: la decisione'],
+            answer: 'negativo: la sfrontatezza',
+          },
+          {
+            type: 'choice',
+            prompt: 'Trovi «ossis» in una versione. Di quale parola è il genitivo?',
+            focus: 'ossis',
+            options: ['os, ossis = osso', 'ōs, ōris = bocca', 'ovis, ovis = pecora'],
+            answer: 'os, ossis = osso',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['caput', 'testa'],
+              ['pēs', 'piede'],
+              ['cor', 'cuore'],
+              ['sanguis', 'sangue'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['dolor', 'dolore'],
+              ['timor', 'paura'],
+              ['odium', 'odio'],
+              ['voluptās', 'piacere'],
             ],
           },
         ],

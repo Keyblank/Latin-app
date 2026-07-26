@@ -38,10 +38,10 @@ la lingua. Interfaccia in italiano.
   zero quando la sbagli. Si incontrano al massimo **5 parole nuove al giorno** e
   se ne ripassano **12 per sessione**: poche parole riviste a distanza si
   ricordano, molte in una sera no. Il pulsante compare solo quando c'è
-  qualcosa in scadenza. L'elenco non è scritto a mano: le 306 voci sono lette
+  qualcosa in scadenza. L'elenco non è scritto a mano: le 390 voci sono lette
   dalle tabelle del corso marcate `lessico: true`.
 - **Grammatica** 📚: un mini-manuale consultabile in qualunque momento, con
-  **tutte le 89 tabelle** del corso raccolte per unità e la ricerca per forma —
+  **tutte le 103 tabelle** del corso raccolte per unità e la ricerca per forma —
   scrivi `eius` o `ibus` e trovi le tabelle che la contengono, senza doverti
   ricordare le lineette. Non duplica niente: legge le tabelle dalle lezioni,
   quindi resta sempre allineato al corso.
@@ -217,14 +217,17 @@ esempi già presenti.
 
 ### Il lessico
 
-Accanto alla grammatica c'è un **binario di vocaboli** (306 voci distinte):
+Accanto alla grammatica c'è un **binario di vocaboli** (390 voci distinte):
 lezioni di lessico con audio, agganciate all'unità che ne insegna la forma —
 **preposizioni** e il caso che reggono (U4), nomi della **1ª** (U5) e della
 **2ª** (U6), **aggettivi** (U7), **verbi** per coniugazione (U8), nomi della
 **3ª** con il genitivo (U9), **congiunzioni e avverbi** (U11). Poi un secondo
 giro per temi: altri **verbi** (U12), **la guerra e lo Stato** (U15), **il
 tempo e il luogo** (U17), **persone e società** (U19), **le parole astratte**
-(U20).
+(U20). Infine un terzo giro su quello che le versioni chiedono e la grammatica
+non porta con sé: **i verbi del racconto** (U10), **i verbi che aprono
+l'accusativo + infinito** (U13), **numeri e quantità** (U14), **gli animali e
+la natura** delle favole (U16), **il corpo e i sentimenti** (U18).
 
 Ogni lezione segnala i **falsi amici**, quelli che nelle versioni fanno perdere
 punti: *virtūs* = valore (non «virtù»), *cōnsilium* = decisione, *fāma* =
