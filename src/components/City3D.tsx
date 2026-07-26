@@ -7,6 +7,17 @@ import type { Placed, Road } from '../useProgress'
 import { normalMap, texture, tiled } from '../cityTextures'
 import type { TexKind } from '../cityTextures'
 
+/** Grana dell'immagine della città.
+ *
+ *  1 = resa liscia (quella attiva). 3 = effetto pixel art: la scena viene
+ *  disegnata a un terzo della risoluzione e ingrandita senza sfumare i bordi,
+ *  così l'immagine prende la grana della pixel art senza rinunciare a niente
+ *  del 3D — rotazione, posizionamento libero e animazioni restano identici.
+ *
+ *  Prova non ancora decisa: per vederla basta mettere 3 qui. Oltre il 4 gli
+ *  oggetti piccoli (fontana, alberi, passanti) diventano illeggibili. */
+const PIXEL_SCALE: number = 1
+
 // Vista 3D della città in stile diorama, con POSIZIONAMENTO LIBERO:
 // scegli un edificio nel negozio e lo appoggi dove vuoi sulla griglia
 // (come nei classici gestionali romani).
@@ -988,9 +999,25 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     const view = 5.4
     const camera = new THREE.OrthographicCamera(-view * aspect, view * aspect, view, -view, 0.1, 120)
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
-    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio))
-    renderer.setSize(el.clientWidth, el.clientHeight)
+    // Modalità "pixel": si disegna a bassa risoluzione e si ingrandisce senza
+    // sfumare i bordi. La scena resta 3D — rotazione, posizionamento e
+    // animazioni non cambiano — ma l'immagine finale ha la grana della pixel
+    // art, che nasconde le differenze di finezza fra un edificio e l'altro.
+    const renderer = new THREE.WebGLRenderer({ antialias: PIXEL_SCALE === 1 })
+    const resize = (w: number, h: number) => {
+      if (PIXEL_SCALE === 1) {
+        renderer.setPixelRatio(Math.min(2, window.devicePixelRatio))
+        renderer.setSize(w, h)
+        return
+      }
+      renderer.setPixelRatio(1)
+      renderer.setSize(Math.max(1, Math.round(w / PIXEL_SCALE)), Math.max(1, Math.round(h / PIXEL_SCALE)))
+      const cv = renderer.domElement
+      cv.style.width = '100%'
+      cv.style.height = '100%'
+      cv.style.imageRendering = 'pixelated'
+    }
+    resize(el.clientWidth, el.clientHeight)
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     el.appendChild(renderer.domElement)
@@ -1444,7 +1471,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       camera.left = -view * a
       camera.right = view * a
       camera.updateProjectionMatrix()
-      renderer.setSize(el.clientWidth, el.clientHeight)
+      resize(el.clientWidth, el.clientHeight)
       render()
     }
     window.addEventListener('resize', onResize)
