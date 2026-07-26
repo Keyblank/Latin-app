@@ -11,6 +11,10 @@
 // L'immagine viene ancorata al lotto e sostituisce il disegno.
 
 export type BuildingLook =
+  | 'tower'
+  | 'gate'
+  | 'granary'
+  | 'market'
   | 'insula'
   | 'villa'
   | 'wall'
@@ -139,8 +143,24 @@ export const BUILDINGS: Building[] = [
     cost: 8, unlock: 1, size: [1, 1], look: 'tree',
   },
   {
-    id: 'murus', name: 'Murus', gloss: 'muro', icon: '🧱',
-    cost: 10, unlock: 1, size: [1, 1], look: 'wall',
+    id: 'murus', name: 'Murus', gloss: 'muro di cinta', icon: '🧱',
+    cost: 12, unlock: 1, size: [1, 1], look: 'wall',
+  },
+  {
+    id: 'turris', name: 'Turris', gloss: 'torre', icon: '🗼',
+    cost: 45, unlock: 4, size: [1, 1], look: 'tower',
+  },
+  {
+    id: 'porta', name: 'Porta', gloss: 'porta della città', icon: '🚪',
+    cost: 90, unlock: 6, size: [1, 1], look: 'gate',
+  },
+  {
+    id: 'horreum', name: 'Horreum', gloss: 'granaio', icon: '🌾',
+    cost: 70, unlock: 5, size: [2, 1], look: 'granary',
+  },
+  {
+    id: 'macellum', name: 'Macellum', gloss: 'mercato', icon: '🧺',
+    cost: 100, unlock: 7, size: [2, 2], look: 'market',
   },
   // ── Davanti: la vita quotidiana ──
   {

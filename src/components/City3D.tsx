@@ -113,8 +113,11 @@ function colonnade(w: number, d: number, h: number, n: number) {
   return g
 }
 
-/** Modello 3D di un edificio. */
-function buildMesh(b: Building): THREE.Group {
+/** Vicini con muro, per raccordare le mura di cinta: [su, giù, sx, dx]. */
+export type WallLinks = [boolean, boolean, boolean, boolean]
+
+/** Modello 3D di un edificio. `seed` dà varietà (colori), `links` serve alle mura. */
+function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, false, false]): THREE.Group {
   const [w, d] = b.size
   const W = w * TILE
   const D = d * TILE
@@ -167,10 +170,13 @@ function buildMesh(b: Building): THREE.Group {
       break
     }
     case 'domus': {
-      const body = block(W * 0.74, 0.4, D * 0.74, PAL.wall)
+      // piccola varietà di tinte, così una fila di case non è tutta uguale
+      const wallTints = [0xf3e9d6, 0xf0e3cd, 0xeddfc6, 0xf5ecdd]
+      const roofTints = [0xc4664a, 0xb95c42, 0xcc7350, 0xae563c]
+      const body = block(W * 0.74, 0.4, D * 0.74, wallTints[seed % wallTints.length])
       body.position.y = 0.2
       g.add(body)
-      const roof = gable(W * 0.82, 0.26, D * 0.82, PAL.roof)
+      const roof = gable(W * 0.82, 0.26, D * 0.82, roofTints[seed % roofTints.length])
       roof.position.y = 0.4
       g.add(roof)
       const door = block(0.14, 0.18, 0.03, PAL.wood)
@@ -349,12 +355,108 @@ function buildMesh(b: Building): THREE.Group {
       break
     }
     case 'wall': {
-      const w1 = block(W * 0.94, 0.34, D * 0.3, PAL.stone)
-      w1.position.y = 0.17
-      g.add(w1)
-      const cap = block(W * 0.98, 0.05, D * 0.36, 0xcfc5b0)
-      cap.position.y = 0.36
-      g.add(cap)
+      // Muro di cinta: si raccorda con i muri vicini, come le strade.
+      const th = 0.34 // spessore
+      const hgt = 0.42
+      const seg = (dx: number, dz: number) => {
+        const w = dx ? 0.5 + th / 2 : th
+        const d = dz ? 0.5 + th / 2 : th
+        const m = block(w, hgt, d, PAL.stone)
+        m.position.set((dx * (0.5 + th / 2)) / 2, hgt / 2, (dz * (0.5 + th / 2)) / 2)
+        g.add(m)
+        const cap = block(w * 0.98, 0.06, d * 0.98, 0xcfc5b0)
+        cap.position.set(m.position.x, hgt + 0.03, m.position.z)
+        g.add(cap)
+      }
+      // blocco centrale
+      const core = block(th, hgt, th, PAL.stone)
+      core.position.y = hgt / 2
+      g.add(core)
+      const coreCap = block(th * 1.05, 0.06, th * 1.05, 0xcfc5b0)
+      coreCap.position.y = hgt + 0.03
+      g.add(coreCap)
+      const [up_, dn, lf, rt] = links
+      if (up_) seg(0, -1)
+      if (dn) seg(0, 1)
+      if (lf) seg(-1, 0)
+      if (rt) seg(1, 0)
+      // se è isolato o fa angolo, mettici una merlatura
+      if (!up_ && !dn && !lf && !rt) {
+        const merlo = block(0.1, 0.1, 0.1, 0xcfc5b0)
+        merlo.position.y = hgt + 0.1
+        g.add(merlo)
+      }
+      break
+    }
+    case 'tower': {
+      const base = cylinder(0.3, 0.82, PAL.stone, 14)
+      base.position.y = 0.41
+      g.add(base)
+      const ring = cylinder(0.34, 0.1, 0xcfc5b0, 14)
+      ring.position.y = 0.85
+      g.add(ring)
+      // merli
+      for (let i = 0; i < 8; i++) {
+        const a2 = (i / 8) * Math.PI * 2
+        const m = block(0.09, 0.12, 0.09, 0xd6ccb6)
+        m.position.set(Math.cos(a2) * 0.27, 0.96, Math.sin(a2) * 0.27)
+        g.add(m)
+      }
+      break
+    }
+    case 'gate': {
+      // due torrette con arco in mezzo
+      for (const x of [-0.32, 0.32]) {
+        const t = block(0.3, 0.7, 0.42, PAL.stone)
+        t.position.set(x, 0.35, 0)
+        g.add(t)
+        const cap = block(0.34, 0.07, 0.46, 0xcfc5b0)
+        cap.position.set(x, 0.73, 0)
+        g.add(cap)
+      }
+      const arch = block(0.42, 0.22, 0.4, PAL.stone)
+      arch.position.y = 0.6
+      g.add(arch)
+      const door = block(0.34, 0.4, 0.06, PAL.wood)
+      door.position.set(0, 0.2, 0.18)
+      g.add(door)
+      break
+    }
+    case 'granary': {
+      const body = block(W * 0.86, 0.42, D * 0.8, PAL.wallWarm)
+      body.position.y = 0.21
+      g.add(body)
+      const roof = gable(W * 0.92, 0.24, D * 0.88, 0xb9885a)
+      roof.position.y = 0.42
+      g.add(roof)
+      // pilastrini di aerazione tipici dell'horreum
+      for (let i = 0; i < 4; i++) {
+        const p2 = block(0.07, 0.1, 0.07, PAL.stone)
+        p2.position.set(-W * 0.3 + (i * W * 0.2), 0.05, D * 0.3)
+        g.add(p2)
+      }
+      break
+    }
+    case 'market': {
+      // cortile porticato con banchi colorati
+      const floor2 = block(W * 0.92, 0.06, D * 0.92, 0xd9cfb8)
+      floor2.position.y = 0.03
+      g.add(floor2)
+      const col = colonnade(W * 0.74, D * 0.74, 0.4, 3)
+      col.position.y = 0.06
+      g.add(col)
+      const roofRing = block(W * 0.94, 0.08, D * 0.94, PAL.roofAlt)
+      roofRing.position.y = 0.5
+      g.add(roofRing)
+      const hole = block(W * 0.4, 0.12, D * 0.4, PAL.grassDark)
+      hole.position.y = 0.5
+      g.add(hole)
+      const stallColors = [0xd2604f, 0x4f8fd2, 0xd2b84f]
+      for (let i = 0; i < 3; i++) {
+        const st3 = block(0.26, 0.12, 0.2, stallColors[i])
+        st3.position.set(-0.28 + i * 0.28, 0.12, -0.05)
+        g.add(st3)
+      }
       break
     }
     case 'tree': {
@@ -394,6 +496,52 @@ function buildMesh(b: Building): THREE.Group {
   return g
 }
 
+// ─────────────────────── Abitanti e fumo ───────────────────────
+
+/** I tipi di abitante, con la loro tinta. */
+const FOLK = [
+  { id: 'vir', tunic: 0xf2ece0, trim: 0xb0472f, h: 0.24 }, // toga bianca
+  { id: 'femina', tunic: 0xd06a86, trim: 0xf2ece0, h: 0.23 }, // stola rosata
+  { id: 'femina2', tunic: 0x5f8fc4, trim: 0xf2ece0, h: 0.23 }, // stola azzurra
+  { id: 'senator', tunic: 0xf7f3ea, trim: 0x6a3fb5, h: 0.25 }, // banda porpora
+  { id: 'miles', tunic: 0xb33f2f, trim: 0xd8c078, h: 0.24 }, // tunica militare
+  { id: 'puer', tunic: 0xe0b45c, trim: 0xf2ece0, h: 0.16 }, // bambino
+  { id: 'puella', tunic: 0x89bf7a, trim: 0xf2ece0, h: 0.16 }, // bambina
+] as const
+
+/** Un abitante: corpo a cono (la veste), testa, e un dettaglio colorato. */
+function makePerson(kind: (typeof FOLK)[number]): THREE.Group {
+  const g = new THREE.Group()
+  const body = new THREE.Mesh(
+    new THREE.CylinderGeometry(kind.h * 0.16, kind.h * 0.34, kind.h * 0.72, 8),
+    mat(kind.tunic),
+  )
+  body.castShadow = true
+  body.position.y = kind.h * 0.36
+  g.add(body)
+  const head = new THREE.Mesh(new THREE.SphereGeometry(kind.h * 0.19, 10, 8), mat(0xe8c39a))
+  head.castShadow = true
+  head.position.y = kind.h * 0.86
+  g.add(head)
+  // banda / mantello / elmo, a seconda del tipo
+  const trim = new THREE.Mesh(
+    new THREE.CylinderGeometry(kind.h * 0.2, kind.h * 0.2, kind.h * 0.1, 8),
+    mat(kind.trim),
+  )
+  trim.position.y = kind.id === 'miles' ? kind.h * 0.98 : kind.h * 0.58
+  g.add(trim)
+  return g
+}
+
+/** Sbuffo di fumo che sale dal tetto e svanisce. */
+function makeSmoke(): THREE.Mesh {
+  const m = new THREE.Mesh(
+    new THREE.SphereGeometry(0.07, 8, 6),
+    new THREE.MeshBasicMaterial({ color: 0xf2f2f2, transparent: true, opacity: 0.5, depthWrite: false }),
+  )
+  return m
+}
+
 /** Posiziona il gruppo di un edificio sul suo lotto. */
 function placeAt(g: THREE.Object3D, r: number, c: number, w: number, d: number) {
   g.position.set(off(c) + ((w - 1) * TILE) / 2, 0, off(r) + ((d - 1) * TILE) / 2)
@@ -424,6 +572,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     camera: THREE.OrthographicCamera
     renderer: THREE.WebGLRenderer
     town: THREE.Group
+    life: THREE.Group
     ways: THREE.Group
     ghost: THREE.Group
     render: () => void
@@ -473,6 +622,8 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     scene.add(ways)
     const town = new THREE.Group()
     scene.add(town)
+    const life = new THREE.Group()
+    scene.add(life)
     const ghost = new THREE.Group()
     ghost.visible = false
     scene.add(ghost)
@@ -498,11 +649,138 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       renderer.render(scene, camera)
     }
     const schedule = () => {
+      if (looping) return // il ciclo continuo disegna già
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(render)
     }
 
-    api.current = { scene, camera, renderer, town, ways, ghost, render: schedule }
+    // Ciclo continuo, attivo solo quando c'è vita da animare.
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    let looping = false
+    let last = 0
+    const loop = (now: number) => {
+      if (!looping) return
+      const dt = Math.min(0.05, (now - last) / 1000 || 0)
+      last = now
+      animateLife(dt)
+      render()
+      rafLoop = requestAnimationFrame(loop)
+    }
+    let rafLoop = 0
+    const setLooping = (on: boolean) => {
+      if (reduce) on = false
+      if (on === looping) return
+      looping = on
+      cancelAnimationFrame(rafLoop)
+      if (on) {
+        last = performance.now()
+        rafLoop = requestAnimationFrame(loop)
+      } else {
+        schedule()
+      }
+    }
+
+    /** Stato degli abitanti che camminano e degli sbuffi di fumo. */
+    type Walker = {
+      mesh: THREE.Group
+      from: [number, number]
+      to: [number, number]
+      t: number
+      speed: number
+    }
+    let walkers: Walker[] = []
+    let smokes: { mesh: THREE.Mesh; x: number; z: number; y0: number; p: number; sp: number }[] = []
+    let roadTiles: [number, number][] = []
+
+    /** Sceglie una casella di strada vicina, evitando di tornare indietro. */
+    const nextTile = (cur: [number, number], prev: [number, number]): [number, number] => {
+      const set = new Set(roadTiles.map(([r, c]) => `${r},${c}`))
+      const opts: [number, number][] = []
+      for (const [dr, dc] of [[-1, 0], [1, 0], [0, -1], [0, 1]] as [number, number][]) {
+        const n: [number, number] = [cur[0] + dr, cur[1] + dc]
+        if (!set.has(`${n[0]},${n[1]}`)) continue
+        if (n[0] === prev[0] && n[1] === prev[1]) continue
+        opts.push(n)
+      }
+      if (opts.length === 0) return prev // vicolo cieco: torna indietro
+      return opts[Math.floor(Math.random() * opts.length)]
+    }
+
+    const animateLife = (dt: number) => {
+      for (const w of walkers) {
+        w.t += dt * w.speed
+        while (w.t >= 1) {
+          w.t -= 1
+          const prev = w.from
+          w.from = w.to
+          w.to = nextTile(w.to, prev)
+        }
+        const x = off(w.from[1]) + (off(w.to[1]) - off(w.from[1])) * w.t
+        const z = off(w.from[0]) + (off(w.to[0]) - off(w.from[0])) * w.t
+        w.mesh.position.set(x, 0.08, z)
+        const dx = off(w.to[1]) - off(w.from[1])
+        const dz = off(w.to[0]) - off(w.from[0])
+        if (dx || dz) w.mesh.rotation.y = Math.atan2(dx, dz)
+        // passo: piccolo saltello
+        w.mesh.position.y = 0.08 + Math.abs(Math.sin(w.t * Math.PI * 6)) * 0.012
+      }
+      for (const s2 of smokes) {
+        s2.p += dt * s2.sp
+        if (s2.p > 1) s2.p -= 1
+        s2.mesh.position.set(s2.x, s2.y0 + s2.p * 0.55, s2.z)
+        const mm = s2.mesh.material as THREE.MeshBasicMaterial
+        mm.opacity = 0.45 * (1 - s2.p)
+        const k = 0.6 + s2.p * 0.9
+        s2.mesh.scale.setScalar(k)
+      }
+    }
+
+    /** Ricostruisce abitanti e fumo in base a città e strade. */
+    const rebuildLife = () => {
+      life.clear()
+      walkers = []
+      smokes = []
+      roadTiles = st.current.roads.map((x) => [x.r, x.c] as [number, number])
+
+      // Abitanti: camminano sulle vie. Più edifici → più gente.
+      if (roadTiles.length >= 2) {
+        const n = Math.min(16, Math.max(2, Math.round(st.current.placed.length * 0.8)))
+        for (let i = 0; i < n; i++) {
+          const kind = FOLK[i % FOLK.length]
+          const mesh = makePerson(kind)
+          const start = roadTiles[Math.floor(Math.random() * roadTiles.length)]
+          const w: Walker = {
+            mesh,
+            from: start,
+            to: nextTile(start, start),
+            t: Math.random(),
+            speed: 0.35 + Math.random() * 0.25,
+          }
+          walkers.push(w)
+          life.add(mesh)
+        }
+      }
+
+      // Fumo: dai tetti delle abitazioni e dalle terme.
+      const smoky = new Set(['domus', 'insula', 'taberna', 'thermae', 'villa'])
+      for (const p of st.current.placed) {
+        const b = byId.get(p.b)
+        if (!b || !smoky.has(b.id)) continue
+        const [w, d] = footprint(b, p.rot)
+        const x = off(p.c) + ((w - 1) * TILE) / 2
+        const z = off(p.r) + ((d - 1) * TILE) / 2
+        const y0 = b.id === 'insula' ? 0.86 : b.id === 'thermae' ? 0.78 : 0.62
+        for (let k = 0; k < 2; k++) {
+          const mesh = makeSmoke()
+          life.add(mesh)
+          smokes.push({ mesh, x: x + 0.12, z: z - 0.1, y0, p: k * 0.5, sp: 0.32 })
+        }
+      }
+
+      setLooping(walkers.length > 0 || smokes.length > 0)
+      if (!looping) schedule()
+    }
+    api.current = { scene, camera, renderer, town, life, ways, ghost, render: schedule }
 
     // ── Isola: ricostruita quando cresce il terreno ──
     const buildIsland = () => {
@@ -522,7 +800,12 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       gm.transparent = true
       island.add(grid)
     }
-    ;(api.current as unknown as { buildIsland: () => void }).buildIsland = buildIsland
+    const extra = api.current as unknown as {
+      buildIsland: () => void
+      rebuildLife: () => void
+    }
+    extra.buildIsland = buildIsland
+    extra.rebuildLife = rebuildLife
     buildIsland()
     render()
 
@@ -640,6 +923,8 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
 
     return () => {
       cancelAnimationFrame(raf)
+      setLooping(false)
+      cancelAnimationFrame(rafLoop)
       window.removeEventListener('resize', onResize)
       canvas.removeEventListener('pointerdown', onDown)
       canvas.removeEventListener('pointermove', onMove)
@@ -663,15 +948,26 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     const a = api.current
     if (!a) return
     a.town.clear()
-    for (const p of placed) {
+    // caselle con muro, per raccordare le mura di cinta
+    const walls = new Set(
+      placed.filter((p) => byId.get(p.b)?.look === 'wall').map((p) => `${p.r},${p.c}`),
+    )
+    placed.forEach((p, i) => {
       const b = byId.get(p.b)
-      if (!b) continue
-      const m = buildMesh(b)
+      if (!b) return
+      const links: WallLinks = [
+        walls.has(`${p.r - 1},${p.c}`),
+        walls.has(`${p.r + 1},${p.c}`),
+        walls.has(`${p.r},${p.c - 1}`),
+        walls.has(`${p.r},${p.c + 1}`),
+      ]
+      const m = buildMesh(b, p.r * 7 + p.c * 3 + i, links)
       const [w, d] = footprint(b, p.rot)
       m.rotation.y = p.rot ? Math.PI / 2 : 0
       placeAt(m, p.r, p.c, w, d)
       a.town.add(m)
-    }
+    })
+    ;(a as unknown as { rebuildLife?: () => void }).rebuildLife?.()
     a.render()
   }, [placed])
 
@@ -728,6 +1024,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
         }
       }
     }
+    ;(a as unknown as { rebuildLife?: () => void }).rebuildLife?.()
     a.render()
   }, [roads])
 
