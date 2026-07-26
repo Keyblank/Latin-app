@@ -132,6 +132,10 @@ const PARADIGMI = {
   ],
 }
 
+/** Icona delle lezioni di vocabolario: sulla mappa devono formare un binario
+ *  riconoscibile, distinto dalle lezioni di grammatica. */
+const ICONA_LESSICO = '🗂️'
+
 const problemi = []
 const segnala = (dove, testo) => problemi.push(`${dove}\n    ${testo}`)
 
@@ -231,6 +235,15 @@ for (const u of curriculum) {
     // Una lezione di sole schede non fa mai guadagnare niente né sbagliare.
     if (!l.exercises.some((e) => e.type !== 'info' && e.type !== 'table')) {
       segnala(`${u.id} · ${l.title}`, 'nessun esercizio da svolgere: solo schede e tabelle')
+    }
+    // Le lezioni di lessico (id che finisce per «v») devono riconoscersi sulla
+    // mappa: stessa icona per tutte, e nessun'altra lezione la usa.
+    const lessico = /v$/.test(l.id)
+    if (lessico && l.icon !== ICONA_LESSICO) {
+      segnala(`${u.id} · ${l.title}`, `è una lezione di lessico ma ha l'icona ${l.icon} invece di ${ICONA_LESSICO}`)
+    }
+    if (!lessico && l.icon === ICONA_LESSICO) {
+      segnala(`${u.id} · ${l.title}`, `usa l'icona del lessico ${ICONA_LESSICO} ma non è una lezione di lessico`)
     }
   }
 }

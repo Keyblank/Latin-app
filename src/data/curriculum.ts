@@ -610,7 +610,7 @@ export const curriculum: Unit[] = [
       {
         id: 'u4v',
         title: 'Le preposizioni',
-        icon: '🧭',
+        icon: '🗂️',
         exercises: [
           {
             type: 'info',
@@ -2672,7 +2672,7 @@ export const curriculum: Unit[] = [
       {
         id: 'u11v',
         title: 'Le paroline che legano',
-        icon: '🔗',
+        icon: '🗂️',
         exercises: [
           {
             type: 'info',
