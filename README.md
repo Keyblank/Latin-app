@@ -103,6 +103,9 @@ esempi già presenti.
 - **Unità 10 — Il passato** — imperfetto (il segnale *-ba-*) e perfetto (il tema
   del perfetto, *amāvī*), la differenza di senso tra i due, e traduzione di frasi
   al passato (i tempi del racconto).
+- **Unità 11 — Il pronome relativo** — *qui, quae, quod*: le proposizioni
+  relative, la regola d'oro (genere/numero dall'antecedente, caso dalla funzione)
+  e i vari sensi (*che, di cui, a cui*).
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia
