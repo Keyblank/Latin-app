@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import type { ReactNode } from 'react'
 import type {
   ChoiceExercise,
   BuildExercise,
@@ -26,14 +27,90 @@ export interface AnswerState {
 
 // ─────────────────────────── Carta didattica ───────────────────────────
 
+/** I termini tecnici della grammatica: nel testo sono scritti in maiuscolo e
+ *  qui li mettiamo in evidenza. Le altre maiuscole (NON, MAI, DUE…) restano
+ *  com'erano: sono enfasi normale, non concetti da imparare. */
+const TERMS = new Set([
+  'NOME', 'AGGETTIVO', 'VERBO', 'SOGGETTO', 'OGGETTO', 'PRONOME', 'AVVERBIO',
+  'CASO', 'CASI', 'GENERE', 'NUMERO', 'PERSONA', 'PERSONE', 'TEMPO',
+  'NOMINATIVO', 'GENITIVO', 'DATIVO', 'ACCUSATIVO', 'ABLATIVO', 'VOCATIVO',
+  'DESINENZA', 'TEMA', 'DECLINAZIONE', 'DECLINAZIONI', 'CONIUGAZIONE',
+  'CONIUGAZIONI', 'CONCORDANZA', 'ANTECEDENTE', 'PROPOSIZIONE', 'RELATIVA',
+  'RELATIVO', 'PARTICIPIO', 'INFINITO', 'PRESENTE', 'PERFETTO', 'IMPERFETTO',
+  'ATTIVO', 'PASSIVO', 'ANTERIORE', 'CONTEMPORANEO', 'CONTEMPORANEA',
+  'ASSOLUTO', 'DISCORSO', 'DIRETTO', 'INDIRETTO', 'MASCHILE', 'MASCHILI',
+  'FEMMINILE', 'NEUTRO', 'SINGOLARE', 'PLURALE',
+])
+
+/** Dà forma al testo di una scheda: le parole latine fra «virgolette» e i
+ *  termini di grammatica in maiuscolo prendono uno stile loro. */
+function inline(text: string, key: string): ReactNode[] {
+  const parts: ReactNode[] = []
+  const re = /«[^»]+»|\b[A-ZÀÈÉÌÒÙ][A-ZÀÈÉÌÒÙ]{2,}\b/g
+  let last = 0
+  let m: RegExpExecArray | null
+  while ((m = re.exec(text))) {
+    if (m.index > last) parts.push(text.slice(last, m.index))
+    const t = m[0]
+    if (t.startsWith('«')) parts.push(<b key={`${key}-${m.index}`} className="lat">{t}</b>)
+    else if (TERMS.has(t)) parts.push(<span key={`${key}-${m.index}`} className="term">{t}</span>)
+    else parts.push(t)
+    last = m.index + t.length
+  }
+  if (last < text.length) parts.push(text.slice(last))
+  return parts
+}
+
+/** Una riga è un ESEMPIO se mostra una frase latina con la sua traduzione,
+ *  nei due versi: «Latino» = italiano, oppure italiano → «Latino». */
+const isExample = (line: string) =>
+  /«[^»]+»\s*[=→]/.test(line) || /[=→]\s*«/.test(line) || /^\s*→/.test(line)
+
+type Block = { kind: 'p' | 'ul' | 'ex'; lines: string[] }
+
+/** Spezza il corpo della scheda in blocchi: paragrafi, elenchi, esempi. */
+function blocks(body: string): Block[] {
+  const out: Block[] = []
+  for (const raw of body.split('\n')) {
+    const line = raw.trimEnd()
+    if (!line.trim()) continue
+    const kind: Block['kind'] = /^\s*•/.test(line) ? 'ul' : isExample(line) ? 'ex' : 'p'
+    const last = out[out.length - 1]
+    // righe consecutive dello stesso tipo stanno insieme: un elenco, un esempio.
+    // Anche la chiosa fra parentesi resta attaccata all'esempio che commenta.
+    const aside = kind === 'p' && last?.kind === 'ex' && /^\s*\(/.test(line)
+    if (last && (aside || (last.kind === kind && kind !== 'p'))) last.lines.push(line)
+    else out.push({ kind, lines: [line] })
+  }
+  return out
+}
+
 export function InfoCard({ ex }: { ex: InfoExercise }) {
   return (
     <div className="info-card">
       {ex.icon && <div className="info-icon">{ex.icon}</div>}
       <h2>{ex.title}</h2>
-      {ex.body.split('\n').map((line, i) => (
-        <p key={i}>{line || ' '}</p>
-      ))}
+      <div className="info-body">
+        {blocks(ex.body).map((b, i) => {
+          if (b.kind === 'ul')
+            return (
+              <ul key={i} className="info-list">
+                {b.lines.map((l, j) => (
+                  <li key={j}>{inline(l.replace(/^\s*•\s*/, ''), `${i}-${j}`)}</li>
+                ))}
+              </ul>
+            )
+          if (b.kind === 'ex')
+            return (
+              <div key={i} className="info-example">
+                {b.lines.map((l, j) => (
+                  <p key={j}>{inline(l.replace(/^\s*→\s*/, ''), `${i}-${j}`)}</p>
+                ))}
+              </div>
+            )
+          return <p key={i}>{inline(b.lines[0], String(i))}</p>
+        })}
+      </div>
     </div>
   )
 }

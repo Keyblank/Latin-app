@@ -256,10 +256,55 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* Carta didattica */
-.info-card { text-align: center; padding: 10px 0; }
-.info-icon { font-size: 64px; margin-bottom: 10px; }
-.info-card h2 { font-size: 26px; margin: 0 0 16px; }
-.info-card p { font-size: 18px; line-height: 1.5; margin: 4px 0; text-align: left; white-space: pre-wrap; }
+.info-card { text-align: center; padding: 6px 0; }
+/* L'icona sta in un medaglione: sembra voluta, non un'emoji lasciata lì. */
+.info-icon {
+  font-size: 40px; line-height: 76px; width: 76px; height: 76px;
+  margin: 0 auto 14px; border-radius: 50%;
+  background: #f4efff; border: 2px solid #e6dbfb;
+}
+.info-card h2 {
+  font-size: 25px; line-height: 1.25; margin: 0 0 8px; color: var(--primary-dark);
+}
+/* Filetto d'oro sotto il titolo: lega la scheda all'identità dell'app. */
+.info-card h2::after {
+  content: ''; display: block; width: 46px; height: 3px; border-radius: 2px;
+  background: var(--gold); margin: 12px auto 0;
+}
+.info-body { text-align: left; margin-top: 20px; }
+.info-body p { font-size: 17.5px; line-height: 1.65; margin: 0; }
+/* Il selettore ripetuto serve a battere la specificità di «.info-body p». */
+.info-body > * + *, .info-body > p + p { margin-top: 15px; }
+
+/* Elenco delle parole nuove */
+.info-list { margin: 0; padding: 0; list-style: none; }
+.info-list li {
+  position: relative; padding-left: 18px; margin: 0 0 8px;
+  font-size: 17.5px; line-height: 1.55;
+}
+.info-list li:last-child { margin-bottom: 0; }
+.info-list li::before {
+  content: ''; position: absolute; left: 2px; top: 11px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+}
+
+/* Frase latina + traduzione: il pezzo che si guarda per primo */
+.info-example {
+  background: #faf7ff; border: 2px solid #ece2fd;
+  border-left: 5px solid var(--primary); border-radius: 12px;
+  padding: 12px 14px;
+}
+.info-example p { font-size: 17px; line-height: 1.55; }
+.info-example p + p { margin-top: 6px; }
+
+/* Due soli livelli di evidenza, per non fare l'arcobaleno:
+   il latino è la cosa più importante (porpora), il termine di grammatica è
+   secondario (maiuscoletto, stesso colore del testo). */
+.info-body .lat { color: var(--primary-dark); font-weight: 800; }
+.info-body .term {
+  font-weight: 800; text-transform: lowercase; font-variant-caps: small-caps;
+  letter-spacing: 0.5px;
+}
 
 /* Tabella di grammatica */
 .table-card { padding: 4px 0; }

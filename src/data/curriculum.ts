@@ -1079,6 +1079,88 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u7v',
+        title: 'Aggettivi da sapere',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Dieci aggettivi che tornano sempre',
+            body:
+              'Il meccanismo l’hai capito: ora servono le parole. Questi dieci ' +
+              'aggettivi sono fra i più frequenti nei testi latini, e si ' +
+              'declinano tutti come «bonus, bona, bonum».\n\n' +
+              'Sul vocabolario li trovi scritti così: «bonus, -a, -um». Le due ' +
+              'code sono il femminile e il neutro.',
+          },
+          {
+            type: 'table',
+            title: 'Aggettivi della 1ª classe',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['bonus', 'buono'],
+              ['malus', 'cattivo'],
+              ['magnus', 'grande'],
+              ['parvus', 'piccolo'],
+              ['multus', 'molto, numeroso'],
+              ['longus', 'lungo'],
+              ['altus', 'alto — ma anche profondo'],
+              ['novus', 'nuovo'],
+              ['antīquus', 'antico'],
+              ['clārus', 'luminoso, famoso'],
+            ],
+            speakCols: [0],
+            note: 'Qui c’è solo il maschile: il femminile fa -a («bona») e il neutro -um («bonum»), come già sai. Due da tenere d’occhio: «altus» vale sia «alto» sia «profondo» (per un romano è la stessa cosa: la distanza da un piano); «clārus» passa da «luminoso» a «illustre, famoso» — da lì viene «clarissimo».',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «antīqua»?',
+            focus: 'antīqua',
+            options: ['antica', 'alta', 'nuova'],
+            answer: 'antica',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione trovi «alta silva». Come lo traduci?',
+            focus: 'alta silva',
+            options: [
+              'il bosco profondo (o alto)',
+              'l’altra selva',
+              'il bosco antico',
+            ],
+            answer: 'il bosco profondo (o alto)',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['novus', 'nuovo'],
+              ['longus', 'lungo'],
+              ['multus', 'molto'],
+              ['clārus', 'famoso'],
+            ],
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «il nuovo tempio» («templum» è neutro)',
+            source: 'il nuovo tempio',
+            answer: ['templum', 'novum'],
+            extra: ['novus', 'nova'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['magna villa', 'la grande fattoria'],
+              ['parva puella', 'la bambina piccola'],
+              ['antīquum templum', 'il tempio antico'],
+              ['malus dominus', 'il padrone cattivo'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u7l3',
         title: 'Analizza e traduci',
         icon: '📖',
