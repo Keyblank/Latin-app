@@ -498,15 +498,17 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
 
 // ─────────────────────── Abitanti e fumo ───────────────────────
 
-/** I tipi di abitante, con la loro tinta. */
+/** I tipi di abitante. Tinte sobrie, da lana naturale e tinture vegetali:
+ *  i colori accesi stonerebbero con il resto del diorama. */
 const FOLK = [
-  { id: 'vir', tunic: 0xf2ece0, trim: 0xb0472f, h: 0.24 }, // toga bianca
-  { id: 'femina', tunic: 0xd06a86, trim: 0xf2ece0, h: 0.23 }, // stola rosata
-  { id: 'femina2', tunic: 0x5f8fc4, trim: 0xf2ece0, h: 0.23 }, // stola azzurra
-  { id: 'senator', tunic: 0xf7f3ea, trim: 0x6a3fb5, h: 0.25 }, // banda porpora
-  { id: 'miles', tunic: 0xb33f2f, trim: 0xd8c078, h: 0.24 }, // tunica militare
-  { id: 'puer', tunic: 0xe0b45c, trim: 0xf2ece0, h: 0.16 }, // bambino
-  { id: 'puella', tunic: 0x89bf7a, trim: 0xf2ece0, h: 0.16 }, // bambina
+  { id: 'vir', tunic: 0xece5d5, trim: 0, h: 0.2 }, // toga di lana chiara
+  { id: 'femina', tunic: 0xc9a98c, trim: 0, h: 0.19 }, // stola ocra
+  { id: 'femina2', tunic: 0xa8b0a4, trim: 0, h: 0.19 }, // stola verde salvia
+  { id: 'vir2', tunic: 0xd8cdb8, trim: 0, h: 0.2 }, // tunica écru
+  { id: 'senator', tunic: 0xf0ebe0, trim: 0x8a6ba8, h: 0.21 }, // banda porpora
+  { id: 'miles', tunic: 0xa5584a, trim: 0xb9a978, h: 0.2 }, // terracotta, elmo
+  { id: 'puer', tunic: 0xcdb491, trim: 0, h: 0.13 }, // bambino
+  { id: 'puella', tunic: 0xb6bda8, trim: 0, h: 0.13 }, // bambina
 ] as const
 
 /** Un abitante: corpo a cono (la veste), testa, e un dettaglio colorato. */
@@ -519,17 +521,19 @@ function makePerson(kind: (typeof FOLK)[number]): THREE.Group {
   body.castShadow = true
   body.position.y = kind.h * 0.36
   g.add(body)
-  const head = new THREE.Mesh(new THREE.SphereGeometry(kind.h * 0.19, 10, 8), mat(0xe8c39a))
+  const head = new THREE.Mesh(new THREE.SphereGeometry(kind.h * 0.18, 10, 8), mat(0xd8b592))
   head.castShadow = true
   head.position.y = kind.h * 0.86
   g.add(head)
-  // banda / mantello / elmo, a seconda del tipo
-  const trim = new THREE.Mesh(
-    new THREE.CylinderGeometry(kind.h * 0.2, kind.h * 0.2, kind.h * 0.1, 8),
-    mat(kind.trim),
-  )
-  trim.position.y = kind.id === 'miles' ? kind.h * 0.98 : kind.h * 0.58
-  g.add(trim)
+  // Dettaglio solo dove ha senso: la banda del senatore, l'elmo del soldato.
+  if (kind.trim) {
+    const trim = new THREE.Mesh(
+      new THREE.CylinderGeometry(kind.h * 0.19, kind.h * 0.19, kind.h * 0.08, 8),
+      mat(kind.trim),
+    )
+    trim.position.y = kind.id === 'miles' ? kind.h * 0.96 : kind.h * 0.55
+    g.add(trim)
+  }
   return g
 }
 
