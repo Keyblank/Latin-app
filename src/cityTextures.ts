@@ -232,7 +232,23 @@ function dirt(): HTMLCanvasElement {
   return cv
 }
 
-const cache: Record<string, THREE.CanvasTexture> = {}
+// Immagini fornite dall'utente in src/assets/textures/: se ci sono, hanno la
+// precedenza sulle texture disegnate dal codice (vedi il README lì dentro).
+const files = import.meta.glob('./assets/textures/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>
+
+const userImages: Record<string, string> = {}
+for (const [path, url] of Object.entries(files)) {
+  const name = path.split('/').pop()!.replace(/\.(jpg|jpeg|png|webp)$/i, '')
+  userImages[name] = url
+}
+
+const loader = new THREE.TextureLoader()
+
+const cache: Record<string, THREE.Texture> = {}
 const makers: Record<string, () => HTMLCanvasElement> = {
   roof: roofTiles,
   plaster,
@@ -245,14 +261,41 @@ const makers: Record<string, () => HTMLCanvasElement> = {
 
 export type TexKind = keyof typeof makers
 
-/** Texture (condivisa) del tipo richiesto. */
-export function texture(kind: TexKind): THREE.CanvasTexture {
-  if (!cache[kind]) cache[kind] = toTexture(makers[kind]())
+/** Texture (condivisa) del tipo richiesto: immagine dell'utente se c'è,
+ *  altrimenti quella generata dal codice. */
+export function texture(kind: TexKind): THREE.Texture {
+  if (!cache[kind]) {
+    const url = userImages[kind]
+    if (url) {
+      const t = loader.load(url)
+      t.wrapS = t.wrapT = THREE.RepeatWrapping
+      t.colorSpace = THREE.SRGBColorSpace
+      t.anisotropy = 4
+      cache[kind] = t
+    } else {
+      cache[kind] = toTexture(makers[kind]())
+    }
+  }
   return cache[kind]
 }
 
+/** Mappa normale fornita dall'utente (es. roof-normal.jpg), se presente. */
+export function normalMap(kind: TexKind, rx = 1, ry = rx): THREE.Texture | null {
+  const url = userImages[`${kind}-normal`]
+  if (!url) return null
+  const key = `${kind}-normal-${rx}x${ry}`
+  if (!cache[key]) {
+    const t = loader.load(url)
+    t.wrapS = t.wrapT = THREE.RepeatWrapping
+    t.repeat.set(rx, ry)
+    t.anisotropy = 4
+    cache[key] = t
+  }
+  return cache[key]
+}
+
 /** Copia della texture con una ripetizione diversa (per superfici grandi). */
-export function tiled(kind: TexKind, rx: number, ry = rx): THREE.CanvasTexture {
+export function tiled(kind: TexKind, rx: number, ry = rx): THREE.Texture {
   const t = texture(kind).clone()
   t.needsUpdate = true
   t.wrapS = t.wrapT = THREE.RepeatWrapping

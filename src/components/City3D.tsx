@@ -4,7 +4,7 @@ import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeom
 import type { Building } from '../data/city'
 import { BUILDINGS, GRID_MAX, LAND_SIZES, landBounds } from '../data/city'
 import type { Placed, Road } from '../useProgress'
-import { texture, tiled } from '../cityTextures'
+import { normalMap, texture, tiled } from '../cityTextures'
 import type { TexKind } from '../cityTextures'
 
 // Vista 3D della città in stile diorama, con POSIZIONAMENTO LIBERO:
@@ -57,11 +57,31 @@ function mat(color: number, rough = 0.95) {
   return new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: 0 })
 }
 
-/** Materiale con texture: il colore fa da tinta sopra la trama. */
+/** Quanto rilievo dare a ciascun materiale (0 = piatto). */
+const BUMP: Partial<Record<TexKind, number>> = {
+  roof: 0.02,
+  ashlar: 0.016,
+  paving: 0.018,
+  plaster: 0.006,
+  dirt: 0.01,
+  marble: 0.003,
+  grass: 0.008,
+}
+
+/** Materiale con texture: il colore fa da tinta sopra la trama.
+ *  La stessa immagine fa anche da mappa di rilievo, così tegole e blocchi
+ *  non sembrano dipinti su una superficie liscia. */
 function matTex(kind: TexKind, color = 0xffffff, repeat = 1) {
+  const map = repeat === 1 ? texture(kind) : tiled(kind, repeat)
+  const normal = normalMap(kind, repeat)
   return new THREE.MeshStandardMaterial({
     color,
-    map: repeat === 1 ? texture(kind) : tiled(kind, repeat),
+    map,
+    // Se l'utente ha fornito una mappa normale la usiamo (rilievo vero),
+    // altrimenti ricaviamo un rilievo approssimato dalla texture stessa.
+    ...(normal
+      ? { normalMap: normal }
+      : { bumpMap: map, bumpScale: BUMP[kind] ?? 0.01 }),
     roughness: 0.95,
     metalness: 0,
   })
