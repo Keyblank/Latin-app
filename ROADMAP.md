@@ -73,8 +73,8 @@ maschili della 1ª come *nauta* e *agricola*).
 ### Funzionalità
 
 - ✅ Percorso a lezioni con blocco/sblocco + **modalità libera**
-- ✅ 5 tipi di esercizio: scheda, **tabella** (con audio), scelta, costruzione
-  frase, abbinamento
+- ✅ 6 tipi di esercizio: scheda, **tabella** (con audio), scelta, costruzione
+  frase, abbinamento, **analisi grammaticale**
 - ✅ Gamification: **XP, vite, streak**, **ranghi latini**, **obiettivo
   giornaliero** (*Pensum diei*), **ripasso degli errori** (*Repetitio*)
 - ✅ **Urbs** — città romana in **3D** da costruire spendendo **denarii**
@@ -139,9 +139,14 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   scadenza che si allunga se la ricordi (1, 3, 7, 16, 35, 90 giorni) e torna a
   zero se la sbagli; 5 parole nuove al giorno, 12 per sessione. Le 390 voci
   sono lette dalle tabelle marcate `lessico: true`, non da un elenco a parte
+- ✅ **Analisi grammaticale** ⭐ — 22 esercizi nelle lezioni di chiusura di
+  U5–U20: una parola evidenziata dentro una frase, e si risponde a due o tre
+  domande insieme (caso, numero, funzione; modo, tempo, persona). La
+  traduzione compare solo dopo, con la nota sul punto in gioco: le ambiguità
+  vere del latino (-ibus dativo o ablativo, «poētae» tre casi in una forma,
+  nominativo e accusativo neutri identici) si sciolgono col contesto, ed è
+  quello che l'esercizio insegna a fare
 - ⬜ **Badge / traguardi** latini da collezionare
-- ⬜ Più esercizi **latino → italiano** e un esercizio di **analisi** dedicato
-  (di' caso, numero, tempo…)
 - ⬜ Audio anche sulle **frasi**; migliorare l'**accento** della sintesi vocale
 - ⬜ (Eventuale) Account e sincronizzazione tra dispositivi
 

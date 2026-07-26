@@ -214,6 +214,34 @@ for (const u of curriculum) {
         if (new Set(dx).size !== dx.length) segnala(dove, `parole ripetute a destra in «${ex.prompt}»`)
       }
 
+      if (ex.type === 'analysis') {
+        // La parola da analizzare deve stare davvero nella frase: se non c'è,
+        // l'evidenziazione non compare e si chiede di analizzare il nulla.
+        if (!ex.sentence.includes(ex.word)) {
+          segnala(dove, `«${ex.word}» non compare nella frase «${ex.sentence}»`)
+        }
+        if (!ex.translation?.trim()) {
+          segnala(dove, `l'analisi di «${ex.word}» non ha la traduzione della frase`)
+        }
+        if (!ex.fields?.length) segnala(dove, `l'analisi di «${ex.word}» non ha domande`)
+        for (const f of ex.fields ?? []) {
+          if (!f.options.includes(f.answer)) {
+            segnala(dove, `«${f.answer}» non è fra le opzioni di «${f.label}» (parola «${ex.word}»)`)
+          }
+          if (new Set(f.options).size !== f.options.length) {
+            segnala(dove, `opzioni ripetute in «${f.label}» (parola «${ex.word}»)`)
+          }
+          // Con una sola opzione la risposta è regalata.
+          if (f.options.length < 2) {
+            segnala(dove, `«${f.label}» ha una sola opzione (parola «${ex.word}»)`)
+          }
+        }
+        const etichette = (ex.fields ?? []).map((f) => f.label)
+        if (new Set(etichette).size !== etichette.length) {
+          segnala(dove, `due domande con la stessa etichetta nell'analisi di «${ex.word}»`)
+        }
+      }
+
       if (ex.type === 'table') {
         for (const r of ex.rows) {
           if (r.length !== ex.columns.length) {

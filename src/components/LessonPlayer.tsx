@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Lesson, Exercise } from '../types'
-import { InfoCard, TableCard, Choice, Build, Match, type AnswerState } from './Exercises'
+import { InfoCard, TableCard, Choice, Build, Match, Analysis, type AnswerState } from './Exercises'
 import { Mascot } from './Mascot'
 import { Confetti } from './Confetti'
 import { pickQuip } from '../quips'
@@ -165,6 +165,9 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
         {ex.type === 'choice' && <Choice ex={ex} disabled={phase === 'checked'} onChange={setAnswer} />}
         {ex.type === 'build' && <Build ex={ex} disabled={phase === 'checked'} onChange={setAnswer} />}
         {ex.type === 'match' && <Match ex={ex} onComplete={onMatchComplete} />}
+        {ex.type === 'analysis' && (
+          <Analysis ex={ex} disabled={phase === 'checked'} onChange={setAnswer} />
+        )}
       </main>
 
       <footer
@@ -186,6 +189,8 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
                       ? ex.answer
                       : ex.type === 'build'
                       ? ex.answer.join(' ')
+                      : ex.type === 'analysis'
+                      ? ex.fields.map((f) => f.answer).join(' · ')
                       : ''}
                   </b>
                 </span>

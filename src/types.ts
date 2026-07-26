@@ -62,12 +62,46 @@ export interface TableExercise {
   speakCols?: number[]
 }
 
+/** Una domanda dell'analisi: «Caso?» con le risposte possibili. */
+export interface AnalysisField {
+  /** Etichetta breve: «Caso», «Numero», «Tempo», «Funzione». */
+  label: string
+  options: string[]
+  /** La risposta giusta (deve essere presente in options). */
+  answer: string
+}
+
+/**
+ * ANALISI GRAMMATICALE: data una parola dentro una frase, dire che cos'è —
+ * caso, numero, tempo, funzione.
+ *
+ * È l'esercizio che somiglia di più a quello che si fa davvero all'esame, e
+ * l'unico in cui la risposta non è «che cosa vuol dire» ma «come è fatta». Si
+ * risponde a tutte le domande insieme: mezza analisi non serve a nulla, perché
+ * è la combinazione (accusativo + singolare) che identifica la forma.
+ */
+export interface AnalysisExercise {
+  type: 'analysis'
+  /** Istruzione; se manca si usa «Analizza la parola evidenziata». */
+  prompt?: string
+  /** La frase in cui la parola sta: l'analisi si fa sempre in contesto. */
+  sentence: string
+  /** La parola da analizzare: deve comparire in `sentence`. */
+  word: string
+  /** La traduzione della frase, svelata dopo la risposta. */
+  translation: string
+  fields: AnalysisField[]
+  /** Spiegazione mostrata dopo aver verificato. */
+  note?: string
+}
+
 export type Exercise =
   | InfoExercise
   | ChoiceExercise
   | BuildExercise
   | MatchExercise
   | TableExercise
+  | AnalysisExercise
 
 export interface Lesson {
   id: string

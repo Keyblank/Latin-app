@@ -1031,6 +1031,50 @@ export const curriculum: Unit[] = [
             body: 'Ora usi la declinazione per capire una frase vera: guarda le desinenze, trova il caso, poi traduci. È esattamente ciò che farai con i testi latini.',
           },
           {
+            type: 'analysis',
+            sentence: 'Puella rosam poētae dat.',
+            word: 'rosam',
+            translation: 'La ragazza dà una rosa al poeta.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Nominativo', 'Accusativo', 'Ablativo'],
+                answer: 'Accusativo',
+              },
+              {
+                label: 'Numero',
+                options: ['Singolare', 'Plurale'],
+                answer: 'Singolare',
+              },
+              {
+                label: 'Funzione',
+                options: ['Soggetto', 'Complemento oggetto', 'Complemento di termine'],
+                answer: 'Complemento oggetto',
+              },
+            ],
+            note: 'La -am è l’accusativo singolare della 1ª: è la marca dell’oggetto. In italiano l’oggetto si riconosce dalla posizione, in latino dalla desinenza — ed è per questo che l’ordine delle parole può cambiare senza che il senso cambi.',
+          },
+          {
+            type: 'analysis',
+            prompt: 'Stessa frase, altra parola: analizza «poētae»',
+            sentence: 'Puella rosam poētae dat.',
+            word: 'poētae',
+            translation: 'La ragazza dà una rosa al poeta.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Genitivo', 'Dativo', 'Ablativo'],
+                answer: 'Dativo',
+              },
+              {
+                label: 'Funzione',
+                options: ['Complemento di specificazione', 'Complemento di termine', 'Soggetto'],
+                answer: 'Complemento di termine',
+              },
+            ],
+            note: '«poētae» da sola è ambigua: genitivo singolare (del poeta), dativo singolare (al poeta) o nominativo plurale (i poeti). A decidere è il verbo — «dat» chiede a chi si dà, quindi dativo. Nelle versioni funziona sempre così: la forma dà le possibilità, il contesto sceglie.',
+          },
+          {
             type: 'choice',
             prompt: 'In «Puellae rosam dant» («dant» = danno), che caso è «Puellae»?',
             focus: 'Puellae rosam dant',
@@ -1309,6 +1353,55 @@ export const curriculum: Unit[] = [
             body: 'Ora mescoliamo 1ª e 2ª declinazione, proprio come nei testi. Ricorda: guarda la desinenza, riconosci il caso, poi traduci.\n\n(«amant» = amano, «portat» = porta)',
           },
           {
+            type: 'analysis',
+            sentence: 'Dominus servō dōnum dat.',
+            word: 'servō',
+            translation: 'Il padrone dà un dono allo schiavo.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Dativo', 'Ablativo', 'Genitivo'],
+                answer: 'Dativo',
+              },
+              {
+                label: 'Numero',
+                options: ['Singolare', 'Plurale'],
+                answer: 'Singolare',
+              },
+              {
+                label: 'Funzione',
+                options: ['Complemento di termine', 'Complemento di mezzo', 'Soggetto'],
+                answer: 'Complemento di termine',
+              },
+            ],
+            note: 'La desinenza -ō della 2ª vale sia per il dativo sia per l’ablativo: la forma da sola non decide. Qui il verbo «dat» chiede a chi si dà, e quindi è dativo.',
+          },
+          {
+            type: 'analysis',
+            prompt: 'Stessa frase: analizza «dōnum»',
+            sentence: 'Dominus servō dōnum dat.',
+            word: 'dōnum',
+            translation: 'Il padrone dà un dono allo schiavo.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Nominativo', 'Accusativo', 'Genitivo'],
+                answer: 'Accusativo',
+              },
+              {
+                label: 'Genere',
+                options: ['Maschile', 'Femminile', 'Neutro'],
+                answer: 'Neutro',
+              },
+              {
+                label: 'Funzione',
+                options: ['Soggetto', 'Complemento oggetto'],
+                answer: 'Complemento oggetto',
+              },
+            ],
+            note: 'Nei neutri nominativo e accusativo sono identici: «dōnum» da sola non dice se è soggetto o oggetto. Lo dice la frase — il soggetto è già «dominus», quindi «dōnum» non può che essere l’oggetto.',
+          },
+          {
             type: 'choice',
             prompt: 'In «Servī dominum amant», che caso è «Servī»?',
             focus: 'Servī dominum amant',
@@ -1577,6 +1670,30 @@ export const curriculum: Unit[] = [
             icon: '📖',
             title: 'Mettiamo tutto insieme',
             body: 'Ora usa la concordanza: controlla che il nome e il suo aggettivo vadano d’accordo (stesso genere, numero e caso), poi traduci. È proprio quello che farai con i testi.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Bonus dominus parvam villam habet.',
+            word: 'parvam',
+            translation: 'Un buon padrone ha una piccola casa di campagna.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Nominativo', 'Accusativo', 'Ablativo'],
+                answer: 'Accusativo',
+              },
+              {
+                label: 'Genere',
+                options: ['Maschile', 'Femminile', 'Neutro'],
+                answer: 'Femminile',
+              },
+              {
+                label: 'Concorda con',
+                options: ['villam', 'dominus', 'habet'],
+                answer: 'villam',
+              },
+            ],
+            note: 'L’aggettivo prende dal nome genere, numero e caso — non la declinazione. «Parvam» è femminile perché lo è «villam», anche se al maschile l’aggettivo fa «parvus» e segue la 2ª.',
           },
           {
             type: 'choice',
@@ -1927,6 +2044,30 @@ export const curriculum: Unit[] = [
             body: 'Per capire un verbo, guarda la sua fine: ti dice CHI compie l’azione. Poi ricostruisci la frase in italiano.',
           },
           {
+            type: 'analysis',
+            sentence: 'Puellae rosās portant.',
+            word: 'portant',
+            translation: 'Le ragazze portano delle rose.',
+            fields: [
+              {
+                label: 'Tempo',
+                options: ['Presente', 'Imperfetto', 'Perfetto'],
+                answer: 'Presente',
+              },
+              {
+                label: 'Persona',
+                options: ['1ª singolare', '3ª singolare', '3ª plurale'],
+                answer: '3ª plurale',
+              },
+              {
+                label: 'Coniugazione',
+                options: ['1ª', '2ª', '3ª'],
+                answer: '1ª',
+              },
+            ],
+            note: 'La desinenza -nt segna la 3ª plurale in tutti i tempi: è la prima cosa da guardare. La -a- che la precede dice che il verbo è della 1ª coniugazione, cioè «portāre».',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «Rosās portāmus»?',
             focus: 'Rosās portāmus',
@@ -2263,6 +2404,30 @@ export const curriculum: Unit[] = [
             body: 'Ricorda il metodo: trova il tema dal genitivo, riconosci la desinenza (quindi il caso), poi traduci. Qui mescoliamo la 3ª con le declinazioni che già sai.',
           },
           {
+            type: 'analysis',
+            sentence: 'Rēx mīlitibus dōna dat.',
+            word: 'mīlitibus',
+            translation: 'Il re dà dei doni ai soldati.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Dativo', 'Ablativo', 'Genitivo'],
+                answer: 'Dativo',
+              },
+              {
+                label: 'Numero',
+                options: ['Singolare', 'Plurale'],
+                answer: 'Plurale',
+              },
+              {
+                label: 'Declinazione',
+                options: ['1ª', '2ª', '3ª'],
+                answer: '3ª',
+              },
+            ],
+            note: '-ibus è dativo o ablativo plurale della 3ª: la forma non li distingue mai. Anche qui decide il verbo, «dat».',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «Rēgēs lēgēs scrībunt»? («scrībunt» = scrivono, «lēgēs» = leggi)',
             focus: 'Rēgēs lēgēs scrībunt',
@@ -2284,7 +2449,7 @@ export const curriculum: Unit[] = [
             type: 'build',
             prompt: 'Traduci: «Vediamo il re» («rēx» → acc. «rēgem»)',
             source: 'Vediamo il re',
-            answer: ['Regem', 'vidēmus'],
+            answer: ['Rēgem', 'vidēmus'],
             extra: ['rēx', 'videt'],
           },
           {
@@ -2617,9 +2782,48 @@ export const curriculum: Unit[] = [
             body: 'Guarda il verbo: c’è il «-ba-» (imperfetto, «durava») oppure il tema del perfetto con -it/-ērunt (perfetto, «fatto compiuto»)? Poi traduci. È esattamente il ragionamento delle versioni.',
           },
           {
+            type: 'analysis',
+            sentence: 'Caesar mīlitēs in Galliam dūxit.',
+            word: 'dūxit',
+            translation: 'Cesare condusse i soldati in Gallia.',
+            fields: [
+              {
+                label: 'Tempo',
+                options: ['Perfetto', 'Imperfetto', 'Presente'],
+                answer: 'Perfetto',
+              },
+              {
+                label: 'Persona',
+                options: ['3ª singolare', '3ª plurale', '1ª singolare'],
+                answer: '3ª singolare',
+              },
+            ],
+            note: 'Il perfetto ha un tema tutto suo, spesso lontano da quello del presente: «dūcere» fa «dūx-». È per questo che il vocabolario dà il paradigma intero — «dūcō, dūxī, ductum, dūcere» — e non solo l’infinito.',
+          },
+          {
+            type: 'analysis',
+            prompt: 'Stessa frase: analizza «mīlitēs»',
+            sentence: 'Caesar mīlitēs in Galliam dūxit.',
+            word: 'mīlitēs',
+            translation: 'Cesare condusse i soldati in Gallia.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Nominativo', 'Accusativo', 'Genitivo'],
+                answer: 'Accusativo',
+              },
+              {
+                label: 'Funzione',
+                options: ['Soggetto', 'Complemento oggetto'],
+                answer: 'Complemento oggetto',
+              },
+            ],
+            note: 'Nella 3ª declinazione nominativo e accusativo plurale sono identici: «mīlitēs» vale per tutti e due. Ma il soggetto è già «Caesar», e un verbo ne vuole uno solo: quindi «mīlitēs» è l’oggetto.',
+          },
+          {
             type: 'choice',
-            prompt: 'Cosa significa «Milites urbem oppugnāvērunt»? («oppugnāre» = assalire, «urbem» = la città)',
-            focus: 'Milites urbem oppugnāvērunt',
+            prompt: 'Cosa significa «Mīlitēs urbem oppugnāvērunt»? («oppugnāre» = assalire, «urbem» = la città)',
+            focus: 'Mīlitēs urbem oppugnāvērunt',
             options: [
               'I soldati assalirono la città',
               'I soldati assalivano la città',
@@ -2638,7 +2842,7 @@ export const curriculum: Unit[] = [
             type: 'build',
             prompt: 'Traduci: «Vedevamo il re» («rēx» → acc. «rēgem»; «vedevamo» = vidēbāmus)',
             source: 'Vedevamo il re',
-            answer: ['Regem', 'vidēbāmus'],
+            answer: ['Rēgem', 'vidēbāmus'],
             extra: ['vīdimus', 'rēx'],
           },
           {
@@ -2951,6 +3155,30 @@ export const curriculum: Unit[] = [
             icon: '📖',
             title: 'Il metodo',
             body: 'Per tradurre una relativa: 1) trova l’antecedente (ti dà genere e numero); 2) guarda la funzione del relativo nella sua frase (ti dà il caso e quindi la traduzione: che, di cui, a cui…); 3) traduci.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Mīles quī pugnābat vulnus accēpit.',
+            word: 'quī',
+            translation: 'Il soldato che combatteva ricevette una ferita.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Nominativo', 'Accusativo', 'Genitivo'],
+                answer: 'Nominativo',
+              },
+              {
+                label: 'Numero',
+                options: ['Singolare', 'Plurale'],
+                answer: 'Singolare',
+              },
+              {
+                label: 'Prende genere e numero da',
+                options: ['mīles', 'vulnus', 'pugnābat'],
+                answer: 'mīles',
+              },
+            ],
+            note: 'La regola del relativo, in due tempi. Genere e numero vengono dall’antecedente («mīles»: maschile singolare). Il CASO no: quello dipende dalla funzione che il pronome ha nella sua frase — qui è il soggetto di «pugnābat», quindi nominativo.',
           },
           {
             type: 'choice',
@@ -3288,6 +3516,30 @@ export const curriculum: Unit[] = [
             icon: '📖',
             title: 'Il metodo',
             body: 'Participio: guarda se è presente (-ns, «che fa») o perfetto (-tus, «fatto»). Ablativo assoluto: due parole in ablativo = una circostanza («dopo che…, mentre…»). Poi traduci.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Urbe captā, hostēs discessērunt.',
+            word: 'captā',
+            translation: 'Presa la città, i nemici se ne andarono.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Ablativo', 'Nominativo', 'Accusativo'],
+                answer: 'Ablativo',
+              },
+              {
+                label: 'Forma',
+                options: ['Participio perfetto', 'Participio presente', 'Infinito'],
+                answer: 'Participio perfetto',
+              },
+              {
+                label: 'Costrutto',
+                options: ['Ablativo assoluto', 'Complemento d’agente', 'Apposizione'],
+                answer: 'Ablativo assoluto',
+              },
+            ],
+            note: 'Un nome e un participio, tutti e due in ablativo, staccati dal resto della frase: è l’ablativo assoluto. Si traduce con una frase intera — «dopo che la città fu presa», «presa la città» — scegliendo la sfumatura (tempo, causa, condizione) che il contesto suggerisce.',
           },
           {
             type: 'choice',
@@ -3740,6 +3992,25 @@ export const curriculum: Unit[] = [
               'soggetto italiano, l’infinito il verbo coniugato.\n\n' +
               'E controlla la desinenza dell’infinito: «-isse» = azione già ' +
               'avvenuta.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Caesar dīcit hostēs venīre.',
+            word: 'hostēs',
+            translation: 'Cesare dice che i nemici arrivano.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Accusativo', 'Nominativo', 'Genitivo'],
+                answer: 'Accusativo',
+              },
+              {
+                label: 'Funzione',
+                options: ['Soggetto dell’infinito', 'Complemento oggetto', 'Soggetto della frase'],
+                answer: 'Soggetto dell’infinito',
+              },
+            ],
+            note: 'Qui sta il salto che spiazza chi arriva dall’italiano: «hostēs» è accusativo ma non è l’oggetto — è il SOGGETTO di «venīre». Tradotto, diventa il soggetto di una frase con «che»: «che i nemici arrivano».',
           },
           {
             type: 'choice',
@@ -4372,6 +4643,25 @@ export const curriculum: Unit[] = [
               'che devi guardare.',
           },
           {
+            type: 'analysis',
+            sentence: 'Rēx fīlium suum vocāvit.',
+            word: 'suum',
+            translation: 'Il re chiamò suo figlio.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Accusativo', 'Nominativo', 'Dativo'],
+                answer: 'Accusativo',
+              },
+              {
+                label: 'Si riferisce',
+                options: ['al soggetto (il re)', 'a un’altra persona', 'a chi parla'],
+                answer: 'al soggetto (il re)',
+              },
+            ],
+            note: '«suus» è riflessivo: rimanda sempre al soggetto della frase. Se il figlio fosse di qualcun altro il latino userebbe «eius». In italiano la differenza non si vede — «suo» vale per tutti e due — ed è proprio per questo che va decisa guardando il latino.',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «Rēx eī urbem dat»?',
             focus: 'Rēx eī urbem dat',
@@ -4836,6 +5126,50 @@ export const curriculum: Unit[] = [
               'cercargli un oggetto: non ce l’ha.',
           },
           {
+            type: 'analysis',
+            sentence: 'Urbs ā mīlitibus capta est.',
+            word: 'capta est',
+            translation: 'La città fu presa dai soldati.',
+            fields: [
+              {
+                label: 'Tempo',
+                options: ['Perfetto', 'Presente', 'Imperfetto'],
+                answer: 'Perfetto',
+              },
+              {
+                label: 'Diatesi',
+                options: ['Passivo', 'Attivo'],
+                answer: 'Passivo',
+              },
+              {
+                label: 'Persona',
+                options: ['3ª singolare', '3ª plurale'],
+                answer: '3ª singolare',
+              },
+            ],
+            note: 'Il perfetto passivo è fatto di due parole: participio perfetto + «esse». La trappola è «est»: non va tradotto con il presente. «Capta est» è «fu presa», non «è presa».',
+          },
+          {
+            type: 'analysis',
+            prompt: 'Stessa frase: analizza «mīlitibus»',
+            sentence: 'Urbs ā mīlitibus capta est.',
+            word: 'mīlitibus',
+            translation: 'La città fu presa dai soldati.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Ablativo', 'Dativo', 'Accusativo'],
+                answer: 'Ablativo',
+              },
+              {
+                label: 'Funzione',
+                options: ['Complemento d’agente', 'Complemento di termine', 'Complemento di mezzo'],
+                answer: 'Complemento d’agente',
+              },
+            ],
+            note: 'La regola è secca: se chi agisce è una PERSONA, il latino mette «ā/ab» + ablativo (complemento d’agente); se è una COSA, ablativo semplice senza preposizione (complemento di mezzo). «ā mīlitibus» = dai soldati; «gladiō» = con la spada.',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «Rōma ā Rōmulō condita est»? («condere» = fondare)',
             focus: 'Rōma ā Rōmulō condita est',
@@ -5297,6 +5631,30 @@ export const curriculum: Unit[] = [
               '• una A dove ti aspettavi altro → presente (legAt, audiAnt)\n' +
               '• «sit», «sint», «esset», «essent» → è «esse», impara queste ' +
               'quattro a memoria e hai risolto metà delle occorrenze.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Cum hostēs venīrent, cīvēs fūgērunt.',
+            word: 'venīrent',
+            translation: 'Quando i nemici arrivavano, i cittadini fuggirono.',
+            fields: [
+              {
+                label: 'Modo',
+                options: ['Congiuntivo', 'Indicativo'],
+                answer: 'Congiuntivo',
+              },
+              {
+                label: 'Tempo',
+                options: ['Imperfetto', 'Presente', 'Perfetto'],
+                answer: 'Imperfetto',
+              },
+              {
+                label: 'Persona',
+                options: ['3ª plurale', '3ª singolare', '2ª plurale'],
+                answer: '3ª plurale',
+              },
+            ],
+            note: 'Il congiuntivo imperfetto è la forma più facile da riconoscere di tutto il congiuntivo: è l’INFINITO più le desinenze personali. «venīre» + «-nt» → «venīrent».',
           },
           {
             type: 'choice',
@@ -5837,6 +6195,30 @@ export const curriculum: Unit[] = [
               'senza congiuntivo.',
           },
           {
+            type: 'analysis',
+            sentence: 'Caesar mīlitēs mīsit ut urbem caperent.',
+            word: 'caperent',
+            translation: 'Cesare mandò i soldati perché prendessero la città.',
+            fields: [
+              {
+                label: 'Modo',
+                options: ['Congiuntivo', 'Indicativo'],
+                answer: 'Congiuntivo',
+              },
+              {
+                label: 'Tempo',
+                options: ['Imperfetto', 'Presente'],
+                answer: 'Imperfetto',
+              },
+              {
+                label: 'Proposizione',
+                options: ['Finale', 'Consecutiva', 'Interrogativa indiretta'],
+                answer: 'Finale',
+              },
+            ],
+            note: '«ut» + congiuntivo: se risponde a «per fare che cosa?» è finale, e in italiano diventa «perché» + congiuntivo oppure «per» + infinito. La consecutiva è quasi sempre annunciata da un avverbio nella reggente — «tam», «ita», «tantus» — che qui non c’è.',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «Cum Rōmam vēnisset, senātum convocāvit»? («convocāre» = convocare)',
             focus: 'Cum Rōmam vēnisset',
@@ -6286,6 +6668,50 @@ export const curriculum: Unit[] = [
               'Nelle versioni di storia i tempi del racconto restano perfetto e ' +
               'imperfetto; il piuccheperfetto compare quando l’autore torna ' +
               'indietro.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Hostēs, quī fūgerant, nōn iam pugnābunt.',
+            word: 'fūgerant',
+            translation: 'I nemici, che erano fuggiti, non combatteranno più.',
+            fields: [
+              {
+                label: 'Tempo',
+                options: ['Piuccheperfetto', 'Perfetto', 'Imperfetto'],
+                answer: 'Piuccheperfetto',
+              },
+              {
+                label: 'Modo',
+                options: ['Indicativo', 'Congiuntivo'],
+                answer: 'Indicativo',
+              },
+              {
+                label: 'Persona',
+                options: ['3ª plurale', '3ª singolare'],
+                answer: '3ª plurale',
+              },
+            ],
+            note: 'Il piuccheperfetto è il tema del perfetto più le forme di «eram»: «fūg-erant». Racconta un’azione già conclusa prima di un’altra azione passata — in italiano «erano fuggiti».',
+          },
+          {
+            type: 'analysis',
+            prompt: 'Stessa frase: analizza «pugnābunt»',
+            sentence: 'Hostēs, quī fūgerant, nōn iam pugnābunt.',
+            word: 'pugnābunt',
+            translation: 'I nemici, che erano fuggiti, non combatteranno più.',
+            fields: [
+              {
+                label: 'Tempo',
+                options: ['Futuro', 'Imperfetto', 'Presente'],
+                answer: 'Futuro',
+              },
+              {
+                label: 'Persona',
+                options: ['3ª plurale', '3ª singolare'],
+                answer: '3ª plurale',
+              },
+            ],
+            note: 'Trappola da tenere a mente: «-bunt» è futuro (combatteranno), «-bant» è imperfetto (combattevano). Cambia una vocale e cambia il tempo del racconto — è uno degli errori più frequenti nelle versioni.',
           },
           {
             type: 'choice',
@@ -6820,6 +7246,54 @@ export const curriculum: Unit[] = [
               'Ecco l’unica cosa da ricordare per riconoscerli.',
           },
           {
+            type: 'analysis',
+            sentence: 'Rēs pūblica in manū cōnsulis erat.',
+            word: 'manū',
+            translation: 'Lo Stato era nelle mani del console.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Ablativo', 'Dativo', 'Genitivo'],
+                answer: 'Ablativo',
+              },
+              {
+                label: 'Numero',
+                options: ['Singolare', 'Plurale'],
+                answer: 'Singolare',
+              },
+              {
+                label: 'Declinazione',
+                options: ['4ª', '2ª', '3ª'],
+                answer: '4ª',
+              },
+            ],
+            note: 'La 4ª declinazione ha la -u- dappertutto: «manus, manūs, manuī, manum, manū». La riconosci dal genitivo in -ūs, che il vocabolario dà sempre accanto al nominativo.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Mīlitēs fortēs hostium multitūdinem nōn timuērunt.',
+            word: 'fortēs',
+            translation: 'I soldati coraggiosi non temettero la moltitudine dei nemici.',
+            fields: [
+              {
+                label: 'Caso',
+                options: ['Nominativo', 'Accusativo', 'Genitivo'],
+                answer: 'Nominativo',
+              },
+              {
+                label: 'Classe',
+                options: ['2ª classe', '1ª classe'],
+                answer: '2ª classe',
+              },
+              {
+                label: 'Concorda con',
+                options: ['mīlitēs', 'multitūdinem', 'hostium'],
+                answer: 'mīlitēs',
+              },
+            ],
+            note: '«fortēs» potrebbe essere nominativo o accusativo plurale: le due forme sono identiche. Decide la concordanza — sta con «mīlitēs», che è il soggetto, quindi è nominativo. Gli aggettivi della 2ª classe seguono la 3ª declinazione, ed è per questo che hanno le stesse desinenze di «mīles, mīlitis».',
+          },
+          {
             type: 'table',
             title: 'Riconoscere la declinazione dal genitivo',
             columns: ['Genitivo', 'Declinazione', 'Modello'],
@@ -7260,6 +7734,30 @@ export const curriculum: Unit[] = [
               'soldati\n\n' +
               'Un passivo non può avere un oggetto. Se ce l’ha, il verbo è ' +
               'deponente.',
+          },
+          {
+            type: 'analysis',
+            sentence: 'Caesar mīlitēs hortātus est.',
+            word: 'hortātus est',
+            translation: 'Cesare esortò i soldati.',
+            fields: [
+              {
+                label: 'Forma',
+                options: ['Passiva', 'Attiva'],
+                answer: 'Passiva',
+              },
+              {
+                label: 'Significato',
+                options: ['Attivo', 'Passivo'],
+                answer: 'Attivo',
+              },
+              {
+                label: 'Tempo',
+                options: ['Perfetto', 'Presente'],
+                answer: 'Perfetto',
+              },
+            ],
+            note: 'È un deponente: forma passiva, senso attivo. La prova del nove è l’oggetto — «mīlitēs» è accusativo, e un passivo vero non può reggere un complemento oggetto. Forma passiva + accusativo accanto = deponente.',
           },
           {
             type: 'choice',

@@ -6,6 +6,7 @@ import type {
   MatchExercise,
   InfoExercise,
   TableExercise,
+  AnalysisExercise,
 } from '../types'
 import { SpeakButton } from './SpeakButton'
 import { speak } from '../speak'
@@ -292,6 +293,98 @@ export function Build({
         ))}
       </div>
     </div>
+  )
+}
+
+// ─────────────────────────── Analisi grammaticale ───────────────────────────
+
+/**
+ * Analisi: la frase resta sotto gli occhi, la parola è evidenziata, e si
+ * risponde a due o tre domande insieme (caso e numero, tempo e persona).
+ *
+ * Si verifica solo quando sono state riempite tutte: è la combinazione che
+ * identifica una forma, e «accusativo» senza il numero non è un'analisi.
+ * La traduzione resta nascosta finché non si è risposto — se si vedesse
+ * prima, l'analisi si indovinerebbe dall'italiano invece che dalla forma.
+ */
+export function Analysis({
+  ex,
+  disabled,
+  onChange,
+}: {
+  ex: AnalysisExercise
+  disabled: boolean
+  onChange: (s: AnswerState) => void
+}) {
+  const campi = useMemo(
+    () => ex.fields.map((f) => ({ ...f, options: shuffle(f.options) })),
+    [ex],
+  )
+  const [scelte, setScelte] = useState<Record<string, string>>({})
+
+  function scegli(label: string, opt: string) {
+    if (disabled) return
+    const next = { ...scelte, [label]: opt }
+    setScelte(next)
+    const complete = ex.fields.every((f) => next[f.label])
+    onChange({
+      ready: complete,
+      correct: complete && ex.fields.every((f) => next[f.label] === f.answer),
+    })
+  }
+
+  return (
+    <div className="exercise">
+      <h2 className="prompt">{ex.prompt ?? 'Analizza la parola evidenziata'}</h2>
+
+      <p className="an-frase">
+        <span className="an-testo">{evidenzia(ex.sentence, ex.word)}</span>
+        <SpeakButton text={ex.sentence} />
+      </p>
+
+      {campi.map((f) => (
+        <div className="an-campo" key={f.label}>
+          <span className="an-etichetta">{f.label}</span>
+          <div className="an-opzioni">
+            {f.options.map((opt) => {
+              const scelto = scelte[f.label] === opt
+              return (
+                <button
+                  key={opt}
+                  className={`an-opt ${scelto ? 'picked' : ''} ${
+                    disabled && opt === f.answer ? 'reveal-correct' : ''
+                  } ${disabled && scelto && opt !== f.answer ? 'reveal-wrong' : ''}`}
+                  onClick={() => scegli(f.label, opt)}
+                  disabled={disabled}
+                >
+                  {opt}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      ))}
+
+      {disabled && (
+        <div className="an-soluzione">
+          <p className="an-trad">«{ex.translation}»</p>
+          {ex.note && <p className="an-nota">{ex.note}</p>}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/** La frase con la parola da analizzare messa in evidenza. */
+function evidenzia(frase: string, parola: string): ReactNode {
+  const i = frase.indexOf(parola)
+  if (i < 0) return frase
+  return (
+    <>
+      {frase.slice(0, i)}
+      <mark className="an-parola">{parola}</mark>
+      {frase.slice(i + parola.length)}
+    </>
   )
 }
 

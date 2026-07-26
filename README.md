@@ -12,7 +12,14 @@ la lingua. Interfaccia in italiano.
   - tabelle di grammatica (es. le declinazioni);
   - scelta multipla (anche per l'analisi: «che caso è questa parola?»);
   - costruzione della frase toccando le parole;
-  - abbinamento parola ↔ significato.
+  - abbinamento parola ↔ significato;
+  - **analisi grammaticale**: una parola dentro una frase, e si dice che cos'è —
+    caso, numero, tempo, funzione — rispondendo a tutte le domande insieme.
+    È l'esercizio che somiglia di più a quello che si fa all'esame, e l'unico
+    in cui la domanda non è «che cosa vuol dire» ma «come è fatta». La
+    traduzione della frase resta nascosta finché non hai risposto: se si
+    vedesse prima, l'analisi si indovinerebbe dall'italiano invece che dalla
+    forma. Dopo, arriva insieme alla spiegazione del punto in gioco.
 - **Gamification a tema romano**:
   - punti XP ⭐, vite ❤️, giorni di fila 🔥 (streak);
   - **ranghi latini** legati agli XP (Tiro → Discipulus → Scriba → … → Imperator);
@@ -139,10 +146,9 @@ src/data/curriculum.ts
 ```
 
 Ogni **unità** contiene delle **lezioni**, e ogni lezione contiene una lista di
-**esercizi**. I tipi di esercizio disponibili (`info`, `choice`, `build`, `match`)
-tipi di esercizio disponibili (`info`, `table`, `choice`, `build`, `match`)
-sono documentati in `src/types.ts`. Per aggiungere contenuti basta seguire gli
-esempi già presenti.
+**esercizi**. I tipi disponibili (`info`, `table`, `choice`, `build`, `match`,
+`analysis`) sono documentati in `src/types.ts`. Per aggiungere contenuti basta
+seguire gli esempi già presenti.
 
 ## Contenuto attuale
 
@@ -252,7 +258,7 @@ src/
   components/
     Home.tsx           → mappa delle lezioni
     LessonPlayer.tsx   → svolgimento di una lezione
-    Exercises.tsx      → i cinque tipi di esercizio
+    Exercises.tsx      → i sei tipi di esercizio
     Versio.tsx         → la traduzione di un brano, frase per frase
     Grammatica.tsx     → il mini-manuale consultabile
     Vocabula.tsx       → il ripasso del lessico
