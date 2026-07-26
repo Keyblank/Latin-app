@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (20 sezioni, 79 lezioni, ~230 vocaboli + i pronomi)
+### Contenuti (21 sezioni, 83 lezioni, ~250 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -51,6 +51,7 @@ Principi guida:
 - ✅ **U17 — Le subordinate** (cum narrativo, finali, consecutive, interrogative indirette)
 - ✅ **U18 — Futuro e piuccheperfetto** (l'indicativo è completo)
 - ✅ **U19 — 4ª e 5ª declinazione**, aggettivi della 2ª classe, comparativi e superlativi
+- ✅ **U20 — Verbi irregolari e deponenti** (*possum*, *eō/ferō/volō*, i deponenti)
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
@@ -106,7 +107,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 ### Fase D — completamento e pratica
 - ✅ **4ª e 5ª declinazione** (*manus*, *rēs*)
 - ✅ **Aggettivi della 2ª classe** (*fortis, ācer*) e **comparativi/superlativi**
-- ⬜ **Verbi irregolari** (*possum, eo, fero, volo/nolo/malo*, *fio*) e **deponenti**
+- ✅ **Verbi irregolari** (*possum, eō, ferō, volō/nōlō/mālō*, *fīō*) e **deponenti**
 - ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
 - ⬜ **Traduzione graduata**: dalle frasi ai **brani adattati** ad autori facili
   (Eutropio, *Fabulae*, Cesare semplificato)
@@ -133,11 +134,11 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 - L'**accento** della pronuncia automatica non è sempre corretto (per le parole
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
-- La morfologia è ora **completa** (cinque declinazioni, due classi di
-  aggettivi, indicativo e congiuntivo attivi e passivi, participi, i costrutti
-  principali). Mancano i **verbi irregolari e deponenti**, e soprattutto il
-  **lessico**: ~230 vocaboli non bastano per una versione autentica, che ne
-  chiede almeno 400.
+- La morfologia è **completa**: cinque declinazioni, due classi di aggettivi,
+  tutti i tempi dell'indicativo e del congiuntivo, attivi e passivi, participi,
+  irregolari e deponenti, più i costrutti (ablativo assoluto, acc.+inf.,
+  subordinate). Il collo di bottiglia ora è **uno solo, il lessico**: ~250
+  vocaboli non bastano per una versione autentica, che ne chiede almeno 400.
 
 ---
 

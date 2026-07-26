@@ -114,6 +114,14 @@ const PARADIGMI = {
     'fortis', 'forte', 'fortis', 'fortis', 'fortī', 'fortī',
     'fortem', 'forte', 'fortī', 'fortī',
   ],
+  'possum (potere) — presente': [
+    'possum', 'potes', 'potest', 'possumus', 'potestis', 'possunt',
+  ],
+  'eō (andare), ferō (portare), volō (volere)': [
+    'eō', 'ferō', 'volō', 'īs', 'fers', 'vīs', 'it', 'fert', 'vult',
+    'īmus', 'ferimus', 'volumus', 'ītis', 'fertis', 'vultis',
+    'eunt', 'ferunt', 'volunt',
+  ],
   'Perfetto e piuccheperfetto congiuntivo di amāre': [
     'amāverim', 'amāvissem',
     'amāverīs', 'amāvissēs',

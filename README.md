@@ -180,6 +180,11 @@ esempi già presenti.
   della 2ª classe** (*omnis, fortis, ingēns*) e **comparativi e superlativi**,
   compreso l'ablativo di paragone e i cinque irregolari che in italiano sono
   diventati ottimo, pessimo, massimo, minimo.
+- **Unità 20 — Irregolari e deponenti** — *possum* spiegato per quello che è
+  (*pot-* + *esse*), i quattro cortissimi *eō, ferō, volō, fīō*, e infine i
+  **deponenti**: forma passiva, significato attivo (*hortātur* = «esorta»,
+  non «è esortato»). Con la prova del nove per distinguerli da un passivo
+  vero: un passivo non può avere un complemento oggetto.
 
 ### Il lessico
 

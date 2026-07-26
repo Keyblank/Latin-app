@@ -5929,4 +5929,350 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u20',
+    title: 'Unità 20 — Irregolari e deponenti',
+    subtitle: 'Gli ultimi verbi da riconoscere',
+    color: '#0f6b6b',
+    lessons: [
+      {
+        id: 'u20l1',
+        title: 'Potere: possum',
+        icon: '💪',
+        exercises: [
+          {
+            type: 'info',
+            icon: '💪',
+            title: 'Un verbo fatto con «esse»',
+            body:
+              '«possum» (potere) è il più frequente dei verbi irregolari, e la ' +
+              'sua irregolarità ha una spiegazione: è nato dall’unione di «pot-» ' +
+              '(che vale «capace») con il verbo «esse».\n\n' +
+              'Se lo guardi così, non è più un mistero:\n' +
+              '«pot- + sum» → «possum» (la t davanti alla s diventa s)\n' +
+              '«pot- + est» → «potest»\n\n' +
+              'Regge sempre un INFINITO, come in italiano: «possum venīre» = ' +
+              'posso venire.',
+          },
+          {
+            type: 'table',
+            title: 'possum (potere) — presente',
+            columns: ['Persona', 'Latino', 'Italiano'],
+            rows: [
+              ['io', 'possum', 'posso'],
+              ['tu', 'potes', 'puoi'],
+              ['lui/lei', 'potest', 'può'],
+              ['noi', 'possumus', 'possiamo'],
+              ['voi', 'potestis', 'potete'],
+              ['loro', 'possunt', 'possono'],
+            ],
+            speakCols: [1],
+            note: 'La regola è meccanica: davanti a una forma di «esse» che comincia per s si scrive «pos-», davanti alle altre «pot-». Gli altri tempi seguono «esse»: «poteram» (potevo), «poterō» (potrò), «possem» (potessi). Il perfetto è «potuī» e l’infinito «posse».',
+          },
+          {
+            type: 'info',
+            icon: '🧲',
+            title: 'Gli altri parenti di «esse»',
+            body:
+              'Lo stesso trucco vale per una piccola famiglia di verbi: sono ' +
+              '«esse» con un pezzetto davanti, e si coniugano identici.\n\n' +
+              '• «adsum» = sono presente, assisto\n' +
+              '• «absum» = sono assente, disto\n' +
+              '• «praesum» = sono a capo (+ dativo)\n' +
+              '• «dēsum» = manco\n\n' +
+              'Se riconosci «-sum», «-est», «-erat» in coda, sai già coniugarli ' +
+              'tutti.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Nōn possum venīre»?',
+            focus: 'Nōn possum venīre',
+            options: ['Non posso venire', 'Non voglio venire', 'Non verrò'],
+            answer: 'Non posso venire',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cos’è «poterat»?',
+            focus: 'poterat',
+            options: ['poteva', 'potrà', 'potesse'],
+            answer: 'poteva',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['potest', 'può'],
+              ['poterat', 'poteva'],
+              ['poterit', 'potrà'],
+              ['posse', 'potere'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u20l2',
+        title: 'Andare, portare, volere',
+        icon: '🚶',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🚶',
+            title: 'Quattro verbi cortissimi',
+            body:
+              'Restano quattro irregolari, e sono irregolari proprio perché ' +
+              'usatissimi: le parole che si dicono di continuo si consumano e ' +
+              'perdono i pezzi.\n\n' +
+              '• «eō, īre» = andare\n' +
+              '• «ferō, ferre» = portare\n' +
+              '• «volō, velle» = volere\n' +
+              '• «fīō, fierī» = diventare, accadere\n\n' +
+              'Non c’è una regola: vanno riconosciuti. Ma sono corti, e proprio ' +
+              'per questo saltano all’occhio.',
+          },
+          {
+            type: 'table',
+            title: 'eō (andare), ferō (portare), volō (volere)',
+            columns: ['Persona', 'eō', 'ferō', 'volō'],
+            rows: [
+              ['io', 'eō', 'ferō', 'volō'],
+              ['tu', 'īs', 'fers', 'vīs'],
+              ['lui/lei', 'it', 'fert', 'vult'],
+              ['noi', 'īmus', 'ferimus', 'volumus'],
+              ['voi', 'ītis', 'fertis', 'vultis'],
+              ['loro', 'eunt', 'ferunt', 'volunt'],
+            ],
+            note: 'Occhio a «it» (va) e «vīs» (vuoi): sono parole di due lettere che si confondono con tutto. Perfetti: «iī» (o «īvī»), «tulī», «voluī». Da «volō» nascono «nōlō» (non volere) e «mālō» (preferire).',
+          },
+          {
+            type: 'info',
+            icon: '🔁',
+            title: '«fīō»: il passivo di «faciō»',
+            body:
+              '«faciō» (fare) è regolare, ma il suo passivo non esiste: al suo ' +
+              'posto il latino usa un altro verbo, «fīō».\n\n' +
+              '«fīō» = divento, sono fatto, accado\n' +
+              '«fit» = accade, avviene\n\n' +
+              'Nelle versioni «fit» e «factum est» valgono spesso «avvenne», ' +
+              '«accadde»: sono i verbi con cui l’autore introduce un fatto ' +
+              'nuovo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «In urbem it»?',
+            focus: 'In urbem it',
+            options: ['Va in città', 'È in città', 'Porta in città'],
+            answer: 'Va in città',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cos’è «vult»?',
+            focus: 'vult',
+            options: ['vuole', 'va', 'porta'],
+            answer: 'vuole',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['it', 'va'],
+              ['fert', 'porta'],
+              ['vult', 'vuole'],
+              ['fit', 'accade'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u20l3',
+        title: 'I deponenti',
+        icon: '🎭',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🎭',
+            title: 'Passivi fuori, attivi dentro',
+            body:
+              'Ed eccoci all’ultimo ostacolo vero del latino, quello che fa ' +
+              'sbagliare più traduzioni di ogni altra cosa.\n\n' +
+              'Alcuni verbi hanno la forma PASSIVA ma il significato ATTIVO. Si ' +
+              'chiamano DEPONENTI, perché hanno «deposto» il senso passivo.\n\n' +
+              '«hortātur» sembra «è esortato». Vuol dire «esorta».\n' +
+              '«sequitur» sembra «è seguito». Vuol dire «segue».\n\n' +
+              'Non c’è niente da capire: c’è da riconoscerli. E per fortuna il ' +
+              'vocabolario li tradisce subito.',
+          },
+          {
+            type: 'info',
+            icon: '🔍',
+            title: 'Come li smaschera il vocabolario',
+            body:
+              'Un verbo normale ha quattro forme sul vocabolario: «amō, amāre, ' +
+              'amāvī, amātum».\n\n' +
+              'Un deponente ne ha TRE, e sono tutte di aspetto passivo:\n' +
+              '«hortor, hortārī, hortātus sum» = esortare\n\n' +
+              'Se la prima forma finisce in «-or» e l’infinito in «-ārī, -ērī, ' +
+              '-ī, -īrī», è un deponente. Traducilo all’attivo e non pensarci ' +
+              'più.',
+          },
+          {
+            type: 'table',
+            title: 'I deponenti che incontrerai',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['hortor, hortārī', 'esortare, incoraggiare'],
+              ['sequor, sequī', 'seguire'],
+              ['loquor, loquī', 'parlare'],
+              ['morior, morī', 'morire'],
+              ['patior, patī', 'subire, sopportare'],
+              ['ūtor, ūtī', 'usare (+ ablativo)'],
+              ['proficīscor, proficīscī', 'partire'],
+              ['arbitror, arbitrārī', 'ritenere, giudicare'],
+              ['vereor, verērī', 'temere'],
+              ['nāscor, nāscī', 'nascere'],
+            ],
+            speakCols: [0],
+            note: '«ūtor» regge l’ablativo, non l’accusativo: «gladiō ūtitur» = usa la spada (alla lettera «si serve con la spada»). È l’unico che chiede attenzione al caso.',
+          },
+          {
+            type: 'info',
+            icon: '⚠️',
+            title: 'Il participio dei deponenti è attivo',
+            body:
+              'Conseguenza importante, e nelle versioni pesa: il participio ' +
+              'perfetto di un deponente ha senso ATTIVO, non passivo.\n\n' +
+              '«locūtus» = avendo parlato (non «essendo stato parlato»)\n' +
+              '«profectus» = essendo partito\n' +
+              '«secūtus» = avendo seguito\n\n' +
+              'È uno dei pochi modi che il latino ha per dire «avendo fatto» ' +
+              'riferito al soggetto — e per questo gli autori ne abusano.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Caesar mīlitēs hortātur»?',
+            focus: 'mīlitēs hortātur',
+            options: [
+              'Cesare esorta i soldati',
+              'Cesare è esortato dai soldati',
+              'I soldati esortano Cesare',
+            ],
+            answer: 'Cesare esorta i soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Hostēs secūtī sunt»?',
+            focus: 'Hostēs secūtī sunt',
+            options: [
+              'I nemici seguirono',
+              'I nemici furono seguiti',
+              'I nemici saranno seguiti',
+            ],
+            answer: 'I nemici seguirono',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come riconosci un deponente sul vocabolario?',
+            options: [
+              'ha tre forme e finiscono tutte come un passivo',
+              'ha quattro forme come gli altri',
+              'ha l’infinito in -āre',
+            ],
+            answer: 'ha tre forme e finiscono tutte come un passivo',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['loquitur', 'parla'],
+              ['sequitur', 'segue'],
+              ['moritur', 'muore'],
+              ['proficīscitur', 'parte'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u20l4',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Attivo o deponente?',
+            body:
+              'Da qui in avanti, davanti a un verbo dall’aria passiva fatti una ' +
+              'domanda sola: c’è un complemento d’agente?\n\n' +
+              '• «ā/ab» + ablativo, oppure un ablativo di mezzo → è un vero ' +
+              'PASSIVO: «ā mīlitibus capitur» = è preso dai soldati\n' +
+              '• niente agente, e magari c’è un complemento OGGETTO in ' +
+              'accusativo → è un DEPONENTE: «mīlitēs hortātur» = esorta i ' +
+              'soldati\n\n' +
+              'Un passivo non può avere un oggetto. Se ce l’ha, il verbo è ' +
+              'deponente.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Dux mīlitēs hortātus est»?',
+            focus: 'Dux mīlitēs hortātus est',
+            options: [
+              'Il comandante esortò i soldati',
+              'Il comandante fu esortato dai soldati',
+              'I soldati furono esortati',
+            ],
+            answer: 'Il comandante esortò i soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'E «Dux ā mīlitibus vīsus est»?',
+            focus: 'Dux ā mīlitibus vīsus est',
+            options: [
+              'Il comandante fu visto dai soldati',
+              'Il comandante vide i soldati',
+              'Il comandante seguì i soldati',
+            ],
+            answer: 'Il comandante fu visto dai soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Cum profectus esset, urbs capta est»?',
+            focus: 'Cum profectus esset',
+            options: [
+              'Dopo che era partito, la città fu presa',
+              'Dopo che fu spedito, la città fu presa',
+              'Partendo, prese la città',
+            ],
+            answer: 'Dopo che era partito, la città fu presa',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Nōn potuit gladiō ūtī»?',
+            focus: 'gladiō ūtī',
+            options: [
+              'Non poté usare la spada',
+              'Non fu ucciso con la spada',
+              'Non volle la spada',
+            ],
+            answer: 'Non poté usare la spada',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «Il comandante parla»',
+            source: 'Il comandante parla',
+            answer: ['Dux', 'loquitur'],
+            extra: ['loquī', 'ducis'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['hortātus est', 'esortò'],
+              ['vīsus est', 'fu visto'],
+              ['profectus est', 'partì'],
+              ['captus est', 'fu preso'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]
