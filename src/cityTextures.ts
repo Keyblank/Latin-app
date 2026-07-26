@@ -154,19 +154,19 @@ function marble(): HTMLCanvasElement {
 function grass(): HTMLCanvasElement {
   const S = 256
   const [cv, ctx] = makeCanvas(S)
-  ctx.fillStyle = '#9dbd63'
+  ctx.fillStyle = '#a6bd72'
   ctx.fillRect(0, 0, S, S)
   for (let i = 0; i < 240; i++) {
     const x = Math.random() * S
     const y = Math.random() * S
     const r = 4 + Math.random() * 16
-    ctx.fillStyle = Math.random() > 0.5 ? 'rgba(146,178,94,0.22)' : 'rgba(170,197,120,0.2)'
+    ctx.fillStyle = Math.random() > 0.5 ? 'rgba(152,177,102,0.2)' : 'rgba(176,198,130,0.18)'
     ctx.beginPath()
     ctx.arc(x, y, r, 0, Math.PI * 2)
     ctx.fill()
   }
   // ciuffi d'erba
-  ctx.strokeStyle = 'rgba(122,158,74,0.5)'
+  ctx.strokeStyle = 'rgba(132,161,84,0.42)'
   ctx.lineWidth = 1
   for (let i = 0; i < 500; i++) {
     const x = Math.random() * S

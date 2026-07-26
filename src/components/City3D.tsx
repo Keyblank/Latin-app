@@ -23,7 +23,7 @@ const PAL = {
   marble: 0xf7f3ea,
   stone: 0xded5c2,
   sand: 0xe8d5ad,
-  grass: 0x9cc46a,
+  grass: 0xa6bd72,
   grassDark: 0x8bb35c,
   water: 0x7cc0dd,
   wood: 0x9a6c40,
@@ -772,7 +772,20 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     if (!el) return
 
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color(0xdceff8)
+    // Cielo con una sfumatura morbida: una tinta piatta appiattisce la scena.
+    const skyCv = document.createElement('canvas')
+    skyCv.width = 4
+    skyCv.height = 128
+    const sctx = skyCv.getContext('2d')!
+    const sky = sctx.createLinearGradient(0, 0, 0, 128)
+    sky.addColorStop(0, '#a9d6ee')
+    sky.addColorStop(0.55, '#d5ecf8')
+    sky.addColorStop(1, '#eef7fb')
+    sctx.fillStyle = sky
+    sctx.fillRect(0, 0, 4, 128)
+    const skyTex = new THREE.CanvasTexture(skyCv)
+    skyTex.colorSpace = THREE.SRGBColorSpace
+    scene.background = skyTex
 
     const aspect = el.clientWidth / Math.max(1, el.clientHeight)
     const view = 5.4
@@ -785,8 +798,8 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     el.appendChild(renderer.domElement)
 
-    scene.add(new THREE.HemisphereLight(0xdff0fb, 0xb8ac8e, 0.72))
-    const sun = new THREE.DirectionalLight(0xfff3dd, 2.2)
+    scene.add(new THREE.HemisphereLight(0xe4f2fb, 0xbfb294, 0.85))
+    const sun = new THREE.DirectionalLight(0xfff4e0, 1.95)
     sun.position.set(8, 13, 6)
     sun.castShadow = true
     sun.shadow.mapSize.set(2048, 2048)
@@ -846,8 +859,8 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       const rz = -Math.sin(angle)
       const bx = Math.sin(angle)
       const bz = Math.cos(angle)
-      panX -= (rx * dx - bx * dy) * k
-      panZ -= (rz * dx - bz * dy) * k
+      panX -= (rx * dx + bx * dy) * k
+      panZ -= (rz * dx + bz * dy) * k
       // non allontanarsi troppo dall'isola
       const lim = size * 0.6
       panX = Math.max(-lim, Math.min(lim, panX))
@@ -1070,8 +1083,10 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       const grid = new THREE.GridHelper(size, size / TILE, 0x86a660, 0x93b26c)
       grid.position.y = 0.012
       const gm = grid.material as THREE.Material
-      gm.opacity = 0.45
+      gm.opacity = 0.5
       gm.transparent = true
+      grid.visible = st.current.mode !== 'view'
+      grid.name = 'grid'
       island.add(grid)
     }
     const extra = api.current as unknown as {
@@ -1348,6 +1363,15 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     ;(a as unknown as { rebuildLife?: () => void }).rebuildLife?.()
     a.render()
   }, [roads])
+
+  // ── La griglia si mostra solo mentre si opera sulla mappa ──
+  useEffect(() => {
+    const a = api.current
+    if (!a) return
+    const grid = a.scene.getObjectByName('grid')
+    if (grid) grid.visible = mode !== 'view'
+    a.render()
+  }, [mode])
 
   // ── Anteprima dell'edificio da posizionare ──
   useEffect(() => {

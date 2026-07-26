@@ -477,7 +477,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1; display: grid; place-items: center;
 }
 .zoom-btns button:active { transform: scale(0.94); }
-.city3d { width: 100%; height: 340px; touch-action: pan-y; cursor: grab; }
+.city3d { width: 100%; height: 340px; touch-action: none; cursor: grab; }
 .city3d:active { cursor: grabbing; }
 .city3d canvas { display: block; width: 100% !important; height: 100% !important; }
 .city-empty {
