@@ -4710,4 +4710,428 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u17',
+    title: 'Unità 17 — Le subordinate',
+    subtitle: 'A che serve, tutto quel congiuntivo',
+    color: '#9c3f1f',
+    lessons: [
+      {
+        id: 'u17l1',
+        title: 'Il «cum» narrativo',
+        icon: '📜',
+        exercises: [
+          {
+            type: 'info',
+            icon: '📜',
+            title: 'La parolina più frequente delle versioni',
+            body:
+              'Conosci già «cum» come preposizione: «cum amīcō» = con l’amico, ' +
+              'seguito da un ABLATIVO.\n\n' +
+              'Ma «cum» ha un secondo mestiere, e nelle versioni di storia è ' +
+              'quello che conta: introduce una frase subordinata con il verbo al ' +
+              'CONGIUNTIVO. Si chiama «cum narrativo».\n\n' +
+              'Come li distingui? Guarda cosa segue.\n' +
+              '• «cum» + un nome in ablativo → è «con»\n' +
+              '• «cum» + un verbo al congiuntivo → è il cum narrativo',
+          },
+          {
+            type: 'info',
+            icon: '🔀',
+            title: 'Come si traduce',
+            body:
+              'Il cum narrativo racconta la circostanza in cui succede la frase ' +
+              'principale: quando, dopo che, poiché, benché. Quale delle quattro? ' +
+              'Lo dice il senso, non la grammatica.\n\n' +
+              'Il tempo del congiuntivo ti dice invece il rapporto:\n' +
+              '• IMPERFETTO (esset, vidēret) → azione insieme alla principale\n' +
+              '• PIUCCHEPERFETTO (fuisset, vīdisset) → azione già finita prima\n\n' +
+              '«Cum Caesar vēnisset, hostēs fūgērunt» = Quando Cesare fu ' +
+              'arrivato, i nemici fuggirono.\n' +
+              '«Cum in Galliā esset, epistulās scrībēbat» = Mentre era in ' +
+              'Gallia, scriveva lettere.',
+          },
+          {
+            type: 'table',
+            title: 'Le due facce di «cum»',
+            columns: ['Frase', 'Che cos’è', 'Traduzione'],
+            rows: [
+              ['cum amīcō', 'preposizione + ablativo', 'con l’amico'],
+              ['cum mīlitibus', 'preposizione + ablativo', 'con i soldati'],
+              ['cum vēnisset', 'cum + congiuntivo', 'dopo che era venuto'],
+              ['cum vidēret', 'cum + congiuntivo', 'mentre vedeva'],
+            ],
+            speakCols: [0],
+            note: 'La regola pratica: se dopo «cum» c’è un verbo, non è «con». E in italiano quel congiuntivo diventa quasi sempre un indicativo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «cum hostibus pugnat», che cos’è «cum»?',
+            focus: 'cum hostibus pugnat',
+            options: [
+              'la preposizione: combatte con i nemici',
+              'il cum narrativo',
+              'una congiunzione che significa «quando»',
+            ],
+            answer: 'la preposizione: combatte con i nemici',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come traduci «Cum urbem vīdisset, tacuit»? («tacuit» = tacque)',
+            focus: 'Cum urbem vīdisset',
+            options: [
+              'Dopo che ebbe visto la città, tacque',
+              'Con la città vista, tacque',
+              'Vede la città e tace',
+            ],
+            answer: 'Dopo che ebbe visto la città, tacque',
+          },
+          {
+            type: 'choice',
+            prompt: 'In un cum narrativo, il congiuntivo IMPERFETTO indica un’azione…',
+            options: [
+              'contemporanea alla principale',
+              'avvenuta prima della principale',
+              'futura',
+            ],
+            answer: 'contemporanea alla principale',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['cum rēge', 'con il re'],
+              ['cum rēx vēnisset', 'dopo che il re era venuto'],
+              ['cum rēx esset', 'mentre era re'],
+              ['cum mīlitibus', 'con i soldati'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u17l2',
+        title: 'Per fare che cosa: le finali',
+        icon: '🎯',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🎯',
+            title: 'Lo scopo',
+            body:
+              'Una proposizione FINALE dice lo scopo dell’azione: perché lo fa, ' +
+              'a che fine. In italiano: «vengo PER vedere», «te lo dico ' +
+              'AFFINCHÉ tu capisca».\n\n' +
+              'In latino si fa con «ut» + CONGIUNTIVO. Se lo scopo è negativo ' +
+              '— per NON fare qualcosa — al posto di «ut» c’è «nē».\n\n' +
+              '«Vēnit ut urbem vidēret» = Venne per vedere la città.\n' +
+              '«Fūgērunt nē caperentur» = Fuggirono per non essere catturati.',
+          },
+          {
+            type: 'info',
+            icon: '🇮🇹',
+            title: 'In italiano diventa un infinito',
+            body:
+              'Ecco di nuovo l’avvertenza dell’unità scorsa, applicata: quel ' +
+              'congiuntivo in italiano non resta congiuntivo.\n\n' +
+              'Se il soggetto della finale è lo stesso della principale, in ' +
+              'italiano usi «per» + INFINITO — che è la traduzione più naturale ' +
+              'e quella che ti conviene:\n\n' +
+              '«Vēnit ut vidēret» → alla lettera «venne affinché vedesse», ma si ' +
+              'dice «venne per vedere».\n\n' +
+              'Se invece il soggetto cambia, allora sì che serve «perché» o ' +
+              '«affinché»: «Vēnit ut eum vidērēmus» = venne perché lo vedessimo.',
+          },
+          {
+            type: 'table',
+            title: 'Finali: ut e nē',
+            columns: ['Latino', 'Traduzione'],
+            rows: [
+              ['ut vidēret', 'per vedere'],
+              ['ut audīrent', 'per ascoltare'],
+              ['nē caperētur', 'per non essere catturato'],
+              ['nē vidērent', 'perché non vedessero'],
+            ],
+            speakCols: [0],
+            note: '«nē» è semplicemente «ut» + non: quando lo vedi, mettici un «non» nella traduzione.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come traduci «Mīlitēs vēnērunt ut urbem caperent»?',
+            focus: 'ut urbem caperent',
+            options: [
+              'I soldati vennero per prendere la città',
+              'I soldati vennero con la città presa',
+              'I soldati che presero la città vennero',
+            ],
+            answer: 'I soldati vennero per prendere la città',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che differenza c’è fra «ut» e «nē» in una finale?',
+            options: [
+              '«nē» introduce uno scopo negativo: «per non…»',
+              '«nē» si usa al passato, «ut» al presente',
+              'nessuna: sono sinonimi',
+            ],
+            answer: '«nē» introduce uno scopo negativo: «per non…»',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ut pugnāret', 'per combattere'],
+              ['nē pugnāret', 'per non combattere'],
+              ['ut scrīberent', 'per scrivere'],
+              ['nē fugerent', 'perché non fuggissero'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u17l3',
+        title: 'Al punto che: le consecutive',
+        icon: '➡️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '➡️',
+            title: 'La conseguenza',
+            body:
+              'Una CONSECUTIVA dice l’effetto, la conseguenza: «era così stanco ' +
+              'CHE si addormentò».\n\n' +
+              'Il problema è che in latino si fa anche questa con «ut» + ' +
+              'CONGIUNTIVO — la stessa identica coppia della finale. Come si ' +
+              'distinguono?\n\n' +
+              'Dalla SPIA nella frase principale. La consecutiva è quasi sempre ' +
+              'annunciata da una di queste parole:\n' +
+              '• «tam», «ita», «sīc» = così, talmente\n' +
+              '• «tantus, -a, -um» = così grande\n' +
+              '• «adeō» = a tal punto\n\n' +
+              'Se prima di «ut» trovi una di queste, non è scopo: è ' +
+              'conseguenza.',
+          },
+          {
+            type: 'table',
+            title: 'Finale o consecutiva?',
+            columns: ['Latino', 'Che cos’è', 'Traduzione'],
+            rows: [
+              ['Vēnit ut vidēret', 'finale', 'venne per vedere'],
+              ['Tam fessus erat ut dormīret', 'consecutiva', 'era così stanco che dormì'],
+              ['Ita pugnāvit ut vinceret', 'consecutiva', 'combatté così bene che vinse'],
+              ['Fūgit nē caperētur', 'finale', 'fuggì per non essere preso'],
+            ],
+            speakCols: [0],
+            note: '«fessus» = stanco. Nella consecutiva la negazione è «ut… nōn» (non «nē»): un altro modo per distinguerle.',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Tanta erat virtūs ut hostēs fugerent», che tipo di frase è «ut hostēs fugerent»?',
+            focus: 'Tanta erat virtūs ut hostēs fugerent',
+            options: [
+              'consecutiva: c’è «tanta» che l’annuncia',
+              'finale: dice lo scopo',
+              'relativa',
+            ],
+            answer: 'consecutiva: c’è «tanta» che l’annuncia',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come traduci «Ita scrīpsit ut omnēs legerent»? («omnēs» = tutti)',
+            focus: 'Ita scrīpsit ut omnēs legerent',
+            options: [
+              'Scrisse così bene che tutti leggevano',
+              'Scrisse per far leggere tutti',
+              'Scrisse quello che tutti leggevano',
+            ],
+            answer: 'Scrisse così bene che tutti leggevano',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale parola ti fa sospettare una consecutiva?',
+            options: ['tam', 'cum', 'quī'],
+            answer: 'tam',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla parola-spia',
+            pairs: [
+              ['tam', 'così, talmente'],
+              ['ita', 'in questo modo'],
+              ['tantus', 'così grande'],
+              ['adeō', 'a tal punto'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u17l4',
+        title: 'Chiedere e domandare',
+        icon: '❓',
+        exercises: [
+          {
+            type: 'info',
+            icon: '❓',
+            title: 'Le domande riferite',
+            body:
+              'Un ultimo uso, e poi hai coperto quasi tutto quello che serve.\n\n' +
+              'Quando una domanda viene RIFERITA invece che fatta, il latino ' +
+              'mette il verbo al CONGIUNTIVO. Si chiama interrogativa indiretta.\n\n' +
+              'Domanda diretta: «Quis venit?» = Chi viene?\n' +
+              'Domanda riferita: «Rogō quis veniat» = Chiedo chi venga.\n\n' +
+              'Le parole che la introducono sono quelle delle domande: «quis» ' +
+              '(chi), «quid» (che cosa), «cūr» (perché), «ubi» (dove), «quandō» ' +
+              '(quando), «num» e «-ne» (se).',
+          },
+          {
+            type: 'info',
+            icon: '🙏',
+            title: 'Chiedere che qualcuno faccia',
+            body:
+              'Attenzione a non confonderla con un’altra cosa che le somiglia: ' +
+              'i verbi di CHIEDERE e ORDINARE reggono «ut» + congiuntivo, e in ' +
+              'italiano diventa «di» + infinito.\n\n' +
+              '«Rogō ut veniās» = Ti chiedo di venire.\n' +
+              '«Imperāvit ut mīlitēs pugnārent» = Ordinò che i soldati ' +
+              'combattessero.\n\n' +
+              'Verbi da riconoscere: «rogāre» (chiedere), «petere» (chiedere), ' +
+              '«imperāre» (comandare), «persuādēre» (convincere).',
+          },
+          {
+            type: 'table',
+            title: 'Tre «ut» diversi',
+            columns: ['Latino', 'Tipo', 'Traduzione'],
+            rows: [
+              ['Vēnit ut vidēret', 'finale', 'venne per vedere'],
+              ['Tam fortis ut vinceret', 'consecutiva', 'così forte che vinse'],
+              ['Rogāvit ut venīret', 'domanda/ordine', 'chiese di venire'],
+            ],
+            speakCols: [0],
+            note: 'Sempre «ut» + congiuntivo, tre sensi diversi. A deciderlo è quello che c’è PRIMA: un verbo di movimento (finale), una parola-spia come tam/ita (consecutiva), un verbo di chiedere o ordinare.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come traduci «Quaerō ubi sit»?',
+            focus: 'Quaerō ubi sit',
+            options: [
+              'Chiedo dove sia',
+              'Chiedo se c’è',
+              'Cerco dov’è stato',
+            ],
+            answer: 'Chiedo dove sia',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come traduci «Imperāvit ut fugerent»?',
+            focus: 'Imperāvit ut fugerent',
+            options: [
+              'Ordinò di fuggire',
+              'Ordinò per fuggire',
+              'Fuggì così che comandò',
+            ],
+            answer: 'Ordinò di fuggire',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['quis', 'chi'],
+              ['quid', 'che cosa'],
+              ['cūr', 'perché'],
+              ['quandō', 'quando'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u17l5',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Il diagramma di flusso',
+            body:
+              'Trovi un congiuntivo. Non chiederti come si traduce: chiediti ' +
+              'chi lo ha chiamato. Guarda la parola che apre la subordinata.\n\n' +
+              '• «cum» → circostanza: quando, dopo che, poiché\n' +
+              '• «ut» o «nē», e prima c’è tam/ita/tantus → conseguenza: ' +
+              '«così… che»\n' +
+              '• «ut» o «nē», e prima c’è un verbo di chiedere o ordinare → ' +
+              '«di» + infinito\n' +
+              '• «ut» o «nē», e non c’è nessuna delle due → scopo: «per…»\n' +
+              '• «quis, quid, cūr, ubi» dopo un verbo di domandare → domanda ' +
+              'riferita\n\n' +
+              'Poi traduci in italiano naturale, che quasi sempre vuol dire ' +
+              'senza congiuntivo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Cum Rōmam vēnisset, senātum convocāvit»? («convocāre» = convocare)',
+            focus: 'Cum Rōmam vēnisset',
+            options: [
+              'Dopo essere arrivato a Roma, convocò il senato',
+              'Con Roma venuta, convocò il senato',
+              'Venne a Roma con il senato convocato',
+            ],
+            answer: 'Dopo essere arrivato a Roma, convocò il senato',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Mīlitēs mīsit ut oppidum mūnīrent»?',
+            focus: 'ut oppidum mūnīrent',
+            options: [
+              'Mandò i soldati a fortificare la città',
+              'Mandò i soldati con la città fortificata',
+              'I soldati che fortificarono la città furono mandati',
+            ],
+            answer: 'Mandò i soldati a fortificare la città',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Tanta erat fāma ut omnēs venīrent»?',
+            focus: 'Tanta erat fāma ut omnēs venīrent',
+            options: [
+              'La voce era tale che tutti venivano',
+              'La fama era grande per far venire tutti',
+              'Tutti venivano con grande fama',
+            ],
+            answer: 'La voce era tale che tutti venivano',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Rogāvit cūr hostēs fūgissent», che frase è «cūr hostēs fūgissent»?',
+            focus: 'Rogāvit cūr hostēs fūgissent',
+            options: [
+              'una domanda riferita: chiese perché i nemici fossero fuggiti',
+              'una finale: chiese per far fuggire i nemici',
+              'una consecutiva',
+            ],
+            answer: 'una domanda riferita: chiese perché i nemici fossero fuggiti',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Cum mīlitibus vēnit», «cum» è…',
+            focus: 'Cum mīlitibus vēnit',
+            options: [
+              'la preposizione: venne con i soldati',
+              'il cum narrativo',
+              'una congiunzione finale',
+            ],
+            answer: 'la preposizione: venne con i soldati',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina al tipo di subordinata',
+            pairs: [
+              ['cum vēnisset', 'circostanza (dopo che era venuto)'],
+              ['ut vidēret', 'scopo (per vedere)'],
+              ['ita… ut vinceret', 'conseguenza (così che vinse)'],
+              ['rogāvit ut venīret', 'richiesta (chiese di venire)'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]

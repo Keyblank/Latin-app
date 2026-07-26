@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (17 sezioni, 65 lezioni, ~200 vocaboli + i pronomi)
+### Contenuti (18 sezioni, 70 lezioni, ~200 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -48,6 +48,7 @@ Principi guida:
 - ✅ **U14 — I pronomi** (personali, is/hic/ille, riflessivi; suus vs eius)
 - ✅ **U15 — Il passivo** (presente, imperfetto, perfetto; agente e mezzo)
 - ✅ **U16 — Il congiuntivo** (le forme: i quattro tempi, e come riconoscerli)
+- ✅ **U17 — Le subordinate** (cum narrativo, finali, consecutive, interrogative indirette)
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
@@ -95,8 +96,8 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 ### Fase C — gli "sblocca-lettura" *(priorità per le versioni)*
 - ✅ **Participi** (presente e perfetto) → **Ablativo assoluto**
 - ✅ **Infinito** (presente e perfetto) → **Accusativo + infinito** (discorso indiretto) ⭐
-- ⬜ **Congiuntivo** + subordinate: *cum* narrativo, finali (*ut/ne*),
-  consecutive, temporali/causali
+- ✅ **Congiuntivo** (le forme) + subordinate: *cum* narrativo, finali
+  (*ut/nē*), consecutive, interrogative indirette, verbi di chiedere e ordinare
 - ✅ **Il passivo** (presente, imperfetto e perfetto) + complemento d'agente
 - ⬜ Tempi restanti dell'indicativo: **futuro**, **piuccheperfetto**
 
@@ -132,7 +133,8 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
 - I contenuti coprono le **fondamenta** più i primi costrutti (participi,
   ablativo assoluto, acc.+inf.): per tradurre versioni vere manca ancora il
-  resto della Fase C (congiuntivo e subordinate, futuro) e la Fase D. È un
+  futuro e piuccheperfetto indicativi e la Fase D (4ª/5ª declinazione,
+  aggettivi della 2ª classe, verbi irregolari e deponenti). È un
   percorso, non un traguardo già raggiunto.
 
 ---

@@ -163,6 +163,12 @@ esempi già presenti.
   *infinito perfetto + desinenza* (**amāvisse** + m → *amāvissem*). Più
   l'avvertenza che conta di più: il congiuntivo latino in italiano quasi mai
   si traduce con un congiuntivo.
+- **Unità 17 — Le subordinate** — a che serve tutto quel congiuntivo: il
+  ***cum* narrativo** (e come distinguerlo dal *cum* «con»), le **finali**
+  con *ut/nē*, le **consecutive** e le loro parole-spia (*tam, ita, tantus*),
+  le **interrogative indirette** e i verbi di chiedere e ordinare. Chiude con
+  un diagramma di flusso: trovato un congiuntivo, chiediti *chi lo ha
+  chiamato*.
 
 ### Il lessico
 
