@@ -4,6 +4,8 @@ import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeom
 import type { Building } from '../data/city'
 import { BUILDINGS, GRID_MAX, LAND_SIZES, landBounds } from '../data/city'
 import type { Placed, Road } from '../useProgress'
+import { texture, tiled } from '../cityTextures'
+import type { TexKind } from '../cityTextures'
 
 // Vista 3D della città in stile diorama, con POSIZIONAMENTO LIBERO:
 // scegli un edificio nel negozio e lo appoggi dove vuoi sulla griglia
@@ -16,8 +18,8 @@ const TILE = 1
 const PAL = {
   wall: 0xf3e9d6,
   wallWarm: 0xecdcc0,
-  roof: 0xc4664a,
-  roofAlt: 0xb4573f,
+  roof: 0xf6ddd0,
+  roofAlt: 0xe7c6b6,
   marble: 0xf7f3ea,
   stone: 0xded5c2,
   sand: 0xe8d5ad,
@@ -55,8 +57,21 @@ function mat(color: number, rough = 0.95) {
   return new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: 0 })
 }
 
-function block(w: number, h: number, d: number, color: number) {
-  const m = new THREE.Mesh(new RoundedBoxGeometry(w, h, d, 3, Math.min(0.07, h / 3)), mat(color))
+/** Materiale con texture: il colore fa da tinta sopra la trama. */
+function matTex(kind: TexKind, color = 0xffffff, repeat = 1) {
+  return new THREE.MeshStandardMaterial({
+    color,
+    map: repeat === 1 ? texture(kind) : tiled(kind, repeat),
+    roughness: 0.95,
+    metalness: 0,
+  })
+}
+
+function block(w: number, h: number, d: number, color: number, kind: TexKind = 'plaster') {
+  const m = new THREE.Mesh(
+    new RoundedBoxGeometry(w, h, d, 3, Math.min(0.07, h / 3)),
+    matTex(kind, color),
+  )
   m.castShadow = true
   m.receiveShadow = true
   return m
@@ -71,21 +86,24 @@ function gable(w: number, h: number, d: number, color: number) {
   shape.closePath()
   const geo = new THREE.ExtrudeGeometry(shape, { depth: d, bevelEnabled: false })
   geo.translate(0, 0, -d / 2)
-  const m = new THREE.Mesh(geo, mat(color))
+  const m = new THREE.Mesh(geo, matTex('roof', color, Math.max(1, Math.round(w * 1.4))))
   m.castShadow = true
   m.receiveShadow = true
   return m
 }
 
-function cylinder(r: number, h: number, color: number, seg = 24) {
-  const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg), mat(color))
+function cylinder(r: number, h: number, color: number, seg = 24, kind: TexKind = 'marble') {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg), matTex(kind, color))
   m.castShadow = true
   m.receiveShadow = true
   return m
 }
 
 function dome(r: number, color: number) {
-  const m = new THREE.Mesh(new THREE.SphereGeometry(r, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), mat(color))
+  const m = new THREE.Mesh(
+    new THREE.SphereGeometry(r, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2),
+    matTex('roof', color, 3),
+  )
   m.castShadow = true
   m.receiveShadow = true
   return m
@@ -125,16 +143,16 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
 
   switch (b.look) {
     case 'temple': {
-      const base = block(W * 0.92, 0.16, D * 0.92, PAL.stone)
+      const base = block(W * 0.92, 0.16, D * 0.92, PAL.stone, 'ashlar')
       base.position.y = 0.08
       g.add(base)
-      const base2 = block(W * 0.8, 0.12, D * 0.8, PAL.marble)
+      const base2 = block(W * 0.8, 0.12, D * 0.8, PAL.marble, 'marble')
       base2.position.y = 0.22
       g.add(base2)
       const col = colonnade(W * 0.66, D * 0.66, 0.6, 4)
       col.position.y = 0.28
       g.add(col)
-      const entab = block(W * 0.78, 0.1, D * 0.78, PAL.marble)
+      const entab = block(W * 0.78, 0.1, D * 0.78, PAL.marble, 'marble')
       entab.position.y = 0.93
       g.add(entab)
       const roof = gable(W * 0.84, 0.34, D * 0.84, PAL.roof)
@@ -143,7 +161,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'basilica': {
-      const base = block(W * 0.9, 0.12, D * 0.9, PAL.stone)
+      const base = block(W * 0.9, 0.12, D * 0.9, PAL.stone, 'ashlar')
       base.position.y = 0.06
       g.add(base)
       const body = block(W * 0.6, 0.55, D * 0.6, PAL.wall)
@@ -172,7 +190,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
     case 'domus': {
       // piccola varietà di tinte, così una fila di case non è tutta uguale
       const wallTints = [0xf3e9d6, 0xf0e3cd, 0xeddfc6, 0xf5ecdd]
-      const roofTints = [0xc4664a, 0xb95c42, 0xcc7350, 0xae563c]
+      const roofTints = [0xf6ddd0, 0xecc9b8, 0xffe8dc, 0xe0bdac]
       const body = block(W * 0.74, 0.4, D * 0.74, wallTints[seed % wallTints.length])
       body.position.y = 0.2
       g.add(body)
@@ -201,7 +219,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const basin = block(W * 0.98, 0.06, D * 0.98, PAL.water)
       basin.position.y = 0.02
       g.add(basin)
-      const quay = block(W * 0.98, 0.14, D * 0.32, PAL.stone)
+      const quay = block(W * 0.98, 0.14, D * 0.32, PAL.stone, 'ashlar')
       quay.position.set(0, 0.07, -D * 0.31)
       g.add(quay)
       const shed = block(W * 0.4, 0.3, D * 0.24, PAL.wallWarm)
@@ -213,13 +231,13 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const mast = cylinder(0.02, 0.46, PAL.wood, 8)
       mast.position.set(0.12, 0.36, D * 0.18)
       g.add(mast)
-      const sail = block(0.02, 0.26, 0.2, PAL.marble)
+      const sail = block(0.02, 0.26, 0.2, PAL.marble, 'marble')
       sail.position.set(0.14, 0.4, D * 0.18)
       g.add(sail)
       break
     }
     case 'arena': {
-      const outer = cylinder(Math.min(W, D) * 0.47, 0.5, PAL.stone, 30)
+      const outer = cylinder(Math.min(W, D) * 0.47, 0.5, PAL.stone, 30, 'ashlar')
       outer.position.y = 0.25
       g.add(outer)
       // gradoni
@@ -232,7 +250,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'circus': {
-      const outer = cylinder(Math.min(W, D) * 0.46, 0.18, PAL.stone, 30)
+      const outer = cylinder(Math.min(W, D) * 0.46, 0.18, PAL.stone, 30, 'ashlar')
       outer.scale.x = 1.2
       outer.position.y = 0.09
       g.add(outer)
@@ -240,7 +258,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       floor.scale.x = 1.2
       floor.position.y = 0.12
       g.add(floor)
-      const spina = block(0.46, 0.08, 0.09, PAL.marble)
+      const spina = block(0.46, 0.08, 0.09, PAL.marble, 'marble')
       spina.position.y = 0.25
       g.add(spina)
       break
@@ -249,11 +267,11 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const n = Math.max(2, Math.round(W / 0.55))
       for (let i = 0; i < n; i++) {
         const x = -W / 2 + (W * (i + 0.5)) / n
-        const pier = block(0.15, 0.58, 0.2, PAL.stone)
+        const pier = block(0.15, 0.58, 0.2, PAL.stone, 'ashlar')
         pier.position.set(x, 0.29, 0)
         g.add(pier)
       }
-      const deck = block(W * 0.98, 0.12, 0.28, PAL.stone)
+      const deck = block(W * 0.98, 0.12, 0.28, PAL.stone, 'ashlar')
       deck.position.y = 0.64
       g.add(deck)
       const chan = block(W * 0.94, 0.04, 0.12, PAL.water)
@@ -282,7 +300,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'fountain': {
-      const basin = cylinder(0.33, 0.14, PAL.stone, 24)
+      const basin = cylinder(0.33, 0.14, PAL.stone, 24, 'ashlar')
       basin.position.y = 0.07
       g.add(basin)
       const water = cylinder(0.26, 0.15, PAL.water, 24)
@@ -298,7 +316,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'statue': {
-      const ped = block(0.32, 0.28, 0.32, PAL.stone)
+      const ped = block(0.32, 0.28, 0.32, PAL.stone, 'ashlar')
       ped.position.y = 0.14
       g.add(ped)
       const body = cylinder(0.075, 0.3, PAL.marble, 12)
@@ -308,7 +326,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       head.castShadow = true
       head.position.y = 0.63
       g.add(head)
-      const arm = block(0.2, 0.045, 0.045, PAL.marble)
+      const arm = block(0.2, 0.045, 0.045, PAL.marble, 'marble')
       arm.position.set(0.11, 0.51, 0)
       arm.rotation.z = 0.4
       g.add(arm)
@@ -324,7 +342,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
         band.position.y = 0.24 + f * 0.24
         g.add(band)
       }
-      const par = block(W * 0.8, 0.07, D * 0.8, PAL.stone)
+      const par = block(W * 0.8, 0.07, D * 0.8, PAL.stone, 'ashlar')
       par.position.y = 0.8
       g.add(par)
       break
@@ -361,18 +379,18 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const seg = (dx: number, dz: number) => {
         const w = dx ? 0.5 + th / 2 : th
         const d = dz ? 0.5 + th / 2 : th
-        const m = block(w, hgt, d, PAL.stone)
+        const m = block(w, hgt, d, PAL.stone, 'ashlar')
         m.position.set((dx * (0.5 + th / 2)) / 2, hgt / 2, (dz * (0.5 + th / 2)) / 2)
         g.add(m)
-        const cap = block(w * 0.98, 0.06, d * 0.98, 0xcfc5b0)
+        const cap = block(w * 0.98, 0.06, d * 0.98, 0xcfc5b0, 'ashlar')
         cap.position.set(m.position.x, hgt + 0.03, m.position.z)
         g.add(cap)
       }
       // blocco centrale
-      const core = block(th, hgt, th, PAL.stone)
+      const core = block(th, hgt, th, PAL.stone, 'ashlar')
       core.position.y = hgt / 2
       g.add(core)
-      const coreCap = block(th * 1.05, 0.06, th * 1.05, 0xcfc5b0)
+      const coreCap = block(th * 1.05, 0.06, th * 1.05, 0xcfc5b0, 'ashlar')
       coreCap.position.y = hgt + 0.03
       g.add(coreCap)
       const [up_, dn, lf, rt] = links
@@ -382,23 +400,23 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       if (rt) seg(1, 0)
       // se è isolato o fa angolo, mettici una merlatura
       if (!up_ && !dn && !lf && !rt) {
-        const merlo = block(0.1, 0.1, 0.1, 0xcfc5b0)
+        const merlo = block(0.1, 0.1, 0.1, 0xcfc5b0, 'ashlar')
         merlo.position.y = hgt + 0.1
         g.add(merlo)
       }
       break
     }
     case 'tower': {
-      const base = cylinder(0.3, 0.82, PAL.stone, 14)
+      const base = cylinder(0.3, 0.82, PAL.stone, 14, 'ashlar')
       base.position.y = 0.41
       g.add(base)
-      const ring = cylinder(0.34, 0.1, 0xcfc5b0, 14)
+      const ring = cylinder(0.34, 0.1, 0xcfc5b0, 14, 'ashlar')
       ring.position.y = 0.85
       g.add(ring)
       // merli
       for (let i = 0; i < 8; i++) {
         const a2 = (i / 8) * Math.PI * 2
-        const m = block(0.09, 0.12, 0.09, 0xd6ccb6)
+        const m = block(0.09, 0.12, 0.09, 0xd6ccb6, 'ashlar')
         m.position.set(Math.cos(a2) * 0.27, 0.96, Math.sin(a2) * 0.27)
         g.add(m)
       }
@@ -407,14 +425,14 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
     case 'gate': {
       // due torrette con arco in mezzo
       for (const x of [-0.32, 0.32]) {
-        const t = block(0.3, 0.7, 0.42, PAL.stone)
+        const t = block(0.3, 0.7, 0.42, PAL.stone, 'ashlar')
         t.position.set(x, 0.35, 0)
         g.add(t)
-        const cap = block(0.34, 0.07, 0.46, 0xcfc5b0)
+        const cap = block(0.34, 0.07, 0.46, 0xcfc5b0, 'ashlar')
         cap.position.set(x, 0.73, 0)
         g.add(cap)
       }
-      const arch = block(0.42, 0.22, 0.4, PAL.stone)
+      const arch = block(0.42, 0.22, 0.4, PAL.stone, 'ashlar')
       arch.position.y = 0.6
       g.add(arch)
       const door = block(0.34, 0.4, 0.06, PAL.wood)
@@ -426,12 +444,12 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const body = block(W * 0.86, 0.42, D * 0.8, PAL.wallWarm)
       body.position.y = 0.21
       g.add(body)
-      const roof = gable(W * 0.92, 0.24, D * 0.88, 0xb9885a)
+      const roof = gable(W * 0.92, 0.24, D * 0.88, 0xe8cfae)
       roof.position.y = 0.42
       g.add(roof)
       // pilastrini di aerazione tipici dell'horreum
       for (let i = 0; i < 4; i++) {
-        const p2 = block(0.07, 0.1, 0.07, PAL.stone)
+        const p2 = block(0.07, 0.1, 0.07, PAL.stone, 'ashlar')
         p2.position.set(-W * 0.3 + (i * W * 0.2), 0.05, D * 0.3)
         g.add(p2)
       }
@@ -445,7 +463,7 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const col = colonnade(W * 0.74, D * 0.74, 0.4, 3)
       col.position.y = 0.06
       g.add(col)
-      const roofRing = block(W * 0.94, 0.08, D * 0.94, PAL.roofAlt)
+      const roofRing = block(W * 0.94, 0.08, D * 0.94, PAL.roofAlt, 'roof')
       roofRing.position.y = 0.5
       g.add(roofRing)
       const hole = block(W * 0.4, 0.12, D * 0.4, PAL.grassDark)
@@ -472,13 +490,13 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'column': {
-      const base = block(0.3, 0.12, 0.3, PAL.stone)
+      const base = block(0.3, 0.12, 0.3, PAL.stone, 'ashlar')
       base.position.y = 0.06
       g.add(base)
       const shaft = cylinder(0.075, 0.78, PAL.marble, 14)
       shaft.position.y = 0.51
       g.add(shaft)
-      const cap = block(0.22, 0.08, 0.22, PAL.marble)
+      const cap = block(0.22, 0.08, 0.22, PAL.marble, 'marble')
       cap.position.y = 0.94
       g.add(cap)
       const orb = new THREE.Mesh(new THREE.SphereGeometry(0.08, 14, 10), mat(PAL.gold))
@@ -580,6 +598,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     ways: THREE.Group
     ghost: THREE.Group
     render: () => void
+    zoomBy: (k: number) => void
   } | null>(null)
 
   // Valori sempre aggiornati per i gestori di eventi (creati una volta sola).
@@ -640,13 +659,14 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     ground.rotation.x = -Math.PI / 2
     scene.add(ground)
 
+    const clampZoom = (z: number) => Math.min(3.2, Math.max(0.7, z))
     let angle = Math.PI / 4
+    let userZoom = 1 // 1 = tutta l'isola in vista; più alto = più vicino
     let raf = 0
     const render = () => {
       const size = LAND_SIZES[Math.min(st.current.land, LAND_SIZES.length - 1)]
       const radius = 16
-      const zoom = size / LAND_SIZES[0]
-      camera.zoom = 1 / zoom
+      camera.zoom = (LAND_SIZES[0] / size) * userZoom
       camera.updateProjectionMatrix()
       camera.position.set(Math.sin(angle) * radius, 11, Math.cos(angle) * radius)
       camera.lookAt(0, 0.4, 0)
@@ -784,17 +804,30 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       setLooping(walkers.length > 0 || smokes.length > 0)
       if (!looping) schedule()
     }
-    api.current = { scene, camera, renderer, town, life, ways, ghost, render: schedule }
+    api.current = {
+      scene, camera, renderer, town, life, ways, ghost,
+      render: schedule,
+      zoomBy: (k: number) => {
+        userZoom = clampZoom(userZoom * k)
+        schedule()
+      },
+    }
 
     // ── Isola: ricostruita quando cresce il terreno ──
     const buildIsland = () => {
       island.clear()
       const size = LAND_SIZES[Math.min(st.current.land, LAND_SIZES.length - 1)] * TILE
-      const top = new THREE.Mesh(new RoundedBoxGeometry(size, 0.5, size, 4, 0.18), mat(PAL.grass))
+      const top = new THREE.Mesh(
+        new RoundedBoxGeometry(size, 0.5, size, 4, 0.18),
+        matTex('grass', 0xffffff, Math.round(size / 2)),
+      )
       top.position.y = -0.25
       top.receiveShadow = true
       island.add(top)
-      const soil = new THREE.Mesh(new RoundedBoxGeometry(size * 0.95, 0.9, size * 0.95, 4, 0.22), mat(PAL.soil))
+      const soil = new THREE.Mesh(
+        new RoundedBoxGeometry(size * 0.95, 0.9, size * 0.95, 4, 0.22),
+        matTex('dirt', 0xd8bf95, Math.round(size / 3)),
+      )
       soil.position.y = -0.9
       island.add(soil)
       const grid = new THREE.GridHelper(size, size / TILE, 0x86a660, 0x93b26c)
@@ -882,6 +915,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       }
     }
     const onMove = (e: PointerEvent) => {
+      if (touches.size >= 2) return // sta zoomando col pizzico
       const m = st.current.mode
       if (down) {
         if (m === 'build') updateGhost(e)
@@ -909,7 +943,46 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       }
       down = false
     }
+    // ── Zoom: rotellina sul computer, pizzico sul telefono ──
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      userZoom = clampZoom(userZoom * (1 - e.deltaY * 0.0015))
+      schedule()
+    }
+    const touches = new Map<number, { x: number; y: number }>()
+    let pinchStart = 0
+    let pinchZoom = 1
+    const dist = () => {
+      const [a2, b2] = [...touches.values()]
+      return Math.hypot(a2.x - b2.x, a2.y - b2.y)
+    }
+    const onPinchDown = (e: PointerEvent) => {
+      if (e.pointerType !== 'touch') return
+      touches.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (touches.size === 2) {
+        pinchStart = dist()
+        pinchZoom = userZoom
+      }
+    }
+    const onPinchMove = (e: PointerEvent) => {
+      if (e.pointerType !== 'touch' || !touches.has(e.pointerId)) return
+      touches.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (touches.size === 2 && pinchStart > 0) {
+        userZoom = clampZoom((pinchZoom * dist()) / pinchStart)
+        schedule()
+      }
+    }
+    const onPinchUp = (e: PointerEvent) => {
+      touches.delete(e.pointerId)
+      if (touches.size < 2) pinchStart = 0
+    }
+
     const canvas = renderer.domElement
+    canvas.addEventListener('wheel', onWheel, { passive: false })
+    canvas.addEventListener('pointerdown', onPinchDown)
+    canvas.addEventListener('pointermove', onPinchMove)
+    canvas.addEventListener('pointerup', onPinchUp)
+    canvas.addEventListener('pointercancel', onPinchUp)
     canvas.addEventListener('pointerdown', onDown)
     canvas.addEventListener('pointermove', onMove)
     canvas.addEventListener('pointerup', onUp)
@@ -930,6 +1003,11 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       setLooping(false)
       cancelAnimationFrame(rafLoop)
       window.removeEventListener('resize', onResize)
+      canvas.removeEventListener('wheel', onWheel)
+      canvas.removeEventListener('pointerdown', onPinchDown)
+      canvas.removeEventListener('pointermove', onPinchMove)
+      canvas.removeEventListener('pointerup', onPinchUp)
+      canvas.removeEventListener('pointercancel', onPinchUp)
       canvas.removeEventListener('pointerdown', onDown)
       canvas.removeEventListener('pointermove', onMove)
       canvas.removeEventListener('pointerup', onUp)
@@ -981,9 +1059,9 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     if (!a) return
     a.ways.clear()
     const at = new Map(roads.map((x) => [`${x.r},${x.c}`, x.t]))
-    const mats = ROAD_STYLE.map((s) => ({
-      outer: mat(s.outerColor),
-      inner: s.inner ? mat(s.innerColor) : null,
+    const mats = ROAD_STYLE.map((s, i) => ({
+      outer: matTex(i === 0 ? 'dirt' : 'paving', s.outerColor, 1),
+      inner: s.inner ? matTex('paving', s.innerColor, 1) : null,
     }))
 
     /** Aggiunge un pezzo di strada (centro o braccio verso un vicino). */
@@ -1066,5 +1144,13 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     a.render()
   }, [pending, rot, mode])
 
-  return <div className="city3d" ref={host} />
+  return (
+    <div className="city3d-wrap">
+      <div className="city3d" ref={host} />
+      <div className="zoom-btns">
+        <button onClick={() => api.current?.zoomBy(1.25)} aria-label="Ingrandisci">+</button>
+        <button onClick={() => api.current?.zoomBy(0.8)} aria-label="Riduci">−</button>
+      </div>
+    </div>
+  )
 }
