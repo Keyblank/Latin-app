@@ -3,6 +3,7 @@ import { curriculum } from './data/curriculum'
 import { useProgress } from './useProgress'
 import { Home } from './components/Home'
 import { LessonPlayer } from './components/LessonPlayer'
+import { City } from './components/City'
 import type { Lesson, Exercise } from './types'
 
 const REVIEW_SIZE = 8
@@ -17,9 +18,10 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function App() {
-  const { progress, finishLesson, recordMistakes, reset, toggleFreeMode } = useProgress()
+  const { progress, finishLesson, recordMistakes, build, reset, toggleFreeMode } = useProgress()
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
   const [isReview, setIsReview] = useState(false)
+  const [showCity, setShowCity] = useState(false)
 
   function startLesson(lesson: Lesson) {
     setIsReview(false)
@@ -56,12 +58,17 @@ export default function App() {
     )
   }
 
+  if (showCity) {
+    return <City progress={progress} onBuild={build} onBack={() => setShowCity(false)} />
+  }
+
   return (
     <Home
       units={curriculum}
       progress={progress}
       onStartLesson={startLesson}
       onStartReview={startReview}
+      onOpenCity={() => setShowCity(true)}
       onReset={reset}
       onToggleFreeMode={toggleFreeMode}
     />

@@ -448,3 +448,57 @@ button { font-family: inherit; cursor: pointer; }
 .review-icon { font-size: 30px; flex-shrink: 0; }
 .review-text { display: flex; flex-direction: column; gap: 2px; }
 .review-count { font-weight: 800; color: var(--primary); font-size: 15px; }
+
+/* ───────────── Urbs: pulsante e città ───────────── */
+.urbs-btn {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: left;
+  background: linear-gradient(180deg, #fff, #fbf6ea);
+  border: 2px solid var(--gold); border-bottom-width: 5px;
+  border-radius: 16px; padding: 14px 18px; margin-bottom: 20px;
+}
+.urbs-btn:active { transform: translateY(2px); }
+.urbs-icon { font-size: 30px; flex-shrink: 0; }
+.urbs-text { display: flex; flex-direction: column; gap: 2px; }
+.urbs-count { font-weight: 800; color: var(--gold-dark); font-size: 15px; }
+
+.city { padding: 18px 16px 60px; }
+.cityscape {
+  border-radius: 18px; overflow: hidden; border: 2px solid var(--gold);
+  background: linear-gradient(180deg, #bfe3f5 0%, #e8f4fb 55%, #d8c9a3 55%, #cdbb90 100%);
+  min-height: 190px; display: flex; align-items: flex-end; justify-content: center;
+  padding: 16px 12px; margin-bottom: 16px;
+}
+.city-empty {
+  align-self: center; text-align: center; color: #6b5e3f; font-size: 15px;
+  max-width: 260px; line-height: 1.5;
+}
+.skyline { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 10px 14px; }
+.sky-building { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.sky-icon { font-size: 40px; line-height: 1; filter: drop-shadow(0 2px 1px rgba(0,0,0,0.15)); }
+.sky-name { font-family: var(--serif); font-size: 11px; font-weight: 700; color: #5b4a28; }
+
+.city-hint { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
+
+.shop { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.shop-card {
+  border: 2px solid var(--gray); border-radius: 14px; padding: 12px 8px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
+  background: #fff;
+}
+.shop-card.is-built { border-color: var(--green); background: #f2fbef; }
+.shop-card.is-locked { opacity: 0.65; }
+.shop-icon { font-size: 30px; line-height: 1; }
+.shop-name { font-family: var(--serif); font-weight: 800; color: var(--primary); font-size: 15px; }
+.shop-gloss { font-size: 12px; color: var(--text-soft); font-style: italic; }
+.shop-state { font-size: 12px; font-weight: 800; margin-top: 2px; }
+.shop-state.built { color: var(--green-dark); }
+.shop-state.locked { color: var(--text-soft); }
+.shop-buy {
+  margin-top: 4px; border: 2px solid var(--gold); border-bottom-width: 3px;
+  background: #fff8e8; color: var(--gold-dark); font-weight: 800; font-size: 14px;
+  border-radius: 10px; padding: 7px 10px; white-space: nowrap;
+}
+.shop-buy:not(:disabled):active { transform: translateY(2px); }
+.shop-buy:disabled { border-color: var(--gray); color: var(--gray-dark); background: #f4f4f4; cursor: not-allowed; }
+
+@media (max-width: 380px) { .shop { grid-template-columns: repeat(2, 1fr); } }

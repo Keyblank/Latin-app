@@ -19,6 +19,10 @@ export interface Progress {
   dailyDate: string | null
   /** Esercizi sbagliati da ripassare (solo scelta multipla e costruzione). */
   mistakes: Exercise[]
+  /** Monete da spendere per costruire la città (Urbs). */
+  denarii: number
+  /** ID degli edifici costruiti nella città. */
+  built: string[]
   /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
   freeMode: boolean
 }
@@ -31,6 +35,8 @@ const emptyProgress: Progress = {
   dailyXp: 0,
   dailyDate: null,
   mistakes: [],
+  denarii: 0,
+  built: [],
   freeMode: false,
 }
 
@@ -104,12 +110,22 @@ export function useProgress() {
         ...prev,
         completed,
         xp: prev.xp + xp,
+        // Si guadagnano denarii pari agli XP: da spendere nella città.
+        denarii: prev.denarii + xp,
         streak,
         lastDay: today,
         dailyXp: dailyBase + xp,
         dailyDate: today,
         mistakes: updateMistakes(prev.mistakes, wrong, correct),
       }
+    })
+  }, [])
+
+  /** Costruisce un edificio, se ci sono abbastanza denarii e non è già costruito. */
+  const build = useCallback((id: string, cost: number) => {
+    setProgress((prev) => {
+      if (prev.built.includes(id) || prev.denarii < cost) return prev
+      return { ...prev, denarii: prev.denarii - cost, built: [...prev.built, id] }
     })
   }, [])
 
@@ -132,5 +148,5 @@ export function useProgress() {
     setProgress((prev) => ({ ...emptyProgress, freeMode: prev.freeMode }))
   }, [])
 
-  return { progress, finishLesson, recordMistakes, reset, toggleFreeMode }
+  return { progress, finishLesson, recordMistakes, build, reset, toggleFreeMode }
 }

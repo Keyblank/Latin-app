@@ -28,6 +28,10 @@ la lingua. Interfaccia in italiano.
 - **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
   tre umori animati e **battute ironiche** a rotazione (saluti, feedback,
   fine lezione). Le frasi sono in `src/quips.ts`, facilissime da modificare.
+- **Urbs — costruisci la tua Roma** 🏛️: guadagni **denarii** studiando (in
+  parallelo agli XP) e li spendi per costruire edifici romani con nome latino
+  (*Domus, Templum, Thermae, Amphitheatrum*…); i più grandi si sbloccano
+  avanzando nel corso. Uno scopo per i punti + vocabolario in più.
 - **Suoni ed effetti a tema romano** 🔔: suoni sintetizzati al volo (Web Audio) —
   arpeggio di **lira** (risposta giusta), **corno** grave (errore) e **fanfara di
   trionfo** (fine lezione) — più una pioggia di **foglie d'alloro e oro** sulla

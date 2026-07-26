@@ -12,6 +12,7 @@ interface Props {
   progress: Progress
   onStartLesson: (lesson: Lesson) => void
   onStartReview: () => void
+  onOpenCity: () => void
   onReset: () => void
   onToggleFreeMode: () => void
 }
@@ -21,6 +22,7 @@ export function Home({
   progress,
   onStartLesson,
   onStartReview,
+  onOpenCity,
   onReset,
   onToggleFreeMode,
 }: Props) {
@@ -54,6 +56,7 @@ export function Home({
         <div className="stats">
           <span className="stat" title="Giorni di fila">🔥 {progress.streak}</span>
           <span className="stat" title="Punti esperienza">⭐ {progress.xp}</span>
+          <span className="stat" title="Denarii da spendere nella città">🪙 {progress.denarii}</span>
         </div>
       </header>
 
@@ -64,6 +67,16 @@ export function Home({
         </div>
 
         <StatusCard progress={progress} />
+
+        <button className="urbs-btn" onClick={onOpenCity}>
+          <span className="urbs-icon">🏛️</span>
+          <span className="urbs-text">
+            <span className="latin-label">Urbs · costruisci la tua Roma</span>
+            <span className="urbs-count">
+              {progress.built.length} edifici · 🪙 {progress.denarii} da spendere
+            </span>
+          </span>
+        </button>
 
         {progress.mistakes.length > 0 && (
           <button className="review-btn" onClick={onStartReview}>
