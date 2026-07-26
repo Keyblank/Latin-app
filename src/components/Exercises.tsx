@@ -32,6 +32,7 @@ export interface AnswerState {
  *  com'erano: sono enfasi normale, non concetti da imparare. */
 const TERMS = new Set([
   'NOME', 'AGGETTIVO', 'VERBO', 'SOGGETTO', 'OGGETTO', 'PRONOME', 'AVVERBIO',
+  'ARTICOLO', 'ARTICOLI',
   'CASO', 'CASI', 'GENERE', 'NUMERO', 'PERSONA', 'PERSONE', 'TEMPO',
   'NOMINATIVO', 'GENITIVO', 'DATIVO', 'ACCUSATIVO', 'ABLATIVO', 'VOCATIVO',
   'DESINENZA', 'TEMA', 'DECLINAZIONE', 'DECLINAZIONI', 'CONIUGAZIONE',
@@ -52,7 +53,7 @@ function inline(text: string, key: string): ReactNode[] {
   while ((m = re.exec(text))) {
     if (m.index > last) parts.push(text.slice(last, m.index))
     const t = m[0]
-    if (t.startsWith('«')) parts.push(<b key={`${key}-${m.index}`} className="lat">{t}</b>)
+    if (t.startsWith('«')) parts.push(<b key={`${key}-${m.index}`} className="cite">{t}</b>)
     else if (TERMS.has(t)) parts.push(<span key={`${key}-${m.index}`} className="term">{t}</span>)
     else parts.push(t)
     last = m.index + t.length

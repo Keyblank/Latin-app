@@ -297,10 +297,10 @@ button { font-family: inherit; cursor: pointer; }
 .info-example p { font-size: 17px; line-height: 1.55; }
 .info-example p + p { margin-top: 6px; }
 
-/* Due soli livelli di evidenza, per non fare l'arcobaleno:
-   il latino è la cosa più importante (porpora), il termine di grammatica è
-   secondario (maiuscoletto, stesso colore del testo). */
-.info-body .lat { color: var(--primary-dark); font-weight: 800; }
+/* Due soli livelli di evidenza, per non fare l'arcobaleno: la parola di cui
+   si sta parlando — quasi sempre latina, a volte l'italiano di confronto — è
+   in porpora; il termine di grammatica è secondario (maiuscoletto). */
+.info-body .cite { color: var(--primary-dark); font-weight: 800; }
 .info-body .term {
   font-weight: 800; text-transform: lowercase; font-variant-caps: small-caps;
   letter-spacing: 0.5px;

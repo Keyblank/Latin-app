@@ -118,6 +118,33 @@ export const curriculum: Unit[] = [
             options: ['sulla prima: PÙ-er', 'sull’ultima: pu-ÈR'],
             answer: 'sulla prima: PÙ-er',
           },
+          {
+            type: 'info',
+            icon: '➖',
+            title: 'La lineetta sulle vocali: ā, ē, ī, ō, ū',
+            body:
+              'Da qui in avanti vedrai spesso una lineetta sopra una vocale: ' +
+              '«amāre», «rosā», «rēx». Non è un accento e non è un errore di ' +
+              'stampa: segna una vocale LUNGA, cioè che si tiene un po’ più a ' +
+              'lungo.\n\n' +
+              'Serve a due cose: ti dice come pronunciare, e soprattutto ti dice ' +
+              'dove cade l’accento nelle parole lunghe.\n\n' +
+              'Attenzione però: nei testi latini veri la lineetta NON c’è. La ' +
+              'mettono i manuali (e noi) per aiutarti. In una versione «rosa» e ' +
+              '«rosā» — due casi diversi — si scrivono identiche, e a distinguerle ' +
+              'sei tu, dal senso della frase.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa indica la lineetta in «rosā»?',
+            focus: 'rosā',
+            options: [
+              'che la vocale è lunga',
+              'che lì cade l’accento',
+              'che la parola è plurale',
+            ],
+            answer: 'che la vocale è lunga',
+          },
         ],
       },
     ],
@@ -295,6 +322,41 @@ export const curriculum: Unit[] = [
             answer: 'è',
           },
           {
+            type: 'info',
+            icon: '🔀',
+            title: 'Due sorprese, prima di cominciare',
+            body:
+              'Stai per comporre la tua prima frase. Due cose spiazzano chi ' +
+              'arriva dall’italiano, e nessuno le dice mai:\n\n' +
+              '• Il latino non ha gli ARTICOLI: il, la, un non esistono. ' +
+              '«Puella» da solo vale la ragazza, una ragazza o semplicemente ' +
+              'ragazza — l’articolo lo aggiungi tu traducendo, scegliendo quello ' +
+              'che suona bene.\n' +
+              '• Il VERBO di solito sta in fondo alla frase, non in mezzo.\n\n' +
+              '«Puella est» = la ragazza c’è\n' +
+              '«Rosa parva est» = la rosa è piccola (alla lettera: rosa piccola è)\n\n' +
+              'Non è una regola ferrea — i poeti fanno di testa loro — ma è ' +
+              'l’ordine che troverai quasi sempre nelle versioni. Quando componi ' +
+              'una frase, mettici il verbo per ultimo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come traduci «puella», da solo?',
+            focus: 'puella',
+            options: [
+              'la ragazza, una ragazza… l’articolo lo scelgo io',
+              'sempre e solo «la ragazza»',
+              '«ragazza», senza mai articolo',
+            ],
+            answer: 'la ragazza, una ragazza… l’articolo lo scelgo io',
+          },
+          {
+            type: 'choice',
+            prompt: 'Nella frase latina normale, dove sta il verbo?',
+            options: ['in fondo', 'sempre all’inizio', 'sempre in mezzo'],
+            answer: 'in fondo',
+          },
+          {
             type: 'build',
             prompt: 'Traduci: «La ragazza è»',
             source: 'La ragazza è',
@@ -325,7 +387,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '✨',
             title: 'Aggettivi',
-            body: 'Un aggettivo è una parola che descrive: buona, grande, piccola. Aggiungiamone qualcuna, per ora con parole femminili:\n\n• «bona» = buona\n• «magna» = grande\n• «parva» = piccola\n\nEsempio: «Puella bona est» = La ragazza è buona.\n\n(Per ora usiamo la forma femminile con parole femminili. La regola completa — la «concordanza» — la vedremo per bene nell’Unità 7.)',
+            body: 'Un aggettivo è una parola che descrive: buona, grande, piccola. Aggiungiamone qualcuna, per ora con parole femminili:\n\n• «bona» = buona\n• «magna» = grande\n• «parva» = piccola\n\nPer dire che la ragazza è buona, metti in fila il nome, l’aggettivo e per ultimo «est»:\n\n«Puella bona est» = La ragazza è buona (alla lettera: ragazza buona è).\n\n(Per ora usiamo la forma femminile con parole femminili. La regola completa — la «concordanza» — la vedremo per bene nell’Unità 7.)',
           },
           {
             type: 'choice',
@@ -411,7 +473,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '💬',
             title: 'Soggetto + verbo + oggetto',
-            body: 'Finora le parole erano il soggetto (chi compie l’azione). Ora aggiungiamo l’OGGETTO: chi o che cosa subisce l’azione.\n\nPiccola magia del latino: quando una parola è oggetto, cambia la sua fine. Molte parole femminili prendono la desinenza «-am»:\n• «rosa» → «rosam» (la rosa, come oggetto)\n• «aqua» → «aquam» (l’acqua, come oggetto)\n\nEsempio: «Puella rosam amat» = La ragazza ama la rosa.\n(«puella» è soggetto, «rosam» è oggetto: lo vedi dalla -m finale.)\n\nStudieremo tutto questo con calma più avanti: per ora basta riconoscere la -m dell’oggetto.',
+            body: 'Finora le parole erano il soggetto (chi compie l’azione). Ora aggiungiamo l’OGGETTO: chi o che cosa subisce l’azione.\n\nPiccola magia del latino: quando una parola è oggetto, cambia la sua fine. Molte parole femminili prendono la desinenza «-am»:\n• «rosa» → «rosam» (la rosa, come oggetto)\n• «aqua» → «aquam» (l’acqua, come oggetto)\n\nL’ordine tipico della frase latina è dunque: soggetto, oggetto e VERBO in fondo.\n\n«Puella rosam amat» = La ragazza ama la rosa (alla lettera: «la ragazza la rosa ama»).\n(«puella» è soggetto, «rosam» è oggetto: lo vedi dalla -m finale.)\n\nStudieremo tutto questo con calma più avanti: per ora basta riconoscere la -m dell’oggetto e ricordare che il verbo va per ultimo.',
           },
           {
             type: 'build',
@@ -976,7 +1038,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🧩',
             title: 'Concordare in 3 cose',
-            body: 'In latino l’aggettivo deve concordare con il suo nome in TRE cose:\n\n1) GENERE (maschile, femminile o neutro)\n2) NUMERO (singolare o plurale)\n3) CASO (nominativo, accusativo, genitivo…)\n\nPer farlo, l’aggettivo cambia la desinenza — proprio come i nomi.',
+            body: 'In latino l’aggettivo deve concordare con il suo nome in TRE cose:\n\n1) GENERE (maschile, femminile o neutro)\n2) NUMERO (singolare o plurale)\n3) CASO (nominativo, accusativo, genitivo…)\n\nPer farlo, l’aggettivo cambia la desinenza — proprio come i nomi.\n\nUn’altra cosa da sapere: di solito l’aggettivo VA DOPO il nome — «puella bona», non «bona puella». Si trovano anche invertiti, ma l’ordine normale è questo.',
           },
           {
             type: 'table',
