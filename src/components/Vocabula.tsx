@@ -1,6 +1,12 @@
 import { useMemo, useState } from 'react'
 import type { Memoria, Vocabolo } from '../vocabolario'
-import { daRipassare, distrattori, mescola, nuoveRimasteOggi } from '../vocabolario'
+import {
+  daRipassare,
+  distrattori,
+  distrattoriLatini,
+  mescola,
+  nuoveRimasteOggi,
+} from '../vocabolario'
 import { Mascot } from './Mascot'
 import { Confetti } from './Confetti'
 import { SpeakButton } from './SpeakButton'
@@ -9,6 +15,12 @@ import { playCorrect, playWrong, playWin } from '../sfx'
 interface Domanda {
   v: Vocabolo
   opzioni: string[]
+  /** La risposta giusta, che dipende dal verso della domanda. */
+  giusta: string
+  /** Cosa si mostra in grande: la parola latina o il significato italiano. */
+  mostra: string
+  /** true se si chiede il latino partendo dall'italiano. */
+  versoInverso: boolean
   nuova: boolean
 }
 
@@ -47,11 +59,32 @@ export function Vocabula({
       ...scadute.map((v) => ({ v, nuova: false })),
       ...nuove.map((v) => ({ v, nuova: true })),
     ]
-    return mescola(tutte).map(({ v, nuova }) => ({
-      v,
-      nuova,
-      opzioni: mescola([v.ita, ...distrattori(v)]),
-    }))
+    return mescola(tutte).map(({ v, nuova }) => {
+      // Una parola non si sa finché non la si sa in tutti e due i versi.
+      // Riconoscerla leggendola è facile; tirarla fuori partendo dal
+      // significato è un'altra cosa, e serve quando si scrive. Si alterna a
+      // livelli: le volte pari dal latino, le dispari dall'italiano — così
+      // ogni ripasso chiede la stessa parola in un modo diverso.
+      const liv = memoria[v.lat]?.liv ?? 0
+      const versoInverso = !nuova && liv % 2 === 1
+      return versoInverso
+        ? {
+            v,
+            nuova,
+            versoInverso,
+            mostra: v.ita,
+            giusta: v.lat,
+            opzioni: mescola([v.lat, ...distrattoriLatini(v)]),
+          }
+        : {
+            v,
+            nuova,
+            versoInverso,
+            mostra: v.lat,
+            giusta: v.ita,
+            opzioni: mescola([v.ita, ...distrattori(v)]),
+          }
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -64,10 +97,11 @@ export function Vocabula({
 
   function rispondi(opt: string) {
     if (scelta) return
-    const giusta = opt === d.v.ita
+    const bene = opt === d.giusta
     setScelta(opt)
-    setEsiti((e) => ({ ...e, [d.v.lat]: giusta }))
-    giusta ? playCorrect() : playWrong()
+    setEsiti((e) => ({ ...e, [d.v.lat]: bene }))
+    if (bene) playCorrect()
+    else playWrong()
   }
 
   function avanti() {
@@ -150,11 +184,15 @@ export function Vocabula({
 
       <div className="lesson-body">
         <h2 className="prompt">
-          {d.nuova ? 'Parola nuova: che cosa vuol dire?' : 'Che cosa vuol dire?'}
+          {d.nuova
+            ? 'Parola nuova: che cosa vuol dire?'
+            : d.versoInverso
+            ? 'Come si dice in latino?'
+            : 'Che cosa vuol dire?'}
         </h2>
         <div className="focus-word voc-parola">
-          <span>{d.v.lat}</span>
-          <SpeakButton text={d.v.lat} />
+          <span>{d.mostra}</span>
+          {!d.versoInverso && <SpeakButton text={d.v.lat} />}
         </div>
 
         <div className="options">
@@ -162,8 +200,8 @@ export function Vocabula({
             <button
               key={opt}
               className={`option ${
-                scelta && opt === d.v.ita ? 'reveal-correct' : ''
-              } ${scelta === opt && opt !== d.v.ita ? 'reveal-wrong' : ''}`}
+                scelta && opt === d.giusta ? 'reveal-correct' : ''
+              } ${scelta === opt && opt !== d.giusta ? 'reveal-wrong' : ''}`}
               onClick={() => rispondi(opt)}
               disabled={!!scelta}
             >

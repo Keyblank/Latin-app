@@ -16,6 +16,8 @@ export interface Vocabolo {
   dopo: number
   /** Unità da cui viene: serve a pescare distrattori credibili. */
   unita: string
+  /** Lezione che la insegna: quando la finisci, la parola entra nel ripasso. */
+  lezione: string
 }
 
 function estrai(): Vocabolo[] {
@@ -27,7 +29,7 @@ function estrai(): Vocabolo[] {
    *  voce, e non ha senso chiederla due volte. */
   const chiave = (lat: string) => lat.split(/[,\s(]/)[0].toLowerCase()
 
-  const aggiungi = (lat: string, ita: string, unita: string) => {
+  const aggiungi = (lat: string, ita: string, unita: string, lezione: string) => {
     // «cornū (n.)» → «cornū»: il genere è un'informazione della tabella, non
     // fa parte della parola da riconoscere.
     lat = lat.replace(/\s*\((m|f|n)\.\)\s*/g, ' ').trim()
@@ -45,7 +47,7 @@ function estrai(): Vocabolo[] {
       return
     }
     perParola.set(k, out.length)
-    out.push({ lat, ita, dopo: lezioni, unita })
+    out.push({ lat, ita, dopo: lezioni, unita, lezione })
   }
 
   for (const u of curriculum) {
@@ -61,14 +63,14 @@ function estrai(): Vocabolo[] {
               // Con tre colonne la seconda è il genitivo: «homō» + «hominis»
               // fanno la voce da vocabolario «homō, hominis».
               const lat = r.length > 2 ? `${r[0]}, ${r[1]}` : String(r[0])
-              aggiungi(lat, String(r[r.length - 1]), u.id)
+              aggiungi(lat, String(r[r.length - 1]), u.id, l.id)
             }
             continue
           }
           // Le parole-modello stanno nel titolo della loro tabella:
           // «rosa, rosae (f.) — «la rosa»». Sono le più importanti del corso.
           const m = ex.title.match(/^(.+?)\s+—\s+«(.+)»$/)
-          if (m) aggiungi(m[1].replace(/\s*\((m|f|n)\.\)\s*$/, ''), m[2], u.id)
+          if (m) aggiungi(m[1].replace(/\s*\((m|f|n)\.\)\s*$/, ''), m[2], u.id, l.id)
         }
         // Le schede non si leggono: quello che mostrano è la parola CALATA in
         // una frase — «amat», «magna», «est» — e nel ripasso una forma flessa
@@ -81,6 +83,11 @@ function estrai(): Vocabolo[] {
 }
 
 export const vocabolario: Vocabolo[] = estrai()
+
+/** Le parole insegnate da una lezione. */
+export function paroleDiLezione(lessonId: string): Vocabolo[] {
+  return vocabolario.filter((v) => v.lezione === lessonId)
+}
 
 /** Quanti giorni aspettare prima di rivedere una parola, per livello di
  *  padronanza. Gli intervalli crescono: è la ripetizione dilazionata. */
@@ -189,6 +196,20 @@ export function distrattori(v: Vocabolo, quanti = 3): string[] {
   for (const x of pool) {
     if (out.length >= quanti) break
     if (!out.includes(x.ita)) out.push(x.ita)
+  }
+  return out
+}
+
+/** Tre parole latine sbagliate: per la domanda nel verso opposto. */
+export function distrattoriLatini(v: Vocabolo, quanti = 3): string[] {
+  const senso = sensoPrincipale(v.ita)
+  const buono = (x: Vocabolo) => x.lat !== v.lat && sensoPrincipale(x.ita) !== senso
+  const vicini = vocabolario.filter((x) => x.unita === v.unita && buono(x))
+  const altri = vocabolario.filter((x) => x.unita !== v.unita && buono(x))
+  const out: string[] = []
+  for (const x of [...mescola(vicini), ...mescola(altri)]) {
+    if (out.length >= quanti) break
+    if (!out.includes(x.lat)) out.push(x.lat)
   }
   return out
 }

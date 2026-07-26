@@ -19,7 +19,9 @@ la lingua. Interfaccia in italiano.
   - tabelle di grammatica (es. le declinazioni);
   - scelta multipla (anche per l'analisi: «che caso è questa parola?»);
   - costruzione della frase toccando le parole;
-  - abbinamento parola ↔ significato;
+  - abbinamento parola ↔ significato — e i tentativi a vuoto **contano**: un
+    abbinamento si chiude sempre, basta insistere, quindi senza contarli
+    tirare a indovinare costerebbe come saperlo;
   - **analisi grammaticale**: una parola dentro una frase, e si dice che cos'è —
     caso, numero, tempo, funzione — rispondendo a tutte le domande insieme.
     È l'esercizio che somiglia di più a quello che si fa all'esame, e l'unico
@@ -52,7 +54,13 @@ la lingua. Interfaccia in italiano.
   si traduce davvero. Sette brani, dalla favola di Fedro all'oratoria di
   Cicerone, ognuno sbloccato solo dopo che il corso ha spiegato tutto quello
   che contiene. Sono in `src/data/versiones.ts`.
-- **Vocābula** 🧠: il **ripasso del lessico a distanza**. Il *Repetitio*
+- **Vocābula** 🧠: il **ripasso del lessico a distanza**. Quando finisci una
+  lezione, **le parole che ha insegnato entrano in calendario** e tornano il
+  giorno dopo: la lezione è la prima esposizione, l'apprendimento vero avviene
+  nelle settimane successive. E la stessa parola non viene chiesta sempre allo
+  stesso modo — si alternano i due versi, **latino → italiano** (riconoscerla
+  leggendo) e **italiano → latino** (tirarla fuori dal nulla), che sono due
+  abilità diverse. Il *Repetitio*
   riprende solo le domande sbagliate: una parola indovinata per caso esce dal
   corso e non torna più. Qui invece ogni parola ha una sua scadenza, che si
   allunga ogni volta che la ricordi (**1, 3, 7, 16, 35, 90 giorni**) e torna a

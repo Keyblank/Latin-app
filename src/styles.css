@@ -549,13 +549,29 @@ button { font-family: inherit; cursor: pointer; }
 .end-screen h1 { font-size: 30px; margin: 8px 0; color: var(--green-dark); }
 .end-screen.fail h1 { color: var(--red); }
 .end-lesson-name { font-size: 18px; font-weight: 700; color: var(--text-soft); margin: 0 0 20px; }
-.end-stats { display: flex; gap: 16px; margin: 10px 0 30px; }
-.end-stat {
-  border: 3px solid #ffd43b; border-radius: 16px; padding: 14px 24px;
-  display: flex; flex-direction: column; gap: 4px;
+/* Tre riquadri su uno schermo da telefono: devono restringersi, non uscire.
+   Con «padding» fisso il terzo finiva fuori dalla pagina. */
+.end-stats {
+  display: flex; gap: 10px; margin: 10px 0 30px;
+  width: 100%; max-width: 380px;
 }
-.end-stat-num { font-size: 24px; font-weight: 800; color: #e6a700; }
-.end-stat-label { font-size: 12px; font-weight: 700; color: var(--text-soft); text-transform: uppercase; }
+.end-stat {
+  flex: 1 1 0; min-width: 0;
+  border: 3px solid #ffd43b; border-radius: 16px; padding: 12px 6px;
+  display: flex; flex-direction: column; gap: 4px; align-items: center;
+}
+.end-stat-num {
+  font-size: 21px; font-weight: 800; color: #e6a700;
+  white-space: nowrap;
+}
+.end-stat-label {
+  font-size: 11px; font-weight: 700; color: var(--text-soft);
+  text-transform: uppercase; line-height: 1.25; text-align: center;
+}
+@media (max-width: 360px) {
+  .end-stat-num { font-size: 18px; }
+  .end-stat-label { font-size: 10px; }
+}
 .end-screen .btn { max-width: 320px; }
 .latin-shout { font-family: var(--serif); font-size: 42px !important; letter-spacing: 1px; }
 .end-sub { font-size: 15px; font-weight: 800; color: var(--text-soft); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 6px; }

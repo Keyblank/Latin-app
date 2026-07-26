@@ -395,7 +395,8 @@ export function Match({
   onComplete,
 }: {
   ex: MatchExercise
-  onComplete: () => void
+  /** Quante coppie sono state tentate a vuoto prima di chiudere l'esercizio. */
+  onComplete: (errori: number) => void
 }) {
   // Le carte si identificano con l'INDICE della coppia, non con il testo:
   // altrimenti una coppia come «rosa → rosa» (parola uguale nelle due lingue)
@@ -407,6 +408,10 @@ export function Match({
   const [selRight, setSelRight] = useState<number | null>(null)
   const [done, setDone] = useState<number[]>([])
   const [wrong, setWrong] = useState<[number, number] | null>(null)
+  // Gli abbinamenti si chiudono sempre — basta insistere. Senza contare i
+  // tentativi a vuoto, tirare a indovinare costerebbe come saperlo, e la
+  // parola sbagliata non tornerebbe mai nel ripasso.
+  const errori = useRef(0)
 
   function tryMatch(l: number, r: number) {
     if (l === r) {
@@ -414,8 +419,12 @@ export function Match({
       setDone(next)
       setSelLeft(null)
       setSelRight(null)
-      if (next.length === ex.pairs.length) setTimeout(onComplete, 350)
+      if (next.length === ex.pairs.length) {
+        const n = errori.current
+        setTimeout(() => onComplete(n), 350)
+      }
     } else {
+      errori.current++
       setWrong([l, r])
       setTimeout(() => {
         setWrong(null)

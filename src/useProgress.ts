@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Exercise } from './types'
 import type { Memoria } from './vocabolario'
-import { avanza } from './vocabolario'
+import { avanza, fraGiorni, paroleDiLezione } from './vocabolario'
 
 /** Una casella di strada: dove, e di che tipo. */
 export interface Road {
@@ -90,6 +90,16 @@ export function migra(saved: Partial<Progress>): Progress {
     const [r, c] = x.split(',').map(Number)
     return { r, c, t: 1 as const }
   })
+  // Le lezioni completate prima che esistesse il ripasso a distanza non hanno
+  // mai messo in calendario le loro parole: le recuperiamo qui, una volta.
+  // Senza, chi ha già studiato metà corso non rivedrebbe mai quel lessico.
+  const vocab = { ...p.vocab }
+  for (const id of p.completed) {
+    for (const v of paroleDiLezione(id)) {
+      if (!vocab[v.lat]) vocab[v.lat] = { liv: 0, quando: fraGiorni(1) }
+    }
+  }
+  p.vocab = vocab
   return p
 }
 
@@ -159,9 +169,24 @@ export function useProgress() {
         lessonId && !prev.completed.includes(lessonId)
           ? [...prev.completed, lessonId]
           : prev.completed
+
+      // Le parole appena studiate entrano nel ripasso a distanza, con
+      // scadenza a domani. Prima ci arrivavano col contagocce (cinque al
+      // giorno, scelte dal programma): studiavi diciotto preposizioni e il
+      // giorno dopo ne rivedevi cinque a caso, magari di un'altra unità. Una
+      // parola vista una volta e mai più non si impara — è tornare sopra a
+      // distanza che la fissa.
+      const vocab = { ...prev.vocab }
+      if (lessonId) {
+        for (const v of paroleDiLezione(lessonId)) {
+          if (!vocab[v.lat]) vocab[v.lat] = { liv: 0, quando: fraGiorni(1) }
+        }
+      }
+
       return {
         ...prev,
         completed,
+        vocab,
         xp: prev.xp + xp,
         // Si guadagnano denarii pari agli XP: da spendere nella città.
         denarii: prev.denarii + xp,

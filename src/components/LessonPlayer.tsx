@@ -75,9 +75,6 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
   function passaAlRecupero(): boolean {
     const visti = new Set<string>()
     const unici = wrong.current.filter((e) => {
-      // Gli abbinamenti non si possono sbagliare: non finiscono mai qui, ma
-      // meglio essere espliciti.
-      if (e.type === 'match') return false
       const k = exKey(e)
       if (visti.has(k)) return false
       visti.add(k)
@@ -131,12 +128,33 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
     setPhase('checked')
   }
 
-  // Match: si completa da solo, sempre corretto.
-  function onMatchComplete() {
-    if (!recupero) setXp((x) => x + XP_PER_EXERCISE)
-    setLastCorrect(true)
+  /**
+   * L'abbinamento si chiude da solo, ma non è detto che sia andato bene:
+   * insistendo si azzecca comunque. Conta i tentativi a vuoto, e se ce ne sono
+   * stati l'esercizio è sbagliato come ogni altro — vita in meno, ripasso, e
+   * secondo giro.
+   */
+  function onMatchComplete(errori: number) {
+    const bene = errori === 0
+    if (recupero) {
+      setLastCorrect(bene)
+      setPhase('checked')
+      if (bene) playCorrect()
+      else playWrong()
+      return
+    }
+    if (bene) {
+      setXp((x) => x + XP_PER_EXERCISE)
+      correct.current.push(ex)
+      playCorrect()
+    } else {
+      setHearts((h) => h - 1)
+      wrong.current.push(ex)
+      playWrong()
+    }
+    setLastCorrect(bene)
+    setFeedbackQuip(pickQuip(bene ? 'correct' : 'wrong'))
     setPhase('checked')
-    playCorrect()
   }
 
   // Suono di vittoria alla comparsa della schermata finale.
@@ -246,25 +264,32 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
           phase === 'checked' ? (lastCorrect ? 'foot-correct' : 'foot-wrong') : ''
         }`}
       >
-        {phase === 'checked' && !isMatch && (
+        {phase === 'checked' && (!isMatch || !lastCorrect) && (
           <div className="feedback">
             {lastCorrect ? (
               <span className="fb-ok">✔ {feedbackQuip}</span>
             ) : (
               <span className="fb-no">
                 <span className="fb-quip">✘ {feedbackQuip}</span>
-                <span className="fb-answer">
-                  Giusto:{' '}
-                  <b>
-                    {ex.type === 'choice'
-                      ? ex.answer
-                      : ex.type === 'build'
-                      ? ex.answer.join(' ')
-                      : ex.type === 'analysis'
-                      ? ex.fields.map((f) => f.answer).join(' · ')
-                      : ''}
-                  </b>
-                </span>
+                {ex.type === 'match' ? (
+                  <span className="fb-answer">
+                    Le coppie le hai trovate, ma non al primo colpo: questo
+                    esercizio torna nel ripasso.
+                  </span>
+                ) : (
+                  <span className="fb-answer">
+                    Giusto:{' '}
+                    <b>
+                      {ex.type === 'choice'
+                        ? ex.answer
+                        : ex.type === 'build'
+                        ? ex.answer.join(' ')
+                        : ex.type === 'analysis'
+                        ? ex.fields.map((f) => f.answer).join(' · ')
+                        : ''}
+                    </b>
+                  </span>
+                )}
               </span>
             )}
           </div>
