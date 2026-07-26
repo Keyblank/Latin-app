@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (21 sezioni, 93 lezioni, 390 vocaboli + i pronomi)
+### Contenuti (21 sezioni, 109 lezioni, 390 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -98,6 +98,8 @@ maschili della 1ª come *nauta* e *agricola*).
   + build a file singolo
 - ✅ **Copertura del lessico**: ogni parola di una tabella è chiesta da almeno
   un quesito della sua lezione (prima 195 su 389 non lo erano)
+- ✅ **Tre passaggi per parola** dentro la lezione (riconoscere → richiamare →
+  rimescolare), e una lezione per tabella invece di venti parole in blocco
 - ✅ **Controllo automatico del latino** (`npm run check`): i paradigmi corretti
   sono scritti nello script e confrontati con le tabelle del corso; gira in CI
   prima del deploy

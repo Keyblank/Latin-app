@@ -263,6 +263,22 @@ seguire gli esempi già presenti.
 
 ### Il lessico
 
+**Come sono fatte le lezioni di vocaboli.** Ogni parola nuova viene chiesta
+**almeno tre volte, in modi diversi e a distanza crescente** dentro la stessa
+lezione:
+
+1. **riconoscere** — abbinamento latino ↔ italiano, con la parola sotto gli occhi;
+2. **richiamare** — scelta multipla, alternando i due versi (dal latino e verso
+   il latino);
+3. **rimescolare** — di nuovo un abbinamento, ma con compagni diversi, così non
+   si impara la posizione invece della parola.
+
+Gli abbinamenti del terzo giro sono intercalati fra le domande, non messi in
+fondo: cambia il tipo di richiesta e cresce la distanza fra un passaggio e
+l'altro sulla stessa parola. Per far stare tre passaggi in una lezione di
+lunghezza ragionevole, **ogni tabella è una lezione a sé** (8-14 parole) invece
+che venti tutte insieme — che sono comunque troppe da imparare in un colpo.
+
 Accanto alla grammatica c'è un **binario di vocaboli** (390 voci distinte):
 lezioni di lessico con audio, agganciate all'unità che ne insegna la forma —
 **preposizioni** e il caso che reggono (U4), nomi della **1ª** (U5) e della

@@ -494,6 +494,10 @@ button { font-family: inherit; cursor: pointer; }
 /* Footer con pulsante */
 .lesson-foot {
   position: fixed; bottom: 0; left: 0; right: 0;
+  /* Sopra la prima colonna «appiccicata» delle tabelle (z-index 1): senza,
+     su una tabella lunga le celle coprono il pulsante e non si riesce a
+     toccarlo — la lezione si blocca lì. */
+  z-index: 5;
   max-width: 640px; margin: 0 auto;
   padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
   background: #fff; border-top: 2px solid var(--gray);

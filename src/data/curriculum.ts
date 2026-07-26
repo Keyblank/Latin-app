@@ -675,22 +675,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u4v',
-        title: 'Le preposizioni',
+        title: 'Preposizioni con l’ACCUSATIVO',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🧭',
             title: 'Preposizioni: parole che reggono un caso',
-            body:
-              'Hai visto che il caso da solo può esprimere un complemento. Ma il ' +
-              'latino usa anche le PREPOSIZIONI, come l’italiano: a, da, con, in, ' +
-              'per…\n\n' +
-              'Con una differenza che devi sapere subito: ogni preposizione ' +
-              'latina PRETENDE un CASO preciso per la parola che segue. Non puoi ' +
-              'sceglierlo tu.\n\n' +
-              'Sono quasi tutte accusativo oppure ablativo. Le prime dicono ' +
-              'movimento e direzione, le seconde stato e provenienza.',
+            body: 'Hai visto che il caso da solo può esprimere un complemento. Ma il latino usa anche le PREPOSIZIONI, come l’italiano: a, da, con, in, per…\n\nCon una differenza che devi sapere subito: ogni preposizione latina PRETENDE un CASO preciso per la parola che segue. Non puoi sceglierlo tu.\n\nSono quasi tutte accusativo oppure ablativo. Le prime dicono movimento e direzione, le seconde stato e provenienza.',
           },
           {
             type: 'table',
@@ -716,6 +708,121 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['ad', 'verso, presso'],
+              ['per', 'attraverso, per mezzo di'],
+              ['ante', 'davanti a, prima di'],
+              ['post', 'dietro a, dopo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['in', 'verso, contro (con movimento)'],
+              ['inter', 'fra, tra'],
+              ['apud', 'presso, in casa di'],
+              ['contrā', 'contro'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['propter', 'a causa di'],
+              ['trāns', 'oltre, al di là di'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ad',
+            options: ['verso, presso', 'davanti a, prima di', 'oltre, al di là di'],
+            answer: 'verso, presso',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «verso, contro (con movimento)»?',
+            options: ['in', 'ante', 'trāns'],
+            answer: 'in',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'per',
+            options: ['attraverso, per mezzo di', 'verso, presso', 'oltre, al di là di'],
+            answer: 'attraverso, per mezzo di',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «davanti a, prima di»?',
+            options: ['ante', 'ad', 'trāns'],
+            answer: 'ante',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['per', 'attraverso, per mezzo di'],
+              ['ante', 'davanti a, prima di'],
+              ['post', 'dietro a, dopo'],
+              ['inter', 'fra, tra'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'post',
+            options: ['dietro a, dopo', 'verso, presso', 'oltre, al di là di'],
+            answer: 'dietro a, dopo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «fra, tra»?',
+            options: ['inter', 'ad', 'trāns'],
+            answer: 'inter',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'apud',
+            options: ['presso, in casa di', 'verso, presso', 'oltre, al di là di'],
+            answer: 'presso, in casa di',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «contro»?',
+            options: ['contrā', 'ad', 'trāns'],
+            answer: 'contrā',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['apud', 'presso, in casa di'],
+              ['contrā', 'contro'],
+              ['propter', 'a causa di'],
+              ['trāns', 'oltre, al di là di'],
+              ['ad', 'verso, presso'],
+              ['in', 'verso, contro (con movimento)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'propter',
+            options: ['a causa di', 'verso, presso', 'oltre, al di là di'],
+            answer: 'a causa di',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «oltre, al di là di»?',
+            options: ['trāns', 'ad', 'propter'],
+            answer: 'trāns',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['ante', 'davanti a, prima di'],
               ['post', 'dietro a, dopo'],
               ['inter', 'fra, tra'],
@@ -727,64 +834,6 @@ export const curriculum: Unit[] = [
             prompt: 'Quale significa «verso, presso»?',
             options: ['ad', 'per', 'trāns'],
             answer: 'ad',
-          },
-          {
-            type: 'table',
-            title: 'Preposizioni con l’ABLATIVO (dove si sta, da dove si viene)',
-            lessico: true,
-            columns: ['Latino', 'Italiano'],
-            rows: [
-              ['in', 'in, dentro (senza movimento)'],
-              ['ab, ā', 'da (provenienza, e «da parte di»)'],
-              ['ex, ē', 'da, fuori da'],
-              ['cum', 'con'],
-              ['dē', 'giù da; riguardo a'],
-              ['prō', 'davanti a; in favore di'],
-              ['sine', 'senza'],
-              ['sub', 'sotto'],
-            ],
-            speakCols: [0],
-            note: 'Esempio: «in villā» = nella fattoria («villā» è ablativo). «ab» ed «ex» diventano «ā» ed «ē» davanti a consonante: «ā Rōmā», «ē silvā».',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina alla traduzione',
-            pairs: [
-              ['dē', 'giù da; riguardo a'],
-              ['sub', 'sotto'],
-            ],
-          },
-          {
-            type: 'choice',
-            prompt: 'Quale significa «da, fuori da»?',
-            options: ['ex', 'in', 'sub'],
-            answer: 'ex',
-          },
-          {
-            type: 'info',
-            icon: '↔️',
-            title: 'Il caso di «in» cambia il senso',
-            body:
-              'Questa la trovi in ogni versione, e chi non la sa sbaglia.\n\n' +
-              '«in» regge tutti e due i casi, e il caso decide il significato:\n\n' +
-              '«in villam» (accusativo) = VERSO la fattoria — ci sto andando\n' +
-              '«in villā» (ablativo) = NELLA fattoria — ci sono già\n\n' +
-              'Stessa parolina, due sensi opposti: a distinguerli è la desinenza. ' +
-              'Un altro motivo per guardare sempre la fine delle parole.',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «in silvam»? («silvam» è accusativo)',
-            focus: 'in silvam',
-            options: ['verso il bosco', 'nel bosco', 'dal bosco'],
-            answer: 'verso il bosco',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «cum amīcō»?',
-            focus: 'cum amīcō',
-            options: ['con l’amico', 'verso l’amico', 'senza l’amico'],
-            answer: 'con l’amico',
           },
           {
             type: 'match',
@@ -805,6 +854,149 @@ export const curriculum: Unit[] = [
               ['in silvā', 'nel bosco'],
               ['per silvam', 'attraverso il bosco'],
             ],
+          },
+        ],
+      },
+      {
+        id: 'u4v2',
+        title: 'Preposizioni con l’ABLATIVO',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'table',
+            title: 'Preposizioni con l’ABLATIVO (dove si sta, da dove si viene)',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['in', 'in, dentro (senza movimento)'],
+              ['ab, ā', 'da (provenienza, e «da parte di»)'],
+              ['ex, ē', 'da, fuori da'],
+              ['cum', 'con'],
+              ['dē', 'giù da; riguardo a'],
+              ['prō', 'davanti a; in favore di'],
+              ['sine', 'senza'],
+              ['sub', 'sotto'],
+            ],
+            speakCols: [0],
+            note: 'Esempio: «in villā» = nella fattoria («villā» è ablativo). «ab» ed «ex» diventano «ā» ed «ē» davanti a consonante: «ā Rōmā», «ē silvā».',
+          },
+          {
+            type: 'info',
+            icon: '↔️',
+            title: 'Il caso di «in» cambia il senso',
+            body: 'Questa la trovi in ogni versione, e chi non la sa sbaglia.\n\n«in» regge tutti e due i casi, e il caso decide il significato:\n\n«in villam» (accusativo) = VERSO la fattoria — ci sto andando\n«in villā» (ablativo) = NELLA fattoria — ci sono già\n\nStessa parolina, due sensi opposti: a distinguerli è la desinenza. Un altro motivo per guardare sempre la fine delle parole.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ab', 'da (provenienza, e «da parte di»)'],
+              ['cum', 'con'],
+              ['dē', 'giù da; riguardo a'],
+              ['prō', 'davanti a; in favore di'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['ex', 'da, fuori da'],
+              ['sine', 'senza'],
+              ['sub', 'sotto'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ab',
+            options: ['da (provenienza, e «da parte di»)', 'con', 'sotto'],
+            answer: 'da (provenienza, e «da parte di»)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «da, fuori da»?',
+            options: ['ex', 'cum', 'sub'],
+            answer: 'ex',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cum',
+            options: ['con', 'da (provenienza, e «da parte di»)', 'sotto'],
+            answer: 'con',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['cum', 'con'],
+              ['dē', 'giù da; riguardo a'],
+              ['prō', 'davanti a; in favore di'],
+              ['sine', 'senza'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «giù da; riguardo a»?',
+            options: ['dē', 'ab', 'sub'],
+            answer: 'dē',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'prō',
+            options: ['davanti a; in favore di', 'da (provenienza, e «da parte di»)', 'sotto'],
+            answer: 'davanti a; in favore di',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «senza»?',
+            options: ['sine', 'ab', 'sub'],
+            answer: 'sine',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['sub', 'sotto'],
+              ['ab', 'da (provenienza, e «da parte di»)'],
+              ['ex', 'da, fuori da'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'sub',
+            options: ['sotto', 'da (provenienza, e «da parte di»)', 'senza'],
+            answer: 'sotto',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['dē', 'giù da; riguardo a'],
+              ['sub', 'sotto'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «da, fuori da»?',
+            options: ['ex', 'in', 'sub'],
+            answer: 'ex',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «in silvam»? («silvam» è accusativo)',
+            focus: 'in silvam',
+            options: ['verso il bosco', 'nel bosco', 'dal bosco'],
+            answer: 'verso il bosco',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «cum amīcō»?',
+            focus: 'cum amīcō',
+            options: ['con l’amico', 'verso l’amico', 'senza l’amico'],
+            answer: 'con l’amico',
           },
         ],
       },
@@ -951,19 +1143,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u5v',
-        title: 'Parole della prima',
+        title: 'Nomi della 1ª declinazione · 1',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Venti parole del modello «rosa»',
-            body:
-              'Lo schema lo sai: ora servono le parole su cui applicarlo. Queste ' +
-              'venti seguono tutte la prima DECLINAZIONE e sono quasi tutte ' +
-              'femminili.\n\n' +
-              'Non impararle a memoria tutte adesso: leggile, ascoltale, e ' +
-              'torneranno negli esercizi.',
+            body: 'Lo schema lo sai: ora servono le parole su cui applicarlo. Queste venti seguono tutte la prima DECLINAZIONE e sono quasi tutte femminili.\n\nNon impararle a memoria tutte adesso: leggile, ascoltale, e torneranno negli esercizi.',
           },
           {
             type: 'table',
@@ -988,6 +1175,61 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['via', 'strada, via'],
+              ['īnsula', 'isola'],
+              ['mēnsa', 'tavola'],
+              ['epistula', 'lettera'],
+              ['ancilla', 'serva'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'via',
+            options: ['strada, via', 'serva', 'terra'],
+            answer: 'strada, via',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «isola»?',
+            options: ['īnsula', 'ancilla', 'via'],
+            answer: 'īnsula',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mēnsa',
+            options: ['tavola', 'serva', 'strada, via'],
+            answer: 'tavola',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['mēnsa', 'tavola'],
+              ['epistula', 'lettera'],
+              ['ancilla', 'serva'],
+              ['via', 'strada, via'],
+              ['īnsula', 'isola'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «lettera»?',
+            options: ['epistula', 'ancilla', 'via'],
+            answer: 'epistula',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ancilla',
+            options: ['serva', 'lettera', 'strada, via'],
+            answer: 'serva',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['īnsula', 'isola'],
             ],
           },
@@ -997,6 +1239,30 @@ export const curriculum: Unit[] = [
             options: ['via', 'terra', 'lūna'],
             answer: 'via',
           },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «epistulam»?',
+            focus: 'epistulam',
+            options: ['la lettera (oggetto)', 'la lettera (soggetto)', 'delle lettere'],
+            answer: 'la lettera (oggetto)',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['via', 'strada'],
+              ['mēnsa', 'tavola'],
+              ['ancilla', 'serva'],
+              ['poena', 'punizione'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u5v2',
+        title: 'Nomi della 1ª declinazione · 2',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Nomi della 1ª declinazione (2)',
@@ -1023,6 +1289,52 @@ export const curriculum: Unit[] = [
             pairs: [
               ['victōria', 'vittoria'],
               ['fortūna', 'sorte (buona o cattiva)'],
+              ['poena', 'punizione, castigo'],
+              ['hōra', 'ora'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'victōria',
+            options: ['vittoria', 'cura, preoccupazione', 'vita'],
+            answer: 'vittoria',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «sorte (buona o cattiva)»?',
+            options: ['fortūna', 'cūra', 'vīta'],
+            answer: 'fortūna',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['poena', 'punizione, castigo'],
+              ['hōra', 'ora'],
+              ['victōria', 'vittoria'],
+              ['fortūna', 'sorte (buona o cattiva)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'poena',
+            options: ['punizione, castigo', 'cura, preoccupazione', 'vita'],
+            answer: 'punizione, castigo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ora»?',
+            options: ['hōra', 'cūra', 'vīta'],
+            answer: 'hōra',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['victōria', 'vittoria'],
+              ['fortūna', 'sorte (buona o cattiva)'],
               ['hōra', 'ora'],
             ],
           },
@@ -1034,31 +1346,10 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «epistulam»?',
-            focus: 'epistulam',
-            options: ['la lettera (oggetto)', 'la lettera (soggetto)', 'delle lettere'],
-            answer: 'la lettera (oggetto)',
-          },
-          {
-            type: 'choice',
             prompt: 'In una versione trovi «magna fāma». Cosa vuol dire, probabilmente?',
             focus: 'magna fāma',
-            options: [
-              'una voce diffusa, una gran diceria',
-              'una donna famosa',
-              'una grande fame',
-            ],
+            options: ['una voce diffusa, una gran diceria', 'una donna famosa', 'una grande fame'],
             answer: 'una voce diffusa, una gran diceria',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['via', 'strada'],
-              ['mēnsa', 'tavola'],
-              ['ancilla', 'serva'],
-              ['poena', 'punizione'],
-            ],
           },
           {
             type: 'match',
@@ -1342,19 +1633,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u6v',
-        title: 'Parole della seconda',
+        title: 'Maschili in -us',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Maschili in -us, neutri in -um',
-            body:
-              'Stesso lavoro dell’unità scorsa, per la seconda DECLINAZIONE. Le ' +
-              'divido come si dividono da sole: prima i maschili in -us, poi i ' +
-              'neutri in -um.\n\n' +
-              'Molti di questi nomi sono parole della guerra e della politica: è ' +
-              'il vocabolario di Cesare e di Livio, cioè quello delle versioni.',
+            body: 'Stesso lavoro dell’unità scorsa, per la seconda DECLINAZIONE. Le divido come si dividono da sole: prima i maschili in -us, poi i neutri in -um.\n\nMolti di questi nomi sono parole della guerra e della politica: è il vocabolario di Cesare e di Livio, cioè quello delle versioni.',
           },
           {
             type: 'table',
@@ -1381,6 +1667,127 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina alla traduzione',
             pairs: [
               ['fīlius', 'figlio'],
+              ['equus', 'cavallo'],
+              ['mūrus', 'muro'],
+              ['populus', 'popolo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['animus', 'animo, coraggio'],
+              ['deus', 'dio'],
+              ['hortus', 'giardino'],
+              ['campus', 'campo, pianura'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['lēgātus', 'luogotenente; ambasciatore'],
+              ['socius', 'alleato, compagno'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'fīlius',
+            options: ['figlio', 'animo, coraggio', 'alleato, compagno'],
+            answer: 'figlio',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cavallo»?',
+            options: ['equus', 'animus', 'socius'],
+            answer: 'equus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mūrus',
+            options: ['muro', 'animo, coraggio', 'alleato, compagno'],
+            answer: 'muro',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['mūrus', 'muro'],
+              ['populus', 'popolo'],
+              ['animus', 'animo, coraggio'],
+              ['deus', 'dio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «popolo»?',
+            options: ['populus', 'animus', 'socius'],
+            answer: 'populus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'animus',
+            options: ['animo, coraggio', 'campo, pianura', 'alleato, compagno'],
+            answer: 'animo, coraggio',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «dio»?',
+            options: ['deus', 'animus', 'socius'],
+            answer: 'deus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['hortus', 'giardino'],
+              ['campus', 'campo, pianura'],
+              ['lēgātus', 'luogotenente; ambasciatore'],
+              ['socius', 'alleato, compagno'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'hortus',
+            options: ['giardino', 'animo, coraggio', 'alleato, compagno'],
+            answer: 'giardino',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «campo, pianura»?',
+            options: ['campus', 'animus', 'socius'],
+            answer: 'campus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'lēgātus',
+            options: ['luogotenente; ambasciatore', 'animo, coraggio', 'alleato, compagno'],
+            answer: 'luogotenente; ambasciatore',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['fīlius', 'figlio'],
+              ['equus', 'cavallo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «alleato, compagno»?',
+            options: ['socius', 'animus', 'populus'],
+            answer: 'socius',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['fīlius', 'figlio'],
               ['mūrus', 'muro'],
               ['populus', 'popolo'],
               ['deus', 'dio'],
@@ -1401,6 +1808,23 @@ export const curriculum: Unit[] = [
             answer: 'fīlius',
           },
           {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['equus', 'cavallo'],
+              ['lēgātus', 'luogotenente'],
+              ['socius', 'alleato'],
+              ['animus', 'coraggio'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u6v2',
+        title: 'Neutri in -um',
+        icon: '🗂️',
+        exercises: [
+          {
             type: 'table',
             title: 'Neutri in -um',
             lessico: true,
@@ -1419,6 +1843,127 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Attenzione a «cōnsilium»: nelle versioni è quasi sempre «il piano, la decisione» («cōnsilium capere» = prendere una decisione), non «il consiglio» che dai a un amico.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['oppidum', 'città fortificata'],
+              ['rēgnum', 'regno'],
+              ['perīculum', 'pericolo'],
+              ['cōnsilium', 'decisione, piano'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['auxilium', 'aiuto'],
+              ['proelium', 'battaglia'],
+              ['imperium', 'comando, potere'],
+              ['caelum', 'cielo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['vīnum', 'vino'],
+              ['forum', 'piazza, foro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'oppidum',
+            options: ['città fortificata', 'aiuto', 'vino'],
+            answer: 'città fortificata',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «regno»?',
+            options: ['rēgnum', 'auxilium', 'vīnum'],
+            answer: 'rēgnum',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'perīculum',
+            options: ['pericolo', 'aiuto', 'vino'],
+            answer: 'pericolo',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['perīculum', 'pericolo'],
+              ['cōnsilium', 'decisione, piano'],
+              ['auxilium', 'aiuto'],
+              ['proelium', 'battaglia'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «decisione, piano»?',
+            options: ['cōnsilium', 'auxilium', 'vīnum'],
+            answer: 'cōnsilium',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'auxilium',
+            options: ['aiuto', 'cielo', 'vino'],
+            answer: 'aiuto',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «battaglia»?',
+            options: ['proelium', 'auxilium', 'vīnum'],
+            answer: 'proelium',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['imperium', 'comando, potere'],
+              ['caelum', 'cielo'],
+              ['vīnum', 'vino'],
+              ['forum', 'piazza, foro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'imperium',
+            options: ['comando, potere', 'aiuto', 'vino'],
+            answer: 'comando, potere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cielo»?',
+            options: ['caelum', 'auxilium', 'vīnum'],
+            answer: 'caelum',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'vīnum',
+            options: ['vino', 'aiuto', 'regno'],
+            answer: 'vino',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['oppidum', 'città fortificata'],
+              ['rēgnum', 'regno'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «piazza, foro»?',
+            options: ['forum', 'auxilium', 'vīnum'],
+            answer: 'forum',
           },
           {
             type: 'match',
@@ -1447,22 +1992,8 @@ export const curriculum: Unit[] = [
             type: 'choice',
             prompt: 'In «Caesar cōnsilium cēpit», che cosa fa Cesare? («cēpit» = prese)',
             focus: 'cōnsilium cēpit',
-            options: [
-              'prese una decisione',
-              'ricevette un consiglio',
-              'raccolse un’assemblea',
-            ],
+            options: ['prese una decisione', 'ricevette un consiglio', 'raccolse un’assemblea'],
             answer: 'prese una decisione',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['equus', 'cavallo'],
-              ['lēgātus', 'luogotenente'],
-              ['socius', 'alleato'],
-              ['animus', 'coraggio'],
-            ],
           },
           {
             type: 'match',
@@ -1714,19 +2245,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u7v',
-        title: 'Aggettivi da sapere',
+        title: 'Aggettivi della 1ª classe',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Dieci aggettivi che tornano sempre',
-            body:
-              'Il meccanismo l’hai capito: ora servono le parole. Questi dieci ' +
-              'aggettivi sono fra i più frequenti nei testi latini, e si ' +
-              'declinano tutti come «bonus, bona, bonum».\n\n' +
-              'Sul vocabolario li trovi scritti così: «bonus, -a, -um». Le due ' +
-              'code sono il femminile e il neutro.',
+            body: 'Il meccanismo l’hai capito: ora servono le parole. Questi dieci aggettivi sono fra i più frequenti nei testi latini, e si declinano tutti come «bonus, bona, bonum».\n\nSul vocabolario li trovi scritti così: «bonus, -a, -um». Le due code sono il femminile e il neutro.',
           },
           {
             type: 'table',
@@ -1747,6 +2273,127 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Qui c’è solo il maschile: il femminile fa -a («bona») e il neutro -um («bonum»), come già sai. Due da tenere d’occhio: «altus» vale sia «alto» sia «profondo» (per un romano è la stessa cosa: la distanza da un piano); «clārus» passa da «luminoso» a «illustre, famoso» — da lì viene «clarissimo».',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['bonus', 'buono'],
+              ['malus', 'cattivo'],
+              ['magnus', 'grande'],
+              ['parvus', 'piccolo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['multus', 'molto, numeroso'],
+              ['longus', 'lungo'],
+              ['altus', 'alto'],
+              ['novus', 'nuovo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['antīquus', 'antico'],
+              ['clārus', 'luminoso, famoso'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'bonus',
+            options: ['buono', 'alto', 'piccolo'],
+            answer: 'buono',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cattivo»?',
+            options: ['malus', 'altus', 'parvus'],
+            answer: 'malus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'magnus',
+            options: ['grande', 'alto', 'piccolo'],
+            answer: 'grande',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['magnus', 'grande'],
+              ['parvus', 'piccolo'],
+              ['multus', 'molto, numeroso'],
+              ['longus', 'lungo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «piccolo»?',
+            options: ['parvus', 'altus', 'novus'],
+            answer: 'parvus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'multus',
+            options: ['molto, numeroso', 'alto', 'piccolo'],
+            answer: 'molto, numeroso',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «lungo»?',
+            options: ['longus', 'altus', 'parvus'],
+            answer: 'longus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['altus', 'alto'],
+              ['novus', 'nuovo'],
+              ['antīquus', 'antico'],
+              ['clārus', 'luminoso, famoso'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'altus',
+            options: ['alto', 'antico', 'piccolo'],
+            answer: 'alto',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «nuovo»?',
+            options: ['novus', 'altus', 'parvus'],
+            answer: 'novus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'antīquus',
+            options: ['antico', 'alto', 'piccolo'],
+            answer: 'antico',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['bonus', 'buono'],
+              ['malus', 'cattivo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «luminoso, famoso»?',
+            options: ['clārus', 'altus', 'parvus'],
+            answer: 'clārus',
           },
           {
             type: 'match',
@@ -1776,11 +2423,7 @@ export const curriculum: Unit[] = [
             type: 'choice',
             prompt: 'In una versione trovi «alta silva». Come lo traduci?',
             focus: 'alta silva',
-            options: [
-              'il bosco profondo (o alto)',
-              'l’altra selva',
-              'il bosco antico',
-            ],
+            options: ['il bosco profondo (o alto)', 'l’altra selva', 'il bosco antico'],
             answer: 'il bosco profondo (o alto)',
           },
           {
@@ -2092,18 +2735,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u8v',
-        title: 'Verbi da sapere',
+        title: '1ª e 2ª coniugazione',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Il motore della frase',
-            body:
-              'Il verbo è la parola che regge tutto: se lo riconosci, la frase si ' +
-              'apre. Eccone ventiquattro fra i più frequenti, divisi per ' +
-              'CONIUGAZIONE — così vedi anche a quale gruppo appartengono.\n\n' +
-              'Li do all’INFINITO, come li trovi sul vocabolario.',
+            body: 'Il verbo è la parola che regge tutto: se lo riconosci, la frase si apre. Eccone ventiquattro fra i più frequenti, divisi per CONIUGAZIONE — così vedi anche a quale gruppo appartengono.\n\nLi do all’INFINITO, come li trovi sul vocabolario.',
           },
           {
             type: 'table',
@@ -2133,6 +2772,107 @@ export const curriculum: Unit[] = [
               ['laudāre', 'lodare'],
               ['pugnāre', 'combattere'],
               ['vocāre', 'chiamare'],
+              ['nārrāre', 'raccontare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['parāre', 'preparare'],
+              ['habēre', 'avere'],
+              ['timēre', 'temere'],
+              ['docēre', 'insegnare'],
+              ['manēre', 'restare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'laudāre',
+            options: ['lodare', 'insegnare', 'chiamare'],
+            answer: 'lodare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «combattere»?',
+            options: ['pugnāre', 'docēre', 'vocāre'],
+            answer: 'pugnāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'vocāre',
+            options: ['chiamare', 'insegnare', 'temere'],
+            answer: 'chiamare',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['vocāre', 'chiamare'],
+              ['nārrāre', 'raccontare'],
+              ['parāre', 'preparare'],
+              ['habēre', 'avere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «raccontare»?',
+            options: ['nārrāre', 'docēre', 'vocāre'],
+            answer: 'nārrāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'parāre',
+            options: ['preparare', 'insegnare', 'chiamare'],
+            answer: 'preparare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «avere»?',
+            options: ['habēre', 'docēre', 'vocāre'],
+            answer: 'habēre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['timēre', 'temere'],
+              ['docēre', 'insegnare'],
+              ['manēre', 'restare'],
+              ['laudāre', 'lodare'],
+              ['pugnāre', 'combattere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'timēre',
+            options: ['temere', 'insegnare', 'chiamare'],
+            answer: 'temere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «insegnare»?',
+            options: ['docēre', 'habēre', 'vocāre'],
+            answer: 'docēre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'manēre',
+            options: ['restare', 'insegnare', 'chiamare'],
+            answer: 'restare',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['laudāre', 'lodare'],
+              ['pugnāre', 'combattere'],
+              ['vocāre', 'chiamare'],
               ['parāre', 'preparare'],
             ],
           },
@@ -2151,28 +2891,6 @@ export const curriculum: Unit[] = [
             answer: 'laudāre',
           },
           {
-            type: 'table',
-            title: '3ª e 4ª coniugazione',
-            lessico: true,
-            columns: ['Latino', 'Italiano'],
-            rows: [
-              ['dūcere', 'condurre, guidare'],
-              ['dīcere', 'dire'],
-              ['mittere', 'mandare'],
-              ['scrībere', 'scrivere'],
-              ['vincere', 'vincere'],
-              ['agere', 'fare, spingere, trattare'],
-              ['gerere', 'portare; fare (la guerra)'],
-              ['petere', 'chiedere; dirigersi verso'],
-              ['venīre', 'venire'],
-              ['invenīre', 'trovare'],
-              ['mūnīre', 'fortificare'],
-              ['sentīre', 'sentire, accorgersi'],
-            ],
-            speakCols: [0],
-            note: 'Due espressioni da riconoscere al volo: «bellum gerere» = fare la guerra, «cōnsilium capere» = prendere una decisione. In latino tanti significati nascono dall’accoppiata verbo + nome.',
-          },
-          {
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
@@ -2181,19 +2899,6 @@ export const curriculum: Unit[] = [
               ['agere', 'fare, spingere, trattare'],
               ['gerere', 'portare; fare (la guerra)'],
             ],
-          },
-          {
-            type: 'choice',
-            prompt: 'Quale significa «condurre, guidare»?',
-            options: ['dūcere', 'dīcere', 'sentīre'],
-            answer: 'dūcere',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «mittere»?',
-            focus: 'mittere',
-            options: ['mandare', 'mettere', 'mietere'],
-            answer: 'mandare',
           },
           {
             type: 'choice',
@@ -2221,6 +2926,149 @@ export const curriculum: Unit[] = [
               ['superāre', 'vincere'],
               ['nārrāre', 'raccontare'],
             ],
+          },
+        ],
+      },
+      {
+        id: 'u8v2',
+        title: '3ª e 4ª coniugazione',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'table',
+            title: '3ª e 4ª coniugazione',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['dūcere', 'condurre, guidare'],
+              ['dīcere', 'dire'],
+              ['mittere', 'mandare'],
+              ['scrībere', 'scrivere'],
+              ['vincere', 'vincere'],
+              ['agere', 'fare, spingere, trattare'],
+              ['gerere', 'portare; fare (la guerra)'],
+              ['petere', 'chiedere; dirigersi verso'],
+              ['venīre', 'venire'],
+              ['invenīre', 'trovare'],
+              ['mūnīre', 'fortificare'],
+              ['sentīre', 'sentire, accorgersi'],
+            ],
+            speakCols: [0],
+            note: 'Due espressioni da riconoscere al volo: «bellum gerere» = fare la guerra, «cōnsilium capere» = prendere una decisione. In latino tanti significati nascono dall’accoppiata verbo + nome.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['dūcere', 'condurre, guidare'],
+              ['dīcere', 'dire'],
+              ['mittere', 'mandare'],
+              ['scrībere', 'scrivere'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['agere', 'fare, spingere, trattare'],
+              ['gerere', 'portare; fare (la guerra)'],
+              ['petere', 'chiedere; dirigersi verso'],
+              ['invenīre', 'trovare'],
+              ['mūnīre', 'fortificare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'dūcere',
+            options: ['condurre, guidare', 'fare, spingere, trattare', 'vincere'],
+            answer: 'condurre, guidare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «dire»?',
+            options: ['dīcere', 'agere', 'vincere'],
+            answer: 'dīcere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mittere',
+            options: ['mandare', 'fare, spingere, trattare', 'vincere'],
+            answer: 'mandare',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['mittere', 'mandare'],
+              ['scrībere', 'scrivere'],
+              ['agere', 'fare, spingere, trattare'],
+              ['gerere', 'portare; fare (la guerra)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «scrivere»?',
+            options: ['scrībere', 'agere', 'vincere'],
+            answer: 'scrībere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'agere',
+            options: ['fare, spingere, trattare', 'dire', 'vincere'],
+            answer: 'fare, spingere, trattare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «portare; fare (la guerra)»?',
+            options: ['gerere', 'agere', 'vincere'],
+            answer: 'gerere',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['petere', 'chiedere; dirigersi verso'],
+              ['invenīre', 'trovare'],
+              ['mūnīre', 'fortificare'],
+              ['dūcere', 'condurre, guidare'],
+              ['dīcere', 'dire'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'petere',
+            options: ['chiedere; dirigersi verso', 'fare, spingere, trattare', 'vincere'],
+            answer: 'chiedere; dirigersi verso',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «trovare»?',
+            options: ['invenīre', 'agere', 'vincere'],
+            answer: 'invenīre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mūnīre',
+            options: ['fortificare', 'fare, spingere, trattare', 'vincere'],
+            answer: 'fortificare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «condurre, guidare»?',
+            options: ['dūcere', 'dīcere', 'sentīre'],
+            answer: 'dūcere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «mittere»?',
+            focus: 'mittere',
+            options: ['mandare', 'mettere', 'mietere'],
+            answer: 'mandare',
           },
         ],
       },
@@ -2492,20 +3340,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u9v',
-        title: 'Parole della terza',
+        title: 'Persone (3ª declinazione)',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Le più frequenti di tutte',
-            body:
-              'La terza DECLINAZIONE è la più affollata, e le sue parole sono ' +
-              'quelle che incontrerai più spesso. Come sai, di ognuna si imparano ' +
-              'DUE forme: il nominativo e il GENITIVO, perché è il genitivo a ' +
-              'darti il TEMA.\n\n' +
-              'Guarda quanto cambiano: «rēx» → «rēg-is», «iter» → «itiner-is». ' +
-              'Senza il genitivo non sapresti nemmeno da dove partire.',
+            body: 'La terza DECLINAZIONE è la più affollata, e le sue parole sono quelle che incontrerai più spesso. Come sai, di ognuna si imparano DUE forme: il nominativo e il GENITIVO, perché è il genitivo a darti il TEMA.\n\nGuarda quanto cambiano: «rēx» → «rēg-is», «iter» → «itiner-is». Senza il genitivo non sapresti nemmeno da dove partire.',
           },
           {
             type: 'table',
@@ -2530,6 +3372,107 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['homō', 'uomo, essere umano'],
+              ['pater', 'padre'],
+              ['māter', 'madre'],
+              ['frāter', 'fratello'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['soror', 'sorella'],
+              ['dux', 'comandante'],
+              ['cōnsul', 'console'],
+              ['cīvis', 'cittadino'],
+              ['hostis', 'nemico (in guerra)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'homō',
+            options: ['uomo, essere umano', 'cittadino', 'sorella'],
+            answer: 'uomo, essere umano',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «padre»?',
+            options: ['pater', 'cīvis', 'soror'],
+            answer: 'pater',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'māter',
+            options: ['madre', 'cittadino', 'sorella'],
+            answer: 'madre',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['māter', 'madre'],
+              ['frāter', 'fratello'],
+              ['soror', 'sorella'],
+              ['dux', 'comandante'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «fratello»?',
+            options: ['frāter', 'cīvis', 'soror'],
+            answer: 'frāter',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'soror',
+            options: ['sorella', 'cittadino', 'padre'],
+            answer: 'sorella',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «comandante»?',
+            options: ['dux', 'cīvis', 'soror'],
+            answer: 'dux',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['cōnsul', 'console'],
+              ['cīvis', 'cittadino'],
+              ['hostis', 'nemico (in guerra)'],
+              ['homō', 'uomo, essere umano'],
+              ['pater', 'padre'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cōnsul',
+            options: ['console', 'cittadino', 'sorella'],
+            answer: 'console',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cittadino»?',
+            options: ['cīvis', 'cōnsul', 'soror'],
+            answer: 'cīvis',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'hostis',
+            options: ['nemico (in guerra)', 'cittadino', 'sorella'],
+            answer: 'nemico (in guerra)',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['pater', 'padre'],
               ['māter', 'madre'],
               ['frāter', 'fratello'],
@@ -2543,6 +3486,23 @@ export const curriculum: Unit[] = [
             options: ['homō', 'pater', 'hostis'],
             answer: 'homō',
           },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['dux', 'comandante'],
+              ['hostis', 'nemico'],
+              ['cīvis', 'cittadino'],
+              ['homō', 'essere umano'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u9v2',
+        title: 'Cose e idee (3ª declinazione)',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Cose e idee',
@@ -2564,6 +3524,144 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«virtūs» è il grande falso amico del latino: non è la virtù morale, è il VALORE, il coraggio del soldato (viene da «vir», l’uomo). «Magna virtūs» è un gran coraggio, non una gran bontà.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['urbs', 'città'],
+              ['pars', 'parte'],
+              ['mors', 'morte'],
+              ['nox', 'notte'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['vōx', 'voce'],
+              ['mōns', 'monte'],
+              ['flūmen', 'fiume'],
+              ['iter', 'viaggio, marcia'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['tempus', 'tempo'],
+              ['opus', 'opera, lavoro'],
+              ['virtūs', 'valore, coraggio'],
+              ['lībertās', 'libertà'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'urbs',
+            options: ['città', 'fiume', 'voce'],
+            answer: 'città',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «parte»?',
+            options: ['pars', 'flūmen', 'vōx'],
+            answer: 'pars',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mors',
+            options: ['morte', 'fiume', 'voce'],
+            answer: 'morte',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['mors', 'morte'],
+              ['nox', 'notte'],
+              ['vōx', 'voce'],
+              ['mōns', 'monte'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «notte»?',
+            options: ['nox', 'flūmen', 'vōx'],
+            answer: 'nox',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'vōx',
+            options: ['voce', 'fiume', 'valore, coraggio'],
+            answer: 'voce',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «monte»?',
+            options: ['mōns', 'flūmen', 'vōx'],
+            answer: 'mōns',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['flūmen', 'fiume'],
+              ['iter', 'viaggio, marcia'],
+              ['tempus', 'tempo'],
+              ['opus', 'opera, lavoro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'flūmen',
+            options: ['fiume', 'viaggio, marcia', 'voce'],
+            answer: 'fiume',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «viaggio, marcia»?',
+            options: ['iter', 'flūmen', 'vōx'],
+            answer: 'iter',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'tempus',
+            options: ['tempo', 'fiume', 'voce'],
+            answer: 'tempo',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['virtūs', 'valore, coraggio'],
+              ['lībertās', 'libertà'],
+              ['urbs', 'città'],
+              ['pars', 'parte'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «opera, lavoro»?',
+            options: ['opus', 'flūmen', 'vōx'],
+            answer: 'opus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'virtūs',
+            options: ['valore, coraggio', 'fiume', 'voce'],
+            answer: 'valore, coraggio',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «libertà»?',
+            options: ['lībertās', 'flūmen', 'vōx'],
+            answer: 'lībertās',
           },
           {
             type: 'match',
@@ -2603,16 +3701,6 @@ export const curriculum: Unit[] = [
             focus: 'iter, itineris',
             options: ['itiner-', 'iter-', 'it-'],
             answer: 'itiner-',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['dux', 'comandante'],
-              ['hostis', 'nemico'],
-              ['cīvis', 'cittadino'],
-              ['homō', 'essere umano'],
-            ],
           },
           {
             type: 'match',
@@ -2909,20 +3997,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u10v',
-        title: 'I verbi del racconto',
+        title: 'Vedere, sentire, pensare',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Le azioni che tornano sempre',
-            body:
-              'Una versione narrativa è fatta di poche azioni ripetute: qualcuno ' +
-              'vede, sente, chiede, prende, fugge. Sono verbi che nell’Unità 8 non ' +
-              'c’erano e che invece ricorrono a ogni riga.\n\n' +
-              'Li diamo all’INFINITO, che è la forma con cui si cercano sul ' +
-              'vocabolario. Il tema del perfetto — quello dell’imperfetto e del ' +
-              'perfetto appena studiati — lo trovi lì accanto quando servirà.',
+            body: 'Una versione narrativa è fatta di poche azioni ripetute: qualcuno vede, sente, chiede, prende, fugge. Sono verbi che nell’Unità 8 non c’erano e che invece ricorrono a ogni riga.\n\nLi diamo all’INFINITO, che è la forma con cui si cercano sul vocabolario. Il tema del perfetto — quello dell’imperfetto e del perfetto appena studiati — lo trovi lì accanto quando servirà.',
           },
           {
             type: 'table',
@@ -2949,6 +4031,90 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina alla traduzione',
             pairs: [
               ['vidēre', 'vedere'],
+              ['audīre', 'ascoltare, sentire'],
+              ['legere', 'leggere; raccogliere'],
+              ['putāre', 'pensare, ritenere'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['rogāre', 'chiedere, domandare'],
+              ['clāmāre', 'gridare'],
+              ['ōrāre', 'pregare, supplicare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'vidēre',
+            options: ['vedere', 'amare', 'sperare'],
+            answer: 'vedere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ascoltare, sentire»?',
+            options: ['audīre', 'amāre', 'vidēre'],
+            answer: 'audīre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'legere',
+            options: ['leggere; raccogliere', 'amare', 'vedere'],
+            answer: 'leggere; raccogliere',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['legere', 'leggere; raccogliere'],
+              ['putāre', 'pensare, ritenere'],
+              ['rogāre', 'chiedere, domandare'],
+              ['clāmāre', 'gridare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «pensare, ritenere»?',
+            options: ['putāre', 'amāre', 'vidēre'],
+            answer: 'putāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'rogāre',
+            options: ['chiedere, domandare', 'amare', 'vedere'],
+            answer: 'chiedere, domandare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «gridare»?',
+            options: ['clāmāre', 'amāre', 'vidēre'],
+            answer: 'clāmāre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['ōrāre', 'pregare, supplicare'],
+              ['vidēre', 'vedere'],
+              ['audīre', 'ascoltare, sentire'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ōrāre',
+            options: ['pregare, supplicare', 'amare', 'vedere'],
+            answer: 'pregare, supplicare',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['vidēre', 'vedere'],
               ['legere', 'leggere; raccogliere'],
               ['clāmāre', 'gridare'],
             ],
@@ -2958,43 +4124,6 @@ export const curriculum: Unit[] = [
             prompt: 'Quale significa «vedere»?',
             options: ['vidēre', 'audīre', 'amāre'],
             answer: 'vidēre',
-          },
-          {
-            type: 'table',
-            title: 'Muoversi, prendere, dare',
-            lessico: true,
-            columns: ['Latino', 'Italiano'],
-            rows: [
-              ['dare', 'dare'],
-              ['capere', 'prendere, catturare'],
-              ['trahere', 'trascinare, tirare'],
-              ['fugere', 'fuggire'],
-              ['currere', 'correre'],
-              ['movēre', 'muovere'],
-              ['vertere', 'volgere, girare'],
-              ['stāre', 'stare fermo, stare in piedi'],
-              ['vīvere', 'vivere'],
-              ['dēbēre', 'dovere'],
-            ],
-            speakCols: [0],
-            note: '«capere» e «fugere» finiscono in -ere come «legere», ma alla 1ª persona fanno «capiō» e «fugiō», con la -i-: sono i verbi della 3ª coniugazione detti «in -iō». Stessa cosa per «facere», «accipere», «incipere» che già conosci.',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina alla traduzione',
-            pairs: [
-              ['fugere', 'fuggire'],
-              ['currere', 'correre'],
-              ['movēre', 'muovere'],
-              ['stāre', 'stare fermo, stare in piedi'],
-              ['dēbēre', 'dovere'],
-            ],
-          },
-          {
-            type: 'choice',
-            prompt: 'Quale significa «prendere, catturare»?',
-            options: ['capere', 'dare', 'dēbēre'],
-            answer: 'capere',
           },
           {
             type: 'choice',
@@ -3023,6 +4152,142 @@ export const curriculum: Unit[] = [
               ['ōrāre', 'pregare'],
               ['rogāre', 'chiedere'],
             ],
+          },
+        ],
+      },
+      {
+        id: 'u10v2',
+        title: 'Muoversi, prendere, dare',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'table',
+            title: 'Muoversi, prendere, dare',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['dare', 'dare'],
+              ['capere', 'prendere, catturare'],
+              ['trahere', 'trascinare, tirare'],
+              ['fugere', 'fuggire'],
+              ['currere', 'correre'],
+              ['movēre', 'muovere'],
+              ['vertere', 'volgere, girare'],
+              ['stāre', 'stare fermo, stare in piedi'],
+              ['vīvere', 'vivere'],
+              ['dēbēre', 'dovere'],
+            ],
+            speakCols: [0],
+            note: '«capere» e «fugere» finiscono in -ere come «legere», ma alla 1ª persona fanno «capiō» e «fugiō», con la -i-: sono i verbi della 3ª coniugazione detti «in -iō». Stessa cosa per «facere», «accipere», «incipere» che già conosci.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['capere', 'prendere, catturare'],
+              ['trahere', 'trascinare, tirare'],
+              ['fugere', 'fuggire'],
+              ['currere', 'correre'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['movēre', 'muovere'],
+              ['vertere', 'volgere, girare'],
+              ['stāre', 'stare fermo, stare in piedi'],
+              ['dēbēre', 'dovere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'capere',
+            options: ['prendere, catturare', 'correre', 'vivere'],
+            answer: 'prendere, catturare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «trascinare, tirare»?',
+            options: ['trahere', 'capere', 'vīvere'],
+            answer: 'trahere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'fugere',
+            options: ['fuggire', 'prendere, catturare', 'vivere'],
+            answer: 'fuggire',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['fugere', 'fuggire'],
+              ['currere', 'correre'],
+              ['movēre', 'muovere'],
+              ['vertere', 'volgere, girare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «correre»?',
+            options: ['currere', 'capere', 'vīvere'],
+            answer: 'currere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'movēre',
+            options: ['muovere', 'prendere, catturare', 'vivere'],
+            answer: 'muovere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «volgere, girare»?',
+            options: ['vertere', 'capere', 'vīvere'],
+            answer: 'vertere',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['stāre', 'stare fermo, stare in piedi'],
+              ['dēbēre', 'dovere'],
+              ['capere', 'prendere, catturare'],
+              ['trahere', 'trascinare, tirare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'stāre',
+            options: ['stare fermo, stare in piedi', 'prendere, catturare', 'vivere'],
+            answer: 'stare fermo, stare in piedi',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «dovere»?',
+            options: ['dēbēre', 'capere', 'vīvere'],
+            answer: 'dēbēre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['fugere', 'fuggire'],
+              ['currere', 'correre'],
+              ['movēre', 'muovere'],
+              ['stāre', 'stare fermo, stare in piedi'],
+              ['dēbēre', 'dovere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «prendere, catturare»?',
+            options: ['capere', 'dare', 'dēbēre'],
+            answer: 'capere',
           },
           {
             type: 'match',
@@ -3297,20 +4562,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u11v',
-        title: 'Le paroline che legano',
+        title: 'Congiunzioni',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🔗',
             title: 'Piccole, e decisive',
-            body:
-              'Sono le parole più corte del latino e le più sottovalutate: ' +
-              'congiunzioni e avverbi. Non si declinano, non si coniugano, non ' +
-              'cambiano mai — c’è solo da riconoscerle.\n\n' +
-              'Sono però quelle che dicono come sta insieme il discorso: «ma», ' +
-              '«dunque», «infatti», «dopo che». Chi non le sa traduce parole ' +
-              'giuste in un ordine che non significa niente.',
+            body: 'Sono le parole più corte del latino e le più sottovalutate: congiunzioni e avverbi. Non si declinano, non si coniugano, non cambiano mai — c’è solo da riconoscerle.\n\nSono però quelle che dicono come sta insieme il discorso: «ma», «dunque», «infatti», «dopo che». Chi non le sa traduce parole giuste in un ordine che non significa niente.',
           },
           {
             type: 'table',
@@ -3337,6 +4596,179 @@ export const curriculum: Unit[] = [
             note: '«-que» non è una parola a sé: si attacca in fondo alla seconda parola. «Senātus populusque» = il senato E il popolo.',
           },
           {
+            type: 'info',
+            icon: '🙃',
+            title: 'Tre che non stanno mai per prime',
+            body: 'Una stranezza che spiazza: «autem», «enim» e «igitur» non si mettono all’inizio della frase. Il latino le piazza al SECONDO posto, dopo la prima parola.\n\n«Caesar autem vēnit» = Cesare però venne\n«Erat enim fortis» = era infatti coraggioso\n\nTraducendo le sposti dove servono in italiano. Se in una versione trovi una parola strana in seconda posizione, è quasi sempre una di queste.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['et', 'e'],
+              ['sed', 'ma'],
+              ['autem', 'però, invece'],
+              ['tamen', 'tuttavia'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['nam', 'infatti'],
+              ['itaque', 'dunque, perciò'],
+              ['aut', 'oppure'],
+              ['neque', 'e non, né'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['sī', 'se'],
+              ['nisi', 'se non, a meno che'],
+              ['quod', 'perché (causa)'],
+              ['ubi', 'quando; dove'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['postquam', 'dopo che'],
+              ['dum', 'mentre'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'et',
+            options: ['e', 'oppure', 'quando; dove'],
+            answer: 'e',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ma»?',
+            options: ['sed', 'aut', 'ubi'],
+            answer: 'sed',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'autem',
+            options: ['però, invece', 'oppure', 'quando; dove'],
+            answer: 'però, invece',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['autem', 'però, invece'],
+              ['tamen', 'tuttavia'],
+              ['nam', 'infatti'],
+              ['itaque', 'dunque, perciò'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «tuttavia»?',
+            options: ['tamen', 'aut', 'ubi'],
+            answer: 'tamen',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'nam',
+            options: ['infatti', 'oppure', 'quando; dove'],
+            answer: 'infatti',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «dunque, perciò»?',
+            options: ['itaque', 'aut', 'ubi'],
+            answer: 'itaque',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['aut', 'oppure'],
+              ['neque', 'e non, né'],
+              ['sī', 'se'],
+              ['nisi', 'se non, a meno che'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'aut',
+            options: ['oppure', 'però, invece', 'quando; dove'],
+            answer: 'oppure',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «e non, né»?',
+            options: ['neque', 'aut', 'ubi'],
+            answer: 'neque',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'sī',
+            options: ['se', 'oppure', 'quando; dove'],
+            answer: 'se',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['quod', 'perché (causa)'],
+              ['ubi', 'quando; dove'],
+              ['postquam', 'dopo che'],
+              ['dum', 'mentre'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «se non, a meno che»?',
+            options: ['nisi', 'aut', 'ubi'],
+            answer: 'nisi',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'quod',
+            options: ['perché (causa)', 'oppure', 'quando; dove'],
+            answer: 'perché (causa)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «quando; dove»?',
+            options: ['ubi', 'aut', 'tamen'],
+            answer: 'ubi',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['et', 'e'],
+              ['sed', 'ma'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'postquam',
+            options: ['dopo che', 'oppure', 'quando; dove'],
+            answer: 'dopo che',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «mentre»?',
+            options: ['dum', 'aut', 'ubi'],
+            answer: 'dum',
+          },
+          {
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
@@ -3361,19 +4793,46 @@ export const curriculum: Unit[] = [
             answer: 'et',
           },
           {
-            type: 'info',
-            icon: '🙃',
-            title: 'Tre che non stanno mai per prime',
-            body:
-              'Una stranezza che spiazza: «autem», «enim» e «igitur» non si ' +
-              'mettono all’inizio della frase. Il latino le piazza al SECONDO ' +
-              'posto, dopo la prima parola.\n\n' +
-              '«Caesar autem vēnit» = Cesare però venne\n' +
-              '«Erat enim fortis» = era infatti coraggioso\n\n' +
-              'Traducendo le sposti dove servono in italiano. Se in una versione ' +
-              'trovi una parola strana in seconda posizione, è quasi sempre una ' +
-              'di queste.',
+            type: 'choice',
+            prompt: 'Come si traduce «Caesar autem vēnit»?',
+            focus: 'Caesar autem vēnit',
+            options: ['Cesare però venne', 'Cesare venne da solo', 'Anche Cesare venne'],
+            answer: 'Cesare però venne',
           },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «senātus populusque»?',
+            focus: 'senātus populusque',
+            options: ['il senato e il popolo', 'il senato del popolo', 'il senato o il popolo'],
+            answer: 'il senato e il popolo',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['postquam', 'dopo che'],
+              ['tamen', 'tuttavia'],
+              ['nisi', 'se non'],
+              ['itaque', 'perciò'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['statim', 'subito'],
+              ['numquam', 'mai'],
+              ['deinde', 'poi'],
+              ['diū', 'a lungo'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u11v2',
+        title: 'Avverbi',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Avverbi',
@@ -3402,6 +4861,136 @@ export const curriculum: Unit[] = [
               ['iam', 'già, ormai'],
               ['semper', 'sempre'],
               ['saepe', 'spesso'],
+              ['numquam', 'mai'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['statim', 'subito'],
+              ['deinde', 'poi, in seguito'],
+              ['tum', 'allora'],
+              ['ita', 'così'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['diū', 'a lungo'],
+              ['valdē', 'molto'],
+              ['ibi', 'lì'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'iam',
+            options: ['già, ormai', 'poi, in seguito', 'molto'],
+            answer: 'già, ormai',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «sempre»?',
+            options: ['semper', 'deinde', 'valdē'],
+            answer: 'semper',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'saepe',
+            options: ['spesso', 'poi, in seguito', 'molto'],
+            answer: 'spesso',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['saepe', 'spesso'],
+              ['numquam', 'mai'],
+              ['statim', 'subito'],
+              ['deinde', 'poi, in seguito'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «mai»?',
+            options: ['numquam', 'deinde', 'valdē'],
+            answer: 'numquam',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'statim',
+            options: ['subito', 'poi, in seguito', 'molto'],
+            answer: 'subito',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «poi, in seguito»?',
+            options: ['deinde', 'diū', 'valdē'],
+            answer: 'deinde',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['tum', 'allora'],
+              ['ita', 'così'],
+              ['diū', 'a lungo'],
+              ['valdē', 'molto'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'tum',
+            options: ['allora', 'poi, in seguito', 'molto'],
+            answer: 'allora',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «così»?',
+            options: ['ita', 'deinde', 'valdē'],
+            answer: 'ita',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'diū',
+            options: ['a lungo', 'poi, in seguito', 'molto'],
+            answer: 'a lungo',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['ibi', 'lì'],
+              ['iam', 'già, ormai'],
+              ['semper', 'sempre'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «molto»?',
+            options: ['valdē', 'deinde', 'tum'],
+            answer: 'valdē',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ibi',
+            options: ['lì', 'poi, in seguito', 'molto'],
+            answer: 'lì',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['iam', 'già, ormai'],
+              ['semper', 'sempre'],
+              ['saepe', 'spesso'],
               ['tum', 'allora'],
             ],
           },
@@ -3418,44 +5007,6 @@ export const curriculum: Unit[] = [
             prompt: 'Quale significa «già, ormai»?',
             options: ['iam', 'nōn', 'ibi'],
             answer: 'iam',
-          },
-          {
-            type: 'choice',
-            prompt: 'Come si traduce «Caesar autem vēnit»?',
-            focus: 'Caesar autem vēnit',
-            options: ['Cesare però venne', 'Cesare venne da solo', 'Anche Cesare venne'],
-            answer: 'Cesare però venne',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «senātus populusque»?',
-            focus: 'senātus populusque',
-            options: [
-              'il senato e il popolo',
-              'il senato del popolo',
-              'il senato o il popolo',
-            ],
-            answer: 'il senato e il popolo',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['postquam', 'dopo che'],
-              ['tamen', 'tuttavia'],
-              ['nisi', 'se non'],
-              ['itaque', 'perciò'],
-            ],
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['statim', 'subito'],
-              ['numquam', 'mai'],
-              ['deinde', 'poi'],
-              ['diū', 'a lungo'],
-            ],
           },
         ],
       },
@@ -3725,20 +5276,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u12v',
-        title: 'Verbi, secondo giro',
+        title: 'Fare, decidere, dire',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Altri ventiquattro verbi',
-            body:
-              'I verbi dell’unità 8 erano il nucleo. Questi sono quelli che ' +
-              'incontri subito dopo aprendo una pagina di storia: azioni di ' +
-              'guerra, di decisione, di movimento.\n\n' +
-              'Molti sono composti di verbi che già conosci — «per-venīre», ' +
-              '«re-linquere», «con-ficere» — e riconoscere il pezzo di base ' +
-              'aiuta a indovinare il senso anche senza vocabolario.',
+            body: 'I verbi dell’unità 8 erano il nucleo. Questi sono quelli che incontri subito dopo aprendo una pagina di storia: azioni di guerra, di decisione, di movimento.\n\nMolti sono composti di verbi che già conosci — «per-venīre», «re-linquere», «con-ficere» — e riconoscere il pezzo di base aiuta a indovinare il senso anche senza vocabolario.',
           },
           {
             type: 'table',
@@ -3769,6 +5314,144 @@ export const curriculum: Unit[] = [
               ['facere', 'fare'],
               ['pōnere', 'porre'],
               ['cōnstituere', 'decidere, stabilire'],
+              ['cōgere', 'costringere; radunare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['iubēre', 'ordinare'],
+              ['respondēre', 'rispondere'],
+              ['appellāre', 'chiamare, dare il nome di'],
+              ['exīstimāre', 'ritenere, giudicare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['intellegere', 'capire'],
+              ['cognōscere', 'venire a sapere'],
+              ['accipere', 'ricevere, accogliere'],
+              ['incipere', 'cominciare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'facere',
+            options: ['fare', 'ricevere, accogliere', 'rispondere'],
+            answer: 'fare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «porre»?',
+            options: ['pōnere', 'accipere', 'respondēre'],
+            answer: 'pōnere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cōnstituere',
+            options: ['decidere, stabilire', 'ricevere, accogliere', 'rispondere'],
+            answer: 'decidere, stabilire',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['cōnstituere', 'decidere, stabilire'],
+              ['cōgere', 'costringere; radunare'],
+              ['iubēre', 'ordinare'],
+              ['respondēre', 'rispondere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «costringere; radunare»?',
+            options: ['cōgere', 'accipere', 'respondēre'],
+            answer: 'cōgere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'iubēre',
+            options: ['ordinare', 'ricevere, accogliere', 'rispondere'],
+            answer: 'ordinare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «rispondere»?',
+            options: ['respondēre', 'accipere', 'pōnere'],
+            answer: 'respondēre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['appellāre', 'chiamare, dare il nome di'],
+              ['exīstimāre', 'ritenere, giudicare'],
+              ['intellegere', 'capire'],
+              ['cognōscere', 'venire a sapere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'appellāre',
+            options: ['chiamare, dare il nome di', 'ricevere, accogliere', 'rispondere'],
+            answer: 'chiamare, dare il nome di',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ritenere, giudicare»?',
+            options: ['exīstimāre', 'accipere', 'respondēre'],
+            answer: 'exīstimāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'intellegere',
+            options: ['capire', 'ricevere, accogliere', 'rispondere'],
+            answer: 'capire',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['accipere', 'ricevere, accogliere'],
+              ['incipere', 'cominciare'],
+              ['facere', 'fare'],
+              ['pōnere', 'porre'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «venire a sapere»?',
+            options: ['cognōscere', 'accipere', 'respondēre'],
+            answer: 'cognōscere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'accipere',
+            options: ['ricevere, accogliere', 'chiamare, dare il nome di', 'rispondere'],
+            answer: 'ricevere, accogliere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cominciare»?',
+            options: ['incipere', 'accipere', 'respondēre'],
+            answer: 'incipere',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['facere', 'fare'],
+              ['pōnere', 'porre'],
+              ['cōnstituere', 'decidere, stabilire'],
               ['respondēre', 'rispondere'],
             ],
           },
@@ -3787,6 +5470,51 @@ export const curriculum: Unit[] = [
             options: ['facere', 'pōnere', 'incipere'],
             answer: 'facere',
           },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «castra posuērunt»?',
+            focus: 'castra posuērunt',
+            options: [
+              'posero l’accampamento',
+              'presero l’accampamento',
+              'lasciarono l’accampamento',
+            ],
+            answer: 'posero l’accampamento',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «pervēnērunt»?',
+            focus: 'pervēnērunt',
+            options: ['giunsero', 'partirono', 'vinsero'],
+            answer: 'giunsero',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['relinquere', 'abbandonare'],
+              ['cōgere', 'costringere'],
+              ['iubēre', 'ordinare'],
+              ['discēdere', 'andarsene'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['intellegere', 'capire'],
+              ['cognōscere', 'venire a sapere'],
+              ['exīstimāre', 'ritenere'],
+              ['trādere', 'consegnare'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u12v2',
+        title: 'Guerra e movimento',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Guerra e movimento',
@@ -3824,6 +5552,144 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina il significato',
             pairs: [
               ['occīdere', 'uccidere, abbattere'],
+              ['relinquere', 'lasciare, abbandonare'],
+              ['trādere', 'consegnare; tramandare'],
+              ['reddere', 'restituire'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['contendere', 'affrettarsi; combattere'],
+              ['pervenīre', 'giungere'],
+              ['discēdere', 'allontanarsi, andarsene'],
+              ['perterrēre', 'spaventare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'interficere',
+            options: ['uccidere', 'affrettarsi; combattere', 'devastare'],
+            answer: 'uccidere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «uccidere, abbattere»?',
+            options: ['occīdere', 'contendere', 'vastāre'],
+            answer: 'occīdere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'expugnāre',
+            options: ['espugnare, prendere d’assalto', 'affrettarsi; combattere', 'devastare'],
+            answer: 'espugnare, prendere d’assalto',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['expugnāre', 'espugnare, prendere d’assalto'],
+              ['vastāre', 'devastare'],
+              ['servāre', 'salvare, custodire'],
+              ['relinquere', 'lasciare, abbandonare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «devastare»?',
+            options: ['vastāre', 'contendere', 'trādere'],
+            answer: 'vastāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'servāre',
+            options: ['salvare, custodire', 'affrettarsi; combattere', 'devastare'],
+            answer: 'salvare, custodire',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «lasciare, abbandonare»?',
+            options: ['relinquere', 'contendere', 'vastāre'],
+            answer: 'relinquere',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['trādere', 'consegnare; tramandare'],
+              ['reddere', 'restituire'],
+              ['contendere', 'affrettarsi; combattere'],
+              ['pervenīre', 'giungere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'trādere',
+            options: ['consegnare; tramandare', 'affrettarsi; combattere', 'devastare'],
+            answer: 'consegnare; tramandare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «restituire»?',
+            options: ['reddere', 'contendere', 'vastāre'],
+            answer: 'reddere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'contendere',
+            options: ['affrettarsi; combattere', 'allontanarsi, andarsene', 'devastare'],
+            answer: 'affrettarsi; combattere',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['discēdere', 'allontanarsi, andarsene'],
+              ['perterrēre', 'spaventare'],
+              ['interficere', 'uccidere'],
+              ['occīdere', 'uccidere, abbattere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «giungere»?',
+            options: ['pervenīre', 'contendere', 'vastāre'],
+            answer: 'pervenīre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'discēdere',
+            options: ['allontanarsi, andarsene', 'affrettarsi; combattere', 'devastare'],
+            answer: 'allontanarsi, andarsene',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «spaventare»?',
+            options: ['perterrēre', 'contendere', 'vastāre'],
+            answer: 'perterrēre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['interficere', 'uccidere'],
+              ['expugnāre', 'espugnare, prendere d’assalto'],
+              ['vastāre', 'devastare'],
+              ['servāre', 'salvare, custodire'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['occīdere', 'uccidere, abbattere'],
               ['reddere', 'restituire'],
               ['contendere', 'affrettarsi; combattere'],
               ['pervenīre', 'giungere'],
@@ -3835,40 +5701,6 @@ export const curriculum: Unit[] = [
             prompt: 'Quale significa «uccidere»?',
             options: ['interficere', 'expugnāre', 'perterrēre'],
             answer: 'interficere',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «castra posuērunt»?',
-            focus: 'castra posuērunt',
-            options: ['posero l’accampamento', 'presero l’accampamento', 'lasciarono l’accampamento'],
-            answer: 'posero l’accampamento',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «pervēnērunt»?',
-            focus: 'pervēnērunt',
-            options: ['giunsero', 'partirono', 'vinsero'],
-            answer: 'giunsero',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['relinquere', 'abbandonare'],
-              ['cōgere', 'costringere'],
-              ['iubēre', 'ordinare'],
-              ['discēdere', 'andarsene'],
-            ],
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['intellegere', 'capire'],
-              ['cognōscere', 'venire a sapere'],
-              ['exīstimāre', 'ritenere'],
-              ['trādere', 'consegnare'],
-            ],
           },
         ],
       },
@@ -4236,20 +6068,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u13v',
-        title: 'Dire, sapere, volere',
+        title: 'I verbi del dire',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'I verbi che aprono l’accusativo + infinito',
-            body:
-              'Il costrutto appena studiato non arriva mai da solo: lo annuncia un ' +
-              'verbo. Sono sempre gli stessi — dire, sapere, credere, ordinare — e ' +
-              'riconoscerli è metà del lavoro.\n\n' +
-              'Quando in una versione vedi uno di questi verbi, fermati e cerca ' +
-              'subito la coppia ACCUSATIVO + INFINITO che lo segue: è lì che sta ' +
-              'la frase vera.',
+            body: 'Il costrutto appena studiato non arriva mai da solo: lo annuncia un verbo. Sono sempre gli stessi — dire, sapere, credere, ordinare — e riconoscerli è metà del lavoro.\n\nQuando in una versione vedi uno di questi verbi, fermati e cerca subito la coppia ACCUSATIVO + INFINITO che lo segue: è lì che sta la frase vera.',
           },
           {
             type: 'table',
@@ -4275,6 +6101,98 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['nūntiāre', 'annunciare, riferire'],
+              ['prōmittere', 'promettere'],
+              ['imperāre', 'comandare (+ dativo)'],
+              ['vetāre', 'vietare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['monēre', 'avvertire, ammonire'],
+              ['ostendere', 'mostrare, far vedere'],
+              ['iūrāre', 'giurare'],
+              ['cōnfirmāre', 'assicurare; rafforzare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'nūntiāre',
+            options: ['annunciare, riferire', 'assicurare; rafforzare', 'vietare'],
+            answer: 'annunciare, riferire',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «promettere»?',
+            options: ['prōmittere', 'cōnfirmāre', 'vetāre'],
+            answer: 'prōmittere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'imperāre',
+            options: ['comandare (+ dativo)', 'assicurare; rafforzare', 'vietare'],
+            answer: 'comandare (+ dativo)',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['imperāre', 'comandare (+ dativo)'],
+              ['vetāre', 'vietare'],
+              ['monēre', 'avvertire, ammonire'],
+              ['ostendere', 'mostrare, far vedere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «vietare»?',
+            options: ['vetāre', 'cōnfirmāre', 'prōmittere'],
+            answer: 'vetāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'monēre',
+            options: ['avvertire, ammonire', 'assicurare; rafforzare', 'vietare'],
+            answer: 'avvertire, ammonire',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «mostrare, far vedere»?',
+            options: ['ostendere', 'cōnfirmāre', 'vetāre'],
+            answer: 'ostendere',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['iūrāre', 'giurare'],
+              ['cōnfirmāre', 'assicurare; rafforzare'],
+              ['nūntiāre', 'annunciare, riferire'],
+              ['prōmittere', 'promettere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'iūrāre',
+            options: ['giurare', 'assicurare; rafforzare', 'vietare'],
+            answer: 'giurare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «assicurare; rafforzare»?',
+            options: ['cōnfirmāre', 'imperāre', 'vetāre'],
+            answer: 'cōnfirmāre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['prōmittere', 'promettere'],
               ['imperāre', 'comandare (+ dativo)'],
               ['cōnfirmāre', 'assicurare; rafforzare'],
@@ -4286,6 +6204,29 @@ export const curriculum: Unit[] = [
             options: ['nūntiāre', 'negāre', 'cōnfirmāre'],
             answer: 'nūntiāre',
           },
+          {
+            type: 'choice',
+            prompt: 'Quale di questi verbi è impersonale, cioè esiste solo alla 3ª singolare?',
+            options: ['licet', 'iūrāre', 'reperīre'],
+            answer: 'licet',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['nūntiāre', 'annunciare'],
+              ['vetāre', 'vietare'],
+              ['monēre', 'avvertire'],
+              ['ostendere', 'mostrare'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u13v2',
+        title: 'Sapere, volere, bisognare',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Sapere, volere, bisognare',
@@ -4310,6 +6251,107 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['scīre', 'sapere'],
+              ['nescīre', 'non sapere, ignorare'],
+              ['cupere', 'desiderare, bramare'],
+              ['iūdicāre', 'giudicare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['optāre', 'desiderare, scegliere'],
+              ['reperīre', 'trovare, scoprire'],
+              ['appārēre', 'apparire; risultare chiaro'],
+              ['oportet', 'bisogna, si deve'],
+              ['licet', 'è permesso, è lecito'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'scīre',
+            options: ['sapere', 'apparire; risultare chiaro', 'trovare, scoprire'],
+            answer: 'sapere',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «non sapere, ignorare»?',
+            options: ['nescīre', 'appārēre', 'scīre'],
+            answer: 'nescīre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cupere',
+            options: ['desiderare, bramare', 'apparire; risultare chiaro', 'sapere'],
+            answer: 'desiderare, bramare',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['cupere', 'desiderare, bramare'],
+              ['iūdicāre', 'giudicare'],
+              ['reperīre', 'trovare, scoprire'],
+              ['appārēre', 'apparire; risultare chiaro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «desiderare, scegliere»?',
+            options: ['optāre', 'appārēre', 'scīre'],
+            answer: 'optāre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'iūdicāre',
+            options: ['giudicare', 'apparire; risultare chiaro', 'sapere'],
+            answer: 'giudicare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «trovare, scoprire»?',
+            options: ['reperīre', 'appārēre', 'scīre'],
+            answer: 'reperīre',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['optāre', 'desiderare, scegliere'],
+              ['oportet', 'bisogna, si deve'],
+              ['licet', 'è permesso, è lecito'],
+              ['scīre', 'sapere'],
+              ['nescīre', 'non sapere, ignorare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'appārēre',
+            options: ['apparire; risultare chiaro', 'desiderare, bramare', 'sapere'],
+            answer: 'apparire; risultare chiaro',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «bisogna, si deve»?',
+            options: ['oportet', 'appārēre', 'scīre'],
+            answer: 'oportet',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'licet',
+            options: ['è permesso, è lecito', 'apparire; risultare chiaro', 'sapere'],
+            answer: 'è permesso, è lecito',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['optāre', 'desiderare, scegliere'],
               ['iūdicāre', 'giudicare'],
               ['appārēre', 'apparire; risultare chiaro'],
@@ -4325,11 +6367,7 @@ export const curriculum: Unit[] = [
             type: 'choice',
             prompt: 'Come si traduce «Negat sē scīre»?',
             focus: 'Negat sē scīre',
-            options: [
-              'Dice di non sapere',
-              'Nega di sapere di sé',
-              'Non sa di dire',
-            ],
+            options: ['Dice di non sapere', 'Nega di sapere di sé', 'Non sa di dire'],
             answer: 'Dice di non sapere',
           },
           {
@@ -4342,22 +6380,6 @@ export const curriculum: Unit[] = [
               'I soldati bisognano combattere',
             ],
             answer: 'Bisogna che i soldati combattano',
-          },
-          {
-            type: 'choice',
-            prompt: 'Quale di questi verbi è impersonale, cioè esiste solo alla 3ª singolare?',
-            options: ['licet', 'iūrāre', 'reperīre'],
-            answer: 'licet',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['nūntiāre', 'annunciare'],
-              ['vetāre', 'vietare'],
-              ['monēre', 'avvertire'],
-              ['ostendere', 'mostrare'],
-            ],
           },
           {
             type: 'match',
@@ -4918,20 +6940,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u14v',
-        title: 'Quanti e quali',
+        title: 'I numeri',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Numeri e quantità',
-            body:
-              'I pronomi appena studiati hanno dei parenti stretti: le parole che ' +
-              'dicono QUANTI. Alcune sono numeri veri e propri, altre — «nessuno», ' +
-              '«un altro», «tutti e due» — si comportano come pronomi, e si ' +
-              'declinano come loro.\n\n' +
-              'Sono parole piccolissime che le versioni usano di continuo, e che ' +
-              'chi non le riconosce salta, perdendo il senso della frase.',
+            body: 'I pronomi appena studiati hanno dei parenti stretti: le parole che dicono QUANTI. Alcune sono numeri veri e propri, altre — «nessuno», «un altro», «tutti e due» — si comportano come pronomi, e si declinano come loro.\n\nSono parole piccolissime che le versioni usano di continuo, e che chi non le riconosce salta, perdendo il senso della frase.',
           },
           {
             type: 'table',
@@ -4959,6 +6975,107 @@ export const curriculum: Unit[] = [
             pairs: [
               ['ūnus', 'uno'],
               ['duo', 'due'],
+              ['trēs', 'tre'],
+              ['quattuor', 'quattro'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['quīnque', 'cinque'],
+              ['sex', 'sei'],
+              ['decem', 'dieci'],
+              ['centum', 'cento'],
+              ['prīmus', 'primo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ūnus',
+            options: ['uno', 'cento', 'tre'],
+            answer: 'uno',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «due»?',
+            options: ['duo', 'centum', 'ūnus'],
+            answer: 'duo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'trēs',
+            options: ['tre', 'cento', 'uno'],
+            answer: 'tre',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['trēs', 'tre'],
+              ['quattuor', 'quattro'],
+              ['quīnque', 'cinque'],
+              ['sex', 'sei'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «quattro»?',
+            options: ['quattuor', 'centum', 'ūnus'],
+            answer: 'quattuor',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'quīnque',
+            options: ['cinque', 'cento', 'uno'],
+            answer: 'cinque',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «sei»?',
+            options: ['sex', 'centum', 'ūnus'],
+            answer: 'sex',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['decem', 'dieci'],
+              ['centum', 'cento'],
+              ['prīmus', 'primo'],
+              ['ūnus', 'uno'],
+              ['duo', 'due'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'decem',
+            options: ['dieci', 'cento', 'uno'],
+            answer: 'dieci',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cento»?',
+            options: ['centum', 'decem', 'ūnus'],
+            answer: 'centum',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'prīmus',
+            options: ['primo', 'cento', 'uno'],
+            answer: 'primo',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ūnus', 'uno'],
+              ['duo', 'due'],
               ['quattuor', 'quattro'],
               ['sex', 'sei'],
             ],
@@ -4969,6 +7086,37 @@ export const curriculum: Unit[] = [
             options: ['ūnus', 'duo', 'prīmus'],
             answer: 'ūnus',
           },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «decem mīlia mīlitum»?',
+            focus: 'decem mīlia mīlitum',
+            options: ['diecimila soldati', 'dieci soldati scelti', 'mille soldati per dieci volte'],
+            answer: 'diecimila soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «tōtīus urbis»?',
+            focus: 'tōtīus urbis',
+            options: ['di tutta la città', 'a tutta la città', 'in tutta la città'],
+            answer: 'di tutta la città',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['trēs', 'tre'],
+              ['quīnque', 'cinque'],
+              ['centum', 'cento'],
+              ['prīmus', 'primo'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u14v2',
+        title: 'Quanti, quali, quanto',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Quanti, quali, quanto',
@@ -4988,6 +7136,127 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Questi aggettivi sembrano della 1ª classe, ma al genitivo e al dativo singolare seguono i PRONOMI: genitivo in -īus («ūnīus», «tōtīus», «alterīus»), dativo in -ī («ūnī», «tōtī», «alterī»). Sono nove in tutto e si imparano insieme: ūnus, sōlus, tōtus, ūllus, nūllus, alter, uter, neuter, alius.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['alius', 'un altro (fra molti)'],
+              ['alter', 'l’altro (fra due)'],
+              ['uterque', 'l’uno e l’altro, entrambi'],
+              ['nūllus', 'nessuno'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['sōlus', 'solo, unico'],
+              ['tōtus', 'tutto intero'],
+              ['cēterī', 'gli altri, i restanti'],
+              ['nēmō', 'nessuno (di persona)'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['nihil', 'niente'],
+              ['paucī', 'pochi'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'alius',
+            options: ['un altro (fra molti)', 'l’altro (fra due)', 'l’uno e l’altro, entrambi'],
+            answer: 'un altro (fra molti)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «l’altro (fra due)»?',
+            options: ['alter', 'alius', 'uterque'],
+            answer: 'alter',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'uterque',
+            options: ['l’uno e l’altro, entrambi', 'un altro (fra molti)', 'tutto intero'],
+            answer: 'l’uno e l’altro, entrambi',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['uterque', 'l’uno e l’altro, entrambi'],
+              ['nūllus', 'nessuno'],
+              ['sōlus', 'solo, unico'],
+              ['tōtus', 'tutto intero'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «nessuno»?',
+            options: ['nūllus', 'alius', 'uterque'],
+            answer: 'nūllus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'sōlus',
+            options: ['solo, unico', 'un altro (fra molti)', 'l’uno e l’altro, entrambi'],
+            answer: 'solo, unico',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «tutto intero»?',
+            options: ['tōtus', 'alius', 'uterque'],
+            answer: 'tōtus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['cēterī', 'gli altri, i restanti'],
+              ['nēmō', 'nessuno (di persona)'],
+              ['nihil', 'niente'],
+              ['paucī', 'pochi'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cēterī',
+            options: ['gli altri, i restanti', 'un altro (fra molti)', 'l’uno e l’altro, entrambi'],
+            answer: 'gli altri, i restanti',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «nessuno (di persona)»?',
+            options: ['nēmō', 'alius', 'uterque'],
+            answer: 'nēmō',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'nihil',
+            options: ['niente', 'un altro (fra molti)', 'l’uno e l’altro, entrambi'],
+            answer: 'niente',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['alius', 'un altro (fra molti)'],
+              ['alter', 'l’altro (fra due)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «pochi»?',
+            options: ['paucī', 'alius', 'uterque'],
+            answer: 'paucī',
           },
           {
             type: 'match',
@@ -5014,30 +7283,6 @@ export const curriculum: Unit[] = [
               'Nessuna: sono sinonimi',
             ],
             answer: '«alter» è l’altro di due, «alius» un altro fra molti',
-          },
-          {
-            type: 'choice',
-            prompt: 'Come si traduce «decem mīlia mīlitum»?',
-            focus: 'decem mīlia mīlitum',
-            options: ['diecimila soldati', 'dieci soldati scelti', 'mille soldati per dieci volte'],
-            answer: 'diecimila soldati',
-          },
-          {
-            type: 'choice',
-            prompt: 'Cosa significa «tōtīus urbis»?',
-            focus: 'tōtīus urbis',
-            options: ['di tutta la città', 'a tutta la città', 'in tutta la città'],
-            answer: 'di tutta la città',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['trēs', 'tre'],
-              ['quīnque', 'cinque'],
-              ['centum', 'cento'],
-              ['prīmus', 'primo'],
-            ],
           },
           {
             type: 'match',
@@ -5438,19 +7683,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u15v',
-        title: 'La guerra e lo Stato',
+        title: 'L’esercito',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Il vocabolario delle versioni',
-            body:
-              'Se la versione è di storia — e quasi sempre lo è — queste parole ' +
-              'compaiono nella prima riga. Vale la pena averle già in tasca.\n\n' +
-              'Attenzione a un gruppetto particolare: alcune esistono solo al ' +
-              'PLURALE, e al plurale significano una cosa diversa da quello che ' +
-              'ti aspetteresti.',
+            body: 'Se la versione è di storia — e quasi sempre lo è — queste parole compaiono nella prima riga. Vale la pena averle già in tasca.\n\nAttenzione a un gruppetto particolare: alcune esistono solo al PLURALE, e al plurale significano una cosa diversa da quello che ti aspetteresti.',
           },
           {
             type: 'table',
@@ -5478,6 +7718,144 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['castra', 'l’accampamento'],
+              ['cōpiae', 'le truppe'],
+              ['arma', 'le armi'],
+              ['legiō', 'legione'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['equitātus', 'cavalleria'],
+              ['praesidium', 'presidio, guarnigione'],
+              ['tēlum', 'arma da lancio, dardo'],
+              ['gladius', 'spada'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['scūtum', 'scudo'],
+              ['vulnus', 'ferita'],
+              ['caedēs', 'strage'],
+              ['praeda', 'bottino'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'castra',
+            options: ['l’accampamento', 'le armi', 'ferita'],
+            answer: 'l’accampamento',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «le truppe»?',
+            options: ['cōpiae', 'arma', 'vulnus'],
+            answer: 'cōpiae',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'arma',
+            options: ['le armi', 'strage', 'ferita'],
+            answer: 'le armi',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['arma', 'le armi'],
+              ['legiō', 'legione'],
+              ['equitātus', 'cavalleria'],
+              ['praesidium', 'presidio, guarnigione'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «legione»?',
+            options: ['legiō', 'arma', 'vulnus'],
+            answer: 'legiō',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'equitātus',
+            options: ['cavalleria', 'le armi', 'ferita'],
+            answer: 'cavalleria',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «presidio, guarnigione»?',
+            options: ['praesidium', 'arma', 'vulnus'],
+            answer: 'praesidium',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['tēlum', 'arma da lancio, dardo'],
+              ['gladius', 'spada'],
+              ['scūtum', 'scudo'],
+              ['vulnus', 'ferita'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'tēlum',
+            options: ['arma da lancio, dardo', 'le armi', 'ferita'],
+            answer: 'arma da lancio, dardo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «spada»?',
+            options: ['gladius', 'arma', 'vulnus'],
+            answer: 'gladius',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'scūtum',
+            options: ['scudo', 'le armi', 'ferita'],
+            answer: 'scudo',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['caedēs', 'strage'],
+              ['praeda', 'bottino'],
+              ['castra', 'l’accampamento'],
+              ['cōpiae', 'le truppe'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ferita»?',
+            options: ['vulnus', 'arma', 'tēlum'],
+            answer: 'vulnus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'caedēs',
+            options: ['strage', 'le armi', 'ferita'],
+            answer: 'strage',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «bottino»?',
+            options: ['praeda', 'arma', 'vulnus'],
+            answer: 'praeda',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['arma', 'le armi'],
               ['legiō', 'legione'],
               ['equitātus', 'cavalleria'],
@@ -5499,6 +7877,30 @@ export const curriculum: Unit[] = [
             options: ['castra', 'cōpiae', 'praeda'],
             answer: 'castra',
           },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «castra»?',
+            focus: 'castra',
+            options: ['un accampamento', 'gli accampamenti', 'i castelli'],
+            answer: 'un accampamento',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['cōpiae', 'le truppe'],
+              ['praesidium', 'guarnigione'],
+              ['vulnus', 'ferita'],
+              ['praeda', 'bottino'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u15v2',
+        title: 'Lo Stato',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Lo Stato',
@@ -5523,6 +7925,107 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['imperātor', 'comandante (poi: imperatore)'],
+              ['magistrātus', 'magistrato, carica pubblica'],
+              ['iūs', 'diritto'],
+              ['officium', 'dovere, incarico'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['honor', 'carica pubblica; onore'],
+              ['obses', 'ostaggio'],
+              ['pāx', 'pace'],
+              ['imperium', 'comando, potere'],
+              ['auctōritās', 'autorevolezza, prestigio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'imperātor',
+            options: ['comandante (poi: imperatore)', 'autorevolezza, prestigio', 'provincia'],
+            answer: 'comandante (poi: imperatore)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «magistrato, carica pubblica»?',
+            options: ['magistrātus', 'auctōritās', 'prōvincia'],
+            answer: 'magistrātus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'iūs',
+            options: ['diritto', 'autorevolezza, prestigio', 'provincia'],
+            answer: 'diritto',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['iūs', 'diritto'],
+              ['officium', 'dovere, incarico'],
+              ['honor', 'carica pubblica; onore'],
+              ['obses', 'ostaggio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «dovere, incarico»?',
+            options: ['officium', 'auctōritās', 'prōvincia'],
+            answer: 'officium',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'honor',
+            options: ['carica pubblica; onore', 'autorevolezza, prestigio', 'provincia'],
+            answer: 'carica pubblica; onore',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ostaggio»?',
+            options: ['obses', 'auctōritās', 'prōvincia'],
+            answer: 'obses',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['pāx', 'pace'],
+              ['imperium', 'comando, potere'],
+              ['auctōritās', 'autorevolezza, prestigio'],
+              ['imperātor', 'comandante (poi: imperatore)'],
+              ['magistrātus', 'magistrato, carica pubblica'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'pāx',
+            options: ['pace', 'autorevolezza, prestigio', 'provincia'],
+            answer: 'pace',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «comando, potere»?',
+            options: ['imperium', 'auctōritās', 'prōvincia'],
+            answer: 'imperium',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'auctōritās',
+            options: ['autorevolezza, prestigio', 'carica pubblica; onore', 'provincia'],
+            answer: 'autorevolezza, prestigio',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['magistrātus', 'magistrato, carica pubblica'],
               ['honor', 'carica pubblica; onore'],
               ['imperium', 'comando, potere'],
@@ -5537,31 +8040,10 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «castra»?',
-            focus: 'castra',
-            options: ['un accampamento', 'gli accampamenti', 'i castelli'],
-            answer: 'un accampamento',
-          },
-          {
-            type: 'choice',
             prompt: 'In una versione di Cesare, «imperātor» è…',
             focus: 'imperātor',
-            options: [
-              'il generale, il comandante',
-              'l’imperatore di Roma',
-              'un magistrato civile',
-            ],
+            options: ['il generale, il comandante', 'l’imperatore di Roma', 'un magistrato civile'],
             answer: 'il generale, il comandante',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['cōpiae', 'le truppe'],
-              ['praesidium', 'guarnigione'],
-              ['vulnus', 'ferita'],
-              ['praeda', 'bottino'],
-            ],
           },
           {
             type: 'match',
@@ -5992,20 +8474,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u16v',
-        title: 'Animali e natura',
+        title: 'Gli animali',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Le parole delle favole',
-            body:
-              'Non tutte le versioni sono battaglie. I brani più facili — quelli ' +
-              'che si danno a chi comincia — sono spesso FAVOLE: Fedro, Esopo ' +
-              'tradotto, gli animali che parlano.\n\n' +
-              'Hanno un vocabolario tutto loro, concreto e ristretto: una volpe, un ' +
-              'lupo, un albero, un fiume. Sono venti parole che aprono un intero ' +
-              'genere di testi.',
+            body: 'Non tutte le versioni sono battaglie. I brani più facili — quelli che si danno a chi comincia — sono spesso FAVOLE: Fedro, Esopo tradotto, gli animali che parlano.\n\nHanno un vocabolario tutto loro, concreto e ristretto: una volpe, un lupo, un albero, un fiume. Sono venti parole che aprono un intero genere di testi.',
           },
           {
             type: 'table',
@@ -6032,6 +8508,127 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina alla traduzione',
             pairs: [
               ['canis', 'cane'],
+              ['lupus', 'lupo'],
+              ['leō', 'leone'],
+              ['agnus', 'agnello'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['ovis', 'pecora'],
+              ['bōs', 'bue'],
+              ['avis', 'uccello'],
+              ['piscis', 'pesce'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['serpēns', 'serpente'],
+              ['cervus', 'cervo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'canis',
+            options: ['cane', 'agnello', 'serpente'],
+            answer: 'cane',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «lupo»?',
+            options: ['lupus', 'agnus', 'serpēns'],
+            answer: 'lupus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'leō',
+            options: ['leone', 'agnello', 'serpente'],
+            answer: 'leone',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['leō', 'leone'],
+              ['agnus', 'agnello'],
+              ['ovis', 'pecora'],
+              ['bōs', 'bue'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «agnello»?',
+            options: ['agnus', 'avis', 'serpēns'],
+            answer: 'agnus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ovis',
+            options: ['pecora', 'agnello', 'serpente'],
+            answer: 'pecora',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «bue»?',
+            options: ['bōs', 'agnus', 'serpēns'],
+            answer: 'bōs',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['avis', 'uccello'],
+              ['piscis', 'pesce'],
+              ['serpēns', 'serpente'],
+              ['cervus', 'cervo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'avis',
+            options: ['uccello', 'agnello', 'serpente'],
+            answer: 'uccello',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «pesce»?',
+            options: ['piscis', 'agnus', 'serpēns'],
+            answer: 'piscis',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'serpēns',
+            options: ['serpente', 'agnello', 'pesce'],
+            answer: 'serpente',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['canis', 'cane'],
+              ['lupus', 'lupo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cervo»?',
+            options: ['cervus', 'agnus', 'serpēns'],
+            answer: 'cervus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['canis', 'cane'],
               ['piscis', 'pesce'],
               ['serpēns', 'serpente'],
               ['cervus', 'cervo'],
@@ -6043,6 +8640,30 @@ export const curriculum: Unit[] = [
             options: ['canis', 'lupus', 'cervus'],
             answer: 'canis',
           },
+          {
+            type: 'choice',
+            prompt: 'In una favola trovi «lupus et agnus». Chi sono?',
+            focus: 'lupus et agnus',
+            options: ['Il lupo e l’agnello', 'Il lupo e il cane', 'Il leone e l’agnello'],
+            answer: 'Il lupo e l’agnello',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['leō', 'leone'],
+              ['ovis', 'pecora'],
+              ['avis', 'uccello'],
+              ['bōs', 'bue'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u16v2',
+        title: 'La natura',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'La natura',
@@ -6067,6 +8688,107 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['arbor', 'albero'],
+              ['flōs', 'fiore'],
+              ['herba', 'erba'],
+              ['ignis', 'fuoco'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['ventus', 'vento'],
+              ['unda', 'onda'],
+              ['saxum', 'sasso, roccia'],
+              ['umbra', 'ombra'],
+              ['sōl', 'sole'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'arbor',
+            options: ['albero', 'fiore', 'vento'],
+            answer: 'albero',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «fiore»?',
+            options: ['flōs', 'arbor', 'ventus'],
+            answer: 'flōs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'herba',
+            options: ['erba', 'albero', 'vento'],
+            answer: 'erba',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['herba', 'erba'],
+              ['ignis', 'fuoco'],
+              ['ventus', 'vento'],
+              ['unda', 'onda'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «fuoco»?',
+            options: ['ignis', 'arbor', 'ventus'],
+            answer: 'ignis',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ventus',
+            options: ['vento', 'albero', 'onda'],
+            answer: 'vento',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «onda»?',
+            options: ['unda', 'arbor', 'ventus'],
+            answer: 'unda',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['saxum', 'sasso, roccia'],
+              ['umbra', 'ombra'],
+              ['sōl', 'sole'],
+              ['arbor', 'albero'],
+              ['flōs', 'fiore'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'saxum',
+            options: ['sasso, roccia', 'albero', 'vento'],
+            answer: 'sasso, roccia',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ombra»?',
+            options: ['umbra', 'arbor', 'ventus'],
+            answer: 'umbra',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'sōl',
+            options: ['sole', 'albero', 'vento'],
+            answer: 'sole',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['flōs', 'fiore'],
               ['herba', 'erba'],
               ['ventus', 'vento'],
@@ -6085,23 +8807,6 @@ export const curriculum: Unit[] = [
             prompt: 'Come si dice «l’albero alto»?',
             options: ['alta arbor', 'altus arbor', 'altum arbor'],
             answer: 'alta arbor',
-          },
-          {
-            type: 'choice',
-            prompt: 'In una favola trovi «lupus et agnus». Chi sono?',
-            focus: 'lupus et agnus',
-            options: ['Il lupo e l’agnello', 'Il lupo e il cane', 'Il leone e l’agnello'],
-            answer: 'Il lupo e l’agnello',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['leō', 'leone'],
-              ['ovis', 'pecora'],
-              ['avis', 'uccello'],
-              ['bōs', 'bue'],
-            ],
           },
           {
             type: 'match',
@@ -6559,17 +9264,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u17v',
-        title: 'Quando e dove',
+        title: 'Il tempo',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Le coordinate del racconto',
-            body:
-              'Una versione storica dice in continuazione quando e dove succede ' +
-              'qualcosa. Sono parole corte, si saltano leggendo — e poi la ' +
-              'traduzione non torna.',
+            body: 'Una versione storica dice in continuazione quando e dove succede qualcosa. Sono parole corte, si saltano leggendo — e poi la traduzione non torna.',
           },
           {
             type: 'table',
@@ -6599,6 +9301,144 @@ export const curriculum: Unit[] = [
             pairs: [
               ['annus', 'anno'],
               ['mēnsis', 'mese'],
+              ['aestās', 'estate'],
+              ['hiems', 'inverno'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['lūx', 'luce'],
+              ['hodiē', 'oggi'],
+              ['herī', 'ieri'],
+              ['crās', 'domani'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['mox', 'presto, fra poco'],
+              ['tandem', 'finalmente, alla fine'],
+              ['cotīdiē', 'ogni giorno'],
+              ['prīdiē', 'il giorno prima'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'annus',
+            options: ['anno', 'estate', 'finalmente, alla fine'],
+            answer: 'anno',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «mese»?',
+            options: ['mēnsis', 'aestās', 'tandem'],
+            answer: 'mēnsis',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'aestās',
+            options: ['estate', 'anno', 'finalmente, alla fine'],
+            answer: 'estate',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['aestās', 'estate'],
+              ['hiems', 'inverno'],
+              ['lūx', 'luce'],
+              ['hodiē', 'oggi'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «inverno»?',
+            options: ['hiems', 'aestās', 'tandem'],
+            answer: 'hiems',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'lūx',
+            options: ['luce', 'estate', 'finalmente, alla fine'],
+            answer: 'luce',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «oggi»?',
+            options: ['hodiē', 'aestās', 'tandem'],
+            answer: 'hodiē',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['herī', 'ieri'],
+              ['crās', 'domani'],
+              ['mox', 'presto, fra poco'],
+              ['tandem', 'finalmente, alla fine'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'herī',
+            options: ['ieri', 'estate', 'finalmente, alla fine'],
+            answer: 'ieri',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «domani»?',
+            options: ['crās', 'aestās', 'tandem'],
+            answer: 'crās',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mox',
+            options: ['presto, fra poco', 'estate', 'finalmente, alla fine'],
+            answer: 'presto, fra poco',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['cotīdiē', 'ogni giorno'],
+              ['prīdiē', 'il giorno prima'],
+              ['annus', 'anno'],
+              ['mēnsis', 'mese'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «finalmente, alla fine»?',
+            options: ['tandem', 'aestās', 'prīdiē'],
+            answer: 'tandem',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cotīdiē',
+            options: ['ogni giorno', 'estate', 'finalmente, alla fine'],
+            answer: 'ogni giorno',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «il giorno prima»?',
+            options: ['prīdiē', 'aestās', 'tandem'],
+            answer: 'prīdiē',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['annus', 'anno'],
+              ['mēnsis', 'mese'],
               ['lūx', 'luce'],
               ['hodiē', 'oggi'],
             ],
@@ -6618,69 +9458,6 @@ export const curriculum: Unit[] = [
             prompt: 'Quale significa «anno»?',
             options: ['annus', 'mēnsis', 'prīdiē'],
             answer: 'annus',
-          },
-          {
-            type: 'table',
-            title: 'Il luogo',
-            lessico: true,
-            columns: ['Latino', 'Italiano'],
-            rows: [
-              ['locus, locī', 'luogo (al plurale: «loca», neutro)'],
-              ['ager, agrī', 'campo; territorio'],
-              ['fīnēs, fīnium (pl.)', 'il territorio, i confini'],
-              ['rūs, rūris', 'la campagna'],
-              ['domus, domūs', 'casa'],
-              ['castellum', 'fortino'],
-              ['prope', 'vicino'],
-              ['procul', 'lontano'],
-              ['inde', 'da lì'],
-              ['unde', 'da dove'],
-              ['ubīque', 'dappertutto'],
-              ['hīc', 'qui'],
-            ],
-            speakCols: [0],
-            note: '«fīnēs» al plurale non sono «i confini» ma il territorio che quei confini racchiudono: «in fīnēs Helvētiōrum» = nel territorio degli Elvezi.',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina alla traduzione',
-            pairs: [
-              ['locus', 'luogo (al plurale: «loca», neutro)'],
-              ['ager', 'campo; territorio'],
-              ['rūs', 'la campagna'],
-              ['domus', 'casa'],
-            ],
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina il significato',
-            pairs: [
-              ['castellum', 'fortino'],
-              ['prope', 'vicino'],
-              ['unde', 'da dove'],
-              ['hīc', 'qui'],
-            ],
-          },
-          {
-            type: 'choice',
-            prompt: 'Quale significa «campo; territorio»?',
-            options: ['ager', 'locus', 'hīc'],
-            answer: 'ager',
-          },
-          {
-            type: 'info',
-            icon: '📍',
-            title: 'Le città non vogliono preposizione',
-            body:
-              'Una regola piccola che nelle versioni serve a ogni pagina.\n\n' +
-              'Con i nomi di CITTÀ (e con «domus» e «rūs») il latino NON mette ' +
-              'la preposizione:\n\n' +
-              '«Rōmam vēnit» = venne a Roma (accusativo, moto a luogo)\n' +
-              '«Rōmā discessit» = partì da Roma (ablativo, moto da luogo)\n' +
-              '«Rōmae fuit» = fu a Roma\n\n' +
-              'Quel «Rōmae» non è un genitivo: è un caso in più, sopravvissuto ' +
-              'solo qui, che si chiama LOCATIVO. Vale anche per «domī» (a casa) ' +
-              'e «rūrī» (in campagna).',
           },
           {
             type: 'choice',
@@ -6712,6 +9489,205 @@ export const curriculum: Unit[] = [
               ['tandem', 'finalmente'],
               ['mox', 'fra poco'],
             ],
+          },
+        ],
+      },
+      {
+        id: 'u17v2',
+        title: 'Il luogo',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'table',
+            title: 'Il luogo',
+            lessico: true,
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['locus, locī', 'luogo (al plurale: «loca», neutro)'],
+              ['ager, agrī', 'campo; territorio'],
+              ['fīnēs, fīnium (pl.)', 'il territorio, i confini'],
+              ['rūs, rūris', 'la campagna'],
+              ['domus, domūs', 'casa'],
+              ['castellum', 'fortino'],
+              ['prope', 'vicino'],
+              ['procul', 'lontano'],
+              ['inde', 'da lì'],
+              ['unde', 'da dove'],
+              ['ubīque', 'dappertutto'],
+              ['hīc', 'qui'],
+            ],
+            speakCols: [0],
+            note: '«fīnēs» al plurale non sono «i confini» ma il territorio che quei confini racchiudono: «in fīnēs Helvētiōrum» = nel territorio degli Elvezi.',
+          },
+          {
+            type: 'info',
+            icon: '📍',
+            title: 'Le città non vogliono preposizione',
+            body: 'Una regola piccola che nelle versioni serve a ogni pagina.\n\nCon i nomi di CITTÀ (e con «domus» e «rūs») il latino NON mette la preposizione:\n\n«Rōmam vēnit» = venne a Roma (accusativo, moto a luogo)\n«Rōmā discessit» = partì da Roma (ablativo, moto da luogo)\n«Rōmae fuit» = fu a Roma\n\nQuel «Rōmae» non è un genitivo: è un caso in più, sopravvissuto solo qui, che si chiama LOCATIVO. Vale anche per «domī» (a casa) e «rūrī» (in campagna).',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['locus', 'luogo (al plurale: «loca», neutro)'],
+              ['ager', 'campo; territorio'],
+              ['fīnēs', 'il territorio, i confini'],
+              ['rūs', 'la campagna'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['domus', 'casa'],
+              ['castellum', 'fortino'],
+              ['prope', 'vicino'],
+              ['procul', 'lontano'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['inde', 'da lì'],
+              ['unde', 'da dove'],
+              ['ubīque', 'dappertutto'],
+              ['hīc', 'qui'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'locus',
+            options: ['luogo (al plurale: «loca», neutro)', 'campo; territorio', 'da dove'],
+            answer: 'luogo (al plurale: «loca», neutro)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «campo; territorio»?',
+            options: ['ager', 'castellum', 'unde'],
+            answer: 'ager',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'fīnēs',
+            options: ['il territorio, i confini', 'campo; territorio', 'da dove'],
+            answer: 'il territorio, i confini',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['fīnēs', 'il territorio, i confini'],
+              ['rūs', 'la campagna'],
+              ['domus', 'casa'],
+              ['castellum', 'fortino'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «la campagna»?',
+            options: ['rūs', 'ager', 'unde'],
+            answer: 'rūs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'domus',
+            options: ['casa', 'campo; territorio', 'da dove'],
+            answer: 'casa',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «fortino»?',
+            options: ['castellum', 'ager', 'unde'],
+            answer: 'castellum',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['prope', 'vicino'],
+              ['procul', 'lontano'],
+              ['inde', 'da lì'],
+              ['unde', 'da dove'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'prope',
+            options: ['vicino', 'campo; territorio', 'da dove'],
+            answer: 'vicino',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «lontano»?',
+            options: ['procul', 'ager', 'unde'],
+            answer: 'procul',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'inde',
+            options: ['da lì', 'campo; territorio', 'da dove'],
+            answer: 'da lì',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['ubīque', 'dappertutto'],
+              ['hīc', 'qui'],
+              ['locus', 'luogo (al plurale: «loca», neutro)'],
+              ['ager', 'campo; territorio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «da dove»?',
+            options: ['unde', 'ager', 'ubīque'],
+            answer: 'unde',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ubīque',
+            options: ['dappertutto', 'campo; territorio', 'da dove'],
+            answer: 'dappertutto',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «qui»?',
+            options: ['hīc', 'ager', 'unde'],
+            answer: 'hīc',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['locus', 'luogo (al plurale: «loca», neutro)'],
+              ['ager', 'campo; territorio'],
+              ['rūs', 'la campagna'],
+              ['domus', 'casa'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['castellum', 'fortino'],
+              ['prope', 'vicino'],
+              ['unde', 'da dove'],
+              ['hīc', 'qui'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «campo; territorio»?',
+            options: ['ager', 'locus', 'hīc'],
+            answer: 'ager',
           },
           {
             type: 'match',
@@ -7114,20 +10090,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u18v',
-        title: 'Il corpo e i sentimenti',
+        title: 'Il corpo',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Quello che si prova',
-            body:
-              'Fin qui il lessico è stato quasi tutto pubblico: eserciti, ' +
-              'magistrati, territori. Ma le versioni d’autore — Cicerone, Seneca, ' +
-              'e le pagine di storia in cui qualcuno ha paura o si vendica — ' +
-              'girano intorno a un vocabolario diverso.\n\n' +
-              'Il corpo e i sentimenti: sono parole che in italiano sopravvivono ' +
-              'quasi tutte, e che quindi si imparano in fretta.',
+            body: 'Fin qui il lessico è stato quasi tutto pubblico: eserciti, magistrati, territori. Ma le versioni d’autore — Cicerone, Seneca, e le pagine di storia in cui qualcuno ha paura o si vendica — girano intorno a un vocabolario diverso.\n\nIl corpo e i sentimenti: sono parole che in italiano sopravvivono quasi tutte, e che quindi si imparano in fretta.',
           },
           {
             type: 'table',
@@ -7151,6 +10121,98 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['caput', 'testa; capo'],
+              ['oculus', 'occhio'],
+              ['auris', 'orecchio'],
+              ['ōs', 'bocca; volto'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['pēs', 'piede'],
+              ['cor', 'cuore'],
+              ['sanguis', 'sangue'],
+              ['vultus', 'volto, espressione'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'caput',
+            options: ['testa; capo', 'orecchio', 'volto, espressione'],
+            answer: 'testa; capo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «occhio»?',
+            options: ['oculus', 'auris', 'vultus'],
+            answer: 'oculus',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'auris',
+            options: ['orecchio', 'testa; capo', 'volto, espressione'],
+            answer: 'orecchio',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['auris', 'orecchio'],
+              ['ōs', 'bocca; volto'],
+              ['pēs', 'piede'],
+              ['cor', 'cuore'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «bocca; volto»?',
+            options: ['ōs', 'auris', 'vultus'],
+            answer: 'ōs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'pēs',
+            options: ['piede', 'orecchio', 'volto, espressione'],
+            answer: 'piede',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cuore»?',
+            options: ['cor', 'auris', 'vultus'],
+            answer: 'cor',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['sanguis', 'sangue'],
+              ['vultus', 'volto, espressione'],
+              ['caput', 'testa; capo'],
+              ['oculus', 'occhio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'sanguis',
+            options: ['sangue', 'orecchio', 'volto, espressione'],
+            answer: 'sangue',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «volto, espressione»?',
+            options: ['vultus', 'auris', 'sanguis'],
+            answer: 'vultus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['oculus', 'occhio'],
               ['auris', 'orecchio'],
               ['vultus', 'volto, espressione'],
@@ -7162,6 +10224,37 @@ export const curriculum: Unit[] = [
             options: ['caput', 'oculus', 'vultus'],
             answer: 'caput',
           },
+          {
+            type: 'choice',
+            prompt: 'In Cicerone «hominis audācia» ha un tono...',
+            focus: 'hominis audācia',
+            options: ['negativo: la sfrontatezza', 'positivo: il coraggio', 'neutro: la decisione'],
+            answer: 'negativo: la sfrontatezza',
+          },
+          {
+            type: 'choice',
+            prompt: 'Trovi «ossis» in una versione. Di quale parola è il genitivo?',
+            focus: 'ossis',
+            options: ['os, ossis = osso', 'ōs, ōris = bocca', 'ovis, ovis = pecora'],
+            answer: 'os, ossis = osso',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['caput', 'testa'],
+              ['pēs', 'piede'],
+              ['cor', 'cuore'],
+              ['sanguis', 'sangue'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u18v2',
+        title: 'I sentimenti',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'I sentimenti',
@@ -7187,6 +10280,90 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina alla traduzione',
             pairs: [
               ['gaudium', 'gioia'],
+              ['dolor', 'dolore'],
+              ['timor', 'paura'],
+              ['amor', 'amore'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['odium', 'odio'],
+              ['voluptās', 'piacere'],
+              ['cupiditās', 'desiderio, brama'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'gaudium',
+            options: ['gioia', 'amore', 'piacere'],
+            answer: 'gioia',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «dolore»?',
+            options: ['dolor', 'amor', 'voluptās'],
+            answer: 'dolor',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'timor',
+            options: ['paura', 'amore', 'piacere'],
+            answer: 'paura',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['timor', 'paura'],
+              ['amor', 'amore'],
+              ['odium', 'odio'],
+              ['voluptās', 'piacere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «amore»?',
+            options: ['amor', 'audācia', 'voluptās'],
+            answer: 'amor',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'odium',
+            options: ['odio', 'amore', 'piacere'],
+            answer: 'odio',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «piacere»?',
+            options: ['voluptās', 'amor', 'timor'],
+            answer: 'voluptās',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['cupiditās', 'desiderio, brama'],
+              ['gaudium', 'gioia'],
+              ['dolor', 'dolore'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cupiditās',
+            options: ['desiderio, brama', 'amore', 'piacere'],
+            answer: 'desiderio, brama',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['gaudium', 'gioia'],
               ['amor', 'amore'],
               ['cupiditās', 'desiderio, brama'],
             ],
@@ -7196,30 +10373,6 @@ export const curriculum: Unit[] = [
             prompt: 'Quale significa «gioia»?',
             options: ['gaudium', 'dolor', 'invidia'],
             answer: 'gaudium',
-          },
-          {
-            type: 'choice',
-            prompt: 'In Cicerone «hominis audācia» ha un tono...',
-            focus: 'hominis audācia',
-            options: ['negativo: la sfrontatezza', 'positivo: il coraggio', 'neutro: la decisione'],
-            answer: 'negativo: la sfrontatezza',
-          },
-          {
-            type: 'choice',
-            prompt: 'Trovi «ossis» in una versione. Di quale parola è il genitivo?',
-            focus: 'ossis',
-            options: ['os, ossis = osso', 'ōs, ōris = bocca', 'ovis, ovis = pecora'],
-            answer: 'os, ossis = osso',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['caput', 'testa'],
-              ['pēs', 'piede'],
-              ['cor', 'cuore'],
-              ['sanguis', 'sangue'],
-            ],
           },
           {
             type: 'match',
@@ -7768,17 +10921,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u19v',
-        title: 'Persone e società',
+        title: 'La famiglia',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Chi popola i testi',
-            body:
-              'Le persone che compaiono nelle versioni non sono solo re e ' +
-              'soldati. E qui si nascondono due dei falsi amici peggiori del ' +
-              'latino, che sembrano trasparenti e non lo sono affatto.',
+            body: 'Le persone che compaiono nelle versioni non sono solo re e soldati. E qui si nascondono due dei falsi amici peggiori del latino, che sembrano trasparenti e non lo sono affatto.',
           },
           {
             type: 'table',
@@ -7802,6 +10952,98 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['uxor', 'moglie'],
+              ['coniūnx', 'coniuge (marito o moglie)'],
+              ['līberī', 'i figli'],
+              ['familia', 'la servitù di casa; il casato'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['mulier', 'donna'],
+              ['senex', 'vecchio'],
+              ['iuvenis', 'giovane'],
+              ['incola', 'abitante'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'uxor',
+            options: ['moglie', 'coniuge (marito o moglie)', 'vecchio'],
+            answer: 'moglie',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «coniuge (marito o moglie)»?',
+            options: ['coniūnx', 'familia', 'uxor'],
+            answer: 'coniūnx',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'līberī',
+            options: ['i figli', 'coniuge (marito o moglie)', 'moglie'],
+            answer: 'i figli',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['līberī', 'i figli'],
+              ['familia', 'la servitù di casa; il casato'],
+              ['mulier', 'donna'],
+              ['senex', 'vecchio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «la servitù di casa; il casato»?',
+            options: ['familia', 'coniūnx', 'uxor'],
+            answer: 'familia',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mulier',
+            options: ['donna', 'coniuge (marito o moglie)', 'moglie'],
+            answer: 'donna',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «vecchio»?',
+            options: ['senex', 'coniūnx', 'uxor'],
+            answer: 'senex',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['iuvenis', 'giovane'],
+              ['incola', 'abitante'],
+              ['uxor', 'moglie'],
+              ['coniūnx', 'coniuge (marito o moglie)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'iuvenis',
+            options: ['giovane', 'coniuge (marito o moglie)', 'moglie'],
+            answer: 'giovane',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «abitante»?',
+            options: ['incola', 'coniūnx', 'uxor'],
+            answer: 'incola',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['coniūnx', 'coniuge (marito o moglie)'],
               ['familia', 'la servitù di casa; il casato'],
               ['iuvenis', 'giovane'],
@@ -7813,6 +11055,30 @@ export const curriculum: Unit[] = [
             options: ['uxor', 'coniūnx', 'incola'],
             answer: 'uxor',
           },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «līberī»?',
+            focus: 'līberī',
+            options: ['i figli', 'gli uomini liberi', 'i libri'],
+            answer: 'i figli',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['uxor', 'moglie'],
+              ['mulier', 'donna'],
+              ['senex', 'vecchio'],
+              ['incola', 'abitante'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u19v2',
+        title: 'Mestieri e folla',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Mestieri e folla',
@@ -7837,6 +11103,107 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['nauta', 'marinaio'],
+              ['agricola', 'contadino'],
+              ['scrība', 'scrivano'],
+              ['sacerdōs', 'sacerdote'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['inimīcus', 'nemico personale'],
+              ['turba', 'folla'],
+              ['multitūdō', 'moltitudine'],
+              ['plēbs', 'plebe'],
+              ['servitūs', 'schiavitù'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'nauta',
+            options: ['marinaio', 'contadino', 'folla'],
+            answer: 'marinaio',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «contadino»?',
+            options: ['agricola', 'dea', 'turba'],
+            answer: 'agricola',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'scrība',
+            options: ['scrivano', 'contadino', 'folla'],
+            answer: 'scrivano',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['scrība', 'scrivano'],
+              ['sacerdōs', 'sacerdote'],
+              ['inimīcus', 'nemico personale'],
+              ['turba', 'folla'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «sacerdote»?',
+            options: ['sacerdōs', 'agricola', 'turba'],
+            answer: 'sacerdōs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'inimīcus',
+            options: ['nemico personale', 'contadino', 'folla'],
+            answer: 'nemico personale',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «folla»?',
+            options: ['turba', 'agricola', 'servitūs'],
+            answer: 'turba',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['multitūdō', 'moltitudine'],
+              ['plēbs', 'plebe'],
+              ['servitūs', 'schiavitù'],
+              ['nauta', 'marinaio'],
+              ['agricola', 'contadino'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'multitūdō',
+            options: ['moltitudine', 'contadino', 'folla'],
+            answer: 'moltitudine',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «plebe»?',
+            options: ['plēbs', 'agricola', 'turba'],
+            answer: 'plēbs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'servitūs',
+            options: ['schiavitù', 'contadino', 'folla'],
+            answer: 'schiavitù',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['scrība', 'scrivano'],
               ['inimīcus', 'nemico personale'],
               ['multitūdō', 'moltitudine'],
@@ -7851,27 +11218,10 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «līberī»?',
-            focus: 'līberī',
-            options: ['i figli', 'gli uomini liberi', 'i libri'],
-            answer: 'i figli',
-          },
-          {
-            type: 'choice',
             prompt: 'Come si dice «il buon marinaio»?',
             focus: 'nauta',
             options: ['nauta bonus', 'nauta bona', 'nautus bonus'],
             answer: 'nauta bonus',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['uxor', 'moglie'],
-              ['mulier', 'donna'],
-              ['senex', 'vecchio'],
-              ['incola', 'abitante'],
-            ],
           },
           {
             type: 'match',
@@ -8309,19 +11659,14 @@ export const curriculum: Unit[] = [
       },
       {
         id: 'u20v',
-        title: 'Le parole delle idee',
+        title: 'Mente e parola',
         icon: '🗂️',
         exercises: [
           {
             type: 'info',
             icon: '🗂️',
             title: 'Gli astratti, e perché sono difficili',
-            body:
-              'Ultimo gruppo, e il più insidioso. Sono parole astratte, quindi ' +
-              'quasi tutte hanno passato la loro forma all’italiano — e quasi ' +
-              'tutte hanno cambiato senso per strada.\n\n' +
-              'Con queste, la regola dell’unità 1 vale al massimo grado: se una ' +
-              'parola ti sembra ovvia, controllala lo stesso.',
+            body: 'Ultimo gruppo, e il più insidioso. Sono parole astratte, quindi quasi tutte hanno passato la loro forma all’italiano — e quasi tutte hanno cambiato senso per strada.\n\nCon queste, la regola dell’unità 1 vale al massimo grado: se una parola ti sembra ovvia, controllala lo stesso.',
           },
           {
             type: 'table',
@@ -8345,6 +11690,90 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['mēns', 'mente, intenzione'],
+              ['ratiō', 'ragione; metodo; conto'],
+              ['cōnsilium', 'decisione, piano'],
+              ['sententia', 'opinione, parere'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['ōrātiō', 'discorso'],
+              ['exemplum', 'esempio, precedente'],
+              ['causa', 'motivo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mēns',
+            options: ['mente, intenzione', 'motivo', 'opinione, parere'],
+            answer: 'mente, intenzione',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ragione; metodo; conto»?',
+            options: ['ratiō', 'causa', 'sententia'],
+            answer: 'ratiō',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'cōnsilium',
+            options: ['decisione, piano', 'motivo', 'opinione, parere'],
+            answer: 'decisione, piano',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['cōnsilium', 'decisione, piano'],
+              ['sententia', 'opinione, parere'],
+              ['ōrātiō', 'discorso'],
+              ['exemplum', 'esempio, precedente'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «opinione, parere»?',
+            options: ['sententia', 'causa', 'ratiō'],
+            answer: 'sententia',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'ōrātiō',
+            options: ['discorso', 'motivo', 'opinione, parere'],
+            answer: 'discorso',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «esempio, precedente»?',
+            options: ['exemplum', 'causa', 'sententia'],
+            answer: 'exemplum',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['causa', 'motivo'],
+              ['mēns', 'mente, intenzione'],
+              ['ratiō', 'ragione; metodo; conto'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'causa',
+            options: ['motivo', 'decisione, piano', 'opinione, parere'],
+            answer: 'motivo',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['cōnsilium', 'decisione, piano'],
               ['causa', 'motivo'],
             ],
@@ -8355,6 +11784,41 @@ export const curriculum: Unit[] = [
             options: ['mēns', 'ratiō', 'causa'],
             answer: 'mēns',
           },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Quā ratiōne id fēcit?»',
+            focus: 'Quā ratiōne',
+            options: [
+              'In che modo lo fece?',
+              'Per quale ragione lo fece?',
+              'Con quale conto lo fece?',
+            ],
+            answer: 'In che modo lo fece?',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «salūtem petīvērunt», che cosa cercavano?',
+            focus: 'salūtem petīvērunt',
+            options: ['la salvezza', 'la salute', 'il saluto'],
+            answer: 'la salvezza',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['mēns', 'mente'],
+              ['ōrātiō', 'discorso'],
+              ['sententia', 'parere'],
+              ['exemplum', 'precedente'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u20v2',
+        title: 'Forza, ordine, costume',
+        icon: '🗂️',
+        exercises: [
           {
             type: 'table',
             title: 'Forza, ordine, costume',
@@ -8379,6 +11843,127 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina alla traduzione',
             pairs: [
+              ['vīs', 'forza, violenza'],
+              ['vīrēs', 'le forze fisiche'],
+              ['salūs', 'salvezza; salute'],
+              ['mōs', 'costume, usanza'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['mōrēs', 'il carattere, i costumi'],
+              ['ōrdō', 'ordine, fila; ceto sociale'],
+              ['genus', 'stirpe, genere, specie'],
+              ['initium', 'inizio'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['fīnis', 'fine, limite'],
+              ['numerus', 'numero'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'vīs',
+            options: ['forza, violenza', 'fine, limite', 'le forze fisiche'],
+            answer: 'forza, violenza',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «le forze fisiche»?',
+            options: ['vīrēs', 'fīnis', 'vīs'],
+            answer: 'vīrēs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'salūs',
+            options: ['salvezza; salute', 'fine, limite', 'forza, violenza'],
+            answer: 'salvezza; salute',
+          },
+          {
+            type: 'match',
+            prompt: 'Ancora una volta, mescolate',
+            pairs: [
+              ['salūs', 'salvezza; salute'],
+              ['mōs', 'costume, usanza'],
+              ['mōrēs', 'il carattere, i costumi'],
+              ['ōrdō', 'ordine, fila; ceto sociale'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «costume, usanza»?',
+            options: ['mōs', 'fīnis', 'vīs'],
+            answer: 'mōs',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'mōrēs',
+            options: ['il carattere, i costumi', 'fine, limite', 'forza, violenza'],
+            answer: 'il carattere, i costumi',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «ordine, fila; ceto sociale»?',
+            options: ['ōrdō', 'fīnis', 'vīs'],
+            answer: 'ōrdō',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['genus', 'stirpe, genere, specie'],
+              ['initium', 'inizio'],
+              ['fīnis', 'fine, limite'],
+              ['numerus', 'numero'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'genus',
+            options: ['stirpe, genere, specie', 'fine, limite', 'forza, violenza'],
+            answer: 'stirpe, genere, specie',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «inizio»?',
+            options: ['initium', 'fīnis', 'vīs'],
+            answer: 'initium',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cosa significa?',
+            focus: 'fīnis',
+            options: ['fine, limite', 'stirpe, genere, specie', 'forza, violenza'],
+            answer: 'fine, limite',
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['vīs', 'forza, violenza'],
+              ['vīrēs', 'le forze fisiche'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «numero»?',
+            options: ['numerus', 'fīnis', 'vīs'],
+            answer: 'numerus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
               ['vīrēs', 'le forze fisiche'],
               ['salūs', 'salvezza; salute'],
               ['mōs', 'costume, usanza'],
@@ -8394,34 +11979,10 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «Quā ratiōne id fēcit?»',
-            focus: 'Quā ratiōne',
-            options: ['In che modo lo fece?', 'Per quale ragione lo fece?', 'Con quale conto lo fece?'],
-            answer: 'In che modo lo fece?',
-          },
-          {
-            type: 'choice',
-            prompt: 'In «salūtem petīvērunt», che cosa cercavano?',
-            focus: 'salūtem petīvērunt',
-            options: ['la salvezza', 'la salute', 'il saluto'],
-            answer: 'la salvezza',
-          },
-          {
-            type: 'choice',
             prompt: 'Cosa sono i «mōrēs» di un popolo?',
             focus: 'mōrēs',
             options: ['i costumi, il carattere', 'le mura', 'le morti'],
             answer: 'i costumi, il carattere',
-          },
-          {
-            type: 'match',
-            prompt: 'Abbina all’italiano',
-            pairs: [
-              ['mēns', 'mente'],
-              ['ōrātiō', 'discorso'],
-              ['sententia', 'parere'],
-              ['exemplum', 'precedente'],
-            ],
           },
           {
             type: 'match',

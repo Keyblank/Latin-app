@@ -58,7 +58,7 @@ export const versiones: Versio[] = [
     titolo: 'Vulpēs et corvus',
     fonte: 'la favola di Fedro, adattata',
     icona: '🦊',
-    unlock: 40,
+    unlock: 46,
     livello: 'facile',
     intro:
       'La prima versione: una favola corta, tutta al passato. Non c’è niente ' +
@@ -146,7 +146,7 @@ export const versiones: Versio[] = [
     titolo: 'Mūcius Scaevola',
     fonte: 'ispirata a Livio',
     icona: '🔥',
-    unlock: 50,
+    unlock: 58,
     livello: 'facile',
     intro:
       'Una scena famosa dell’assedio di Roma. Qui trovi i participi e un ' +
@@ -243,7 +243,7 @@ export const versiones: Versio[] = [
     titolo: 'Daedalus et Īcarus',
     fonte: 'ispirata a Ovidio',
     icona: '🪶',
-    unlock: 61,
+    unlock: 71,
     livello: 'media',
     intro:
       'Un mito, e quindi un racconto con due personaggi che si scambiano il ' +
@@ -341,7 +341,7 @@ export const versiones: Versio[] = [
     titolo: 'Rōmulus et Remus',
     fonte: 'la leggenda della fondazione, adattata',
     icona: '🐺',
-    unlock: 71,
+    unlock: 83,
     livello: 'media',
     intro:
       'La storia che ogni romano conosceva a memoria. Il brano è al passato, ' +
@@ -439,7 +439,7 @@ export const versiones: Versio[] = [
     titolo: 'Caesar in Galliam contendit',
     fonte: 'ispirata al De bello Gallico',
     icona: '⚔️',
-    unlock: 77,
+    unlock: 90,
     livello: 'media',
     intro:
       'Il registro di Cesare: frasi asciutte, molti ablativi assoluti, e ' +
@@ -544,7 +544,7 @@ export const versiones: Versio[] = [
     titolo: 'Cicerō contrā Catilīnam',
     fonte: 'ispirata alle Catilinarie',
     icona: '🏛️',
-    unlock: 93,
+    unlock: 109,
     livello: 'impegnativa',
     intro:
       'Il registro dell’oratoria, che è un’altra cosa dal racconto: periodi ' +
@@ -649,7 +649,7 @@ export const versiones: Versio[] = [
     titolo: 'Hannibal ad portās',
     fonte: 'ispirata a Livio ed Eutropio',
     icona: '🐘',
-    unlock: 93,
+    unlock: 109,
     livello: 'impegnativa',
     intro:
       'La più difficile delle tre: periodi più lunghi, subordinate dentro ' +

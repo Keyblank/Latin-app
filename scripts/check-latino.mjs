@@ -269,9 +269,10 @@ for (const u of curriculum) {
     if (!l.exercises.some((e) => e.type !== 'info' && e.type !== 'table')) {
       segnala(`${u.id} · ${l.title}`, 'nessun esercizio da svolgere: solo schede e tabelle')
     }
-    // Le lezioni di lessico (id che finisce per «v») devono riconoscersi sulla
+    // Le lezioni di lessico (id che finisce per «v», eventualmente numerato
+    // quando una tabella diventa una lezione a sé) devono riconoscersi sulla
     // mappa: stessa icona per tutte, e nessun'altra lezione la usa.
-    const lessico = /v$/.test(l.id)
+    const lessico = /v\d*$/.test(l.id)
     if (lessico && l.icon !== ICONA_LESSICO) {
       segnala(`${u.id} · ${l.title}`, `è una lezione di lessico ma ha l'icona ${l.icon} invece di ${ICONA_LESSICO}`)
     }
