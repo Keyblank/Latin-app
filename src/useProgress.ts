@@ -48,6 +48,8 @@ export interface Progress {
   land: number
   /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
   freeMode: boolean
+  /** ID delle versioni già tradotte. */
+  versiones: string[]
 }
 
 const emptyProgress: Progress = {
@@ -63,6 +65,7 @@ const emptyProgress: Progress = {
   roads: [],
   land: 0,
   freeMode: false,
+  versiones: [],
 }
 
 function load(): Progress {
@@ -212,6 +215,23 @@ export function useProgress() {
     }))
   }, [])
 
+  /** Registra una versione tradotta: dà XP e denarii come una lezione, e
+   *  contribuisce all'obiettivo giornaliero. */
+  const finishVersio = useCallback((id: string, xp: number, denarii: number) => {
+    setProgress((prev) => {
+      const oggi = todayKey()
+      const stessoGiorno = prev.dailyDate === oggi
+      return {
+        ...prev,
+        xp: prev.xp + xp,
+        denarii: prev.denarii + denarii,
+        dailyXp: (stessoGiorno ? prev.dailyXp : 0) + xp,
+        dailyDate: oggi,
+        versiones: prev.versiones.includes(id) ? prev.versiones : [...prev.versiones, id],
+      }
+    })
+  }, [])
+
   /** Attiva/disattiva lo sblocco di tutte le lezioni. */
   const toggleFreeMode = useCallback(() => {
     setProgress((prev) => ({ ...prev, freeMode: !prev.freeMode }))
@@ -225,6 +245,7 @@ export function useProgress() {
   return {
     progress,
     finishLesson,
+    finishVersio,
     recordMistakes,
     build,
     demolish,

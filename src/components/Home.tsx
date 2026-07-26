@@ -6,6 +6,8 @@ import { VoicePicker } from './VoicePicker'
 import { Mascot } from './Mascot'
 import { pickQuip } from '../quips'
 import { sfxEnabled, setSfxEnabled } from '../sfx'
+import { versiones } from '../data/versiones'
+import type { Versio } from '../data/versiones'
 
 interface Props {
   units: Unit[]
@@ -13,6 +15,7 @@ interface Props {
   onStartLesson: (lesson: Lesson) => void
   onStartReview: () => void
   onOpenCity: () => void
+  onStartVersio: (v: Versio) => void
   onReset: () => void
   onToggleFreeMode: () => void
 }
@@ -23,12 +26,15 @@ export function Home({
   onStartLesson,
   onStartReview,
   onOpenCity,
+  onStartVersio,
   onReset,
   onToggleFreeMode,
 }: Props) {
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
+
+  const lezioniFatte = progress.completed.length
 
   const [sfxOn, setSfxOn] = useState(sfxEnabled)
 
@@ -77,6 +83,36 @@ export function Home({
             </span>
           </span>
         </button>
+
+        <div className="versio-blocco">
+          <p className="versio-etichetta">Versiones · traduci un brano intero</p>
+          <div className="versio-list">
+            {versiones.map((v) => {
+              const bloccata = !progress.freeMode && lezioniFatte < v.unlock
+              const fatta = progress.versiones.includes(v.id)
+              return (
+                <button
+                  key={v.id}
+                  className="versio-card"
+                  disabled={bloccata}
+                  onClick={() => onStartVersio(v)}
+                >
+                  <span className="versio-icona">{bloccata ? '🔒' : v.icona}</span>
+                  <span>
+                    <span className="versio-nome">
+                      {v.titolo} {fatta && '✓'}
+                    </span>
+                    <span className="versio-meta">
+                      {bloccata
+                        ? `Completa ${v.unlock} lezioni per aprirla`
+                        : `${v.livello} · ${v.frasi.length} frasi · ${v.fonte}`}
+                    </span>
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
 
         {progress.mistakes.length > 0 && (
           <button className="review-btn" onClick={onStartReview}>

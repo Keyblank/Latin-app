@@ -9,6 +9,7 @@
 //   npm run check
 //
 import { curriculum } from '../src/data/curriculum.ts'
+import { versiones } from '../src/data/versiones.ts'
 
 // ─────────────────── i paradigmi di riferimento ───────────────────
 // Le forme sono elencate nell'ordine in cui compaiono nella tabella, lette
@@ -248,10 +249,36 @@ for (const u of curriculum) {
   }
 }
 
+// ─────────────────── 4. le versioni ───────────────────
+//
+// Una parola senza voce nel glossario non si può toccare: lo studente la
+// cerca, non succede niente, e non ha modo di sapere se è un buco o se quella
+// parola non ha aiuto. Meglio che ci siano tutte.
+
+let versioParole = 0
+for (const v of versiones) {
+  const dove = `versio «${v.titolo}»`
+  const usate = new Set()
+  for (const f of v.frasi) {
+    for (const t of f.lat.split(/[\s.,;:!?«»]+/)) {
+      if (!t) continue
+      versioParole++
+      usate.add(t)
+      if (!v.parole[t]) segnala(dove, `la parola «${t}» non ha una voce nel glossario`)
+    }
+    if (!f.ita.trim()) segnala(dove, `la frase «${f.lat}» non ha traduzione`)
+  }
+  for (const k of Object.keys(v.parole)) {
+    if (!usate.has(k)) segnala(dove, `il glossario ha «${k}» ma nel testo non compare`)
+  }
+  if (v.frasi.length < 3) segnala(dove, 'ha meno di tre frasi: è troppo corta per essere una versione')
+}
+
 // ─────────────────── esito ───────────────────
 
 console.log(`Corso: ${curriculum.length} sezioni, ${lezioni} lezioni, ${esercizi} esercizi.`)
 console.log(`Paradigmi latini verificati: ${tabelleControllate}.`)
+console.log(`Versioni: ${versiones.length}, ${versioParole} parole tutte glossate.`)
 
 if (problemi.length) {
   console.log(`\n${problemi.length} problemi:\n`)

@@ -640,3 +640,83 @@ button { font-family: inherit; cursor: pointer; }
 .shop-buy:disabled { border-color: var(--gray); color: var(--gray-dark); background: #f4f4f4; cursor: not-allowed; }
 
 @media (max-width: 380px) { .shop { grid-template-columns: repeat(2, 1fr); } }
+
+/* ───────────── Versio: il brano da tradurre ───────────── */
+
+.versio-livello {
+  margin-left: auto; font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
+  text-transform: uppercase; color: var(--gold-dark);
+  background: #fff8e1; border: 2px solid #ffd43b;
+  padding: 4px 12px; border-radius: 999px;
+}
+.versio-conteggio { font-weight: 800; color: var(--text-soft); font-size: 15px; }
+.versio-fonte { color: var(--text-soft); font-style: italic; }
+.versio-etichetta {
+  font-size: 12px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--text-soft); margin: 0 0 6px;
+}
+.versio-nota { font-size: 14.5px; color: var(--text-soft); line-height: 1.5; }
+
+/* Il testo latino. Le parole con l'aiuto sono toccabili: si vede da una
+   sottolineatura tratteggiata, non da un colore — colorarle tutte
+   trasformerebbe il brano in un arcobaleno. */
+.versio-latino {
+  background: #faf7ff; border: 2px solid #ece2fd;
+  border-left: 5px solid var(--primary);
+  border-radius: 14px; padding: 16px 16px 10px;
+}
+.versio-frase {
+  margin: 0; font-family: var(--serif); font-size: 22px; line-height: 1.75;
+  color: var(--text);
+}
+.versio-parola {
+  font: inherit; background: none; border: none; padding: 0 1px;
+  color: inherit; border-bottom: 2px dotted var(--gray-dark);
+  border-radius: 3px;
+}
+.versio-parola:active { background: #ece2fd; }
+.versio-parola.aperta {
+  background: var(--primary); color: #fff; border-bottom-color: transparent;
+}
+.versio-ascolta { display: flex; justify-content: flex-end; margin-top: 6px; }
+
+/* L'aiuto sulla parola toccata */
+.versio-gloss {
+  margin-top: 14px; background: #fff; border: 2px solid var(--gray);
+  border-bottom-width: 4px; border-radius: 14px; padding: 14px 16px;
+}
+.gloss-lemma {
+  font-family: var(--serif); font-size: 19px; font-weight: 700;
+  color: var(--primary-dark);
+}
+.gloss-senso { font-size: 17px; margin-top: 2px; }
+.gloss-forma { font-size: 14.5px; color: var(--text-soft); margin-top: 6px; }
+
+/* La traduzione, quando la scopri */
+.versio-soluzione {
+  margin-top: 16px; background: #f2fbf1; border: 2px solid #cceccb;
+  border-radius: 14px; padding: 14px 16px;
+}
+.soluzione-ita { margin: 0; font-size: 18px; line-height: 1.55; font-weight: 700; }
+.versio-soluzione .table-note { margin-top: 12px; }
+
+/* Il pulsante per arrendersi e vedere: volutamente meno invitante del primario */
+.btn-reveal {
+  background: #fff; color: var(--primary);
+  border: 2px solid var(--primary); border-bottom-width: 4px;
+}
+.btn-reveal:active { transform: translateY(2px); border-bottom-width: 2px; }
+
+/* Elenco delle versioni nella home */
+.versio-list { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.versio-card {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  padding: 14px 16px; text-align: left;
+  background: #fff; border: 2px solid var(--gray); border-bottom-width: 4px;
+  border-radius: 16px; color: var(--text);
+}
+.versio-card:not(:disabled):active { transform: translateY(2px); }
+.versio-card:disabled { opacity: 0.55; cursor: not-allowed; }
+.versio-card .versio-icona { font-size: 28px; flex-shrink: 0; }
+.versio-card .versio-nome { font-weight: 800; font-size: 16px; }
+.versio-card .versio-meta { font-size: 13px; color: var(--text-soft); margin-top: 2px; }

@@ -24,6 +24,11 @@ la lingua. Interfaccia in italiano.
   italiana → pronuncia **ecclesiastica/italiana**, gratis e senza account.
   L'app sceglie automaticamente la voce migliore (es. «Google italiano» su Chrome)
   e permette di sceglierne una dal menù *Vox*.
+- **Versiones** 📜: brani latini **continui** da tradurre, con il vocabolario
+  al tocco. Tocchi una parola e ottieni lemma, significato e analisi della
+  forma; provi a tradurre la frase; poi scopri la traduzione e la nota che
+  spiega il punto difficile. Si va **una frase alla volta**, perché è così che
+  si traduce davvero. I brani sono in `src/data/versiones.ts`.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
 - **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
   tre umori animati e **battute ironiche** a rotazione (saluti, feedback,
@@ -96,7 +101,8 @@ del corso: le cinque declinazioni viste, i tempi di *amāre* e *esse*, il
 passivo, i pronomi. Controlla inoltre che ogni domanda a scelta multipla abbia
 la risposta fra le opzioni, che le parole delle traduzioni da comporre siano
 nel banco, che non ci siano coppie di abbinamento inutili (*rosa → rosa*) o id
-di lezione ripetuti.
+di lezione ripetuti. E per le **versioni**: che ogni parola del brano abbia la
+sua voce nel glossario, e che il glossario non contenga parole assenti dal testo.
 
 Gira anche a ogni push, prima della pubblicazione: se una forma latina è
 sbagliata, il sito non viene aggiornato.

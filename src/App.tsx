@@ -4,6 +4,8 @@ import { useProgress } from './useProgress'
 import { Home } from './components/Home'
 import { LessonPlayer } from './components/LessonPlayer'
 import { City } from './components/City'
+import { Versio } from './components/Versio'
+import type { Versio as VersioType } from './data/versiones'
 import type { Lesson, Exercise } from './types'
 
 const REVIEW_SIZE = 8
@@ -21,6 +23,7 @@ export default function App() {
   const {
     progress,
     finishLesson,
+    finishVersio,
     recordMistakes,
     build,
     demolish,
@@ -33,6 +36,7 @@ export default function App() {
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
   const [isReview, setIsReview] = useState(false)
   const [showCity, setShowCity] = useState(false)
+  const [versio, setVersio] = useState<VersioType | null>(null)
 
   function startLesson(lesson: Lesson) {
     setIsReview(false)
@@ -69,6 +73,19 @@ export default function App() {
     )
   }
 
+  if (versio) {
+    return (
+      <Versio
+        versio={versio}
+        onFinish={(xp, denarii) => {
+          finishVersio(versio.id, xp, denarii)
+          setVersio(null)
+        }}
+        onBack={() => setVersio(null)}
+      />
+    )
+  }
+
   if (showCity) {
     return (
       <City
@@ -90,6 +107,7 @@ export default function App() {
       onStartLesson={startLesson}
       onStartReview={startReview}
       onOpenCity={() => setShowCity(true)}
+      onStartVersio={setVersio}
       onReset={reset}
       onToggleFreeMode={toggleFreeMode}
     />

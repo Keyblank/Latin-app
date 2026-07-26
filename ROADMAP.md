@@ -113,8 +113,8 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ✅ **Aggettivi della 2ª classe** (*fortis, ācer*) e **comparativi/superlativi**
 - ✅ **Verbi irregolari** (*possum, eō, ferō, volō/nōlō/mālō*, *fīō*) e **deponenti**
 - ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
-- ⬜ **Traduzione graduata**: dalle frasi ai **brani adattati** ad autori facili
-  (Eutropio, *Fabulae*, Cesare semplificato)
+- ✅ **Traduzione graduata**: tre **brani adattati**, a difficoltà crescente
+- ⬜ Altre versioni: per allenarsi sul serio ne servono almeno una decina
 - ✅ **Lessico, secondo giro**: ~375 vocaboli (la soglia utile per leggere una
   versione facile è intorno ai 400: ci siamo quasi)
 
@@ -124,8 +124,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 - ⬜ **Sezione "Grammatica" consultabile** ⭐ — tutte le tabelle sempre a portata,
   come un mini-manuale (fondamentale per chi traduce all'università)
-- ⬜ **Modalità "Versione"** ⭐ — un brano latino con aiuti sulle parole al tocco,
-  poi confronto con la traduzione: il ponte verso l'esame
+- ✅ **Modalità "Versione"** ⭐ — tre brani adattati (*Rōmulus et Remus*,
+  *Caesar in Galliam*, *Hannibal ad portās*) con il vocabolario al tocco,
+  traduzione frase per frase e nota sul punto difficile
 - ⬜ **Badge / traguardi** latini da collezionare
 - ⬜ Più esercizi **latino → italiano** e un esercizio di **analisi** dedicato
   (di' caso, numero, tempo…)
@@ -141,9 +142,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - La morfologia è **completa**: cinque declinazioni, due classi di aggettivi,
   tutti i tempi dell'indicativo e del congiuntivo, attivi e passivi, participi,
   irregolari e deponenti, più i costrutti (ablativo assoluto, acc.+inf.,
-  subordinate), e il lessico è a ~375 vocaboli, vicino alla soglia utile.
-  Quello che manca ora non è più materiale ma **pratica su testo continuo**:
-  la modalità «Versione».
+  subordinate), il lessico è a ~375 vocaboli e c'è la pratica su testo continuo.
+  Quello che manca è la **quantità**: tre versioni sono poche per allenarsi
+  davvero, e il lessico non ha ancora un ripasso a distanza.
 
 ---
 
