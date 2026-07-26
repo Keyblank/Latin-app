@@ -131,6 +131,60 @@ function colonnade(w: number, d: number, h: number, n: number) {
   return g
 }
 
+// ─────────────── Minutaglia: gli oggetti che riempiono la scena ───────────────
+
+/** Numero pseudo-casuale ma stabile: la stessa cella dà sempre lo stesso valore. */
+function hash(a: number, b: number, salt = 0): number {
+  const x = Math.sin(a * 127.1 + b * 311.7 + salt * 74.7) * 43758.5453
+  return x - Math.floor(x)
+}
+
+/** Anfora appoggiata a terra. */
+function amphora(): THREE.Mesh {
+  const m = new THREE.Mesh(new THREE.LatheGeometry(
+    [
+      new THREE.Vector2(0.001, 0),
+      new THREE.Vector2(0.028, 0.02),
+      new THREE.Vector2(0.055, 0.08),
+      new THREE.Vector2(0.04, 0.14),
+      new THREE.Vector2(0.022, 0.17),
+      new THREE.Vector2(0.03, 0.19),
+    ],
+    8,
+  ), mat(0xa9724b))
+  m.castShadow = true
+  return m
+}
+
+/** Cassa / balla di merce. */
+function crate(): THREE.Mesh {
+  return block(0.14, 0.11, 0.12, 0xb08a58, 'plaster')
+}
+
+/** Cespuglio tondeggiante. */
+function bush(scale = 1): THREE.Mesh {
+  const m = new THREE.Mesh(new THREE.SphereGeometry(0.11 * scale, 8, 6), mat(0x5f9c4e))
+  m.castShadow = true
+  m.scale.y = 0.8
+  return m
+}
+
+/** Sasso. */
+function rock(scale = 1): THREE.Mesh {
+  const m = new THREE.Mesh(new THREE.DodecahedronGeometry(0.09 * scale, 0), mat(0xa9a396))
+  m.castShadow = true
+  m.rotation.set(hash(scale, 1) * 3, hash(scale, 2) * 3, hash(scale, 3) * 3)
+  m.scale.y = 0.7
+  return m
+}
+
+/** Tenda a strisce, da appendere a una facciata. */
+function awning(w: number, color = 0xc9604f): THREE.Mesh {
+  const m = block(w, 0.03, 0.18, color, 'plaster')
+  m.rotation.x = -0.32
+  return m
+}
+
 /** Vicini con muro, per raccordare le mura di cinta: [su, giù, sx, dx]. */
 export type WallLinks = [boolean, boolean, boolean, boolean]
 
@@ -188,18 +242,62 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'domus': {
-      // piccola varietà di tinte, così una fila di case non è tutta uguale
+      // Silhouette irregolare: corpo principale + ala più bassa + cortile,
+      // così una fila di case non sembra una fila di scatole uguali.
       const wallTints = [0xf3e9d6, 0xf0e3cd, 0xeddfc6, 0xf5ecdd]
       const roofTints = [0xf6ddd0, 0xecc9b8, 0xffe8dc, 0xe0bdac]
-      const body = block(W * 0.74, 0.4, D * 0.74, wallTints[seed % wallTints.length])
-      body.position.y = 0.2
+      const wallC = wallTints[seed % wallTints.length]
+      const roofC = roofTints[seed % roofTints.length]
+      const variant = seed % 3
+
+      const mainW = W * (variant === 0 ? 0.66 : 0.58)
+      const mainD = D * 0.62
+      const mx = -W * 0.08
+      const mz = -D * 0.06
+      const body = block(mainW, 0.4, mainD, wallC)
+      body.position.set(mx, 0.2, mz)
       g.add(body)
-      const roof = gable(W * 0.82, 0.26, D * 0.82, roofTints[seed % roofTints.length])
-      roof.position.y = 0.4
+      const roof = gable(mainW * 1.12, 0.24, mainD * 1.12, roofC)
+      roof.position.set(mx, 0.4, mz)
+      if (variant === 1) roof.rotation.y = Math.PI / 2
       g.add(roof)
-      const door = block(0.14, 0.18, 0.03, PAL.wood)
-      door.position.set(0, 0.09, (D * 0.74) / 2)
+
+      // ala più bassa, sfalsata
+      const wingW = W * 0.34
+      const wingD = D * 0.36
+      const wx = W * 0.24
+      const wz = D * 0.26
+      const wing = block(wingW, 0.27, wingD, wallC)
+      wing.position.set(wx, 0.135, wz)
+      g.add(wing)
+      const wingRoof = gable(wingW * 1.15, 0.16, wingD * 1.15, roofC)
+      wingRoof.position.set(wx, 0.27, wz)
+      if (variant !== 2) wingRoof.rotation.y = Math.PI / 2
+      g.add(wingRoof)
+
+      // muretto del cortile e porta
+      const yard = block(W * 0.3, 0.11, 0.05, 0xe6dcc6, 'ashlar')
+      yard.position.set(-W * 0.16, 0.055, D * 0.34)
+      g.add(yard)
+      const door = block(0.13, 0.18, 0.03, PAL.wood)
+      door.position.set(mx, 0.09, mz + mainD / 2)
       g.add(door)
+
+      // minutaglia: anfore, cassa, cespuglio — posizione stabile per seed
+      const a1 = amphora()
+      a1.position.set(W * 0.3 - hash(seed, 1) * 0.1, 0, -D * 0.3)
+      g.add(a1)
+      if (hash(seed, 2) > 0.45) {
+        const a2 = amphora()
+        a2.position.set(W * 0.36, 0, -D * 0.2)
+        a2.rotation.y = 1
+        g.add(a2)
+      }
+      if (hash(seed, 3) > 0.5) {
+        const b2 = bush(0.9)
+        b2.position.set(-W * 0.34, 0.06, D * 0.3)
+        g.add(b2)
+      }
       break
     }
     case 'shop': {
@@ -213,6 +311,17 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const roof = gable(W * 0.84, 0.18, D * 0.84, PAL.roofAlt)
       roof.position.y = 0.34
       g.add(roof)
+      // merce davanti alla bottega
+      const c1 = crate()
+      c1.position.set(-0.2, 0.055, D * 0.42)
+      g.add(c1)
+      const c2 = crate()
+      c2.position.set(-0.06, 0.055, D * 0.44)
+      c2.rotation.y = 0.5
+      g.add(c2)
+      const a3 = amphora()
+      a3.position.set(0.24, 0, D * 0.4)
+      g.add(a3)
       break
     }
     case 'warehouse': {
@@ -333,10 +442,22 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       break
     }
     case 'insula': {
-      // palazzina a più piani
-      const body = block(W * 0.76, 0.78, D * 0.76, PAL.wallWarm)
-      body.position.y = 0.39
+      // palazzina a più piani, con un corpo secondario più basso
+      const body = block(W * 0.7, 0.78, D * 0.7, PAL.wallWarm)
+      body.position.set(-W * 0.05, 0.39, -D * 0.05)
       g.add(body)
+      const annex = block(W * 0.34, 0.46, D * 0.32, 0xe4d3b6)
+      annex.position.set(W * 0.28, 0.23, D * 0.26)
+      g.add(annex)
+      const annexRoof = gable(W * 0.4, 0.14, D * 0.38, PAL.roofAlt)
+      annexRoof.position.set(W * 0.28, 0.46, D * 0.26)
+      g.add(annexRoof)
+      // panni stesi tra i piani
+      for (let i = 0; i < 3; i++) {
+        const cloth = block(0.11, 0.1, 0.012, [0xd8cbb0, 0xc27f6d, 0x9fb0c0][i])
+        cloth.position.set(-W * 0.24 + i * 0.14, 0.56, D * 0.31)
+        g.add(cloth)
+      }
       for (let f = 0; f < 3; f++) {
         const band = block(W * 0.8, 0.03, D * 0.8, 0xd8c7a6)
         band.position.y = 0.24 + f * 0.24
@@ -453,6 +574,14 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
         p2.position.set(-W * 0.3 + (i * W * 0.2), 0.05, D * 0.3)
         g.add(p2)
       }
+      // sacchi di grano accatastati
+      for (let i = 0; i < 3; i++) {
+        const sack = new THREE.Mesh(new THREE.SphereGeometry(0.075, 8, 6), mat(0xc9ac74))
+        sack.castShadow = true
+        sack.scale.set(1, 0.8, 1.2)
+        sack.position.set(-W * 0.32 + i * 0.16, 0.06, -D * 0.36)
+        g.add(sack)
+      }
       break
     }
     case 'market': {
@@ -469,11 +598,21 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       const hole = block(W * 0.4, 0.12, D * 0.4, PAL.grassDark)
       hole.position.y = 0.5
       g.add(hole)
-      const stallColors = [0xd2604f, 0x4f8fd2, 0xd2b84f]
+      const stallColors = [0xc4604f, 0x5f86ad, 0xc0a457]
       for (let i = 0; i < 3; i++) {
-        const st3 = block(0.26, 0.12, 0.2, stallColors[i])
+        const st3 = block(0.26, 0.12, 0.2, 0xd9c9a8)
         st3.position.set(-0.28 + i * 0.28, 0.12, -0.05)
         g.add(st3)
+        const tent = awning(0.3, stallColors[i])
+        tent.position.set(-0.28 + i * 0.28, 0.26, -0.02)
+        g.add(tent)
+      }
+      // anfore e casse sparse nel cortile
+      for (let i = 0; i < 4; i++) {
+        const o = i % 2 ? crate() : amphora()
+        o.position.set(-0.3 + i * 0.22, i % 2 ? 0.055 : 0, 0.3)
+        o.rotation.y = hash(i, 7) * 3
+        g.add(o)
       }
       break
     }
@@ -599,6 +738,8 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     ghost: THREE.Group
     render: () => void
     zoomBy: (k: number) => void
+    rotateBy: (d: number) => void
+    recenter: () => void
   } | null>(null)
 
   // Valori sempre aggiornati per i gestori di eventi (creati una volta sola).
@@ -662,15 +803,36 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     const clampZoom = (z: number) => Math.min(3.2, Math.max(0.7, z))
     let angle = Math.PI / 4
     let userZoom = 1 // 1 = tutta l'isola in vista; più alto = più vicino
+    let panX = 0
+    let panZ = 0 // centro dell'inquadratura
     let raf = 0
     const render = () => {
       const size = LAND_SIZES[Math.min(st.current.land, LAND_SIZES.length - 1)]
       const radius = 16
       camera.zoom = (LAND_SIZES[0] / size) * userZoom
       camera.updateProjectionMatrix()
-      camera.position.set(Math.sin(angle) * radius, 11, Math.cos(angle) * radius)
-      camera.lookAt(0, 0.4, 0)
+      camera.position.set(panX + Math.sin(angle) * radius, 11, panZ + Math.cos(angle) * radius)
+      camera.lookAt(panX, 0.4, panZ)
       renderer.render(scene, camera)
+    }
+
+    /** Sposta l'inquadratura seguendo il dito (o il mouse). */
+    const panBy = (dx: number, dy: number) => {
+      const size = LAND_SIZES[Math.min(st.current.land, LAND_SIZES.length - 1)]
+      // quante unità di mondo vale un pixel, tenendo conto dello zoom
+      const k = (2 * view) / Math.max(1, el.clientHeight) / camera.zoom
+      // assi dello schermo proiettati sul terreno
+      const rx = Math.cos(angle)
+      const rz = -Math.sin(angle)
+      const bx = Math.sin(angle)
+      const bz = Math.cos(angle)
+      panX -= (rx * dx - bx * dy) * k
+      panZ -= (rz * dx - bz * dy) * k
+      // non allontanarsi troppo dall'isola
+      const lim = size * 0.6
+      panX = Math.max(-lim, Math.min(lim, panX))
+      panZ = Math.max(-lim, Math.min(lim, panZ))
+      schedule()
     }
     const schedule = () => {
       if (looping) return // il ciclo continuo disegna già
@@ -801,6 +963,51 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
         }
       }
 
+      // ── Natura sparsa sul terreno libero: cespugli, sassi, cipressi ──
+      const occupied = new Set<string>()
+      for (const p of st.current.placed) {
+        const b = byId.get(p.b)
+        if (!b) continue
+        const [w, d] = footprint(b, p.rot)
+        for (let dr = 0; dr < d; dr++)
+          for (let dc = 0; dc < w; dc++) occupied.add(`${p.r + dr},${p.c + dc}`)
+      }
+      for (const r2 of st.current.roads) occupied.add(`${r2.r},${r2.c}`)
+
+      const { min, max } = landBounds(st.current.land)
+      for (let r2 = min; r2 <= max; r2++) {
+        for (let c2 = min; c2 <= max; c2++) {
+          if (occupied.has(`${r2},${c2}`)) continue
+          const h = hash(r2, c2)
+          if (h > 0.26) continue // solo una parte delle celle libere
+          const kind = hash(r2, c2, 5)
+          const jx = (hash(r2, c2, 1) - 0.5) * 0.6
+          const jz = (hash(r2, c2, 2) - 0.5) * 0.6
+          let o: THREE.Object3D
+          if (kind < 0.42) {
+            o = bush(0.8 + hash(r2, c2, 3) * 0.6)
+            o.position.y = 0.06
+          } else if (kind < 0.78) {
+            o = rock(0.7 + hash(r2, c2, 4) * 0.7)
+            o.position.y = 0.04
+          } else {
+            // cipresso
+            const t = new THREE.Group()
+            const trunk = cylinder(0.03, 0.12, PAL.wood, 6, 'plaster')
+            trunk.position.y = 0.06
+            t.add(trunk)
+            const crown = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.5, 10), mat(0x4d8c46))
+            crown.castShadow = true
+            crown.position.y = 0.36
+            t.add(crown)
+            o = t
+          }
+          o.position.x = off(c2) + jx
+          o.position.z = off(r2) + jz
+          life.add(o)
+        }
+      }
+
       setLooping(walkers.length > 0 || smokes.length > 0)
       if (!looping) schedule()
     }
@@ -809,6 +1016,16 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       render: schedule,
       zoomBy: (k: number) => {
         userZoom = clampZoom(userZoom * k)
+        schedule()
+      },
+      rotateBy: (d: number) => {
+        angle += d
+        schedule()
+      },
+      recenter: () => {
+        panX = 0
+        panZ = 0
+        userZoom = 1
         schedule()
       },
     }
@@ -851,6 +1068,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     const ndc = new THREE.Vector2()
     let down = false
     let lastX = 0
+    let lastY = 0
 
     const tileUnder = (e: PointerEvent): [number, number] | null => {
       const rect = renderer.domElement.getBoundingClientRect()
@@ -902,6 +1120,7 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     const onDown = (e: PointerEvent) => {
       down = true
       lastX = e.clientX
+      lastY = e.clientY
       try {
         renderer.domElement.setPointerCapture(e.pointerId)
       } catch {
@@ -923,10 +1142,10 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
           const t = tileUnder(e)
           if (t) st.current.onRoad(t[0], t[1]) // trascina per tracciare la via
         } else if (m === 'view') {
-          angle -= (e.clientX - lastX) * 0.008
-          schedule()
+          panBy(e.clientX - lastX, e.clientY - lastY)
         }
         lastX = e.clientX
+        lastY = e.clientY
       } else if (m === 'build') {
         updateGhost(e)
       }
@@ -1150,6 +1369,9 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
       <div className="zoom-btns">
         <button onClick={() => api.current?.zoomBy(1.25)} aria-label="Ingrandisci">+</button>
         <button onClick={() => api.current?.zoomBy(0.8)} aria-label="Riduci">−</button>
+        <button onClick={() => api.current?.rotateBy(-Math.PI / 4)} aria-label="Ruota a sinistra">⟲</button>
+        <button onClick={() => api.current?.rotateBy(Math.PI / 4)} aria-label="Ruota a destra">⟳</button>
+        <button onClick={() => api.current?.recenter()} aria-label="Ricentra">⌖</button>
       </div>
     </div>
   )

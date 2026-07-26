@@ -469,10 +469,10 @@ button { font-family: inherit; cursor: pointer; }
 .iso { display: block; width: 100%; height: auto; }
 .city3d-wrap { position: relative; }
 .zoom-btns {
-  position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; gap: 6px;
+  position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; gap: 5px;
 }
 .zoom-btns button {
-  width: 36px; height: 36px; border-radius: 10px; border: 2px solid rgba(120,100,60,0.35);
+  width: 34px; height: 34px; border-radius: 10px; border: 2px solid rgba(120,100,60,0.35);
   background: rgba(255,255,255,0.9); color: var(--text); font-size: 20px; font-weight: 800;
   line-height: 1; display: grid; place-items: center;
 }
