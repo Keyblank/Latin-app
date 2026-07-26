@@ -36,67 +36,67 @@ export interface Building {
   cost: number
   /** Lezioni da completare per sbloccarlo all'acquisto. */
   unlock: number
-  /** Lotto nella griglia isometrica: [riga, colonna, larghezza, profondità]. */
-  plot: [number, number, number, number]
+  /** Ingombro in celle: [larghezza, profondità]. La posizione la sceglie il giocatore. */
+  size: [number, number]
   /** Aspetto del segnaposto disegnato. */
   look: BuildingLook
   /** Immagine isometrica che sostituisce il disegno (opzionale). */
   img?: string
 }
 
-export const GRID_SIZE = 7
+export const GRID_SIZE = 10
 
 export const BUILDINGS: Building[] = [
   // ── Monumenti, in fondo (si vedono dietro) ──
   {
     id: 'templum', name: 'Templum', gloss: 'tempio', icon: '🏛️',
-    cost: 110, unlock: 6, plot: [0, 0, 2, 2], look: 'temple',
+    cost: 110, unlock: 6, size: [2, 2], look: 'temple',
   },
   {
     id: 'basilica', name: 'Basilica', gloss: 'basilica', icon: '🏦',
-    cost: 190, unlock: 10, plot: [0, 3, 2, 2], look: 'basilica',
+    cost: 190, unlock: 10, size: [2, 2], look: 'basilica',
   },
   {
     id: 'amphitheatrum', name: 'Amphitheatrum', gloss: 'anfiteatro', icon: '🏟️',
-    cost: 350, unlock: 16, plot: [0, 5, 2, 2], look: 'arena',
+    cost: 350, unlock: 16, size: [2, 2], look: 'arena',
   },
   // ── L'acquedotto attraversa la città ──
   {
     id: 'aquaeductus', name: 'Aquaeductus', gloss: 'acquedotto', icon: '🌉',
-    cost: 240, unlock: 12, plot: [2, 0, 3, 1], look: 'aqueduct',
+    cost: 240, unlock: 12, size: [3, 1], look: 'aqueduct',
   },
   // ── Fascia centrale ──
   {
     id: 'thermae', name: 'Thermae', gloss: 'terme', icon: '♨️',
-    cost: 150, unlock: 8, plot: [3, 0, 2, 2], look: 'baths',
+    cost: 150, unlock: 8, size: [2, 2], look: 'baths',
   },
   {
     id: 'circus', name: 'Circus', gloss: 'circo', icon: '🏇',
-    cost: 420, unlock: 18, plot: [3, 3, 2, 2], look: 'circus',
+    cost: 420, unlock: 18, size: [2, 2], look: 'circus',
   },
   {
     id: 'statua', name: 'Statua', gloss: 'statua', icon: '🗿',
-    cost: 80, unlock: 5, plot: [3, 6, 1, 1], look: 'statue',
+    cost: 80, unlock: 5, size: [1, 1], look: 'statue',
   },
   {
     id: 'fons', name: 'Fons', gloss: 'fontana', icon: '⛲',
-    cost: 60, unlock: 4, plot: [4, 6, 1, 1], look: 'fountain',
+    cost: 60, unlock: 4, size: [1, 1], look: 'fountain',
   },
   // ── Davanti: la vita quotidiana ──
   {
     id: 'portus', name: 'Portus', gloss: 'porto', icon: '⚓',
-    cost: 280, unlock: 14, plot: [5, 0, 2, 2], look: 'warehouse',
+    cost: 280, unlock: 14, size: [2, 2], look: 'warehouse',
   },
   {
     id: 'domus', name: 'Domus', gloss: 'casa', icon: '🏠',
-    cost: 20, unlock: 1, plot: [5, 3, 1, 1], look: 'domus',
+    cost: 20, unlock: 1, size: [1, 1], look: 'domus',
   },
   {
     id: 'hortus', name: 'Hortus', gloss: 'giardino', icon: '🌳',
-    cost: 30, unlock: 1, plot: [5, 4, 1, 1], look: 'garden',
+    cost: 30, unlock: 1, size: [1, 1], look: 'garden',
   },
   {
     id: 'taberna', name: 'Taberna', gloss: 'bottega', icon: '🏪',
-    cost: 45, unlock: 2, plot: [6, 3, 1, 1], look: 'shop',
+    cost: 45, unlock: 2, size: [1, 1], look: 'shop',
   },
 ]

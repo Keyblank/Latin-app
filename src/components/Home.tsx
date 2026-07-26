@@ -73,7 +73,7 @@ export function Home({
           <span className="urbs-text">
             <span className="latin-label">Urbs · costruisci la tua Roma</span>
             <span className="urbs-count">
-              {progress.built.length} edifici · 🪙 {progress.denarii} da spendere
+              {progress.city.length} edifici · 🪙 {progress.denarii} da spendere
             </span>
           </span>
         </button>

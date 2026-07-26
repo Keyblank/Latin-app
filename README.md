@@ -34,17 +34,13 @@ la lingua. Interfaccia in italiano.
   avanzando nel corso. La città è mostrata in **vista isometrica** e cresce
   a ogni costruzione.
 
-### Le immagini della città
+### I modelli della città
 
-Gli edifici sono **disegnati in SVG** come segnaposto (`src/components/IsoCity.tsx`).
-Per usare illustrazioni isometriche vere (PNG con sfondo trasparente):
-
-1. mettile in `src/assets/city/` (una per edificio);
-2. in `src/data/city.ts` valorizza il campo `img` dell'edificio, es.
-   `img: new URL('../assets/city/templum.png', import.meta.url).href`.
-
-Lo sprite viene ancorato automaticamente al lotto; il disegno SVG resta come
-riserva per gli edifici senza immagine.
+Gli edifici sono **generati da geometria** in `src/components/City3D.tsx`
+(nessun asset da scaricare): prismi con spigoli arrotondati, tetti a due falde,
+colonnati, cupole, arcate. Per aggiungere un edificio basta un elemento in
+`src/data/city.ts` (nome, prezzo, sblocco, ingombro) e un caso nel `switch`
+di `buildMesh`.
 - **Suoni ed effetti a tema romano** 🔔: suoni sintetizzati al volo (Web Audio) —
   arpeggio di **lira** (risposta giusta), **corno** grave (errore) e **fanfara di
   trionfo** (fine lezione) — più una pioggia di **foglie d'alloro e oro** sulla

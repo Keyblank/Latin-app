@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Exercise } from './types'
 
+/** Un edificio piazzato nella città: quale, e in che cella. */
+export interface Placed {
+  /** id dell'edificio */
+  b: string
+  /** riga e colonna dell'angolo del lotto */
+  r: number
+  c: number
+}
+
 const STORAGE_KEY = 'latino-app-progress-v1'
 const MAX_MISTAKES = 40
 
@@ -21,8 +30,8 @@ export interface Progress {
   mistakes: Exercise[]
   /** Monete da spendere per costruire la città (Urbs). */
   denarii: number
-  /** ID degli edifici costruiti nella città. */
-  built: string[]
+  /** Edifici piazzati nella città (posizione scelta dal giocatore). */
+  city: Placed[]
   /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
   freeMode: boolean
 }
@@ -36,7 +45,7 @@ const emptyProgress: Progress = {
   dailyDate: null,
   mistakes: [],
   denarii: 0,
-  built: [],
+  city: [],
   freeMode: false,
 }
 
@@ -121,12 +130,21 @@ export function useProgress() {
     })
   }, [])
 
-  /** Costruisce un edificio, se ci sono abbastanza denarii e non è già costruito. */
-  const build = useCallback((id: string, cost: number) => {
+  /** Piazza un edificio nella città, se ci sono abbastanza denarii. */
+  const build = useCallback((id: string, cost: number, r: number, c: number) => {
     setProgress((prev) => {
-      if (prev.built.includes(id) || prev.denarii < cost) return prev
-      return { ...prev, denarii: prev.denarii - cost, built: [...prev.built, id] }
+      if (prev.denarii < cost) return prev
+      return { ...prev, denarii: prev.denarii - cost, city: [...prev.city, { b: id, r, c }] }
     })
+  }, [])
+
+  /** Demolisce l'edificio in quella posizione (rimborso a metà prezzo). */
+  const demolish = useCallback((index: number, refund: number) => {
+    setProgress((prev) => ({
+      ...prev,
+      denarii: prev.denarii + refund,
+      city: prev.city.filter((_, i) => i !== index),
+    }))
   }, [])
 
   /** Uscita senza completare: registra solo gli errori (per il ripasso). */
@@ -148,5 +166,5 @@ export function useProgress() {
     setProgress((prev) => ({ ...emptyProgress, freeMode: prev.freeMode }))
   }, [])
 
-  return { progress, finishLesson, recordMistakes, build, reset, toggleFreeMode }
+  return { progress, finishLesson, recordMistakes, build, demolish, reset, toggleFreeMode }
 }

@@ -1,18 +1,30 @@
+import { useEffect, useRef, useState } from 'react'
 import { BUILDINGS } from '../data/city'
+import type { Building } from '../data/city'
 import type { Progress } from '../useProgress'
 import { playCorrect } from '../sfx'
 import { City3D } from './City3D'
 
 interface Props {
   progress: Progress
-  onBuild: (id: string, cost: number) => void
+  onBuild: (id: string, cost: number, r: number, c: number) => void
   onBack: () => void
 }
 
-/** Urbs: la città che cresce spendendo i denarii guadagnati studiando. */
+/** Urbs: la città che costruisci spendendo i denarii guadagnati studiando. */
 export function City({ progress, onBuild, onBack }: Props) {
   const done = progress.completed.length
-  const built = BUILDINGS.filter((b) => progress.built.includes(b.id))
+  const [pending, setPending] = useState<Building | null>(null)
+  const mapRef = useRef<HTMLDivElement>(null)
+
+  // Quando scegli un edificio, porta la mappa in vista: il negozio sta sotto.
+  useEffect(() => {
+    if (pending) mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [pending])
+
+  // Quante copie di ogni edificio sono già in città.
+  const counts = new Map<string, number>()
+  for (const p of progress.city) counts.set(p.b, (counts.get(p.b) ?? 0) + 1)
 
   return (
     <div className="app">
@@ -27,47 +39,59 @@ export function City({ progress, onBuild, onBack }: Props) {
       </header>
 
       <main className="city">
-        <div className="cityscape">
-          <City3D built={built} />
-          {built.length === 0 && (
-            <div className="city-empty">
-              Un terreno vuoto sul colle… <b>inizia a costruire la tua Roma!</b>
-            </div>
-          )}
+        <div className="cityscape" ref={mapRef}>
+          <City3D
+            placed={progress.city}
+            pending={pending}
+            onPlace={(r, c) => {
+              if (!pending) return
+              onBuild(pending.id, pending.cost, r, c)
+              playCorrect()
+              setPending(null)
+            }}
+          />
         </div>
 
-        <p className="city-hint">
-          Guadagni <b>denarii 🪙</b> studiando. Spendili per costruire edifici romani:
-          i più grandi si sbloccano avanzando nel corso.
-        </p>
+        {pending ? (
+          <div className="place-bar">
+            <span>
+              Tocca la mappa per posizionare <b>{pending.name}</b>
+            </span>
+            <button className="place-cancel" onClick={() => setPending(null)}>
+              Annulla
+            </button>
+          </div>
+        ) : (
+          <p className="city-hint">
+            Guadagni <b>denarii 🪙</b> studiando. Scegli un edificio e <b>appoggialo dove vuoi</b>:
+            puoi costruirne quanti ne vuoi. Trascina per girare la città.
+          </p>
+        )}
 
         <div className="shop">
           {BUILDINGS.map((b) => {
-            const isBuilt = progress.built.includes(b.id)
+            const n = counts.get(b.id) ?? 0
             const locked = done < b.unlock
             const afford = progress.denarii >= b.cost
+            const active = pending?.id === b.id
             return (
               <div
                 key={b.id}
-                className={`shop-card ${isBuilt ? 'is-built' : ''} ${locked ? 'is-locked' : ''}`}
+                className={`shop-card ${n > 0 ? 'is-built' : ''} ${locked ? 'is-locked' : ''} ${active ? 'is-active' : ''}`}
               >
+                {n > 0 && <div className="shop-count">×{n}</div>}
                 <div className="shop-icon">{locked ? '🔒' : b.icon}</div>
                 <div className="shop-name">{b.name}</div>
                 <div className="shop-gloss">«{b.gloss}»</div>
-                {isBuilt ? (
-                  <div className="shop-state built">✓ Costruito</div>
-                ) : locked ? (
+                {locked ? (
                   <div className="shop-state locked">Completa {b.unlock} lezioni</div>
                 ) : (
                   <button
                     className="shop-buy"
                     disabled={!afford}
-                    onClick={() => {
-                      onBuild(b.id, b.cost)
-                      playCorrect()
-                    }}
+                    onClick={() => setPending(active ? null : b)}
                   >
-                    🪙 {b.cost}
+                    {active ? 'Annulla' : `🪙 ${b.cost}`}
                   </button>
                 )}
               </div>
