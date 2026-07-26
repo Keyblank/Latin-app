@@ -81,6 +81,26 @@ npm run build    # genera la cartella dist/
 npm run preview  # anteprima della versione compilata
 ```
 
+## Controllo automatico del corso
+
+```bash
+npm run check
+```
+
+Verifica il contenuto di `src/data/curriculum.ts`. Serve perché chi sviluppa
+l'app può non sapere il latino: le forme non vanno prese sulla fiducia.
+
+Lo script (`scripts/check-latino.mjs`) contiene i **paradigmi corretti scritti
+a mano**, con le lineette delle vocali lunghe, e li confronta con le tabelle
+del corso: le cinque declinazioni viste, i tempi di *amāre* e *esse*, il
+passivo, i pronomi. Controlla inoltre che ogni domanda a scelta multipla abbia
+la risposta fra le opzioni, che le parole delle traduzioni da comporre siano
+nel banco, che non ci siano coppie di abbinamento inutili (*rosa → rosa*) o id
+di lezione ripetuti.
+
+Gira anche a ogni push, prima della pubblicazione: se una forma latina è
+sbagliata, il sito non viene aggiornato.
+
 ## Come aggiungere lezioni
 
 Tutto il corso è in un unico file, facile da modificare:

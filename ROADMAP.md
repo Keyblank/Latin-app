@@ -75,6 +75,9 @@ valore, *cōnsilium* = decisione, *fāma* = diceria).
 - ✅ Salvataggio locale dei progressi
 - ✅ **Pubblicazione**: sito pubblico su GitHub Pages (auto-deploy a ogni push)
   + build a file singolo
+- ✅ **Controllo automatico del latino** (`npm run check`): i paradigmi corretti
+  sono scritti nello script e confrontati con le tabelle del corso; gira in CI
+  prima del deploy
 
 ---
 
