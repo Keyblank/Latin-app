@@ -77,18 +77,27 @@ const emptyProgress: Progress = {
   vocabNuove: { data: '', n: 0 },
 }
 
+/**
+ * Porta un salvataggio qualsiasi alla forma corrente: i campi che mancano
+ * prendono il valore di partenza, così un salvataggio vecchio (o importato da
+ * un'altra versione dell'app) non manda in crisi niente.
+ */
+export function migra(saved: Partial<Progress>): Progress {
+  const p = { ...emptyProgress, ...saved } as Progress
+  // Le prime versioni salvavano le strade come stringhe "riga,colonna".
+  p.roads = (p.roads as unknown as (string | Road)[]).map((x) => {
+    if (typeof x !== 'string') return x
+    const [r, c] = x.split(',').map(Number)
+    return { r, c, t: 1 as const }
+  })
+  return p
+}
+
 function load(): Progress {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return emptyProgress
-    const saved = { ...emptyProgress, ...JSON.parse(raw) } as Progress
-    // Le prime versioni salvavano le strade come stringhe "riga,colonna".
-    saved.roads = (saved.roads as unknown as (string | Road)[]).map((x) => {
-      if (typeof x !== 'string') return x
-      const [r, c] = x.split(',').map(Number)
-      return { r, c, t: 1 as const }
-    })
-    return saved
+    return migra(JSON.parse(raw))
   } catch {
     return emptyProgress
   }
@@ -268,6 +277,13 @@ export function useProgress() {
     [],
   )
 
+  /** Sostituisce i progressi con quelli di un file esportato.
+   *
+   *  Sovrascrive tutto, quindi chi chiama deve aver già chiesto conferma. */
+  const importa = useCallback((salvati: Partial<Progress>) => {
+    setProgress(migra(salvati))
+  }, [])
+
   /** Attiva/disattiva lo sblocco di tutte le lezioni. */
   const toggleFreeMode = useCallback(() => {
     setProgress((prev) => ({ ...prev, freeMode: !prev.freeMode }))
@@ -291,5 +307,6 @@ export function useProgress() {
     expandLand,
     reset,
     toggleFreeMode,
+    importa,
   }
 }

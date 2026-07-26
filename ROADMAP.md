@@ -87,7 +87,8 @@ maschili della 1ª come *nauta* e *agricola*).
   alloro e oro), con interruttore
 - ✅ **Vocābula** — ripasso del lessico a scadenze crescenti (1, 3, 7, 16, 35,
   90 giorni), 5 parole nuove al giorno
-- ✅ Salvataggio locale dei progressi
+- ✅ Salvataggio locale dei progressi, con **esporta/importa su file** e
+  richiesta di archiviazione durevole al browser
 - ✅ **Pubblicazione**: sito pubblico su GitHub Pages (auto-deploy a ogni push)
   + build a file singolo
 - ✅ **Controllo automatico del latino** (`npm run check`): i paradigmi corretti
@@ -148,7 +149,17 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   quello che l'esercizio insegna a fare
 - ⬜ **Badge / traguardi** latini da collezionare
 - ⬜ Audio anche sulle **frasi**; migliorare l'**accento** della sintesi vocale
-- ⬜ (Eventuale) Account e sincronizzazione tra dispositivi
+- ⬜ (Eventuale) Account e sincronizzazione tra dispositivi. Il primo passo è
+  fatto: i progressi si esportano e si reimportano come file, quindi cambiare
+  telefono non costa più mesi di studio. Resta scoperta solo la sincronia vera
+  fra due dispositivi usati in parallelo, che richiede un server
+- ⬜ (Eventuale) Pubblicazione su **Google Play**. Servirebbe prima farne una
+  **PWA** (manifest, service worker, icone), che da sola la rende già
+  installabile e utilizzabile offline. Attenzione a un equivoco: l'account
+  Google **non** salva i dati dell'app da solo — *Android Auto Backup* copre
+  la cartella dell'app, e in un guscio TWA i dati stanno in Chrome, quindi non
+  ci rientrano. Con Capacitor invece sì. È il motivo per cui l'esporta/importa
+  viene prima di tutto il resto
 
 ---
 

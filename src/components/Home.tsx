@@ -9,6 +9,7 @@ import { sfxEnabled, setSfxEnabled } from '../sfx'
 import { versiones } from '../data/versiones'
 import { quanteOggi, nuoveRimasteOggi } from '../vocabolario'
 import type { Versio } from '../data/versiones'
+import { Salvataggio } from './Salvataggio'
 
 interface Props {
   units: Unit[]
@@ -21,6 +22,8 @@ interface Props {
   onOpenVocab: () => void
   onReset: () => void
   onToggleFreeMode: () => void
+  /** Ripristina i progressi da un file esportato. */
+  onImporta: (p: Progress) => void
 }
 
 export function Home({
@@ -34,6 +37,7 @@ export function Home({
   onOpenVocab,
   onReset,
   onToggleFreeMode,
+  onImporta,
 }: Props) {
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
@@ -214,6 +218,7 @@ export function Home({
           >
             {progress.freeMode ? '🔓 Tutte le lezioni sbloccate' : '🔒 Sblocca tutte le lezioni'}
           </button>
+          <Salvataggio progress={progress} onImporta={onImporta} />
           <div>
             <button className="link-btn" onClick={onReset}>
               Ricomincia da capo

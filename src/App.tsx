@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { curriculum } from './data/curriculum'
 import { useProgress } from './useProgress'
+import { chiediSpazioDurevole } from './salvataggio'
 import { Home } from './components/Home'
 import { LessonPlayer } from './components/LessonPlayer'
 import { City } from './components/City'
@@ -22,6 +23,13 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function App() {
+  // I progressi stanno nel localStorage, che il browser può cancellare da solo
+  // quando lo spazio scarseggia. Chiedere che siano durevoli non è garantito,
+  // ma non costa niente e riduce il rischio.
+  useEffect(() => {
+    chiediSpazioDurevole()
+  }, [])
+
   const {
     progress,
     finishLesson,
@@ -35,6 +43,7 @@ export default function App() {
     expandLand,
     reset,
     toggleFreeMode,
+    importa,
   } = useProgress()
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
   const [isReview, setIsReview] = useState(false)
@@ -137,6 +146,7 @@ export default function App() {
       onOpenVocab={() => setShowVocab(true)}
       onReset={reset}
       onToggleFreeMode={toggleFreeMode}
+      onImporta={importa}
     />
   )
 }

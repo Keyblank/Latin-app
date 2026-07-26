@@ -52,7 +52,16 @@ la lingua. Interfaccia in italiano.
   scrivi `eius` o `ibus` e trovi le tabelle che la contengono, senza doverti
   ricordare le lineette. Non duplica niente: legge le tabelle dalle lezioni,
   quindi resta sempre allineato al corso.
-- **Salvataggio automatico** dei progressi nel browser (localStorage).
+- **Salvataggio automatico** dei progressi nel browser (localStorage), con
+  **esporta/importa**: dalla schermata iniziale scarichi un file `.json` con
+  tutto — lezioni, XP, streak, città, vocaboli in memoria, versioni tradotte —
+  e lo ricarichi su un altro dispositivo o dopo aver cambiato telefono. Serve
+  perché il localStorage vive in *quel* browser su *quel* dispositivo: cancelli
+  i dati di navigazione e mesi di studio spariscono senza preavviso.
+  L'importazione sovrascrive tutto, quindi prima mostra cosa c'è nel file e
+  cosa c'è adesso, e chiede conferma. L'app chiede anche al browser di rendere
+  **durevole** l'archiviazione (`navigator.storage.persist()`), così il
+  salvataggio non viene buttato via quando lo spazio scarseggia.
 - **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
   tre umori animati e **battute ironiche** a rotazione (saluti, feedback,
   fine lezione). Le frasi sono in `src/quips.ts`, facilissime da modificare.
@@ -262,6 +271,8 @@ src/
     Versio.tsx         → la traduzione di un brano, frase per frase
     Grammatica.tsx     → il mini-manuale consultabile
     Vocabula.tsx       → il ripasso del lessico
+    Salvataggio.tsx    → esporta/importa i progressi
+  salvataggio.ts       → formato del file di salvataggio e lettura
   styles.css           → grafica e identità visiva di Ianua
 ```
 
