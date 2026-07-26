@@ -6,7 +6,14 @@ la lingua. Interfaccia in italiano.
 
 ## Cosa fa
 
-- **Percorso a lezioni** organizzato in unità, con progressione a tappe.
+- **Percorso a lezioni** organizzato in unità, con progressione a tappe. La
+  schermata iniziale apre su una **dashboard**: un pulsante «Riprendi da qui»
+  che porta dritto alla lezione a cui sei arrivato, e cinque piastrelle per le
+  altre attività (Vocābula, Repetitio, Versiones, Grammatica, Urbs), ognuna con
+  quanto c'è da fare. Le piastrelle restano sempre al loro posto — spente
+  quando non c'è niente da fare — così si impara dove sono le cose. Le unità
+  già completate si mostrano **ripiegate**: con ventun unità, tenerle tutte
+  aperte voleva dire scorrere per minuti prima di arrivare a dove si è.
 - **Esercizi interattivi** di più tipi:
   - carte didattiche che spiegano i concetti;
   - tabelle di grammatica (es. le declinazioni);
@@ -24,6 +31,13 @@ la lingua. Interfaccia in italiano.
   - punti XP ⭐, vite ❤️, giorni di fila 🔥 (streak);
   - **ranghi latini** legati agli XP (Tiro → Discipulus → Scriba → … → Imperator);
   - **obiettivo giornaliero** (*Pensum diei*);
+  - **vite** proporzionate alla lezione: mai più dei quesiti che contiene,
+    altrimenti in una lezione da tre domande non si potrebbero perdere e il
+    contatore sarebbe una decorazione;
+  - **secondo giro** a fine lezione: i quesiti sbagliati si rifanno subito,
+    senza XP e senza vite in gioco. Non cancellano l'errore dal *Repetitio* —
+    indovinare dieci secondi dopo aver letto la risposta non dimostra niente —
+    ma evitano di uscire dalla lezione con in mente la risposta sbagliata;
   - **ripasso degli errori** (*Repetitio*): le domande sbagliate ritornano
     finché non le indovini (ripetizione dilazionata di base).
 - **Pronuncia con audio** 🔊: sezione *Pronuntiatio* (suoni e accento) e pulsanti
@@ -271,6 +285,7 @@ src/
     Versio.tsx         → la traduzione di un brano, frase per frase
     Grammatica.tsx     → il mini-manuale consultabile
     Vocabula.tsx       → il ripasso del lessico
+    Versiones.tsx      → l'elenco dei brani da tradurre
     Salvataggio.tsx    → esporta/importa i progressi
   salvataggio.ts       → formato del file di salvataggio e lettura
   styles.css           → grafica e identità visiva di Ianua

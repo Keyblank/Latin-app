@@ -8,6 +8,7 @@ import { City } from './components/City'
 import { Versio } from './components/Versio'
 import { Grammatica } from './components/Grammatica'
 import { Vocabula } from './components/Vocabula'
+import { Versiones } from './components/Versiones'
 import type { Versio as VersioType } from './data/versiones'
 import type { Lesson, Exercise } from './types'
 
@@ -51,6 +52,7 @@ export default function App() {
   const [versio, setVersio] = useState<VersioType | null>(null)
   const [showGrammatica, setShowGrammatica] = useState(false)
   const [showVocab, setShowVocab] = useState(false)
+  const [showVersiones, setShowVersiones] = useState(false)
 
   function startLesson(lesson: Lesson) {
     setIsReview(false)
@@ -114,8 +116,25 @@ export default function App() {
         onFinish={(xp, denarii) => {
           finishVersio(versio.id, xp, denarii)
           setVersio(null)
+          setShowVersiones(true)
         }}
-        onBack={() => setVersio(null)}
+        onBack={() => {
+          setVersio(null)
+          setShowVersiones(true)
+        }}
+      />
+    )
+  }
+
+  if (showVersiones) {
+    return (
+      <Versiones
+        progress={progress}
+        onStart={(v) => {
+          setShowVersiones(false)
+          setVersio(v)
+        }}
+        onBack={() => setShowVersiones(false)}
       />
     )
   }
@@ -141,7 +160,7 @@ export default function App() {
       onStartLesson={startLesson}
       onStartReview={startReview}
       onOpenCity={() => setShowCity(true)}
-      onStartVersio={setVersio}
+      onOpenVersiones={() => setShowVersiones(true)}
       onOpenGrammatica={() => setShowGrammatica(true)}
       onOpenVocab={() => setShowVocab(true)}
       onReset={reset}

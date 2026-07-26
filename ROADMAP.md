@@ -73,10 +73,13 @@ maschili della 1ª come *nauta* e *agricola*).
 ### Funzionalità
 
 - ✅ Percorso a lezioni con blocco/sblocco + **modalità libera**
+- ✅ **Dashboard** iniziale: «Riprendi da qui» + piastrelle delle attività,
+  unità completate ripiegate (prima si scorreva per tre schermate)
 - ✅ 6 tipi di esercizio: scheda, **tabella** (con audio), scelta, costruzione
   frase, abbinamento, **analisi grammaticale**
 - ✅ Gamification: **XP, vite, streak**, **ranghi latini**, **obiettivo
-  giornaliero** (*Pensum diei*), **ripasso degli errori** (*Repetitio*)
+  giornaliero** (*Pensum diei*), **ripasso degli errori** (*Repetitio*), e a
+  fine lezione il **secondo giro** sugli sbagliati
 - ✅ **Urbs** — città romana in **3D** da costruire spendendo **denarii**
   guadagnati studiando: posizionamento libero, rotazione, strade, demolizione,
   terreno ampliabile; 17 edifici con nome latino, sbloccati per progressi

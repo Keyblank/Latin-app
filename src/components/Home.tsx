@@ -8,7 +8,6 @@ import { pickQuip } from '../quips'
 import { sfxEnabled, setSfxEnabled } from '../sfx'
 import { versiones } from '../data/versiones'
 import { quanteOggi, nuoveRimasteOggi } from '../vocabolario'
-import type { Versio } from '../data/versiones'
 import { Salvataggio } from './Salvataggio'
 
 interface Props {
@@ -17,7 +16,7 @@ interface Props {
   onStartLesson: (lesson: Lesson) => void
   onStartReview: () => void
   onOpenCity: () => void
-  onStartVersio: (v: Versio) => void
+  onOpenVersiones: () => void
   onOpenGrammatica: () => void
   onOpenVocab: () => void
   onReset: () => void
@@ -26,13 +25,37 @@ interface Props {
   onImporta: (p: Progress) => void
 }
 
+/** Una piastrella della dashboard. */
+function Tile({
+  icona,
+  titolo,
+  nota,
+  attiva,
+  onClick,
+}: {
+  icona: string
+  titolo: string
+  nota: string
+  /** Se false la piastrella resta, ma spenta: dice che non c'è niente da fare. */
+  attiva?: boolean
+  onClick: () => void
+}) {
+  return (
+    <button className={`tile ${attiva === false ? 'tile--spenta' : ''}`} onClick={onClick}>
+      <span className="tile-icona">{icona}</span>
+      <span className="tile-titolo">{titolo}</span>
+      <span className="tile-nota">{nota}</span>
+    </button>
+  )
+}
+
 export function Home({
   units,
   progress,
   onStartLesson,
   onStartReview,
   onOpenCity,
-  onStartVersio,
+  onOpenVersiones,
   onOpenGrammatica,
   onOpenVocab,
   onReset,
@@ -42,6 +65,7 @@ export function Home({
   // Trova la prima lezione non completata: è quella "attuale".
   const allLessons = units.flatMap((u) => u.lessons)
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
+  const unitaCorrente = units.find((u) => u.lessons.some((l) => l.id === currentLesson?.id))
 
   const lezioniFatte = progress.completed.length
 
@@ -51,8 +75,22 @@ export function Home({
     progress.freeMode,
     nuoveRimasteOggi(progress.vocabNuove),
   )
+  const versioniAperte = versiones.filter(
+    (v) => progress.freeMode || lezioniFatte >= v.unlock,
+  ).length
 
   const [sfxOn, setSfxOn] = useState(sfxEnabled)
+
+  // Le unità già finite si mostrano chiuse: con ventun unità, lasciarle tutte
+  // aperte vuol dire scorrere per minuti prima di arrivare a dove si è.
+  const [aperte, setAperte] = useState<Set<string>>(new Set())
+  const apriChiudi = (id: string) =>
+    setAperte((s) => {
+      const n = new Set(s)
+      if (n.has(id)) n.delete(id)
+      else n.add(id)
+      return n
+    })
 
   // Battuta della mascotte, scelta una volta per visita alla home.
   const [greeting] = useState(() =>
@@ -88,80 +126,64 @@ export function Home({
           <div className="speech-bubble">{greeting}</div>
         </div>
 
-        <StatusCard progress={progress} />
-
-        <button className="urbs-btn" onClick={onOpenCity}>
-          <span className="urbs-icon">🏛️</span>
-          <span className="urbs-text">
-            <span className="latin-label">Urbs · costruisci la tua Roma</span>
-            <span className="urbs-count">
-              {progress.city.length} edifici · 🪙 {progress.denarii} da spendere
+        {/* Il pulsante che serve nove volte su dieci: riprendere da dove si era. */}
+        {currentLesson && (
+          <button className="riprendi" onClick={() => onStartLesson(currentLesson)}>
+            <span className="riprendi-etichetta">
+              {lezioniFatte === 0 ? 'Comincia da qui' : 'Riprendi da qui'}
             </span>
-          </span>
-        </button>
-
-        {inScadenza > 0 && (
-          <button className="voc-btn" onClick={onOpenVocab}>
-            <span className="urbs-icon">🧠</span>
-            <span className="urbs-text">
-              <span className="latin-label">Vocābula · ripassa le parole</span>
-              <span className="urbs-count">
-                {inScadenza} {inScadenza === 1 ? 'parola aspetta' : 'parole aspettano'} oggi
-              </span>
+            <span className="riprendi-lezione">
+              {currentLesson.icon} {currentLesson.title}
             </span>
+            {unitaCorrente && <span className="riprendi-unita">{unitaCorrente.title}</span>}
           </button>
         )}
 
-        <button className="gram-btn" onClick={onOpenGrammatica}>
-          <span className="urbs-icon">📚</span>
-          <span className="urbs-text">
-            <span className="latin-label">Grammatica · tutte le tabelle</span>
-            <span className="urbs-count">Da consultare mentre traduci</span>
-          </span>
-        </button>
-
-        <div className="versio-blocco">
-          <p className="versio-etichetta">Versiones · traduci un brano intero</p>
-          <div className="versio-list">
-            {versiones.map((v) => {
-              const bloccata = !progress.freeMode && lezioniFatte < v.unlock
-              const fatta = progress.versiones.includes(v.id)
-              return (
-                <button
-                  key={v.id}
-                  className="versio-card"
-                  disabled={bloccata}
-                  onClick={() => onStartVersio(v)}
-                >
-                  <span className="versio-icona">{bloccata ? '🔒' : v.icona}</span>
-                  <span>
-                    <span className="versio-nome">
-                      {v.titolo} {fatta && '✓'}
-                    </span>
-                    <span className="versio-meta">
-                      {bloccata
-                        ? `Completa ${v.unlock} lezioni per aprirla`
-                        : `${v.livello} · ${v.frasi.length} frasi · ${v.fonte}`}
-                    </span>
-                  </span>
-                </button>
-              )
-            })}
-          </div>
+        <div className="tiles">
+          <Tile
+            icona="🧠"
+            titolo="Vocābula"
+            nota={
+              inScadenza > 0
+                ? `${inScadenza} ${inScadenza === 1 ? 'parola' : 'parole'} da ripassare`
+                : 'niente in scadenza oggi'
+            }
+            attiva={inScadenza > 0}
+            onClick={onOpenVocab}
+          />
+          <Tile
+            icona="🔁"
+            titolo="Repetitio"
+            nota={
+              progress.mistakes.length > 0
+                ? `${progress.mistakes.length} ${progress.mistakes.length === 1 ? 'errore' : 'errori'} da rifare`
+                : 'nessun errore in sospeso'
+            }
+            attiva={progress.mistakes.length > 0}
+            onClick={onStartReview}
+          />
+          <Tile
+            icona="📜"
+            titolo="Versiones"
+            nota={`${versioniAperte} di ${versiones.length} da tradurre`}
+            attiva={versioniAperte > 0}
+            onClick={onOpenVersiones}
+          />
+          <Tile
+            icona="📚"
+            titolo="Grammatica"
+            nota="tutte le tabelle"
+            onClick={onOpenGrammatica}
+          />
+          <Tile
+            icona="🏛️"
+            titolo="Urbs"
+            nota={`${progress.city.length} edifici · 🪙 ${progress.denarii}`}
+            onClick={onOpenCity}
+          />
         </div>
 
-        {progress.mistakes.length > 0 && (
-          <button className="review-btn" onClick={onStartReview}>
-            <span className="review-icon">🔁</span>
-            <span className="review-text">
-              <span className="latin-label">Repetitio · ripassa gli errori</span>
-              <span className="review-count">
-                {progress.mistakes.length}{' '}
-                {progress.mistakes.length === 1 ? 'parola da ripassare' : 'parole da ripassare'}
-              </span>
-            </span>
-          </button>
-        )}
+        <StatusCard progress={progress} />
 
         {progress.completed.length > 0 && progress.completed.length === allLessons.length && (
           <div className="banner">
@@ -169,36 +191,67 @@ export function Home({
           </div>
         )}
 
-        {units.map((unit) => (
-          <section key={unit.id} className="unit">
-            <div className="unit-header" style={{ background: unit.color }}>
-              <h2>{unit.title}</h2>
-              <p>{unit.subtitle}</p>
-            </div>
+        <h2 className="path-titolo">Il corso</h2>
 
-            <div className="lessons">
-              {unit.lessons.map((lesson) => {
-                const done = progress.completed.includes(lesson.id)
-                const isCurrent = currentLesson?.id === lesson.id
-                // In modalità libera nulla è bloccato.
-                const locked = !done && !isCurrent && !progress.freeMode
-                return (
-                  <button
-                    key={lesson.id}
-                    className={`lesson-node ${done ? 'done' : ''} ${isCurrent ? 'current' : ''}`}
-                    style={!locked ? { background: unit.color } : undefined}
-                    disabled={locked}
-                    onClick={() => onStartLesson(lesson)}
-                    title={locked ? 'Completa prima le lezioni precedenti' : lesson.title}
+        {units.map((unit) => {
+          const finita = unit.lessons.every((l) => progress.completed.includes(l.id))
+          const chiusa = finita && !aperte.has(unit.id)
+          return (
+            <section key={unit.id} className="unit">
+              {chiusa ? (
+                <button
+                  className="unit-chiusa"
+                  onClick={() => apriChiudi(unit.id)}
+                  style={{ borderColor: unit.color }}
+                >
+                  <span className="unit-chiusa-ok" style={{ background: unit.color }}>✓</span>
+                  <span className="unit-chiusa-testo">
+                    <span className="unit-chiusa-nome">{unit.title}</span>
+                    <span className="unit-chiusa-meta">
+                      {unit.lessons.length} lezioni · completata
+                    </span>
+                  </span>
+                  <span className="unit-chiusa-freccia">▾</span>
+                </button>
+              ) : (
+                <>
+                  <div
+                    className="unit-header"
+                    style={{ background: unit.color, cursor: finita ? 'pointer' : undefined }}
+                    onClick={finita ? () => apriChiudi(unit.id) : undefined}
                   >
-                    <span className="lesson-icon">{done ? '✓' : locked ? '🔒' : lesson.icon}</span>
-                    <span className="lesson-title">{lesson.title}</span>
-                  </button>
-                )
-              })}
-            </div>
-          </section>
-        ))}
+                    <h2>{unit.title}</h2>
+                    <p>{unit.subtitle}</p>
+                  </div>
+
+                  <div className="lessons">
+                    {unit.lessons.map((lesson) => {
+                      const done = progress.completed.includes(lesson.id)
+                      const isCurrent = currentLesson?.id === lesson.id
+                      // In modalità libera nulla è bloccato.
+                      const locked = !done && !isCurrent && !progress.freeMode
+                      return (
+                        <button
+                          key={lesson.id}
+                          className={`lesson-node ${done ? 'done' : ''} ${isCurrent ? 'current' : ''}`}
+                          style={!locked ? { background: unit.color } : undefined}
+                          disabled={locked}
+                          onClick={() => onStartLesson(lesson)}
+                          title={locked ? 'Completa prima le lezioni precedenti' : lesson.title}
+                        >
+                          <span className="lesson-icon">
+                            {done ? '✓' : locked ? '🔒' : lesson.icon}
+                          </span>
+                          <span className="lesson-title">{lesson.title}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </>
+              )}
+            </section>
+          )
+        })}
 
         <footer className="home-footer">
           <VoicePicker />

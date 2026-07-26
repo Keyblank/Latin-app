@@ -6,8 +6,14 @@ import { Confetti } from './Confetti'
 import { pickQuip } from '../quips'
 import { playCorrect, playWrong, playWin } from '../sfx'
 
-const START_HEARTS = 5
+/** Tetto delle vite. Nelle lezioni corte se ne danno meno: vedi sotto. */
+const MAX_HEARTS = 5
 const XP_PER_EXERCISE = 10
+
+/** Schede e tabelle si leggono e basta: non sono quesiti. */
+const isQuestion = (e: Exercise) => e.type !== 'info' && e.type !== 'table'
+
+const exKey = (e: Exercise) => JSON.stringify(e)
 
 interface Props {
   lesson: Lesson
@@ -22,14 +28,25 @@ interface Props {
 type Phase = 'answering' | 'checked'
 
 export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: Props) {
+  // Le vite non possono essere più dei quesiti: in una lezione da tre domande
+  // con cinque vite il contatore sarebbe una decorazione, perché finirle
+  // sarebbe impossibile.
+  const quesiti = useMemo(() => lesson.exercises.filter(isQuestion).length, [lesson])
+  const viteIniziali = Math.min(MAX_HEARTS, quesiti)
+
   const [idx, setIdx] = useState(0)
-  const [hearts, setHearts] = useState(START_HEARTS)
+  const [hearts, setHearts] = useState(viteIniziali)
   const [xp, setXp] = useState(0)
   const [phase, setPhase] = useState<Phase>('answering')
   const [answer, setAnswer] = useState<AnswerState>({ ready: false, correct: false })
   const [lastCorrect, setLastCorrect] = useState(false)
   const [finished, setFinished] = useState(false)
   const [feedbackQuip, setFeedbackQuip] = useState('')
+
+  // Secondo giro sugli sbagliati, prima di uscire: vedi `passaAlRecupero`.
+  const [daRifare, setDaRifare] = useState<Exercise[]>([])
+  const [rIdx, setRIdx] = useState(0)
+  const recupero = daRifare.length > 0
 
   // Una battuta finale per sessione (non cambia a ogni render).
   const winQuip = useMemo(() => pickQuip('win'), [])
@@ -39,24 +56,65 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
   const wrong = useRef<Exercise[]>([])
   const correct = useRef<Exercise[]>([])
 
-  const ex = lesson.exercises[idx]
-  const total = lesson.exercises.length
+  const lista = recupero ? daRifare : lesson.exercises
+  const i = recupero ? rIdx : idx
+  const ex = lista[i]
+  const total = lista.length
   // Schermate didattiche: nessuna risposta, solo "Continua".
   const isReadOnly = ex.type === 'info' || ex.type === 'table'
   const isMatch = ex.type === 'match'
 
-  function goNext() {
-    if (idx + 1 >= total) {
-      setFinished(true)
-      return
-    }
-    setIdx(idx + 1)
+  /**
+   * Alla fine della lezione si rifanno i quesiti sbagliati.
+   *
+   * Non danno XP, non tolgono vite e non cancellano l'errore dal Repetitio:
+   * indovinare dieci secondi dopo aver letto la risposta non dimostra niente,
+   * e quella domanda deve tornare fra qualche giorno lo stesso. Servono a non
+   * uscire dalla lezione con l'ultima immagine di una risposta sbagliata.
+   */
+  function passaAlRecupero(): boolean {
+    const visti = new Set<string>()
+    const unici = wrong.current.filter((e) => {
+      // Gli abbinamenti non si possono sbagliare: non finiscono mai qui, ma
+      // meglio essere espliciti.
+      if (e.type === 'match') return false
+      const k = exKey(e)
+      if (visti.has(k)) return false
+      visti.add(k)
+      return true
+    })
+    if (unici.length === 0) return false
+    setDaRifare(unici)
+    setRIdx(0)
     setPhase('answering')
     setAnswer({ ready: false, correct: false })
     setLastCorrect(false)
+    return true
+  }
+
+  function goNext() {
+    if (i + 1 < total) {
+      if (recupero) setRIdx(i + 1)
+      else setIdx(i + 1)
+      setPhase('answering')
+      setAnswer({ ready: false, correct: false })
+      setLastCorrect(false)
+      return
+    }
+    if (!recupero && passaAlRecupero()) return
+    setFinished(true)
   }
 
   function check() {
+    // Nel recupero non si guadagna e non si perde: è solo pratica.
+    if (recupero) {
+      setLastCorrect(answer.correct)
+      setFeedbackQuip(pickQuip(answer.correct ? 'correct' : 'wrong'))
+      if (answer.correct) playCorrect()
+      else playWrong()
+      setPhase('checked')
+      return
+    }
     if (answer.correct) {
       setXp((x) => x + XP_PER_EXERCISE)
       setLastCorrect(true)
@@ -75,7 +133,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
 
   // Match: si completa da solo, sempre corretto.
   function onMatchComplete() {
-    setXp((x) => x + XP_PER_EXERCISE)
+    if (!recupero) setXp((x) => x + XP_PER_EXERCISE)
     setLastCorrect(true)
     setPhase('checked')
     playCorrect()
@@ -103,7 +161,11 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
               <span className="end-stat-label">XP guadagnati</span>
             </div>
             <div className="end-stat">
-              <span className="end-stat-num">❤️ {hearts}</span>
+              <span className="end-stat-num">🪙 +{xp}</span>
+              <span className="end-stat-label">denarii guadagnati</span>
+            </div>
+            <div className="end-stat">
+              <span className="end-stat-num">❤️ {hearts}/{viteIniziali}</span>
               <span className="end-stat-label">vite rimaste</span>
             </div>
           </div>
@@ -141,7 +203,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
     )
   }
 
-  const progressPct = Math.round((idx / total) * 100)
+  const progressPct = Math.round((i / total) * 100)
 
   return (
     <div className="app lesson">
@@ -154,12 +216,21 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
           ✕
         </button>
         <div className="progress-bar">
-          <div className="progress-fill" style={{ width: `${progressPct}%` }} />
+          <div
+            className={`progress-fill ${recupero ? 'progress-fill--recupero' : ''}`}
+            style={{ width: `${progressPct}%` }}
+          />
         </div>
         <div className="hearts">❤️ {hearts}</div>
       </header>
 
-      <main className="lesson-body" key={idx}>
+      <main className="lesson-body" key={`${recupero ? 'r' : 'p'}${i}`}>
+        {recupero && (
+          <p className="recupero-nota">
+            🔁 Secondo giro: rifai quelle che avevi sbagliato. Qui non si
+            perdono vite e non si guadagnano XP.
+          </p>
+        )}
         {ex.type === 'info' && <InfoCard ex={ex} />}
         {ex.type === 'table' && <TableCard ex={ex} />}
         {ex.type === 'choice' && <Choice ex={ex} disabled={phase === 'checked'} onChange={setAnswer} />}
@@ -209,7 +280,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
           </button>
         ) : (
           <button className="btn btn-primary" onClick={goNext}>
-            Continua
+            {i + 1 < total || recupero || wrong.current.length === 0 ? 'Continua' : 'Rifai gli errori'}
           </button>
         )}
       </footer>

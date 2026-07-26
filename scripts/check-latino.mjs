@@ -138,6 +138,9 @@ const PARADIGMI = {
  *  riconoscibile, distinto dalle lezioni di grammatica. */
 const ICONA_LESSICO = '🗂️'
 
+/** Quesiti minimi per lezione: sotto questa soglia le vite non hanno senso. */
+const MIN_QUESITI = 3
+
 const problemi = []
 const segnala = (dove, testo) => problemi.push(`${dove}\n    ${testo}`)
 
@@ -271,6 +274,12 @@ for (const u of curriculum) {
     const lessico = /v$/.test(l.id)
     if (lessico && l.icon !== ICONA_LESSICO) {
       segnala(`${u.id} · ${l.title}`, `è una lezione di lessico ma ha l'icona ${l.icon} invece di ${ICONA_LESSICO}`)
+    }
+    // Le vite in lezione sono min(5, quesiti): sotto i tre quesiti una lezione
+    // è una lettura con una domanda in fondo, e basta un errore per finirla.
+    const quesiti = l.exercises.filter((e) => e.type !== 'info' && e.type !== 'table').length
+    if (quesiti < MIN_QUESITI) {
+      segnala(`${u.id} · ${l.title}`, `ha solo ${quesiti} quesiti a risposta: ne servono almeno ${MIN_QUESITI}`)
     }
     if (!lessico && l.icon === ICONA_LESSICO) {
       segnala(`${u.id} · ${l.title}`, `usa l'icona del lessico ${ICONA_LESSICO} ma non è una lezione di lessico`)

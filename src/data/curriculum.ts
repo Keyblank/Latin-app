@@ -604,6 +604,24 @@ export const curriculum: Unit[] = [
             answer: 'chi? (il soggetto)',
           },
           {
+            type: 'choice',
+            prompt: 'A quale domanda risponde l’ACCUSATIVO?',
+            options: ['che cosa?', 'di chi?', 'a chi?'],
+            answer: 'che cosa?',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «il libro DI Marco», che caso userebbe il latino per «di Marco»?',
+            options: ['Genitivo', 'Dativo', 'Ablativo'],
+            answer: 'Genitivo',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «scrivo A Marco», che caso userebbe il latino per «a Marco»?',
+            options: ['Dativo', 'Accusativo', 'Genitivo'],
+            answer: 'Dativo',
+          },
+          {
             type: 'match',
             prompt: 'Abbina il caso alla sua funzione',
             pairs: [
@@ -879,6 +897,25 @@ export const curriculum: Unit[] = [
             prompt: 'Qual è il GENITIVO singolare di «rosa»?',
             options: ['rosae', 'rosam', 'rosārum'],
             answer: 'rosae',
+          },
+          {
+            type: 'choice',
+            prompt: 'Qual è l’ACCUSATIVO singolare di «rosa»?',
+            options: ['rosam', 'rosae', 'rosā'],
+            answer: 'rosam',
+          },
+          {
+            type: 'choice',
+            prompt: 'Trovi «rosārum» in un testo. Che caso è?',
+            focus: 'rosārum',
+            options: ['Genitivo plurale', 'Accusativo plurale', 'Dativo singolare'],
+            answer: 'Genitivo plurale',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale desinenza NON esiste nella 1ª declinazione?',
+            options: ['-um', '-ārum', '-īs'],
+            answer: '-um',
           },
         ],
       },
