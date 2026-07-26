@@ -96,6 +96,9 @@ esempi già presenti.
 - **Unità 9 — La terza declinazione** — la più frequente: il ruolo del genitivo
   e del tema (*rex, regis*), le desinenze, i neutri (*nomen, nominis*) e la
   pratica di traduzione.
+- **Unità 10 — Il passato** — imperfetto (il segnale *-ba-*) e perfetto (il tema
+  del perfetto, *amāvī*), la differenza di senso tra i due, e traduzione di frasi
+  al passato (i tempi del racconto).
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia
