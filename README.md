@@ -28,9 +28,10 @@ la lingua. Interfaccia in italiano.
 - **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
   tre umori animati e **battute ironiche** a rotazione (saluti, feedback,
   fine lezione). Le frasi sono in `src/quips.ts`, facilissime da modificare.
-- **Suoni ed effetti di gioco** 🔔: suoni sintetizzati al volo (Web Audio) per
-  risposta giusta/sbagliata e fine lezione, coriandoli sulla schermata di
-  vittoria, con interruttore per attivarli/spegnerli.
+- **Suoni ed effetti a tema romano** 🔔: suoni sintetizzati al volo (Web Audio) —
+  arpeggio di **lira** (risposta giusta), **corno** grave (errore) e **fanfara di
+  trionfo** (fine lezione) — più una pioggia di **foglie d'alloro e oro** sulla
+  schermata di vittoria. Con interruttore per attivarli/spegnerli.
 - **Responsive**: funziona bene anche da telefono.
 
 Le regole di gioco (ranghi e obiettivo) sono in `src/gamification.ts`, facili da

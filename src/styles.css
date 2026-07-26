@@ -317,9 +317,13 @@ button { font-family: inherit; cursor: pointer; }
   position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 5;
 }
 .confetto {
-  position: absolute; top: -12%; border-radius: 2px;
+  position: absolute; top: -12%; border-radius: 40% 40% 45% 45% / 60% 60% 40% 40%;
   animation-name: confetti-fall; animation-timing-function: linear;
-  animation-iteration-count: 1; opacity: 0.9;
+  animation-iteration-count: 1; opacity: 0.92;
+}
+.confetto--emoji {
+  border-radius: 0; background: none !important;
+  width: auto; height: auto; line-height: 1;
 }
 @keyframes confetti-fall {
   0% { top: -12%; opacity: 1; }

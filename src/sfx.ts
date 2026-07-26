@@ -35,43 +35,77 @@ function audio(): AudioContext | null {
   return ctx
 }
 
-/** Suona una nota semplice (onda + inviluppo) all'istante `start` (in secondi). */
-function tone(freq: number, start: number, dur: number, type: OscillatorType = 'sine', gain = 0.14): void {
+/** Nota "a pizzico" di lira: attacco rapido, decadimento veloce, con armonica. */
+function pluck(freq: number, start: number, dur = 0.34, peak = 0.16): void {
   const c = ctx
   if (!c) return
-  const osc = c.createOscillator()
-  const g = c.createGain()
-  osc.type = type
-  osc.frequency.value = freq
-  osc.connect(g)
-  g.connect(c.destination)
   const t = c.currentTime + start
+  const g = c.createGain()
+  g.connect(c.destination)
   g.gain.setValueAtTime(0.0001, t)
-  g.gain.linearRampToValueAtTime(gain, t + 0.012)
+  g.gain.linearRampToValueAtTime(peak, t + 0.006)
   g.gain.exponentialRampToValueAtTime(0.0001, t + dur)
-  osc.start(t)
-  osc.stop(t + dur + 0.03)
+  const o1 = c.createOscillator()
+  o1.type = 'triangle'
+  o1.frequency.value = freq
+  o1.connect(g)
+  const o2 = c.createOscillator() // armonica (ottava) per il timbro di corda
+  o2.type = 'sine'
+  o2.frequency.value = freq * 2
+  const g2 = c.createGain()
+  g2.gain.value = 0.35
+  o2.connect(g2)
+  g2.connect(g)
+  o1.start(t)
+  o1.stop(t + dur + 0.05)
+  o2.start(t)
+  o2.stop(t + dur + 0.05)
 }
 
-/** Risposta corretta: due note che salgono, allegre. */
+/** Nota di ottone (corno/tuba): sawtooth filtrato, attacco morbido. */
+function brass(freq: number, start: number, dur: number, peak = 0.14): void {
+  const c = ctx
+  if (!c) return
+  const t = c.currentTime + start
+  const o = c.createOscillator()
+  o.type = 'sawtooth'
+  o.frequency.value = freq
+  const f = c.createBiquadFilter()
+  f.type = 'lowpass'
+  f.frequency.value = 1300
+  f.Q.value = 0.7
+  const g = c.createGain()
+  o.connect(f)
+  f.connect(g)
+  g.connect(c.destination)
+  g.gain.setValueAtTime(0.0001, t)
+  g.gain.linearRampToValueAtTime(peak, t + 0.03)
+  g.gain.setValueAtTime(peak, t + dur * 0.6)
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur)
+  o.start(t)
+  o.stop(t + dur + 0.05)
+}
+
+/** Risposta corretta: arpeggio di lira che sale. */
 export function playCorrect(): void {
   if (!enabled || !audio()) return
-  tone(660, 0, 0.12, 'triangle')
-  tone(880, 0.08, 0.16, 'triangle')
+  pluck(523, 0)
+  pluck(659, 0.07)
+  pluck(880, 0.14, 0.42)
 }
 
-/** Risposta sbagliata: un breve "buzz" grave. */
+/** Risposta sbagliata: corno grave, due note che scendono. */
 export function playWrong(): void {
   if (!enabled || !audio()) return
-  tone(196, 0, 0.16, 'sawtooth', 0.1)
-  tone(150, 0.12, 0.2, 'sawtooth', 0.1)
+  brass(196, 0, 0.18, 0.12)
+  brass(147, 0.15, 0.3, 0.12)
 }
 
-/** Lezione completata: piccola fanfara ascendente. */
+/** Lezione completata: fanfara di trionfo (corno romano) che sale. */
 export function playWin(): void {
   if (!enabled || !audio()) return
-  tone(523, 0, 0.14, 'triangle')
-  tone(659, 0.12, 0.14, 'triangle')
-  tone(784, 0.24, 0.14, 'triangle')
-  tone(1047, 0.36, 0.3, 'triangle')
+  brass(392, 0, 0.16) // Sol
+  brass(523, 0.15, 0.16) // Do
+  brass(659, 0.3, 0.16) // Mi
+  brass(784, 0.45, 0.6, 0.15) // Sol (tenuto)
 }
