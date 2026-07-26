@@ -4351,4 +4351,363 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u16',
+    title: 'Unità 16 — Il congiuntivo',
+    subtitle: 'Le forme: quattro tempi, due scorciatoie',
+    color: '#4a5568',
+    lessons: [
+      {
+        id: 'u16l1',
+        title: 'Che cos’è il congiuntivo',
+        icon: '🌫️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🌫️',
+            title: 'Il modo dell’incerto',
+            body:
+              'Fin qui i verbi erano all’INDICATIVO: il modo dei fatti. ' +
+              '«Cesare viene» — è così.\n\n' +
+              'Il CONGIUNTIVO è il modo di quello che non è un fatto secco: ' +
+              'possibilità, volontà, scopo, dubbio. Esiste anche in italiano, e ' +
+              'lo usi già:\n\n' +
+              '• penso che Cesare venga\n' +
+              '• affinché tu capisca\n' +
+              '• se io fossi ricco\n\n' +
+              'Nota che in italiano il congiuntivo compare quasi sempre in una ' +
+              'frase SUBORDINATA, cioè agganciata a un’altra. In latino è lo ' +
+              'stesso — solo molto, molto più spesso.',
+          },
+          {
+            type: 'info',
+            icon: '🔁',
+            title: 'La cosa da sapere prima di tutto',
+            body:
+              'Ecco l’avvertenza che vale più di tutte le tabelle: il ' +
+              'congiuntivo latino, quasi sempre, in italiano NON si traduce con ' +
+              'un congiuntivo.\n\n' +
+              'Il latino lo mette per segnalare che la frase è subordinata; ' +
+              'l’italiano lì userebbe un indicativo, o un gerundio, o un ' +
+              'infinito.\n\n' +
+              '«cum vēnisset» = dopo che era venuto (indicativo!)\n' +
+              '«ut vidēret» = per vedere (infinito!)\n\n' +
+              'Quindi: riconosci il congiuntivo, capisci che tipo di ' +
+              'subordinata regge, e poi traduci in italiano naturale. Non ' +
+              'cercare di mettere un congiuntivo a tutti i costi.',
+          },
+          {
+            type: 'info',
+            icon: '🔤',
+            title: 'Il presente: cambia la vocale',
+            body:
+              'Le desinenze delle PERSONE restano quelle di sempre ' +
+              '(-m, -s, -t, -mus, -tis, -nt). Cambia la vocale che le precede, ' +
+              'e la regola è a due righe:\n\n' +
+              '• 1ª coniugazione (-āre): la a diventa E → «amet»\n' +
+              '• tutte le altre: compare una A → «legat», «moneat», «audiat»\n\n' +
+              'Confronta con l’indicativo e senti la differenza: «amat» ' +
+              '(indicativo) contro «amet» (congiuntivo); «legit» contro ' +
+              '«legat».',
+          },
+          {
+            type: 'table',
+            title: 'Presente congiuntivo — le 4 coniugazioni',
+            columns: ['Persona', '1ª amāre', '2ª monēre', '3ª legere', '4ª audīre'],
+            rows: [
+              ['io', 'amem', 'moneam', 'legam', 'audiam'],
+              ['tu', 'amēs', 'moneās', 'legās', 'audiās'],
+              ['lui/lei', 'amet', 'moneat', 'legat', 'audiat'],
+              ['noi', 'amēmus', 'moneāmus', 'legāmus', 'audiāmus'],
+              ['voi', 'amētis', 'moneātis', 'legātis', 'audiātis'],
+              ['loro', 'ament', 'moneant', 'legant', 'audiant'],
+            ],
+            note: 'Guarda la colonna della 1ª: è l’unica con la E. Tutte le altre hanno la A. Se ti ricordi questo, il presente congiuntivo lo riconosci sempre.',
+          },
+          {
+            type: 'table',
+            title: 'esse — presente congiuntivo',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['sim', 'io sia'],
+              ['sīs', 'tu sia'],
+              ['sit', 'lui/lei sia'],
+              ['sīmus', 'noi siamo'],
+              ['sītis', 'voi siate'],
+              ['sint', 'loro siano'],
+            ],
+            speakCols: [0],
+            note: 'Irregolare come sempre, ma corto e frequentissimo: «sit» e «sint» li incontrerai in continuazione.',
+          },
+          {
+            type: 'choice',
+            prompt: '«amat» o «amet»: quale è al congiuntivo?',
+            options: ['amet', 'amat', 'tutte e due'],
+            answer: 'amet',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si forma il presente congiuntivo della 3ª coniugazione?',
+            focus: 'legere',
+            options: [
+              'con la A: «legat»',
+              'con la E: «leget»',
+              'non cambia: «legit»',
+            ],
+            answer: 'con la A: «legat»',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina al modo',
+            pairs: [
+              ['amat', 'indicativo: ama'],
+              ['amet', 'congiuntivo: ami'],
+              ['est', 'indicativo: è'],
+              ['sit', 'congiuntivo: sia'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u16l2',
+        title: 'L’imperfetto: il più facile',
+        icon: '🎁',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🎁',
+            title: 'Infinito più desinenza. Basta.',
+            body:
+              'Questo è un regalo, e nei manuali passa quasi inosservato: ' +
+              'l’imperfetto congiuntivo si fa prendendo l’INFINITO presente — ' +
+              'quello del vocabolario — e attaccandoci le desinenze delle ' +
+              'persone.\n\n' +
+              'amāre + m → «amārem»\n' +
+              'legere + t → «legeret»\n' +
+              'audīre + nt → «audīrent»\n' +
+              'esse + m → «essem»\n\n' +
+              'Nessuna eccezione da imparare, nemmeno per «esse». Ed è il tempo ' +
+              'che nelle versioni storiche incontrerai più di ogni altro, perché ' +
+              'il racconto è al passato.',
+          },
+          {
+            type: 'table',
+            title: 'Imperfetto congiuntivo — le 4 coniugazioni',
+            columns: ['Persona', '1ª amāre', '3ª legere', '4ª audīre', 'esse'],
+            rows: [
+              ['io', 'amārem', 'legerem', 'audīrem', 'essem'],
+              ['tu', 'amārēs', 'legerēs', 'audīrēs', 'essēs'],
+              ['lui/lei', 'amāret', 'legeret', 'audīret', 'esset'],
+              ['noi', 'amārēmus', 'legerēmus', 'audīrēmus', 'essēmus'],
+              ['voi', 'amārētis', 'legerētis', 'audīrētis', 'essētis'],
+              ['loro', 'amārent', 'legerent', 'audīrent', 'essent'],
+            ],
+            note: 'Copri la prima colonna e leggi: sono tutti «infinito + m/s/t/mus/tis/nt». «esset» ed «essent» sono fra le parole più comuni delle versioni.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Qual è l’imperfetto congiuntivo, 3ª persona singolare, di «vidēre»?',
+            focus: 'vidēre',
+            options: ['vidēret', 'videat', 'vidēbat'],
+            answer: 'vidēret',
+          },
+          {
+            type: 'choice',
+            prompt: 'Da quale forma si costruisce l’imperfetto congiuntivo?',
+            options: [
+              'dall’infinito presente',
+              'dal tema del perfetto',
+              'dal participio',
+            ],
+            answer: 'dall’infinito presente',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cos’è «essent»?',
+            focus: 'essent',
+            options: [
+              'imperfetto congiuntivo di esse',
+              'presente congiuntivo di esse',
+              'infinito di esse',
+            ],
+            answer: 'imperfetto congiuntivo di esse',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina al verbo di partenza',
+            pairs: [
+              ['amāret', 'amāre'],
+              ['legerent', 'legere'],
+              ['audīrem', 'audīre'],
+              ['esset', 'esse'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u16l3',
+        title: 'Perfetto e piuccheperfetto',
+        icon: '⏮️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '⏮️',
+            title: 'Gli altri due tempi',
+            body:
+              'Il congiuntivo ha quattro tempi in tutto. Ne hai visti due; ' +
+              'restano quelli che guardano al passato.\n\n' +
+              '• PERFETTO congiuntivo: tema del perfetto + «-erim»\n' +
+              '  amāv- + erim → «amāverim»\n' +
+              '• PIUCCHEPERFETTO congiuntivo: infinito perfetto + desinenze\n' +
+              '  amāvisse + m → «amāvissem»\n\n' +
+              'Il secondo è la stessa scorciatoia dell’imperfetto: prendi un ' +
+              'infinito e ci attacchi la persona. Due tempi su quattro si fanno ' +
+              'così.',
+          },
+          {
+            type: 'table',
+            title: 'Perfetto e piuccheperfetto congiuntivo di amāre',
+            columns: ['Persona', 'Perfetto', 'Piuccheperfetto'],
+            rows: [
+              ['io', 'amāverim', 'amāvissem'],
+              ['tu', 'amāverīs', 'amāvissēs'],
+              ['lui/lei', 'amāverit', 'amāvisset'],
+              ['noi', 'amāverīmus', 'amāvissēmus'],
+              ['voi', 'amāverītis', 'amāvissētis'],
+              ['loro', 'amāverint', 'amāvissent'],
+            ],
+            note: 'Da «esse»: «fuerim» (perfetto) e «fuissem» (piuccheperfetto). Anche qui vale la scorciatoia: fuisse + m → fuissem.',
+          },
+          {
+            type: 'table',
+            title: 'I quattro tempi, tutti insieme',
+            columns: ['Tempo', 'Come si fa', 'Esempio'],
+            rows: [
+              ['presente', 'vocale E (1ª) o A (altre)', 'amet, legat'],
+              ['imperfetto', 'infinito presente + desinenza', 'amāret'],
+              ['perfetto', 'tema del perfetto + -erim', 'amāverit'],
+              ['piuccheperfetto', 'infinito perfetto + desinenza', 'amāvisset'],
+            ],
+            note: 'Nelle versioni di storia i due che incontri di più sono di gran lunga l’imperfetto («amāret») e il piuccheperfetto («amāvisset»): il racconto è al passato, e questi sono i suoi tempi.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cos’è «vēnisset»?',
+            focus: 'vēnisset',
+            options: [
+              'piuccheperfetto congiuntivo di venīre',
+              'imperfetto congiuntivo di venīre',
+              'perfetto indicativo di venīre',
+            ],
+            answer: 'piuccheperfetto congiuntivo di venīre',
+          },
+          {
+            type: 'choice',
+            prompt: 'Da «fuisse» come ricavi il piuccheperfetto congiuntivo?',
+            focus: 'fuisse',
+            options: [
+              'attaccando le desinenze: «fuissem»',
+              'togliendo -isse: «fum»',
+              'non si può: è irregolare',
+            ],
+            answer: 'attaccando le desinenze: «fuissem»',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina al tempo del congiuntivo',
+            pairs: [
+              ['amet', 'presente'],
+              ['amāret', 'imperfetto'],
+              ['amāverit', 'perfetto'],
+              ['amāvisset', 'piuccheperfetto'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u16l4',
+        title: 'Riconoscilo al volo',
+        icon: '🔎',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🔎',
+            title: 'I segnali',
+            body:
+              'Non devi ricostruire la coniugazione ogni volta: ti bastano ' +
+              'quattro spie.\n\n' +
+              '• «-re-» prima della desinenza → imperfetto ' +
+              '(amāREt, legeREnt)\n' +
+              '• «-isse-» → piuccheperfetto (amāvISSEt, vēnISSEnt)\n' +
+              '• una A dove ti aspettavi altro → presente (legAt, audiAnt)\n' +
+              '• «sit», «sint», «esset», «essent» → è «esse», impara queste ' +
+              'quattro a memoria e hai risolto metà delle occorrenze.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cos’è «legeret»?',
+            focus: 'legeret',
+            options: [
+              'imperfetto congiuntivo (leggesse)',
+              'presente congiuntivo (legga)',
+              'imperfetto indicativo (leggeva)',
+            ],
+            answer: 'imperfetto congiuntivo (leggesse)',
+          },
+          {
+            type: 'choice',
+            prompt: 'E «legēbat»?',
+            focus: 'legēbat',
+            options: [
+              'imperfetto indicativo (leggeva)',
+              'imperfetto congiuntivo (leggesse)',
+              'presente congiuntivo',
+            ],
+            answer: 'imperfetto indicativo (leggeva)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Che cos’è «audīvissent»?',
+            focus: 'audīvissent',
+            options: [
+              'piuccheperfetto congiuntivo',
+              'imperfetto congiuntivo',
+              'perfetto indicativo',
+            ],
+            answer: 'piuccheperfetto congiuntivo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale di queste NON è un congiuntivo?',
+            options: ['vidēbat', 'vidēret', 'videat'],
+            answer: 'vidēbat',
+          },
+          {
+            type: 'info',
+            icon: '⚠️',
+            title: 'Due coppie che si somigliano',
+            body:
+              'Attento a queste, perché differiscono per una lettera e cambiano ' +
+              'tutto:\n\n' +
+              '«legēbat» = leggeva — indicativo, c’è il «-bā-»\n' +
+              '«legeret» = leggesse — congiuntivo, c’è il «-re-»\n\n' +
+              '«amāvit» = amò — indicativo perfetto\n' +
+              '«amāverit» = abbia amato — congiuntivo perfetto\n\n' +
+              'Nel dubbio guarda la sillaba in mezzo: è lei che porta ' +
+              'l’informazione.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla descrizione',
+            pairs: [
+              ['legeret', 'congiuntivo imperfetto'],
+              ['legēbat', 'indicativo imperfetto'],
+              ['lēgisset', 'congiuntivo piuccheperfetto'],
+              ['amāvit', 'indicativo perfetto'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]

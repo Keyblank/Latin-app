@@ -308,7 +308,20 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Tabella di grammatica */
 .table-card { padding: 4px 0; }
+/* Le tabelle larghe (coniugazioni a 4-5 colonne) scorrono di lato. Il bordo
+   destro sfuma finché c'è dell'altro da vedere: senza, sembrano tagliate. */
+.grammar-table-box { position: relative; }
 .grammar-table-wrap { overflow-x: auto; margin: 8px 0 4px; }
+.table-fade {
+  position: absolute; top: 8px; right: 0; bottom: 4px; width: 42px;
+  pointer-events: none;
+  background: linear-gradient(to left, #fff 25%, rgba(255, 255, 255, 0));
+}
+.table-fade::after {
+  content: '›';
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  font-size: 26px; font-weight: 800; color: var(--gray-dark);
+}
 .grammar-table {
   width: 100%; border-collapse: collapse; font-size: 17px;
 }
@@ -319,6 +332,14 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--primary); color: #fff; font-weight: 800;
 }
 .grammar-table th:first-child { background: var(--primary-dark); }
+/* La colonna del caso/persona resta ferma mentre il resto scorre: senza,
+   scorrendo non sapresti più che riga stai leggendo. */
+.grammar-table th:first-child,
+.grammar-table td.row-label {
+  position: sticky; left: 0; z-index: 1;
+  /* l'ombrina dice che il resto sta scorrendo lì sotto */
+  box-shadow: 6px 0 8px -6px rgba(60, 50, 90, 0.45);
+}
 .grammar-table td.row-label {
   background: #f3eefb; font-weight: 800; color: var(--primary); text-align: left;
 }

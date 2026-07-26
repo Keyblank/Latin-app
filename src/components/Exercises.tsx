@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import type {
   ChoiceExercise,
@@ -119,10 +119,28 @@ export function InfoCard({ ex }: { ex: InfoExercise }) {
 // ─────────────────────────── Tabella grammatica ───────────────────────────
 
 export function TableCard({ ex }: { ex: TableExercise }) {
+  // Le tabelle di coniugazione non ci stanno in larghezza su un telefono:
+  // finché resta qualcosa da vedere a destra, lo diciamo con una sfumatura.
+  const wrap = useRef<HTMLDivElement>(null)
+  const [altro, setAltro] = useState(false)
+  useEffect(() => {
+    const el = wrap.current
+    if (!el) return
+    const misura = () => setAltro(el.scrollWidth - el.clientWidth - el.scrollLeft > 4)
+    misura()
+    el.addEventListener('scroll', misura, { passive: true })
+    window.addEventListener('resize', misura)
+    return () => {
+      el.removeEventListener('scroll', misura)
+      window.removeEventListener('resize', misura)
+    }
+  }, [ex])
+
   return (
     <div className="table-card">
       <h2 className="prompt">{ex.title}</h2>
-      <div className="grammar-table-wrap">
+      <div className="grammar-table-box">
+      <div className="grammar-table-wrap" ref={wrap}>
         <table className="grammar-table">
           <thead>
             <tr>
@@ -152,6 +170,8 @@ export function TableCard({ ex }: { ex: TableExercise }) {
             ))}
           </tbody>
         </table>
+      </div>
+      {altro && <div className="table-fade" aria-hidden="true" />}
       </div>
       {ex.note && <p className="table-note">{ex.note}</p>}
     </div>

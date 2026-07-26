@@ -73,6 +73,31 @@ const PARADIGMI = {
     'nōs', 'vōs', 'nōbīs', 'vōbīs',
   ],
   'sē — il riflessivo di 3ª persona': ['—', 'suī', 'sibi', 'sē', 'sē'],
+  'Presente congiuntivo — le 4 coniugazioni': [
+    'amem', 'moneam', 'legam', 'audiam',
+    'amēs', 'moneās', 'legās', 'audiās',
+    'amet', 'moneat', 'legat', 'audiat',
+    'amēmus', 'moneāmus', 'legāmus', 'audiāmus',
+    'amētis', 'moneātis', 'legātis', 'audiātis',
+    'ament', 'moneant', 'legant', 'audiant',
+  ],
+  'esse — presente congiuntivo': ['sim', 'sīs', 'sit', 'sīmus', 'sītis', 'sint'],
+  'Imperfetto congiuntivo — le 4 coniugazioni': [
+    'amārem', 'legerem', 'audīrem', 'essem',
+    'amārēs', 'legerēs', 'audīrēs', 'essēs',
+    'amāret', 'legeret', 'audīret', 'esset',
+    'amārēmus', 'legerēmus', 'audīrēmus', 'essēmus',
+    'amārētis', 'legerētis', 'audīrētis', 'essētis',
+    'amārent', 'legerent', 'audīrent', 'essent',
+  ],
+  'Perfetto e piuccheperfetto congiuntivo di amāre': [
+    'amāverim', 'amāvissem',
+    'amāverīs', 'amāvissēs',
+    'amāverit', 'amāvisset',
+    'amāverīmus', 'amāvissēmus',
+    'amāverītis', 'amāvissētis',
+    'amāverint', 'amāvissent',
+  ],
 }
 
 const problemi = []

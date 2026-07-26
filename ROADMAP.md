@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (16 sezioni, 61 lezioni, ~200 vocaboli + i pronomi)
+### Contenuti (17 sezioni, 65 lezioni, ~200 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -47,6 +47,7 @@ Principi guida:
 - ✅ **U13 — Infinito e accusativo + infinito** (discorso indiretto)
 - ✅ **U14 — I pronomi** (personali, is/hic/ille, riflessivi; suus vs eius)
 - ✅ **U15 — Il passivo** (presente, imperfetto, perfetto; agente e mezzo)
+- ✅ **U16 — Il congiuntivo** (le forme: i quattro tempi, e come riconoscerli)
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).

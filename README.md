@@ -157,6 +157,12 @@ esempi già presenti.
   (*capta est*) con la trappola classica — *amātus est* è «è **stato** amato»,
   non «è amato» — e chi compie l'azione: *ā/ab* + ablativo per le persone,
   ablativo nudo per le cose.
+- **Unità 16 — Il congiuntivo** — le forme dei quattro tempi, con due
+  scorciatoie che i manuali non mettono in evidenza: l'imperfetto è
+  *infinito + desinenza* (**amāre** + m → *amārem*) e il piuccheperfetto è
+  *infinito perfetto + desinenza* (**amāvisse** + m → *amāvissem*). Più
+  l'avvertenza che conta di più: il congiuntivo latino in italiano quasi mai
+  si traduce con un congiuntivo.
 
 ### Il lessico
 
