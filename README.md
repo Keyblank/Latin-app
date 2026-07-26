@@ -132,6 +132,11 @@ esempi già presenti.
   (*ego, tū, nōs, vōs*), *is, ea, id* (lui/lei e «quel»), i dimostrativi
   *hic* e *ille* (più *ipse* e *īdem*), il riflessivo *sē* — e la trappola
   *suus* (del soggetto) contro *eius* (di un altro).
+- **Unità 15 — Il passivo** — la marca «-r» delle desinenze passive
+  (*amātur* = è amato), l'imperfetto (*amābātur*), il perfetto a due parole
+  (*capta est*) con la trappola classica — *amātus est* è «è **stato** amato»,
+  non «è amato» — e chi compie l'azione: *ā/ab* + ablativo per le persone,
+  ablativo nudo per le cose.
 
 ### Il lessico
 

@@ -3977,4 +3977,378 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u15',
+    title: 'Unità 15 — Il passivo',
+    subtitle: 'Quando il soggetto subisce',
+    color: '#6b7a2f',
+    lessons: [
+      {
+        id: 'u15l1',
+        title: 'Attivo e passivo',
+        icon: '🔄',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🔄',
+            title: 'Le due voci del verbo',
+            body:
+              'Partiamo dall’italiano, come sempre. La stessa scena si può ' +
+              'raccontare in due modi:\n\n' +
+              'Il soldato prende la città. → il soggetto AGISCE: è la voce ATTIVA.\n' +
+              'La città è presa dal soldato. → il soggetto SUBISCE: è la voce ' +
+              'PASSIVA.\n\n' +
+              'Cambia chi sta al centro della frase. Nel passivo l’oggetto ' +
+              'diventa soggetto, e chi compiva l’azione finisce in coda, ' +
+              'introdotto da «da».\n\n' +
+              'Gli storici latini usano il passivo di continuo, perché spesso ' +
+              'importa più il fatto che l’autore: «la città fu presa», «i ponti ' +
+              'furono tagliati».',
+          },
+          {
+            type: 'info',
+            icon: '🅁',
+            title: 'La marca del passivo è una R',
+            body:
+              'Non serve imparare un verbo nuovo: cambiano solo le desinenze ' +
+              'delle PERSONE, e quasi tutte guadagnano una «r».\n\n' +
+              '«amat» = ama → «amātur» = è amato\n\n' +
+              'Se in una versione trovi un verbo che finisce in «-tur» o ' +
+              '«-ntur», sei quasi certamente davanti a un passivo. È uno dei ' +
+              'segnali più affidabili di tutto il latino.',
+          },
+          {
+            type: 'table',
+            title: 'Desinenze: attive e passive a confronto',
+            columns: ['Persona', 'Attivo', 'Passivo'],
+            rows: [
+              ['io', '-ō', '-or'],
+              ['tu', '-s', '-ris'],
+              ['lui/lei', '-t', '-tur'],
+              ['noi', '-mus', '-mur'],
+              ['voi', '-tis', '-minī'],
+              ['loro', '-nt', '-ntur'],
+            ],
+            note: 'Cinque desinenze su sei aggiungono o contengono una «r». L’unica fuori dal coro è «-minī» della seconda plurale.',
+          },
+          {
+            type: 'table',
+            title: 'amāre al presente passivo',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['amor', 'sono amato'],
+              ['amāris', 'sei amato'],
+              ['amātur', 'è amato'],
+              ['amāmur', 'siamo amati'],
+              ['amāminī', 'siete amati'],
+              ['amantur', 'sono amati'],
+            ],
+            speakCols: [0],
+            note: 'Occhio alla prima persona: «amor» (sono amato) non è «amore». In latino l’amore è «amor, amōris» — stessa forma, parola diversa. Lo capisci dalla frase.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Urbs capitur»?',
+            focus: 'Urbs capitur',
+            options: ['La città è presa', 'La città prende', 'Prendi la città'],
+            answer: 'La città è presa',
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale di queste forme è passiva?',
+            options: ['vidētur', 'videt', 'vidēre'],
+            answer: 'vidētur',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['amat', 'ama'],
+              ['amātur', 'è amato'],
+              ['amant', 'amano'],
+              ['amantur', 'sono amati'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u15l2',
+        title: 'Da chi? Da che cosa?',
+        icon: '🏹',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🏹',
+            title: 'Chi compie l’azione, nel passivo',
+            body:
+              'Nella frase passiva chi agisce non è più il soggetto, ma spesso ' +
+              'viene detto lo stesso. Il latino distingue due casi, e li ' +
+              'distingue bene:\n\n' +
+              '• se è una PERSONA → «ā» / «ab» + ABLATIVO\n' +
+              '  «ā Caesare» = da Cesare\n' +
+              '• se è una COSA → ablativo da solo, senza preposizione\n' +
+              '  «gladiō» = dalla spada, con la spada\n\n' +
+              'Il primo si chiama complemento d’agente, il secondo di causa ' +
+              'efficiente. I nomi contano poco; conta che, vedendo un ablativo ' +
+              'senza preposizione accanto a un passivo, tu pensi «per mezzo di».',
+          },
+          {
+            type: 'table',
+            title: 'Chi agisce: persona o cosa',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['ā Caesare', 'da Cesare (persona)'],
+              ['ā mīlitibus', 'dai soldati (persone)'],
+              ['ab hostibus', 'dai nemici (persone)'],
+              ['gladiō', 'dalla spada, con la spada (cosa)'],
+              ['ignī', 'dal fuoco (cosa)'],
+            ],
+            speakCols: [0],
+            note: '«ab» si usa davanti a vocale, «ā» davanti a consonante: «ab hostibus», «ā Caesare». «gladius» = spada, «ignis» = fuoco.',
+          },
+          {
+            type: 'info',
+            icon: '⏳',
+            title: 'Il passivo dell’imperfetto',
+            body:
+              'Anche qui non c’è niente di nuovo: prendi l’imperfetto che già ' +
+              'conosci — quello con il «-bā-» — e attacchi le desinenze ' +
+              'passive.\n\n' +
+              '«amābat» = amava → «amābātur» = era amato\n' +
+              '«vidēbant» = vedevano → «vidēbantur» = erano visti\n\n' +
+              'Il pezzo che dice il TEMPO e il pezzo che dice la voce sono ' +
+              'indipendenti: si sommano.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Urbs ā mīlitibus capitur»?',
+            focus: 'Urbs ā mīlitibus capitur',
+            options: [
+              'La città è presa dai soldati',
+              'La città prende i soldati',
+              'I soldati sono presi dalla città',
+            ],
+            answer: 'La città è presa dai soldati',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Hostis gladiō necātur», che funzione ha «gladiō»? («necātur» = è ucciso)',
+            focus: 'gladiō necātur',
+            options: [
+              'dice il mezzo: con la spada',
+              'è il soggetto della frase',
+              'è il complemento oggetto',
+            ],
+            answer: 'dice il mezzo: con la spada',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «vidēbāmur»?',
+            focus: 'vidēbāmur',
+            options: ['eravamo visti', 'vedevamo', 'siamo visti'],
+            answer: 'eravamo visti',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ā rēge', 'dal re'],
+              ['ab amīcīs', 'dagli amici'],
+              ['ignī', 'dal fuoco'],
+              ['vidēbantur', 'erano visti'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u15l3',
+        title: 'Il passivo del passato',
+        icon: '🧩',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧩',
+            title: 'Due parole invece di una',
+            body:
+              'Al perfetto il latino cambia strategia: invece di una desinenza ' +
+              'usa DUE parole, esattamente come l’italiano.\n\n' +
+              'PARTICIPIO PERFETTO + il verbo «esse»\n\n' +
+              '«amātus sum» = sono stato amato / fui amato\n' +
+              '«capta est» = è stata presa / fu presa\n\n' +
+              'Il participio perfetto lo conosci già dall’unità 12: è quello in ' +
+              '«-tus, -a, -um».',
+          },
+          {
+            type: 'table',
+            title: 'Il perfetto passivo di amāre',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['amātus sum', 'sono stato amato'],
+              ['amātus es', 'sei stato amato'],
+              ['amātus est', 'è stato amato'],
+              ['amātī sumus', 'siamo stati amati'],
+              ['amātī estis', 'siete stati amati'],
+              ['amātī sunt', 'sono stati amati'],
+            ],
+            speakCols: [0],
+            note: 'Il participio è un aggettivo, quindi CONCORDA con il soggetto: «amātus est» (un uomo), «amāta est» (una donna), «amātum est» (una cosa neutra), «amātae sunt» (più donne).',
+          },
+          {
+            type: 'info',
+            icon: '🚨',
+            title: 'La trappola: «amātus est» NON è «è amato»',
+            body:
+              'Questo è l’errore che fanno tutti, ed è grosso: sposta l’azione ' +
+              'di un tempo intero.\n\n' +
+              '«amātur» = è amato — adesso, presente\n' +
+              '«amātus est» = è STATO amato — passato\n\n' +
+              'Il verbo «est» è al presente, e l’occhio ci casca. Ma il tempo ' +
+              'della frase lo dà il PARTICIPIO, che è perfetto: l’azione è ' +
+              'conclusa.\n\n' +
+              'Regola pratica: se vedi un participio in «-tus» accanto a una ' +
+              'forma di «esse», traduci al passato.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Urbs capta est»?',
+            focus: 'Urbs capta est',
+            options: [
+              'La città è stata presa',
+              'La città è presa (adesso)',
+              'La città prende',
+            ],
+            answer: 'La città è stata presa',
+          },
+          {
+            type: 'choice',
+            prompt: 'E «Urbs capitur»?',
+            focus: 'Urbs capitur',
+            options: [
+              'La città è presa (adesso)',
+              'La città è stata presa',
+              'La città sarà presa',
+            ],
+            answer: 'La città è presa (adesso)',
+          },
+          {
+            type: 'choice',
+            prompt: 'Perché in «Rōma condita est» il participio finisce in -a?',
+            focus: 'Rōma condita est',
+            options: [
+              'perché concorda con «Rōma», femminile',
+              'perché il verbo è femminile',
+              'perché è un plurale neutro',
+            ],
+            answer: 'perché concorda con «Rōma», femminile',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['vidētur', 'è visto'],
+              ['vīsus est', 'è stato visto'],
+              ['vidēbātur', 'era visto'],
+              ['vīsī sunt', 'sono stati visti'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u15l4',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Il metodo',
+            body:
+              '1. Guarda la fine del verbo: c’è una «r» («-tur», «-ntur», ' +
+              '«-mur»)? È un passivo presente o imperfetto.\n' +
+              '2. Vedi invece un participio in «-tus, -a, -um» accanto a «est» ' +
+              'o «sunt»? È un passivo al passato: traduci «è stato…».\n' +
+              '3. Cerca chi agisce: «ā/ab» + ablativo se è una persona, ' +
+              'ablativo nudo se è una cosa.\n' +
+              '4. Il soggetto del passivo è al NOMINATIVO, e subisce. Non ' +
+              'cercargli un oggetto: non ce l’ha.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Rōma ā Rōmulō condita est»? («condere» = fondare)',
+            focus: 'Rōma ā Rōmulō condita est',
+            options: [
+              'Roma fu fondata da Romolo',
+              'Roma fonda Romolo',
+              'Romolo è fondato da Roma',
+            ],
+            answer: 'Roma fu fondata da Romolo',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Epistulae ā rēge mittuntur»?',
+            focus: 'Epistulae ā rēge mittuntur',
+            options: [
+              'Le lettere sono mandate dal re',
+              'Il re manda una lettera',
+              'Le lettere mandano il re',
+            ],
+            answer: 'Le lettere sono mandate dal re',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Oppidum mūnītum est», cosa è successo? («mūnīre» = fortificare)',
+            focus: 'Oppidum mūnītum est',
+            options: [
+              'la città è stata fortificata',
+              'la città fortifica',
+              'la città viene fortificata adesso',
+            ],
+            answer: 'la città è stata fortificata',
+          },
+          {
+            type: 'choice',
+            prompt: 'Trasforma in passivo: «Mīles urbem capit» diventa…',
+            focus: 'Mīles urbem capit',
+            options: [
+              'Urbs ā mīlite capitur',
+              'Urbs mīlitem capit',
+              'Mīles ab urbe capitur',
+            ],
+            answer: 'Urbs ā mīlite capitur',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «La città è vista dal re»',
+            source: 'La città è vista dal re',
+            answer: ['Urbs', 'ā', 'rēge', 'vidētur'],
+            extra: ['videt', 'rēx'],
+          },
+          {
+            type: 'info',
+            icon: '🔗',
+            title: 'Dove l’avevi già visto',
+            body:
+              'Il passivo del passato non è arrivato oggi: lo usavi già senza ' +
+              'chiamarlo così.\n\n' +
+              '«Urbe captā» (unità 12) = presa la città — participio perfetto ' +
+              'passivo in un ablativo assoluto.\n' +
+              '«urbem captam esse» (unità 13) = che la città è stata presa — lo ' +
+              'stesso participio, con l’infinito di «esse».\n\n' +
+              'Sono tre facce dello stesso pezzo. Da qui in avanti li ' +
+              'riconoscerai tutti e tre.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['capitur', 'è presa'],
+              ['capiēbātur', 'era presa'],
+              ['capta est', 'è stata presa'],
+              ['ā mīlitibus', 'dai soldati'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]

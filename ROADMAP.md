@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (15 sezioni, 57 lezioni, ~200 vocaboli + i pronomi)
+### Contenuti (16 sezioni, 61 lezioni, ~200 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -46,6 +46,7 @@ Principi guida:
 - ✅ **U12 — Participi e ablativo assoluto**
 - ✅ **U13 — Infinito e accusativo + infinito** (discorso indiretto)
 - ✅ **U14 — I pronomi** (personali, is/hic/ille, riflessivi; suus vs eius)
+- ✅ **U15 — Il passivo** (presente, imperfetto, perfetto; agente e mezzo)
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
@@ -92,7 +93,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ✅ **Infinito** (presente e perfetto) → **Accusativo + infinito** (discorso indiretto) ⭐
 - ⬜ **Congiuntivo** + subordinate: *cum* narrativo, finali (*ut/ne*),
   consecutive, temporali/causali
-- ⬜ **Il passivo** (presente e passato)
+- ✅ **Il passivo** (presente, imperfetto e perfetto) + complemento d'agente
 - ⬜ Tempi restanti dell'indicativo: **futuro**, **piuccheperfetto**
 
 ### Fase D — completamento e pratica
@@ -127,7 +128,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
 - I contenuti coprono le **fondamenta** più i primi costrutti (participi,
   ablativo assoluto, acc.+inf.): per tradurre versioni vere manca ancora il
-  resto della Fase C (congiuntivo e subordinate, passivo, futuro) e la Fase D. È un
+  resto della Fase C (congiuntivo e subordinate, futuro) e la Fase D. È un
   percorso, non un traguardo già raggiunto.
 
 ---
