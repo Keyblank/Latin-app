@@ -491,6 +491,166 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
       g.add(arm)
       break
     }
+    case 'forum': {
+      // Piazza porticata: il cuore civile della città.
+      const floor2 = block(W * 0.96, 0.07, D * 0.96, 0xe6dcc4, 'paving')
+      floor2.position.y = 0.035
+      g.add(floor2)
+      // portico su tre lati
+      const col = colonnade(W * 0.8, D * 0.8, 0.44, 4)
+      col.position.y = 0.07
+      g.add(col)
+      const arch = block(W * 0.9, 0.09, D * 0.9, PAL.marble, 'marble')
+      arch.position.y = 0.55
+      g.add(arch)
+      const hole = block(W * 0.56, 0.14, D * 0.56, 0xe6dcc4, 'paving')
+      hole.position.y = 0.55
+      g.add(hole)
+      // rostra: la tribuna degli oratori
+      const rostra = block(W * 0.34, 0.16, D * 0.2, PAL.marble, 'marble')
+      rostra.position.set(0, 0.15, -D * 0.24)
+      g.add(rostra)
+      const step = block(W * 0.4, 0.06, D * 0.26, PAL.stone, 'ashlar')
+      step.position.set(0, 0.06, -D * 0.22)
+      g.add(step)
+      break
+    }
+    case 'theatre': {
+      // Cavea semicircolare + edificio scenico.
+      const cavea = new THREE.Mesh(
+        new THREE.CylinderGeometry(Math.min(W, D) * 0.48, Math.min(W, D) * 0.52, 0.42, 26, 1, false, 0, Math.PI),
+        matTex('ashlar', PAL.stone),
+      )
+      cavea.castShadow = true
+      cavea.receiveShadow = true
+      cavea.position.set(0, 0.21, D * 0.06)
+      g.add(cavea)
+      // gradinate
+      const seats = new THREE.Mesh(
+        new THREE.CylinderGeometry(Math.min(W, D) * 0.38, Math.min(W, D) * 0.42, 0.46, 26, 1, false, 0, Math.PI),
+        matTex('ashlar', 0xd9d0bb),
+      )
+      seats.position.set(0, 0.23, D * 0.06)
+      g.add(seats)
+      // orchestra
+      const orch = new THREE.Mesh(
+        new THREE.CylinderGeometry(Math.min(W, D) * 0.24, Math.min(W, D) * 0.24, 0.48, 20, 1, false, 0, Math.PI),
+        matTex('paving', 0xe4d9bf),
+      )
+      orch.position.set(0, 0.24, D * 0.06)
+      g.add(orch)
+      // scaenae frons: il muro di scena
+      const scaena = block(W * 0.84, 0.5, D * 0.16, PAL.wall)
+      scaena.position.set(0, 0.25, -D * 0.34)
+      g.add(scaena)
+      const scRoof = gable(W * 0.9, 0.14, D * 0.2, PAL.roofAlt)
+      scaena.position.y = 0.25
+      scRoof.position.set(0, 0.5, -D * 0.34)
+      g.add(scRoof)
+      break
+    }
+    case 'library': {
+      const base = block(W * 0.9, 0.1, D * 0.86, PAL.stone, 'ashlar')
+      base.position.y = 0.05
+      g.add(base)
+      const body = block(W * 0.72, 0.42, D * 0.66, PAL.wall)
+      body.position.y = 0.31
+      g.add(body)
+      const col = colonnade(W * 0.84, D * 0.78, 0.44, 4)
+      col.position.y = 0.1
+      g.add(col)
+      const roof = gable(W * 0.92, 0.2, D * 0.86, PAL.roofAlt)
+      roof.position.y = 0.54
+      g.add(roof)
+      // rotoli appoggiati fuori
+      for (let i = 0; i < 3; i++) {
+        const scroll = cylinder(0.035, 0.16, 0xd9c9a0, 8, 'plaster')
+        scroll.rotation.z = Math.PI / 2
+        scroll.position.set(-0.2 + i * 0.09, 0.13, D * 0.36)
+        g.add(scroll)
+      }
+      break
+    }
+    case 'school': {
+      const body = block(W * 0.62, 0.34, D * 0.6, 0xefe4cd)
+      body.position.set(-W * 0.05, 0.17, 0)
+      g.add(body)
+      const roof = gable(W * 0.72, 0.18, D * 0.68, PAL.roof)
+      roof.position.set(-W * 0.05, 0.34, 0)
+      g.add(roof)
+      // piccolo portico d'ingresso
+      for (const z of [-0.14, 0.14]) {
+        const c2 = cylinder(0.04, 0.26, PAL.marble, 8)
+        c2.position.set(W * 0.3, 0.13, z)
+        g.add(c2)
+      }
+      const porch = block(0.2, 0.05, 0.4, PAL.marble, 'marble')
+      porch.position.set(W * 0.3, 0.28, 0)
+      g.add(porch)
+      // tavoletta cerata appoggiata
+      const tab = block(0.12, 0.02, 0.09, 0x8a6134, 'plaster')
+      tab.position.set(W * 0.3, 0.02, D * 0.3)
+      g.add(tab)
+      break
+    }
+    case 'well': {
+      const ring = cylinder(0.19, 0.22, PAL.stone, 16, 'ashlar')
+      ring.position.y = 0.11
+      g.add(ring)
+      const water = cylinder(0.15, 0.23, PAL.water, 16, 'plaster')
+      water.position.y = 0.12
+      g.add(water)
+      // due montanti e traversa con secchio
+      for (const x of [-0.17, 0.17]) {
+        const post = block(0.035, 0.3, 0.035, PAL.wood, 'plaster')
+        post.position.set(x, 0.37, 0)
+        g.add(post)
+      }
+      const beam = block(0.42, 0.035, 0.05, PAL.wood, 'plaster')
+      beam.position.y = 0.52
+      g.add(beam)
+      const bucket = block(0.09, 0.09, 0.09, 0x9c6f42, 'plaster')
+      bucket.position.set(0, 0.42, 0)
+      g.add(bucket)
+      break
+    }
+    case 'altar': {
+      const steps2 = block(0.42, 0.07, 0.34, PAL.stone, 'ashlar')
+      steps2.position.y = 0.035
+      g.add(steps2)
+      const body = block(0.3, 0.22, 0.24, PAL.marble, 'marble')
+      body.position.y = 0.18
+      g.add(body)
+      const cap = block(0.36, 0.05, 0.3, PAL.marble, 'marble')
+      cap.position.y = 0.31
+      g.add(cap)
+      // fiamma
+      const flame = new THREE.Mesh(new THREE.ConeGeometry(0.06, 0.14, 8), mat(0xe8913c))
+      flame.position.y = 0.4
+      g.add(flame)
+      break
+    }
+    case 'field': {
+      // Campo arato con solchi di grano.
+      const soil2 = block(W * 0.96, 0.06, D * 0.96, 0xb99a6b, 'dirt')
+      soil2.position.y = 0.03
+      g.add(soil2)
+      const rows = 7
+      for (let i = 0; i < rows; i++) {
+        const t = -D * 0.4 + (i * (D * 0.8)) / (rows - 1)
+        const furrow = block(W * 0.86, 0.07, 0.07, 0xcdb26a, 'plaster')
+        furrow.position.set(0, 0.08, t)
+        g.add(furrow)
+      }
+      // covoni all'angolo
+      for (let i = 0; i < 2; i++) {
+        const sheaf = new THREE.Mesh(new THREE.ConeGeometry(0.09, 0.2, 8), mat(0xd9bd7a))
+        sheaf.castShadow = true
+        sheaf.position.set(W * 0.34, 0.1, -D * 0.3 + i * 0.22)
+        g.add(sheaf)
+      }
+      break
+    }
     case 'insula': {
       // palazzina a più piani, con un corpo secondario più basso
       const body = block(W * 0.7, 0.78, D * 0.7, PAL.wallWarm)

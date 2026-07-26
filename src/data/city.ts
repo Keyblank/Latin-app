@@ -11,6 +11,13 @@
 // L'immagine viene ancorata al lotto e sostituisce il disegno.
 
 export type BuildingLook =
+  | 'forum'
+  | 'theatre'
+  | 'library'
+  | 'school'
+  | 'well'
+  | 'altar'
+  | 'field'
   | 'tower'
   | 'gate'
   | 'granary'
@@ -124,6 +131,35 @@ export const BUILDINGS: Building[] = [
   {
     id: 'fons', name: 'Fons', gloss: 'fontana', icon: '⛲',
     cost: 60, unlock: 4, size: [1, 1], look: 'fountain',
+  },
+  // ── Vita pubblica ──
+  {
+    id: 'forum', name: 'Forum', gloss: 'la piazza pubblica', icon: '⚖️',
+    cost: 160, unlock: 8, size: [2, 2], look: 'forum',
+  },
+  {
+    id: 'theatrum', name: 'Theatrum', gloss: 'teatro', icon: '🎭',
+    cost: 200, unlock: 12, size: [2, 2], look: 'theatre',
+  },
+  {
+    id: 'bibliotheca', name: 'Bibliotheca', gloss: 'biblioteca', icon: '📜',
+    cost: 120, unlock: 9, size: [2, 1], look: 'library',
+  },
+  {
+    id: 'schola', name: 'Schola', gloss: 'scuola', icon: '✍️',
+    cost: 80, unlock: 6, size: [1, 1], look: 'school',
+  },
+  {
+    id: 'ara', name: 'Ara', gloss: 'altare', icon: '🔥',
+    cost: 25, unlock: 2, size: [1, 1], look: 'altar',
+  },
+  {
+    id: 'puteus', name: 'Puteus', gloss: 'pozzo', icon: '🪣',
+    cost: 15, unlock: 1, size: [1, 1], look: 'well',
+  },
+  {
+    id: 'seges', name: 'Seges', gloss: 'campo coltivato', icon: '🌾',
+    cost: 35, unlock: 3, size: [2, 2], look: 'field',
   },
   // ── Abitazioni e arredo urbano ──
   {
