@@ -128,10 +128,14 @@ esempi già presenti.
   «che», mette il soggetto in accusativo e il verbo all'infinito
   (*Dīcō Caesarem venīre* = «dico che Cesare viene»), con il tempo relativo
   (contemporaneo / anteriore) e il caso di *sē*.
+- **Unità 14 — I pronomi** — le parole più frequenti del latino: personali
+  (*ego, tū, nōs, vōs*), *is, ea, id* (lui/lei e «quel»), i dimostrativi
+  *hic* e *ille* (più *ipse* e *īdem*), il riflessivo *sē* — e la trappola
+  *suus* (del soggetto) contro *eius* (di un altro).
 
 ### Il lessico
 
-Accanto alla grammatica c'è un **binario di vocaboli** (~195 parole in tutto):
+Accanto alla grammatica c'è un **binario di vocaboli** (~200 parole in tutto):
 lezioni di lessico con audio, agganciate all'unità che ne insegna la forma —
 **preposizioni** e il caso che reggono (U4), nomi della **1ª** (U5) e della
 **2ª** (U6), **aggettivi** (U7), **verbi** per coniugazione (U8), nomi della

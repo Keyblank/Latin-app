@@ -3457,4 +3457,524 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u14',
+    title: 'Unità 14 — I pronomi',
+    subtitle: 'Le parole più frequenti del latino',
+    color: '#8e2f4f',
+    lessons: [
+      {
+        id: 'u14l1',
+        title: 'Io, tu, noi, voi',
+        icon: '🙋',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🙋',
+            title: 'Che cos’è un pronome',
+            body:
+              'Un PRONOME è una parola che sta al posto di un nome, per non ' +
+              'ripeterlo. In italiano: «Marco è arrivato: LUI è stanco» — «lui» ' +
+              'sta per Marco.\n\n' +
+              'Sono parole cortissime e le più frequenti di tutte: in una pagina ' +
+              'di Cesare ne trovi decine. Se non le riconosci, la frase resta ' +
+              'chiusa anche se conosci tutti gli altri vocaboli.\n\n' +
+              'Cominciamo dai più semplici: io, tu, noi, voi.',
+          },
+          {
+            type: 'info',
+            icon: '🤫',
+            title: 'Di solito non si scrivono',
+            body:
+              'Il latino fa come l’italiano: il SOGGETTO pronome si omette, ' +
+              'perché lo dice già la desinenza del VERBO.\n\n' +
+              '«amō» = (io) amo — non serve scrivere «ego»\n\n' +
+              'Se invece «ego» c’è, non è per riempire: serve a INSISTERE, a ' +
+              'mettere in contrasto.\n\n' +
+              '«ego amō» = io amo (io, non un altro)\n\n' +
+              'Quindi, quando in una versione trovi un pronome soggetto scritto, ' +
+              'chiediti sempre: contro chi lo sta contrapponendo?',
+          },
+          {
+            type: 'table',
+            title: 'ego (io) e tū (tu)',
+            columns: ['Caso', 'io', 'tu'],
+            rows: [
+              ['Nominativo', 'ego', 'tū'],
+              ['Genitivo', 'meī', 'tuī'],
+              ['Dativo', 'mihi', 'tibi'],
+              ['Accusativo', 'mē', 'tē'],
+              ['Ablativo', 'mē', 'tē'],
+            ],
+            speakCols: [1, 2],
+            note: 'Accusativo e ablativo sono identici: «mē», «tē». A distinguerli è il contesto — o la preposizione che li precede.',
+          },
+          {
+            type: 'table',
+            title: 'nōs (noi) e vōs (voi)',
+            columns: ['Caso', 'noi', 'voi'],
+            rows: [
+              ['Nominativo', 'nōs', 'vōs'],
+              ['Genitivo', 'nostrī', 'vestrī'],
+              ['Dativo', 'nōbīs', 'vōbīs'],
+              ['Accusativo', 'nōs', 'vōs'],
+              ['Ablativo', 'nōbīs', 'vōbīs'],
+            ],
+            speakCols: [1, 2],
+          },
+          {
+            type: 'info',
+            icon: '🔗',
+            title: 'Il «cum» che si attacca dietro',
+            body:
+              'Una stranezza che nelle versioni si incontra spessissimo: con ' +
+              'questi pronomi la preposizione «cum» non sta davanti, ma si ' +
+              'appiccica in fondo.\n\n' +
+              '«mēcum» = con me\n' +
+              '«tēcum» = con te\n' +
+              '«nōbīscum» = con noi\n' +
+              '«sēcum» = con sé\n\n' +
+              'Non è una parola nuova da imparare: è solo «cum» spostato.',
+          },
+          {
+            type: 'info',
+            icon: '🏠',
+            title: 'I possessivi',
+            body:
+              'Da questi pronomi nascono i possessivi, che sono AGGETTIVI ' +
+              'normalissimi e concordano col nome:\n\n' +
+              '• «meus, -a, -um» = mio\n' +
+              '• «tuus, -a, -um» = tuo\n' +
+              '• «noster, -tra, -trum» = nostro\n' +
+              '• «vester, -tra, -trum» = vostro\n\n' +
+              'Attenzione: concordano con la cosa posseduta, non con chi ' +
+              'possiede. «Villa mea» = la mia fattoria («mea» è femminile ' +
+              'perché lo è «villa», anche se il padrone è un uomo).',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «mēcum»?',
+            focus: 'mēcum',
+            options: ['con me', 'a me', 'di me'],
+            answer: 'con me',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione trovi «ego dīcō». Perché c’è «ego»?',
+            focus: 'ego dīcō',
+            options: [
+              'per insistere: sono IO a dirlo, non un altro',
+              'perché senza non si capirebbe il verbo',
+              'perché è obbligatorio in latino',
+            ],
+            answer: 'per insistere: sono IO a dirlo, non un altro',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['mihi', 'a me'],
+              ['tē', 'te'],
+              ['nōbīs', 'a noi'],
+              ['vestrī', 'di voi'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u14l2',
+        title: 'Is, ea, id',
+        icon: '👉',
+        exercises: [
+          {
+            type: 'info',
+            icon: '👉',
+            title: 'Il pronome che incontrerai di più',
+            body:
+              'Il latino non ha un pronome apposta per «lui, lei, loro». Usa ' +
+              '«is, ea, id», che fa due mestieri insieme:\n\n' +
+              '• come PRONOME → lui, lei, esso, ciò\n' +
+              '• come AGGETTIVO → quel, quella (un «quello» debole, senza ' +
+              'gesto della mano)\n\n' +
+              '«eum videō» = lo vedo (vedo lui)\n' +
+              '«eum virum videō» = vedo quell’uomo\n\n' +
+              'È fra le parole più frequenti dell’intera lingua latina. Vale la ' +
+              'pena imparare bene questa tabella: te la ritroverai ovunque.',
+          },
+          {
+            type: 'table',
+            title: 'is, ea, id — singolare',
+            columns: ['Caso', 'm.', 'f.', 'n.'],
+            rows: [
+              ['Nom.', 'is', 'ea', 'id'],
+              ['Gen.', 'eius', 'eius', 'eius'],
+              ['Dat.', 'eī', 'eī', 'eī'],
+              ['Acc.', 'eum', 'eam', 'id'],
+              ['Abl.', 'eō', 'eā', 'eō'],
+            ],
+            speakCols: [1, 2, 3],
+            note: 'Genitivo e dativo singolare sono uguali per tutti e tre i generi: «eius» e «eī». Meno forme da imparare di quante sembri.',
+          },
+          {
+            type: 'table',
+            title: 'is, ea, id — plurale',
+            columns: ['Caso', 'm.', 'f.', 'n.'],
+            rows: [
+              ['Nom.', 'eī', 'eae', 'ea'],
+              ['Gen.', 'eōrum', 'eārum', 'eōrum'],
+              ['Dat.', 'eīs', 'eīs', 'eīs'],
+              ['Acc.', 'eōs', 'eās', 'ea'],
+              ['Abl.', 'eīs', 'eīs', 'eīs'],
+            ],
+            speakCols: [1, 2, 3],
+            note: 'Al plurale dativo e ablativo sono sempre «eīs», per tutti i generi.',
+          },
+          {
+            type: 'info',
+            icon: '💡',
+            title: '«eius» vuol dire «di lui», «di lei»',
+            body:
+              '«eius» è un GENITIVO, quindi vale «di lui», «di lei», «di ciò» — ' +
+              'e traducendo diventa spesso «suo».\n\n' +
+              '«eius villa» = la fattoria di lui / la sua fattoria\n\n' +
+              'Non cambia mai forma: non concorda con «villa», perché è un ' +
+              'genitivo, non un aggettivo. Chi lo scambia per un aggettivo si ' +
+              'aspetta «eia villa» e non trova nulla.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «eam videt»?',
+            focus: 'eam videt',
+            options: ['la vede (vede lei)', 'lo vede', 'le dà'],
+            answer: 'la vede (vede lei)',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «eī librum dat», che caso è «eī»?',
+            focus: 'eī librum dat',
+            options: [
+              'dativo: gli dà il libro',
+              'nominativo: lui dà il libro',
+              'accusativo: dà lui al libro',
+            ],
+            answer: 'dativo: gli dà il libro',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['eum', 'lui (oggetto)'],
+              ['eius', 'di lui'],
+              ['eōs', 'loro (oggetto)'],
+              ['eīs', 'a loro'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u14l3',
+        title: 'Questo e quello',
+        icon: '👆',
+        exercises: [
+          {
+            type: 'info',
+            icon: '👆',
+            title: 'Vicino, lontano',
+            body:
+              'Questi due indicano, e si dividono lo spazio come in italiano:\n\n' +
+              '• «hic, haec, hoc» = questo — vicino a chi parla\n' +
+              '• «ille, illa, illud» = quello — lontano\n\n' +
+              'Nei testi «hic» spesso vale «quest’ultimo» e «ille» «il primo, ' +
+              'quell’altro», quando si parla di due persone appena nominate.\n\n' +
+              'E «ille» ha un uso tutto suo: davanti a un nome famoso vale ' +
+              '«il famoso, il celebre». «Ille Caesar» non è «quel Cesare lì», è ' +
+              '«il grande Cesare».',
+          },
+          {
+            type: 'table',
+            title: 'hic, haec, hoc (questo) — singolare',
+            columns: ['Caso', 'm.', 'f.', 'n.'],
+            rows: [
+              ['Nom.', 'hic', 'haec', 'hoc'],
+              ['Gen.', 'huius', 'huius', 'huius'],
+              ['Dat.', 'huic', 'huic', 'huic'],
+              ['Acc.', 'hunc', 'hanc', 'hoc'],
+              ['Abl.', 'hōc', 'hāc', 'hōc'],
+            ],
+            speakCols: [1, 2, 3],
+            note: 'Al plurale: hī, hae, haec (nom.) — hōrum, hārum, hōrum (gen.) — hīs per dativo e ablativo di tutti i generi.',
+          },
+          {
+            type: 'table',
+            title: 'ille, illa, illud (quello) — singolare',
+            columns: ['Caso', 'm.', 'f.', 'n.'],
+            rows: [
+              ['Nom.', 'ille', 'illa', 'illud'],
+              ['Gen.', 'illīus', 'illīus', 'illīus'],
+              ['Dat.', 'illī', 'illī', 'illī'],
+              ['Acc.', 'illum', 'illam', 'illud'],
+              ['Abl.', 'illō', 'illā', 'illō'],
+            ],
+            speakCols: [1, 2, 3],
+            note: 'Al plurale «ille» si comporta come un aggettivo normale: illī, illae, illa — illōrum, illārum, illōrum — illīs.',
+          },
+          {
+            type: 'info',
+            icon: '🔑',
+            title: 'La regola che vale per tutti',
+            body:
+              'Prima di scoraggiarti davanti a tre tabelle: i pronomi hanno ' +
+              'quasi tutti le STESSE due desinenze particolari, e sono le uniche ' +
+              'davvero da ricordare.\n\n' +
+              '• GENITIVO singolare in «-īus» — uguale nei tre generi\n' +
+              '• DATIVO singolare in «-ī» — uguale nei tre generi\n\n' +
+              'Vale per «is», per «hic», per «ille» e anche per il relativo ' +
+              '«quī» che già conosci. Tutto il resto assomiglia alle desinenze ' +
+              'dei nomi.',
+          },
+          {
+            type: 'table',
+            title: 'La stessa coppia, ovunque',
+            columns: ['Pronome', 'Genitivo', 'Dativo'],
+            rows: [
+              ['is, ea, id', 'eius', 'eī'],
+              ['hic, haec, hoc', 'huius', 'huic'],
+              ['ille, illa, illud', 'illīus', 'illī'],
+              ['quī, quae, quod', 'cuius', 'cui'],
+            ],
+            speakCols: [1, 2],
+            note: 'Le riconosci a colpo d’occhio: se una parolina finisce in -ius è un genitivo, se finisce in -i è un dativo. E non ti dice il genere, quindi non perderci tempo.',
+          },
+          {
+            type: 'info',
+            icon: '🎯',
+            title: 'Altri due che tornano sempre',
+            body:
+              '• «ipse, ipsa, ipsum» = stesso, in persona. Rafforza: ' +
+              '«Caesar ipse» = Cesare in persona, proprio Cesare.\n' +
+              '• «īdem, eadem, idem» = lo stesso, il medesimo. ' +
+              '«eōdem diē» = nello stesso giorno.\n\n' +
+              'Occhio a non confonderli: «ipse» sottolinea, «īdem» dice che è ' +
+              'proprio quello di prima.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «hunc virum videō»?',
+            focus: 'hunc virum videō',
+            options: ['vedo quest’uomo', 'vedo quell’uomo', 'quest’uomo vede'],
+            answer: 'vedo quest’uomo',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione trovi «Cicerō ille». Come lo rendi?',
+            focus: 'Cicerō ille',
+            options: [
+              'il celebre Cicerone',
+              'quel Cicerone laggiù',
+              'lo stesso Cicerone',
+            ],
+            answer: 'il celebre Cicerone',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Caesar ipse»?',
+            focus: 'Caesar ipse',
+            options: ['Cesare in persona', 'lo stesso Cesare di prima', 'quel Cesare'],
+            answer: 'Cesare in persona',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['huic', 'a costui'],
+              ['illīus', 'di quello'],
+              ['hanc', 'questa (oggetto)'],
+              ['illōs', 'quelli (oggetto)'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u14l4',
+        title: 'Sé stesso: sē e suus',
+        icon: '🪞',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🪞',
+            title: 'Il pronome riflessivo',
+            body:
+              'RIFLESSIVO vuol dire che l’azione torna su chi la compie: in ' +
+              'italiano «si lava», «pensa a sé».\n\n' +
+              'In latino è «sē», e ha una particolarità: non ha il ' +
+              'NOMINATIVO. È logico — non può essere il soggetto, visto che ' +
+              'rimanda al soggetto.\n\n' +
+              'Vale sia per il singolare sia per il plurale: «sē» può essere ' +
+              '«sé» o «loro stessi».',
+          },
+          {
+            type: 'table',
+            title: 'sē — il riflessivo di 3ª persona',
+            columns: ['Caso', 'Forma', 'Significato'],
+            rows: [
+              ['Nom.', '—', 'non esiste'],
+              ['Gen.', 'suī', 'di sé'],
+              ['Dat.', 'sibi', 'a sé'],
+              ['Acc.', 'sē', 'sé, si'],
+              ['Abl.', 'sē', 'da sé, con sé'],
+            ],
+            speakCols: [1],
+            note: 'Ricordi «Caesar dīcit sē vēnisse» dell’unità scorsa? Era proprio questo «sē»: Cesare dice che LUI STESSO è venuto.',
+          },
+          {
+            type: 'info',
+            icon: '⚠️',
+            title: 'La trappola: «suus» contro «eius»',
+            body:
+              'Qui si separano quelli che traducono bene e quelli che ' +
+              'traducono a caso. Due modi di dire «suo», e significano cose ' +
+              'diverse:\n\n' +
+              '«suus, -a, -um» = suo PROPRIO — appartiene al soggetto della frase\n' +
+              '«eius» = di lui, di lei — appartiene a QUALCUN ALTRO\n\n' +
+              '«Caesar suum equum videt» = Cesare vede il proprio cavallo\n' +
+              '«Caesar eius equum videt» = Cesare vede il cavallo di lui ' +
+              '(di un altro)\n\n' +
+              'In italiano diremmo «il suo cavallo» in tutti e due i casi, ed è ' +
+              'per questo che l’errore non si sente. In latino la differenza è ' +
+              'scritta a chiare lettere.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Dominus servum suum vocat»?',
+            focus: 'servum suum',
+            options: [
+              'il padrone chiama il proprio servo',
+              'il padrone chiama il servo di un altro',
+              'il servo chiama il proprio padrone',
+            ],
+            answer: 'il padrone chiama il proprio servo',
+          },
+          {
+            type: 'choice',
+            prompt: 'E «Dominus servum eius vocat»?',
+            focus: 'servum eius',
+            options: [
+              'il padrone chiama il servo di un altro',
+              'il padrone chiama il proprio servo',
+              'il servo del padrone chiama',
+            ],
+            answer: 'il padrone chiama il servo di un altro',
+          },
+          {
+            type: 'choice',
+            prompt: 'Perché «sē» non ha il nominativo?',
+            options: [
+              'perché rimanda al soggetto, quindi non può esserlo',
+              'perché è una parola difettiva senza motivo',
+              'perché è sempre plurale',
+            ],
+            answer: 'perché rimanda al soggetto, quindi non può esserlo',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['sibi', 'a sé'],
+              ['sēcum', 'con sé'],
+              ['suus', 'suo (del soggetto)'],
+              ['eius', 'di lui (di un altro)'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u14l5',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Come si affrontano',
+            body:
+              'Davanti a una parolina corta che non riconosci, fai così:\n\n' +
+              '1. Finisce in «-ius»? È un GENITIVO: «di lui», «di questo», ' +
+              '«di quello».\n' +
+              '2. Finisce in «-ī» o «-ic»? Probabile DATIVO: «a lui», «a costui».\n' +
+              '3. Comincia per «h-»? È «questo». Per «ill-»? È «quello». ' +
+              'Per «e-» o «i-»? È «is», cioè «lui» o «quel».\n' +
+              '4. È «sē» o «suus»? Allora torna al SOGGETTO della frase: è lì ' +
+              'che devi guardare.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Rēx eī urbem dat»?',
+            focus: 'Rēx eī urbem dat',
+            options: [
+              'Il re gli dà la città',
+              'Il re dà lui alla città',
+              'La città dà il re a lui',
+            ],
+            answer: 'Il re gli dà la città',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Hic mīles fortis est»? («fortis» = coraggioso)',
+            focus: 'Hic mīles fortis est',
+            options: [
+              'Questo soldato è coraggioso',
+              'Qui il soldato è coraggioso',
+              'Quel soldato è coraggioso',
+            ],
+            answer: 'Questo soldato è coraggioso',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Caesar mīlitēs suōs laudat», chi sono i soldati?',
+            focus: 'mīlitēs suōs',
+            options: [
+              'i soldati di Cesare stesso',
+              'i soldati di un altro comandante',
+              'i soldati nemici',
+            ],
+            answer: 'i soldati di Cesare stesso',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Cum eō vēnit»?',
+            focus: 'Cum eō vēnit',
+            options: ['Venne con lui', 'Venne da lui', 'Lui venne'],
+            answer: 'Venne con lui',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «Lo vedo» (vedo lui)',
+            source: 'Lo vedo',
+            answer: ['Eum', 'videō'],
+            extra: ['is', 'eius'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['eum', 'lui (oggetto)'],
+              ['hunc', 'costui (oggetto)'],
+              ['illum', 'quello (oggetto)'],
+              ['sē', 'sé stesso'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['eius villa', 'la fattoria di lui'],
+              ['sua villa', 'la propria fattoria'],
+              ['haec villa', 'questa fattoria'],
+              ['illa villa', 'quella fattoria'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]

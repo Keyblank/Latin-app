@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (14 sezioni, 52 lezioni, ~195 vocaboli)
+### Contenuti (15 sezioni, 57 lezioni, ~200 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -45,6 +45,7 @@ Principi guida:
 - ✅ **U11 — Il pronome relativo** (*qui, quae, quod*)
 - ✅ **U12 — Participi e ablativo assoluto**
 - ✅ **U13 — Infinito e accusativo + infinito** (discorso indiretto)
+- ✅ **U14 — I pronomi** (personali, is/hic/ille, riflessivi; suus vs eius)
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
@@ -84,7 +85,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ✅ 3ª declinazione
 - ✅ Imperfetto e perfetto
 - ✅ Pronome relativo
-- ⬜ **Pronomi**: personali (ego, tu), dimostrativi (is, hic, ille), riflessivi (se, suus)
+- ✅ **Pronomi**: personali (ego, tū), dimostrativi (is, hic, ille, ipse, īdem), riflessivi (sē, suus)
 
 ### Fase C — gli "sblocca-lettura" *(priorità per le versioni)*
 - ✅ **Participi** (presente e perfetto) → **Ablativo assoluto**
@@ -101,7 +102,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
 - ⬜ **Traduzione graduata**: dalle frasi ai **brani adattati** ad autori facili
   (Eutropio, *Fabulae*, Cesare semplificato)
-- ⬜ **Lessico, secondo giro**: da ~195 a ~400 vocaboli (è la soglia sotto cui
+- ⬜ **Lessico, secondo giro**: da ~200 a ~400 vocaboli (è la soglia sotto cui
   una versione resta illeggibile anche sapendo tutta la grammatica)
 
 ---
@@ -126,7 +127,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
 - I contenuti coprono le **fondamenta** più i primi costrutti (participi,
   ablativo assoluto, acc.+inf.): per tradurre versioni vere manca ancora il
-  resto della Fase C (congiuntivo e subordinate, passivo, futuro). È un
+  resto della Fase C (congiuntivo e subordinate, passivo, futuro) e la Fase D. È un
   percorso, non un traguardo già raggiunto.
 
 ---
