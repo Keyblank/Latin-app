@@ -1,6 +1,7 @@
 import { BUILDINGS } from '../data/city'
 import type { Progress } from '../useProgress'
 import { playCorrect } from '../sfx'
+import { IsoCity } from './IsoCity'
 
 interface Props {
   progress: Progress
@@ -27,18 +28,10 @@ export function City({ progress, onBuild, onBack }: Props) {
 
       <main className="city">
         <div className="cityscape">
-          {built.length === 0 ? (
+          <IsoCity built={built} />
+          {built.length === 0 && (
             <div className="city-empty">
               Un terreno vuoto sul colle… <b>inizia a costruire la tua Roma!</b>
-            </div>
-          ) : (
-            <div className="skyline">
-              {built.map((b) => (
-                <div key={b.id} className="sky-building" title={`${b.name} — ${b.gloss}`}>
-                  <span className="sky-icon">{b.icon}</span>
-                  <span className="sky-name">{b.name}</span>
-                </div>
-              ))}
             </div>
           )}
         </div>

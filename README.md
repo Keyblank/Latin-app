@@ -31,7 +31,20 @@ la lingua. Interfaccia in italiano.
 - **Urbs — costruisci la tua Roma** 🏛️: guadagni **denarii** studiando (in
   parallelo agli XP) e li spendi per costruire edifici romani con nome latino
   (*Domus, Templum, Thermae, Amphitheatrum*…); i più grandi si sbloccano
-  avanzando nel corso. Uno scopo per i punti + vocabolario in più.
+  avanzando nel corso. La città è mostrata in **vista isometrica** e cresce
+  a ogni costruzione.
+
+### Le immagini della città
+
+Gli edifici sono **disegnati in SVG** come segnaposto (`src/components/IsoCity.tsx`).
+Per usare illustrazioni isometriche vere (PNG con sfondo trasparente):
+
+1. mettile in `src/assets/city/` (una per edificio);
+2. in `src/data/city.ts` valorizza il campo `img` dell'edificio, es.
+   `img: new URL('../assets/city/templum.png', import.meta.url).href`.
+
+Lo sprite viene ancorato automaticamente al lotto; il disegno SVG resta come
+riserva per gli edifici senza immagine.
 - **Suoni ed effetti a tema romano** 🔔: suoni sintetizzati al volo (Web Audio) —
   arpeggio di **lira** (risposta giusta), **corno** grave (errore) e **fanfara di
   trionfo** (fine lezione) — più una pioggia di **foglie d'alloro e oro** sulla

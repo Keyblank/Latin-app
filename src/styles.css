@@ -463,19 +463,15 @@ button { font-family: inherit; cursor: pointer; }
 
 .city { padding: 18px 16px 60px; }
 .cityscape {
-  border-radius: 18px; overflow: hidden; border: 2px solid var(--gold);
-  background: linear-gradient(180deg, #bfe3f5 0%, #e8f4fb 55%, #d8c9a3 55%, #cdbb90 100%);
-  min-height: 190px; display: flex; align-items: flex-end; justify-content: center;
-  padding: 16px 12px; margin-bottom: 16px;
+  position: relative; border-radius: 18px; overflow: hidden;
+  border: 2px solid var(--gold); margin-bottom: 16px; background: #eaf6fc;
 }
+.iso { display: block; width: 100%; height: auto; }
 .city-empty {
-  align-self: center; text-align: center; color: #6b5e3f; font-size: 15px;
-  max-width: 260px; line-height: 1.5;
+  position: absolute; inset: auto 0 14px; text-align: center;
+  color: #5b4a28; font-size: 14px; padding: 0 18px; line-height: 1.5;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7);
 }
-.skyline { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 10px 14px; }
-.sky-building { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.sky-icon { font-size: 40px; line-height: 1; filter: drop-shadow(0 2px 1px rgba(0,0,0,0.15)); }
-.sky-name { font-family: var(--serif); font-size: 11px; font-weight: 700; color: #5b4a28; }
 
 .city-hint { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
 
