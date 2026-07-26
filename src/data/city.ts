@@ -11,6 +11,11 @@
 // L'immagine viene ancorata al lotto e sostituisce il disegno.
 
 export type BuildingLook =
+  | 'insula'
+  | 'villa'
+  | 'wall'
+  | 'tree'
+  | 'column'
   | 'domus'
   | 'garden'
   | 'shop'
@@ -44,7 +49,25 @@ export interface Building {
   img?: string
 }
 
-export const GRID_SIZE = 10
+/** Lo spazio delle coordinate è sempre questo: l'area costruibile è un
+ *  quadrato centrato che cresce comprando terreno. */
+export const GRID_MAX = 18
+
+/** Lato dell'area costruibile per ogni livello di terreno. */
+export const LAND_SIZES = [10, 14, 18]
+
+/** Costo per ampliare al livello successivo. */
+export const LAND_COSTS = [400, 900]
+
+/** Costo di una casella di strada. */
+export const ROAD_COST = 5
+
+/** Estremi (inclusi) dell'area costruibile per un livello di terreno. */
+export function landBounds(land: number): { min: number; max: number } {
+  const size = LAND_SIZES[Math.min(land, LAND_SIZES.length - 1)]
+  const min = Math.floor((GRID_MAX - size) / 2)
+  return { min, max: min + size - 1 }
+}
 
 export const BUILDINGS: Building[] = [
   // ── Monumenti, in fondo (si vedono dietro) ──
@@ -81,6 +104,27 @@ export const BUILDINGS: Building[] = [
   {
     id: 'fons', name: 'Fons', gloss: 'fontana', icon: '⛲',
     cost: 60, unlock: 4, size: [1, 1], look: 'fountain',
+  },
+  // ── Abitazioni e arredo urbano ──
+  {
+    id: 'insula', name: 'Insula', gloss: 'palazzina', icon: '🏢',
+    cost: 60, unlock: 3, size: [1, 1], look: 'insula',
+  },
+  {
+    id: 'villa', name: 'Villa', gloss: 'villa con cortile', icon: '🏡',
+    cost: 130, unlock: 7, size: [2, 2], look: 'villa',
+  },
+  {
+    id: 'columna', name: 'Columna', gloss: 'colonna onoraria', icon: '🏛️',
+    cost: 70, unlock: 5, size: [1, 1], look: 'column',
+  },
+  {
+    id: 'arbor', name: 'Arbor', gloss: 'albero', icon: '🌲',
+    cost: 8, unlock: 1, size: [1, 1], look: 'tree',
+  },
+  {
+    id: 'murus', name: 'Murus', gloss: 'muro', icon: '🧱',
+    cost: 10, unlock: 1, size: [1, 1], look: 'wall',
   },
   // ── Davanti: la vita quotidiana ──
   {

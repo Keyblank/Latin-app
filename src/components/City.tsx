@@ -1,30 +1,77 @@
 import { useEffect, useRef, useState } from 'react'
-import { BUILDINGS } from '../data/city'
+import { BUILDINGS, LAND_COSTS, LAND_SIZES, ROAD_COST } from '../data/city'
 import type { Building } from '../data/city'
 import type { Progress } from '../useProgress'
-import { playCorrect } from '../sfx'
-import { City3D } from './City3D'
+import { playCorrect, playWrong } from '../sfx'
+import { City3D, footprint } from './City3D'
+import type { CityMode } from './City3D'
 
 interface Props {
   progress: Progress
-  onBuild: (id: string, cost: number, r: number, c: number) => void
+  onBuild: (id: string, cost: number, r: number, c: number, rot: 0 | 1) => void
+  onDemolish: (index: number, refund: number) => void
+  onAddRoad: (key: string, cost: number) => void
+  onRemoveRoad: (key: string, refund: number) => void
+  onExpandLand: (cost: number) => void
   onBack: () => void
 }
 
+const byId = new Map(BUILDINGS.map((b) => [b.id, b]))
+
 /** Urbs: la città che costruisci spendendo i denarii guadagnati studiando. */
-export function City({ progress, onBuild, onBack }: Props) {
+export function City({
+  progress,
+  onBuild,
+  onDemolish,
+  onAddRoad,
+  onRemoveRoad,
+  onExpandLand,
+  onBack,
+}: Props) {
   const done = progress.completed.length
+  const [mode, setMode] = useState<CityMode>('view')
   const [pending, setPending] = useState<Building | null>(null)
+  const [rot, setRot] = useState<0 | 1>(0)
   const mapRef = useRef<HTMLDivElement>(null)
 
-  // Quando scegli un edificio, porta la mappa in vista: il negozio sta sotto.
+  // Quando entri in una modalità operativa, porta la mappa in vista.
   useEffect(() => {
-    if (pending) mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-  }, [pending])
+    if (mode !== 'view') mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [mode, pending])
 
-  // Quante copie di ogni edificio sono già in città.
   const counts = new Map<string, number>()
   for (const p of progress.city) counts.set(p.b, (counts.get(p.b) ?? 0) + 1)
+
+  const landIdx = Math.min(progress.land, LAND_SIZES.length - 1)
+  const nextLandCost = LAND_COSTS[progress.land]
+  const canExpand = nextLandCost !== undefined
+
+  const chooseBuilding = (b: Building) => {
+    if (pending?.id === b.id && mode === 'build') {
+      setPending(null)
+      setMode('view')
+    } else {
+      setPending(b)
+      setMode('build')
+    }
+  }
+
+  const setTool = (m: CityMode) => {
+    setMode((cur) => (cur === m ? 'view' : m))
+    setPending(null)
+  }
+
+  /** Cerca l'edificio che occupa quella cella. */
+  const buildingAt = (r: number, c: number) => {
+    for (let i = 0; i < progress.city.length; i++) {
+      const p = progress.city[i]
+      const b = byId.get(p.b)
+      if (!b) continue
+      const [w, d] = footprint(b, p.rot)
+      if (c >= p.c && c < p.c + w && r >= p.r && r < p.r + d) return { i, b }
+    }
+    return null
+  }
 
   return (
     <div className="app">
@@ -42,38 +89,114 @@ export function City({ progress, onBuild, onBack }: Props) {
         <div className="cityscape" ref={mapRef}>
           <City3D
             placed={progress.city}
+            roads={progress.roads}
+            land={progress.land}
+            mode={mode}
             pending={pending}
+            rot={rot}
             onPlace={(r, c) => {
               if (!pending) return
-              onBuild(pending.id, pending.cost, r, c)
+              onBuild(pending.id, pending.cost, r, c, rot)
               playCorrect()
               setPending(null)
+              setMode('view')
+            }}
+            onRoad={(r, c) => {
+              const key = `${r},${c}`
+              if (progress.roads.includes(key) || buildingAt(r, c)) return
+              if (progress.denarii < ROAD_COST) return
+              onAddRoad(key, ROAD_COST)
+            }}
+            onDemolish={(r, c) => {
+              const hit = buildingAt(r, c)
+              if (hit) {
+                onDemolish(hit.i, Math.floor(hit.b.cost / 2))
+                playWrong()
+                return
+              }
+              const key = `${r},${c}`
+              if (progress.roads.includes(key)) {
+                onRemoveRoad(key, Math.floor(ROAD_COST / 2))
+                playWrong()
+              }
             }}
           />
         </div>
 
-        {pending ? (
+        {/* Barra degli strumenti */}
+        <div className="tools">
+          <button
+            className={`tool ${mode === 'road' ? 'on' : ''}`}
+            onClick={() => setTool('road')}
+            title="Traccia strade"
+          >
+            🛣️ Via <small>🪙{ROAD_COST}</small>
+          </button>
+          <button
+            className={`tool ${mode === 'demolish' ? 'on' : ''}`}
+            onClick={() => setTool('demolish')}
+            title="Demolisci (rimborso metà prezzo)"
+          >
+            🔨 Demolisci
+          </button>
+          {mode === 'build' && pending && (
+            <button className="tool" onClick={() => setRot((v) => (v === 0 ? 1 : 0))} title="Ruota">
+              🔄 Ruota
+            </button>
+          )}
+        </div>
+
+        {mode === 'build' && pending ? (
           <div className="place-bar">
             <span>
               Tocca la mappa per posizionare <b>{pending.name}</b>
             </span>
-            <button className="place-cancel" onClick={() => setPending(null)}>
+            <button className="place-cancel" onClick={() => { setPending(null); setMode('view') }}>
               Annulla
             </button>
           </div>
+        ) : mode === 'road' ? (
+          <div className="place-bar">
+            <span>Trascina sulla mappa per tracciare la <b>via</b></span>
+            <button className="place-cancel" onClick={() => setMode('view')}>Fine</button>
+          </div>
+        ) : mode === 'demolish' ? (
+          <div className="place-bar demolish">
+            <span>Tocca un edificio per <b>demolirlo</b> (metà rimborso)</span>
+            <button className="place-cancel" onClick={() => setMode('view')}>Fine</button>
+          </div>
         ) : (
           <p className="city-hint">
-            Guadagni <b>denarii 🪙</b> studiando. Scegli un edificio e <b>appoggialo dove vuoi</b>:
-            puoi costruirne quanti ne vuoi. Trascina per girare la città.
+            Guadagni <b>denarii 🪙</b> studiando. Scegli un edificio e appoggialo dove vuoi;
+            traccia le vie, demolisci, ruota. Trascina la mappa per girare la città.
           </p>
         )}
+
+        {/* Terreno */}
+        <div className="land-row">
+          <span className="land-info">
+            <span className="latin-label">Ager · terreno</span>
+            <b>{LAND_SIZES[landIdx]}×{LAND_SIZES[landIdx]}</b> celle · {progress.city.length} edifici
+          </span>
+          {canExpand ? (
+            <button
+              className="land-buy"
+              disabled={progress.denarii < nextLandCost}
+              onClick={() => onExpandLand(nextLandCost)}
+            >
+              Amplia 🪙 {nextLandCost}
+            </button>
+          ) : (
+            <span className="land-max">Terreno massimo</span>
+          )}
+        </div>
 
         <div className="shop">
           {BUILDINGS.map((b) => {
             const n = counts.get(b.id) ?? 0
             const locked = done < b.unlock
             const afford = progress.denarii >= b.cost
-            const active = pending?.id === b.id
+            const active = pending?.id === b.id && mode === 'build'
             return (
               <div
                 key={b.id}
@@ -86,11 +209,7 @@ export function City({ progress, onBuild, onBack }: Props) {
                 {locked ? (
                   <div className="shop-state locked">Completa {b.unlock} lezioni</div>
                 ) : (
-                  <button
-                    className="shop-buy"
-                    disabled={!afford}
-                    onClick={() => setPending(active ? null : b)}
-                  >
+                  <button className="shop-buy" disabled={!afford} onClick={() => chooseBuilding(b)}>
                     {active ? 'Annulla' : `🪙 ${b.cost}`}
                   </button>
                 )}

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 import type { Building } from '../data/city'
-import { BUILDINGS, GRID_SIZE } from '../data/city'
+import { BUILDINGS, GRID_MAX, LAND_SIZES, landBounds } from '../data/city'
 import type { Placed } from '../useProgress'
 
 // Vista 3D della città in stile diorama, con POSIZIONAMENTO LIBERO:
@@ -31,8 +31,13 @@ const PAL = {
 
 const byId = new Map(BUILDINGS.map((b) => [b.id, b]))
 
-/** Coordinata del centro della cella i sull'asse. */
-const off = (i: number) => (i - (GRID_SIZE - 1) / 2) * TILE
+/** Coordinata del centro della cella i sull'asse (spazio fisso GRID_MAX). */
+const off = (i: number) => (i - (GRID_MAX - 1) / 2) * TILE
+
+/** Ingombro effettivo tenendo conto della rotazione. */
+export function footprint(b: Building, rot?: 0 | 1): [number, number] {
+  return rot ? [b.size[1], b.size[0]] : b.size
+}
 
 function mat(color: number, rough = 0.95) {
   return new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: 0 })
@@ -291,6 +296,83 @@ function buildMesh(b: Building): THREE.Group {
       g.add(arm)
       break
     }
+    case 'insula': {
+      // palazzina a più piani
+      const body = block(W * 0.76, 0.78, D * 0.76, PAL.wallWarm)
+      body.position.y = 0.39
+      g.add(body)
+      for (let f = 0; f < 3; f++) {
+        const band = block(W * 0.8, 0.03, D * 0.8, 0xd8c7a6)
+        band.position.y = 0.24 + f * 0.24
+        g.add(band)
+      }
+      const par = block(W * 0.8, 0.07, D * 0.8, PAL.stone)
+      par.position.y = 0.8
+      g.add(par)
+      break
+    }
+    case 'villa': {
+      // casa con cortile interno (peristilio)
+      const ring = [
+        [0, -D * 0.34, W * 0.9, D * 0.22],
+        [0, D * 0.34, W * 0.9, D * 0.22],
+        [-W * 0.34, 0, W * 0.22, D * 0.48],
+        [W * 0.34, 0, W * 0.22, D * 0.48],
+      ]
+      for (const [x, z, bw, bd] of ring) {
+        const wing = block(bw, 0.36, bd, PAL.wall)
+        wing.position.set(x, 0.18, z)
+        g.add(wing)
+        const roof = gable(bw * 1.06, 0.16, bd * 1.06, PAL.roof)
+        roof.position.set(x, 0.36, z)
+        if (bw < bd) roof.rotation.y = Math.PI / 2
+        g.add(roof)
+      }
+      const court = block(W * 0.44, 0.04, D * 0.44, PAL.grassDark)
+      court.position.y = 0.02
+      g.add(court)
+      const pool = block(W * 0.2, 0.05, D * 0.2, PAL.water)
+      pool.position.y = 0.04
+      g.add(pool)
+      break
+    }
+    case 'wall': {
+      const w1 = block(W * 0.94, 0.34, D * 0.3, PAL.stone)
+      w1.position.y = 0.17
+      g.add(w1)
+      const cap = block(W * 0.98, 0.05, D * 0.36, 0xcfc5b0)
+      cap.position.y = 0.36
+      g.add(cap)
+      break
+    }
+    case 'tree': {
+      // cipresso: la pianta romana per eccellenza
+      const trunk = cylinder(0.045, 0.16, PAL.wood, 8)
+      trunk.position.y = 0.08
+      g.add(trunk)
+      const crown = new THREE.Mesh(new THREE.ConeGeometry(0.19, 0.72, 14), mat(0x4f9147))
+      crown.castShadow = true
+      crown.receiveShadow = true
+      crown.position.y = 0.5
+      g.add(crown)
+      break
+    }
+    case 'column': {
+      const base = block(0.3, 0.12, 0.3, PAL.stone)
+      base.position.y = 0.06
+      g.add(base)
+      const shaft = cylinder(0.075, 0.78, PAL.marble, 14)
+      shaft.position.y = 0.51
+      g.add(shaft)
+      const cap = block(0.22, 0.08, 0.22, PAL.marble)
+      cap.position.y = 0.94
+      g.add(cap)
+      const orb = new THREE.Mesh(new THREE.SphereGeometry(0.08, 14, 10), mat(PAL.gold))
+      orb.castShadow = true
+      orb.position.y = 1.05
+      g.add(orb)
+      break
+    }
     default: {
       const body = block(W * 0.7, 0.38, D * 0.7, PAL.wall)
       body.position.y = 0.19
@@ -305,31 +387,39 @@ function placeAt(g: THREE.Object3D, r: number, c: number, w: number, d: number) 
   g.position.set(off(c) + ((w - 1) * TILE) / 2, 0, off(r) + ((d - 1) * TILE) / 2)
 }
 
+export type CityMode = 'view' | 'build' | 'road' | 'demolish'
+
 interface Props {
   placed: Placed[]
-  /** Edificio in attesa di essere posizionato (o null). */
+  /** Caselle di strada, come chiavi "riga,colonna". */
+  roads: string[]
+  /** Livello di terreno acquistato. */
+  land: number
+  mode: CityMode
+  /** Edificio da posizionare (modalità 'build'). */
   pending: Building | null
-  /** Chiamata quando l'utente conferma la posizione. */
+  /** Rotazione scelta per l'edificio da posizionare. */
+  rot: 0 | 1
   onPlace: (r: number, c: number) => void
+  onRoad: (r: number, c: number) => void
+  onDemolish: (r: number, c: number) => void
 }
 
-export function City3D({ placed, pending, onPlace }: Props) {
+export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoad, onDemolish }: Props) {
   const host = useRef<HTMLDivElement>(null)
   const api = useRef<{
     scene: THREE.Scene
     camera: THREE.OrthographicCamera
     renderer: THREE.WebGLRenderer
     town: THREE.Group
+    ways: THREE.Group
     ghost: THREE.Group
-    ground: THREE.Mesh
     render: () => void
   } | null>(null)
-  const pendingRef = useRef<Building | null>(null)
-  const placedRef = useRef<Placed[]>(placed)
-  const onPlaceRef = useRef(onPlace)
 
-  placedRef.current = placed
-  onPlaceRef.current = onPlace
+  // Valori sempre aggiornati per i gestori di eventi (creati una volta sola).
+  const st = useRef({ placed, roads, land, mode, pending, rot, onPlace, onRoad, onDemolish })
+  st.current = { placed, roads, land, mode, pending, rot, onPlace, onRoad, onDemolish }
 
   // ── Scena (creata una volta sola) ──
   useEffect(() => {
@@ -340,8 +430,8 @@ export function City3D({ placed, pending, onPlace }: Props) {
     scene.background = new THREE.Color(0xdceff8)
 
     const aspect = el.clientWidth / Math.max(1, el.clientHeight)
-    const view = 5
-    const camera = new THREE.OrthographicCamera(-view * aspect, view * aspect, view, -view, 0.1, 100)
+    const view = 5.4
+    const camera = new THREE.OrthographicCamera(-view * aspect, view * aspect, view, -view, 0.1, 120)
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio))
@@ -352,55 +442,46 @@ export function City3D({ placed, pending, onPlace }: Props) {
 
     scene.add(new THREE.HemisphereLight(0xdff0fb, 0xb8ac8e, 0.72))
     const sun = new THREE.DirectionalLight(0xfff3dd, 2.2)
-    sun.position.set(7, 11, 5)
+    sun.position.set(8, 13, 6)
     sun.castShadow = true
-    sun.shadow.mapSize.set(1024, 1024)
-    const s = 9
+    sun.shadow.mapSize.set(2048, 2048)
+    const s = 13
     sun.shadow.camera.left = -s
     sun.shadow.camera.right = s
     sun.shadow.camera.top = s
     sun.shadow.camera.bottom = -s
-    sun.shadow.camera.far = 34
+    sun.shadow.camera.far = 44
     sun.shadow.bias = -0.0012
     sun.shadow.radius = 3
     scene.add(sun)
 
-    // Isola
-    const size = GRID_SIZE * TILE
-    const top = new THREE.Mesh(new RoundedBoxGeometry(size, 0.5, size, 4, 0.18), mat(PAL.grass))
-    top.position.y = -0.25
-    top.receiveShadow = true
-    scene.add(top)
-    const soil = new THREE.Mesh(new RoundedBoxGeometry(size * 0.95, 0.8, size * 0.95, 4, 0.22), mat(PAL.soil))
-    soil.position.y = -0.85
-    scene.add(soil)
-
-    // Griglia delle celle: aiuta a capire dove si appoggia l'edificio
-    const grid = new THREE.GridHelper(size, GRID_SIZE, 0x88a862, 0x93b26c)
-    grid.position.y = 0.012
-    ;(grid.material as THREE.Material).opacity = 0.5
-    ;(grid.material as THREE.Material).transparent = true
-    scene.add(grid)
-
-    // Piano invisibile per capire quale cella è sotto il dito
-    const ground = new THREE.Mesh(
-      new THREE.PlaneGeometry(size, size),
-      new THREE.MeshBasicMaterial({ visible: false }),
-    )
-    ground.rotation.x = -Math.PI / 2
-    scene.add(ground)
-
+    const island = new THREE.Group()
+    scene.add(island)
+    const ways = new THREE.Group()
+    scene.add(ways)
     const town = new THREE.Group()
     scene.add(town)
     const ghost = new THREE.Group()
     ghost.visible = false
     scene.add(ghost)
 
+    // Piano invisibile per capire quale cella è sotto il dito
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(GRID_MAX * TILE, GRID_MAX * TILE),
+      new THREE.MeshBasicMaterial({ visible: false }),
+    )
+    ground.rotation.x = -Math.PI / 2
+    scene.add(ground)
+
     let angle = Math.PI / 4
     let raf = 0
     const render = () => {
-      const radius = 14
-      camera.position.set(Math.sin(angle) * radius, 9.5, Math.cos(angle) * radius)
+      const size = LAND_SIZES[Math.min(st.current.land, LAND_SIZES.length - 1)]
+      const radius = 16
+      const zoom = size / LAND_SIZES[0]
+      camera.zoom = 1 / zoom
+      camera.updateProjectionMatrix()
+      camera.position.set(Math.sin(angle) * radius, 11, Math.cos(angle) * radius)
       camera.lookAt(0, 0.4, 0)
       renderer.render(scene, camera)
     }
@@ -409,14 +490,34 @@ export function City3D({ placed, pending, onPlace }: Props) {
       raf = requestAnimationFrame(render)
     }
 
-    api.current = { scene, camera, renderer, town, ghost, ground, render: schedule }
+    api.current = { scene, camera, renderer, town, ways, ghost, render: schedule }
+
+    // ── Isola: ricostruita quando cresce il terreno ──
+    const buildIsland = () => {
+      island.clear()
+      const size = LAND_SIZES[Math.min(st.current.land, LAND_SIZES.length - 1)] * TILE
+      const top = new THREE.Mesh(new RoundedBoxGeometry(size, 0.5, size, 4, 0.18), mat(PAL.grass))
+      top.position.y = -0.25
+      top.receiveShadow = true
+      island.add(top)
+      const soil = new THREE.Mesh(new RoundedBoxGeometry(size * 0.95, 0.9, size * 0.95, 4, 0.22), mat(PAL.soil))
+      soil.position.y = -0.9
+      island.add(soil)
+      const grid = new THREE.GridHelper(size, size / TILE, 0x86a660, 0x93b26c)
+      grid.position.y = 0.012
+      const gm = grid.material as THREE.Material
+      gm.opacity = 0.45
+      gm.transparent = true
+      island.add(grid)
+    }
+    ;(api.current as unknown as { buildIsland: () => void }).buildIsland = buildIsland
+    buildIsland()
     render()
 
-    // ── Interazione: trascina per ruotare, tocca per posizionare ──
+    // ── Interazione ──
     const raycaster = new THREE.Raycaster()
     const ndc = new THREE.Vector2()
     let down = false
-    let moved = 0
     let lastX = 0
 
     const tileUnder = (e: PointerEvent): [number, number] | null => {
@@ -426,69 +527,87 @@ export function City3D({ placed, pending, onPlace }: Props) {
       raycaster.setFromCamera(ndc, camera)
       const hit = raycaster.intersectObject(ground)[0]
       if (!hit) return null
-      const c = Math.round(hit.point.x / TILE + (GRID_SIZE - 1) / 2)
-      const r = Math.round(hit.point.z / TILE + (GRID_SIZE - 1) / 2)
+      const c = Math.round(hit.point.x / TILE + (GRID_MAX - 1) / 2)
+      const r = Math.round(hit.point.z / TILE + (GRID_MAX - 1) / 2)
       return [r, c]
     }
 
+    /** true se il lotto è dentro il terreno e non tocca nulla. */
     const free = (r: number, c: number, w: number, d: number) => {
-      if (r < 0 || c < 0 || r + d > GRID_SIZE || c + w > GRID_SIZE) return false
-      for (const p of placedRef.current) {
+      const { min, max } = landBounds(st.current.land)
+      if (r < min || c < min || r + d - 1 > max || c + w - 1 > max) return false
+      for (const p of st.current.placed) {
         const pb = byId.get(p.b)
         if (!pb) continue
-        const [pw, pd] = pb.size
+        const [pw, pd] = footprint(pb, p.rot)
         if (c < p.c + pw && c + w > p.c && r < p.r + pd && r + d > p.r) return false
+      }
+      for (const key of st.current.roads) {
+        const [rr, cc] = key.split(',').map(Number)
+        if (cc >= c && cc < c + w && rr >= r && rr < r + d) return false
       }
       return true
     }
 
     const updateGhost = (e: PointerEvent) => {
-      const b = pendingRef.current
-      if (!b) {
+      const { pending: b, rot: rr, mode: m } = st.current
+      if (m !== 'build' || !b) {
         ghost.visible = false
         return
       }
       const t = tileUnder(e)
       if (!t) return
       const [r, c] = t
-      const [w, d] = b.size
+      const [w, d] = footprint(b, rr)
       const ok = free(r, c, w, d)
       ghost.userData.tile = ok ? [r, c] : null
       ghost.visible = true
       placeAt(ghost, r, c, w, d)
-      const pad = ghost.children[0] as THREE.Mesh
-      ;(pad.material as THREE.MeshBasicMaterial).color.set(ok ? 0x35c65a : 0xf03b2c)
+      const pad = ghost.children[0] as THREE.Mesh | undefined
+      if (pad) (pad.material as THREE.MeshBasicMaterial).color.set(ok ? 0x35c65a : 0xf03b2c)
       schedule()
     }
 
     const onDown = (e: PointerEvent) => {
       down = true
-      moved = 0
       lastX = e.clientX
-      renderer.domElement.setPointerCapture(e.pointerId)
-      if (pendingRef.current) updateGhost(e)
+      try {
+        renderer.domElement.setPointerCapture(e.pointerId)
+      } catch {
+        /* alcuni browser rifiutano la cattura: non è essenziale */
+      }
+      const m = st.current.mode
+      if (m === 'build') updateGhost(e)
+      else if (m === 'road') {
+        const t = tileUnder(e)
+        if (t) st.current.onRoad(t[0], t[1])
+      }
     }
     const onMove = (e: PointerEvent) => {
+      const m = st.current.mode
       if (down) {
-        const dx = e.clientX - lastX
-        moved += Math.abs(dx)
-        if (pendingRef.current) {
-          // in modalità posizionamento il trascinamento sposta l'anteprima
-          updateGhost(e)
-        } else {
-          angle -= dx * 0.008
+        if (m === 'build') updateGhost(e)
+        else if (m === 'road') {
+          const t = tileUnder(e)
+          if (t) st.current.onRoad(t[0], t[1]) // trascina per tracciare la via
+        } else if (m === 'view') {
+          angle -= (e.clientX - lastX) * 0.008
           schedule()
         }
         lastX = e.clientX
-      } else if (pendingRef.current) {
+      } else if (m === 'build') {
         updateGhost(e)
       }
     }
     const onUp = (e: PointerEvent) => {
-      if (down && pendingRef.current) {
+      const m = st.current.mode
+      if (down && m === 'build') {
         updateGhost(e)
         const t = ghost.userData.tile as [number, number] | null
-        if (t) onPlaceRef.current(t[0], t[1])
+        if (t) st.current.onPlace(t[0], t[1])
+      } else if (down && m === 'demolish') {
+        const t = tileUnder(e)
+        if (t) st.current.onDemolish(t[0], t[1])
       }
       down = false
     }
@@ -520,6 +639,14 @@ export function City3D({ placed, pending, onPlace }: Props) {
     }
   }, [])
 
+  // ── Terreno (cresce comprando) ──
+  useEffect(() => {
+    const a = api.current as unknown as { buildIsland?: () => void; render: () => void } | null
+    if (!a) return
+    a.buildIsland?.()
+    a.render()
+  }, [land])
+
   // ── Edifici piazzati ──
   useEffect(() => {
     const a = api.current
@@ -529,25 +656,42 @@ export function City3D({ placed, pending, onPlace }: Props) {
       const b = byId.get(p.b)
       if (!b) continue
       const m = buildMesh(b)
-      placeAt(m, p.r, p.c, b.size[0], b.size[1])
+      const [w, d] = footprint(b, p.rot)
+      m.rotation.y = p.rot ? Math.PI / 2 : 0
+      placeAt(m, p.r, p.c, w, d)
       a.town.add(m)
     }
     a.render()
   }, [placed])
 
+  // ── Strade ──
+  useEffect(() => {
+    const a = api.current
+    if (!a) return
+    a.ways.clear()
+    const geo = new THREE.BoxGeometry(TILE * 0.98, 0.06, TILE * 0.98)
+    const material = mat(0xd9c9a6)
+    for (const key of roads) {
+      const [r, c] = key.split(',').map(Number)
+      const t = new THREE.Mesh(geo, material)
+      t.receiveShadow = true
+      t.position.set(off(c), 0.03, off(r))
+      a.ways.add(t)
+    }
+    a.render()
+  }, [roads])
+
   // ── Anteprima dell'edificio da posizionare ──
   useEffect(() => {
-    pendingRef.current = pending
     const a = api.current
     if (!a) return
     a.ghost.clear()
-    if (!pending) {
+    if (mode !== 'build' || !pending) {
       a.ghost.visible = false
       a.render()
       return
     }
-    const [w, d] = pending.size
-    // riquadro del lotto (verde = si può, rosso = occupato)
+    const [w, d] = footprint(pending, rot)
     const pad = new THREE.Mesh(
       new THREE.PlaneGeometry(w * TILE * 0.98, d * TILE * 0.98),
       new THREE.MeshBasicMaterial({ color: 0x35c65a, transparent: true, opacity: 0.8, depthWrite: false }),
@@ -555,8 +699,8 @@ export function City3D({ placed, pending, onPlace }: Props) {
     pad.rotation.x = -Math.PI / 2
     pad.position.y = 0.05
     a.ghost.add(pad)
-    // modello semitrasparente
     const preview = buildMesh(pending)
+    preview.rotation.y = rot ? Math.PI / 2 : 0
     preview.traverse((o) => {
       const mesh = o as THREE.Mesh
       if (mesh.isMesh) {
@@ -569,7 +713,7 @@ export function City3D({ placed, pending, onPlace }: Props) {
     })
     a.ghost.add(preview)
     a.render()
-  }, [pending])
+  }, [pending, rot, mode])
 
   return <div className="city3d" ref={host} />
 }

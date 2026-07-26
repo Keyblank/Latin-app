@@ -54,8 +54,9 @@ Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
   frase, abbinamento
 - ✅ Gamification: **XP, vite, streak**, **ranghi latini**, **obiettivo
   giornaliero** (*Pensum diei*), **ripasso degli errori** (*Repetitio*)
-- ✅ **Urbs** — città romana da costruire spendendo **denarii** guadagnati
-  studiando; edifici con nome latino, sbloccati per progressi + prezzo
+- ✅ **Urbs** — città romana in **3D** da costruire spendendo **denarii**
+  guadagnati studiando: posizionamento libero, rotazione, strade, demolizione,
+  terreno ampliabile; 17 edifici con nome latino, sbloccati per progressi
 - ✅ **Pronuncia audio** ecclesiastica (con "traduttore di pronuncia" ae→e,
   ti→zi, ph/th/ch…) e scelta della voce
 - ✅ **Mascotte** (busto di marmo, 3 umori animati) + **battute ironiche**

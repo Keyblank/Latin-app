@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Exercise } from './types'
 
-/** Un edificio piazzato nella città: quale, e in che cella. */
+/** Un edificio piazzato nella città: quale, dove, e come ruotato. */
 export interface Placed {
   /** id dell'edificio */
   b: string
   /** riga e colonna dell'angolo del lotto */
   r: number
   c: number
+  /** 1 se ruotato di 90° (larghezza e profondità si scambiano). */
+  rot?: 0 | 1
 }
 
 const STORAGE_KEY = 'latino-app-progress-v1'
@@ -32,6 +34,10 @@ export interface Progress {
   denarii: number
   /** Edifici piazzati nella città (posizione scelta dal giocatore). */
   city: Placed[]
+  /** Caselle di strada, come chiavi "riga,colonna". */
+  roads: string[]
+  /** Livello del terreno acquistato (0 = isola iniziale). */
+  land: number
   /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
   freeMode: boolean
 }
@@ -46,6 +52,8 @@ const emptyProgress: Progress = {
   mistakes: [],
   denarii: 0,
   city: [],
+  roads: [],
+  land: 0,
   freeMode: false,
 }
 
@@ -131,20 +139,47 @@ export function useProgress() {
   }, [])
 
   /** Piazza un edificio nella città, se ci sono abbastanza denarii. */
-  const build = useCallback((id: string, cost: number, r: number, c: number) => {
-    setProgress((prev) => {
-      if (prev.denarii < cost) return prev
-      return { ...prev, denarii: prev.denarii - cost, city: [...prev.city, { b: id, r, c }] }
-    })
-  }, [])
+  const build = useCallback(
+    (id: string, cost: number, r: number, c: number, rot: 0 | 1 = 0) => {
+      setProgress((prev) => {
+        if (prev.denarii < cost) return prev
+        return { ...prev, denarii: prev.denarii - cost, city: [...prev.city, { b: id, r, c, rot }] }
+      })
+    },
+    [],
+  )
 
-  /** Demolisce l'edificio in quella posizione (rimborso a metà prezzo). */
+  /** Demolisce l'edificio con quell'indice (rimborso indicato). */
   const demolish = useCallback((index: number, refund: number) => {
     setProgress((prev) => ({
       ...prev,
       denarii: prev.denarii + refund,
       city: prev.city.filter((_, i) => i !== index),
     }))
+  }, [])
+
+  /** Costruisce una casella di strada. */
+  const addRoad = useCallback((key: string, cost: number) => {
+    setProgress((prev) => {
+      if (prev.roads.includes(key) || prev.denarii < cost) return prev
+      return { ...prev, denarii: prev.denarii - cost, roads: [...prev.roads, key] }
+    })
+  }, [])
+
+  /** Rimuove una casella di strada (rimborso indicato). */
+  const removeRoad = useCallback((key: string, refund: number) => {
+    setProgress((prev) => {
+      if (!prev.roads.includes(key)) return prev
+      return { ...prev, denarii: prev.denarii + refund, roads: prev.roads.filter((k) => k !== key) }
+    })
+  }, [])
+
+  /** Compra il livello di terreno successivo. */
+  const expandLand = useCallback((cost: number) => {
+    setProgress((prev) => {
+      if (prev.denarii < cost) return prev
+      return { ...prev, denarii: prev.denarii - cost, land: prev.land + 1 }
+    })
   }, [])
 
   /** Uscita senza completare: registra solo gli errori (per il ripasso). */
@@ -166,5 +201,16 @@ export function useProgress() {
     setProgress((prev) => ({ ...emptyProgress, freeMode: prev.freeMode }))
   }, [])
 
-  return { progress, finishLesson, recordMistakes, build, demolish, reset, toggleFreeMode }
+  return {
+    progress,
+    finishLesson,
+    recordMistakes,
+    build,
+    demolish,
+    addRoad,
+    removeRoad,
+    expandLand,
+    reset,
+    toggleFreeMode,
+  }
 }

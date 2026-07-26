@@ -18,7 +18,18 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function App() {
-  const { progress, finishLesson, recordMistakes, build, reset, toggleFreeMode } = useProgress()
+  const {
+    progress,
+    finishLesson,
+    recordMistakes,
+    build,
+    demolish,
+    addRoad,
+    removeRoad,
+    expandLand,
+    reset,
+    toggleFreeMode,
+  } = useProgress()
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
   const [isReview, setIsReview] = useState(false)
   const [showCity, setShowCity] = useState(false)
@@ -59,7 +70,17 @@ export default function App() {
   }
 
   if (showCity) {
-    return <City progress={progress} onBuild={build} onBack={() => setShowCity(false)} />
+    return (
+      <City
+        progress={progress}
+        onBuild={build}
+        onDemolish={demolish}
+        onAddRoad={addRoad}
+        onRemoveRoad={removeRoad}
+        onExpandLand={expandLand}
+        onBack={() => setShowCity(false)}
+      />
+    )
   }
 
   return (
