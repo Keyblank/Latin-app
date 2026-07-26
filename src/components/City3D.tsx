@@ -205,8 +205,38 @@ function awning(w: number, color = 0xc9604f): THREE.Mesh {
   return m
 }
 
-/** Vicini con muro, per raccordare le mura di cinta: [su, giù, sx, dx]. */
+/** Vicini fortificati (muro, torre o porta): [su, giù, sx, dx]. */
 export type WallLinks = [boolean, boolean, boolean, boolean]
+
+/** Spessore e altezza della cortina muraria: valori condivisi da muro,
+ *  torre e porta, così i pezzi si saldano senza scalini. */
+const WALL_TH = 0.34
+const WALL_H = 0.42
+
+/** Monconi di cortina verso i vicini fortificati: è ciò che "salda"
+ *  torri e porte al muro, come i muri fanno tra loro. */
+function wallStubs(links: WallLinks): THREE.Group {
+  const g = new THREE.Group()
+  const dirs: [number, number][] = [
+    [0, -1],
+    [0, 1],
+    [-1, 0],
+    [1, 0],
+  ]
+  links.forEach((on, i) => {
+    if (!on) return
+    const [dx, dz] = dirs[i]
+    const w = dx ? 0.5 + WALL_TH / 2 : WALL_TH
+    const d = dz ? 0.5 + WALL_TH / 2 : WALL_TH
+    const seg = block(w, WALL_H, d, PAL.stone, 'ashlar')
+    seg.position.set((dx * (0.5 + WALL_TH / 2)) / 2, WALL_H / 2, (dz * (0.5 + WALL_TH / 2)) / 2)
+    g.add(seg)
+    const cap = block(w * 0.98, 0.06, d * 0.98, 0xcfc5b0, 'ashlar')
+    cap.position.set(seg.position.x, WALL_H + 0.03, seg.position.z)
+    g.add(cap)
+  })
+  return g
+}
 
 /** Modello 3D di un edificio. `seed` dà varietà (colori), `links` serve alle mura. */
 function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, false, false]): THREE.Group {
@@ -515,70 +545,77 @@ function buildMesh(b: Building, seed = 0, links: WallLinks = [false, false, fals
     }
     case 'wall': {
       // Muro di cinta: si raccorda con i muri vicini, come le strade.
-      const th = 0.34 // spessore
-      const hgt = 0.42
-      const seg = (dx: number, dz: number) => {
-        const w = dx ? 0.5 + th / 2 : th
-        const d = dz ? 0.5 + th / 2 : th
-        const m = block(w, hgt, d, PAL.stone, 'ashlar')
-        m.position.set((dx * (0.5 + th / 2)) / 2, hgt / 2, (dz * (0.5 + th / 2)) / 2)
-        g.add(m)
-        const cap = block(w * 0.98, 0.06, d * 0.98, 0xcfc5b0, 'ashlar')
-        cap.position.set(m.position.x, hgt + 0.03, m.position.z)
-        g.add(cap)
-      }
       // blocco centrale
-      const core = block(th, hgt, th, PAL.stone, 'ashlar')
-      core.position.y = hgt / 2
+      const core = block(WALL_TH, WALL_H, WALL_TH, PAL.stone, 'ashlar')
+      core.position.y = WALL_H / 2
       g.add(core)
-      const coreCap = block(th * 1.05, 0.06, th * 1.05, 0xcfc5b0, 'ashlar')
-      coreCap.position.y = hgt + 0.03
+      const coreCap = block(WALL_TH * 1.05, 0.06, WALL_TH * 1.05, 0xcfc5b0, 'ashlar')
+      coreCap.position.y = WALL_H + 0.03
       g.add(coreCap)
-      const [up_, dn, lf, rt] = links
-      if (up_) seg(0, -1)
-      if (dn) seg(0, 1)
-      if (lf) seg(-1, 0)
-      if (rt) seg(1, 0)
-      // se è isolato o fa angolo, mettici una merlatura
-      if (!up_ && !dn && !lf && !rt) {
-        const merlo = block(0.1, 0.1, 0.1, 0xcfc5b0, 'ashlar')
-        merlo.position.y = hgt + 0.1
+      g.add(wallStubs(links))
+      // se è isolato, un merlo lo rende meno anonimo
+      if (!links.some(Boolean)) {
+        const merlo = block(0.11, 0.11, 0.11, 0xd6ccb6, 'ashlar')
+        merlo.position.y = WALL_H + 0.1
         g.add(merlo)
       }
       break
     }
     case 'tower': {
-      const base = cylinder(0.3, 0.82, PAL.stone, 14, 'ashlar')
-      base.position.y = 0.41
+      // Torre a base quadrata, saldata ai muri vicini.
+      const side = 0.64
+      const hgt = 0.82
+      const base = block(side, hgt, side, PAL.stone, 'ashlar')
+      base.position.y = hgt / 2
       g.add(base)
-      const ring = cylinder(0.34, 0.1, 0xcfc5b0, 14, 'ashlar')
-      ring.position.y = 0.85
+      // leggera scarpa alla base
+      const batter = block(side * 1.1, 0.12, side * 1.1, PAL.stone, 'ashlar')
+      batter.position.y = 0.06
+      g.add(batter)
+      const ring = block(side * 1.12, 0.08, side * 1.12, 0xcfc5b0, 'ashlar')
+      ring.position.y = hgt + 0.04
       g.add(ring)
-      // merli
-      for (let i = 0; i < 8; i++) {
-        const a2 = (i / 8) * Math.PI * 2
-        const m = block(0.09, 0.12, 0.09, 0xd6ccb6, 'ashlar')
-        m.position.set(Math.cos(a2) * 0.27, 0.96, Math.sin(a2) * 0.27)
-        g.add(m)
+      // merli sui quattro lati
+      const m2 = side * 0.56
+      for (const [mx, mz] of [
+        [-m2, -m2], [0, -m2], [m2, -m2],
+        [-m2, m2], [0, m2], [m2, m2],
+        [-m2, 0], [m2, 0],
+      ]) {
+        const merlo = block(0.11, 0.13, 0.11, 0xd6ccb6, 'ashlar')
+        merlo.position.set(mx, hgt + 0.14, mz)
+        g.add(merlo)
       }
+      g.add(wallStubs(links))
       break
     }
     case 'gate': {
-      // due torrette con arco in mezzo
-      for (const x of [-0.32, 0.32]) {
-        const t = block(0.3, 0.7, 0.42, PAL.stone, 'ashlar')
-        t.position.set(x, 0.35, 0)
-        g.add(t)
-        const cap = block(0.34, 0.07, 0.46, 0xcfc5b0, 'ashlar')
-        cap.position.set(x, 0.73, 0)
-        g.add(cap)
+      // Porta: due torrette con arco. Si orienta da sola secondo il muro.
+      const inner = new THREE.Group()
+      for (const x of [-0.33, 0.33]) {
+        const t = block(0.34, 0.72, 0.44, PAL.stone, 'ashlar')
+        t.position.set(x, 0.36, 0)
+        inner.add(t)
+        const cap = block(0.38, 0.07, 0.48, 0xcfc5b0, 'ashlar')
+        cap.position.set(x, 0.75, 0)
+        inner.add(cap)
+        for (const mz of [-0.14, 0.14]) {
+          const merlo = block(0.1, 0.12, 0.1, 0xd6ccb6, 'ashlar')
+          merlo.position.set(x, 0.84, mz)
+          inner.add(merlo)
+        }
       }
-      const arch = block(0.42, 0.22, 0.4, PAL.stone, 'ashlar')
-      arch.position.y = 0.6
-      g.add(arch)
-      const door = block(0.34, 0.4, 0.06, PAL.wood)
-      door.position.set(0, 0.2, 0.18)
-      g.add(door)
+      const arch = block(0.44, 0.24, 0.44, PAL.stone, 'ashlar')
+      arch.position.y = 0.62
+      inner.add(arch)
+      const door = block(0.36, 0.42, 0.06, PAL.wood)
+      door.position.set(0, 0.21, 0.2)
+      inner.add(door)
+      // se il muro corre in verticale, ruota il fornice
+      const [u2, d2, l2, r2] = links
+      if ((u2 || d2) && !l2 && !r2) inner.rotation.y = Math.PI / 2
+      g.add(inner)
+      g.add(wallStubs(links))
       break
     }
     case 'granary': {
@@ -1284,9 +1321,10 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     const a = api.current
     if (!a) return
     a.town.clear()
-    // caselle con muro, per raccordare le mura di cinta
+    // Caselle fortificate: muro, torre e porta si raccordano tra loro.
+    const FORT = new Set(['wall', 'tower', 'gate'])
     const walls = new Set(
-      placed.filter((p) => byId.get(p.b)?.look === 'wall').map((p) => `${p.r},${p.c}`),
+      placed.filter((p) => FORT.has(byId.get(p.b)?.look ?? '')).map((p) => `${p.r},${p.c}`),
     )
     placed.forEach((p, i) => {
       const b = byId.get(p.b)
