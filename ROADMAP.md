@@ -94,6 +94,8 @@ maschili della 1ª come *nauta* e *agricola*).
   richiesta di archiviazione durevole al browser
 - ✅ **Pubblicazione**: sito pubblico su GitHub Pages (auto-deploy a ogni push)
   + build a file singolo
+- ✅ **Copertura del lessico**: ogni parola di una tabella è chiesta da almeno
+  un quesito della sua lezione (prima 195 su 389 non lo erano)
 - ✅ **Controllo automatico del latino** (`npm run check`): i paradigmi corretti
   sono scritti nello script e confrontati con le tabelle del corso; gira in CI
   prima del deploy

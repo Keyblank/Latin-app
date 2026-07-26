@@ -360,6 +360,38 @@ for (const u of curriculum) {
   }
 }
 
+// Una parola messa in tabella e mai chiesta è una parola che lo studente ha
+// visto passare. Ogni voce dev'essere ripresa da almeno un quesito della sua
+// lezione — tranne quelle identiche all'italiano, che non hanno niente da
+// insegnare («mare» = mare) e che il controllo sulle coppie inutili rifiuta
+// giustamente.
+const senzaAccenti = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+const primoSenso = (s) => s.split(' — ')[0].split(/[,;(]/)[0].trim()
+const formaBase = (s) => s.replace(/\s*\((m|f|n)\.\)\s*/g, ' ').split(/[,(]/)[0].trim()
+
+for (const u of curriculum) {
+  for (const l of u.lessons) {
+    const tabelle = l.exercises.filter((e) => e.type === 'table' && e.lessico)
+    if (!tabelle.length) continue
+    const quesiti = senzaAccenti(
+      JSON.stringify(l.exercises.filter((e) => e.type !== 'info' && e.type !== 'table')),
+    )
+    for (const t of tabelle) {
+      for (const r of t.rows) {
+        const lat = formaBase(r.length > 2 ? `${r[0]}, ${r[1]}` : String(r[0]))
+        const ita = String(r[r.length - 1])
+        if (senzaAccenti(lat) === senzaAccenti(primoSenso(ita))) continue
+        if (!quesiti.includes(senzaAccenti(lat))) {
+          segnala(
+            `${u.id} · ${l.title}`,
+            `«${lat}» è in tabella ma nessun quesito della lezione la chiede`,
+          )
+        }
+      }
+    }
+  }
+}
+
 // Due voci per la stessa parola vogliono dire chiederla due volte nel ripasso.
 const senzaLineette = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '')
 const chiavi = new Map()

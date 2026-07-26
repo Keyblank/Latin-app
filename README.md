@@ -150,7 +150,16 @@ nel banco, che non ci siano coppie di abbinamento inutili (*rosa → rosa*) o id
 di lezione ripetuti. E per le **versioni**: che ogni parola del brano abbia la
 sua voce nel glossario, e che il glossario non contenga parole assenti dal testo.
 
-Un controllo merita una parola in più, perché protegge da un errore *silenzioso*:
+Due controlli meritano una parola in più, perché proteggono da errori
+*silenziosi*.
+
+Il primo: ogni parola messa in una tabella di lessico dev'essere ripresa da
+almeno un quesito della sua lezione. Senza, una parola può essere «insegnata»
+comparendo una volta in tabella e mai più — e infatti metà del vocabolario era
+in quella condizione. Fanno eccezione le parole identiche all'italiano
+(*mare*, *dea*, *patria*), che non hanno niente da insegnare.
+
+Il secondo:
 ogni tabella con le colonne «Latino … Italiano» dev'essere o marcata
 `lessico: true` (e allora finisce nel ripasso *Vocābula*) o dichiarata
 esplicitamente come non-lessico dentro lo script. Senza questo, una tabella di

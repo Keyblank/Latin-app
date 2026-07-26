@@ -713,6 +713,22 @@ export const curriculum: Unit[] = [
             note: 'Esempio: «ad villam» = verso la fattoria («villam» è accusativo).',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ante', 'davanti a, prima di'],
+              ['post', 'dietro a, dopo'],
+              ['inter', 'fra, tra'],
+              ['contrā', 'contro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «verso, presso»?',
+            options: ['ad', 'per', 'trāns'],
+            answer: 'ad',
+          },
+          {
             type: 'table',
             title: 'Preposizioni con l’ABLATIVO (dove si sta, da dove si viene)',
             lessico: true,
@@ -729,6 +745,20 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Esempio: «in villā» = nella fattoria («villā» è ablativo). «ab» ed «ex» diventano «ā» ed «ē» davanti a consonante: «ā Rōmā», «ē silvā».',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['dē', 'giù da; riguardo a'],
+              ['sub', 'sotto'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «da, fuori da»?',
+            options: ['ex', 'in', 'sub'],
+            answer: 'ex',
           },
           {
             type: 'info',
@@ -955,6 +985,19 @@ export const curriculum: Unit[] = [
             speakCols: [0],
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['īnsula', 'isola'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «strada, via»?',
+            options: ['via', 'terra', 'lūna'],
+            answer: 'via',
+          },
+          {
             type: 'table',
             title: 'Nomi della 1ª declinazione (2)',
             lessico: true,
@@ -973,6 +1016,21 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Tre da non fraintendere: «fāma» è spesso la voce che gira, non la celebrità; «fortūna» da sola è la sorte, che può essere pessima; «poena» è la punizione (da lì «pena»).',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['victōria', 'vittoria'],
+              ['fortūna', 'sorte (buona o cattiva)'],
+              ['hōra', 'ora'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «vittoria»?',
+            options: ['victōria', 'vīta', 'hōra'],
+            answer: 'victōria',
           },
           {
             type: 'choice',
@@ -1319,6 +1377,30 @@ export const curriculum: Unit[] = [
             note: 'Un paio finiscono in -er ma sono di questa declinazione: «puer, puerī» (ragazzo) e «liber, librī» (libro). Il genitivo in -ī li smaschera.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['fīlius', 'figlio'],
+              ['mūrus', 'muro'],
+              ['populus', 'popolo'],
+              ['deus', 'dio'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['hortus', 'giardino'],
+              ['campus', 'campo, pianura'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «figlio»?',
+            options: ['fīlius', 'equus', 'socius'],
+            answer: 'fīlius',
+          },
+          {
             type: 'table',
             title: 'Neutri in -um',
             lessico: true,
@@ -1337,6 +1419,22 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Attenzione a «cōnsilium»: nelle versioni è quasi sempre «il piano, la decisione» («cōnsilium capere» = prendere una decisione), non «il consiglio» che dai a un amico.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['rēgnum', 'regno'],
+              ['caelum', 'cielo'],
+              ['vīnum', 'vino'],
+              ['forum', 'piazza, foro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «città fortificata»?',
+            options: ['oppidum', 'rēgnum', 'forum'],
+            answer: 'oppidum',
           },
           {
             type: 'choice',
@@ -1649,6 +1747,23 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Qui c’è solo il maschile: il femminile fa -a («bona») e il neutro -um («bonum»), come già sai. Due da tenere d’occhio: «altus» vale sia «alto» sia «profondo» (per un romano è la stessa cosa: la distanza da un piano); «clārus» passa da «luminoso» a «illustre, famoso» — da lì viene «clarissimo».',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['bonus', 'buono'],
+              ['magnus', 'grande'],
+              ['parvus', 'piccolo'],
+              ['altus', 'alto'],
+              ['antīquus', 'antico'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «buono»?',
+            options: ['bonus', 'malus', 'clārus'],
+            answer: 'bonus',
           },
           {
             type: 'choice',
@@ -2012,6 +2127,30 @@ export const curriculum: Unit[] = [
             speakCols: [0],
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['laudāre', 'lodare'],
+              ['pugnāre', 'combattere'],
+              ['vocāre', 'chiamare'],
+              ['parāre', 'preparare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['habēre', 'avere'],
+              ['docēre', 'insegnare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «lodare»?',
+            options: ['laudāre', 'portāre', 'manēre'],
+            answer: 'laudāre',
+          },
+          {
             type: 'table',
             title: '3ª e 4ª coniugazione',
             lessico: true,
@@ -2032,6 +2171,22 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Due espressioni da riconoscere al volo: «bellum gerere» = fare la guerra, «cōnsilium capere» = prendere una decisione. In latino tanti significati nascono dall’accoppiata verbo + nome.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['dīcere', 'dire'],
+              ['scrībere', 'scrivere'],
+              ['agere', 'fare, spingere, trattare'],
+              ['gerere', 'portare; fare (la guerra)'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «condurre, guidare»?',
+            options: ['dūcere', 'dīcere', 'sentīre'],
+            answer: 'dūcere',
           },
           {
             type: 'choice',
@@ -2372,6 +2527,23 @@ export const curriculum: Unit[] = [
             note: '«hostis» è il nemico pubblico, quello contro cui si combatte; il nemico personale è «inimīcus».',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['pater', 'padre'],
+              ['māter', 'madre'],
+              ['frāter', 'fratello'],
+              ['soror', 'sorella'],
+              ['cōnsul', 'console'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «uomo, essere umano»?',
+            options: ['homō', 'pater', 'hostis'],
+            answer: 'homō',
+          },
+          {
             type: 'table',
             title: 'Cose e idee',
             lessico: true,
@@ -2392,6 +2564,31 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«virtūs» è il grande falso amico del latino: non è la virtù morale, è il VALORE, il coraggio del soldato (viene da «vir», l’uomo). «Magna virtūs» è un gran coraggio, non una gran bontà.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['urbs', 'città'],
+              ['pars', 'parte'],
+              ['mors', 'morte'],
+              ['vōx', 'voce'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['tempus', 'tempo'],
+              ['opus', 'opera, lavoro'],
+              ['lībertās', 'libertà'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «città»?',
+            options: ['urbs', 'pars', 'lībertās'],
+            answer: 'urbs',
           },
           {
             type: 'choice',
@@ -2748,6 +2945,21 @@ export const curriculum: Unit[] = [
             note: '«crēdere» in latino regge il DATIVO, non l’accusativo: «crēdō amīcō» = credo all’amico. Lo stesso vale per «parcere» (risparmiare), «nocēre» (nuocere), «pārēre» (obbedire): sono verbi che in italiano vogliono «a», e il latino li tratta allo stesso modo.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['vidēre', 'vedere'],
+              ['legere', 'leggere; raccogliere'],
+              ['clāmāre', 'gridare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «vedere»?',
+            options: ['vidēre', 'audīre', 'amāre'],
+            answer: 'vidēre',
+          },
+          {
             type: 'table',
             title: 'Muoversi, prendere, dare',
             lessico: true,
@@ -2766,6 +2978,23 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«capere» e «fugere» finiscono in -ere come «legere», ma alla 1ª persona fanno «capiō» e «fugiō», con la -i-: sono i verbi della 3ª coniugazione detti «in -iō». Stessa cosa per «facere», «accipere», «incipere» che già conosci.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['fugere', 'fuggire'],
+              ['currere', 'correre'],
+              ['movēre', 'muovere'],
+              ['stāre', 'stare fermo, stare in piedi'],
+              ['dēbēre', 'dovere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «prendere, catturare»?',
+            options: ['capere', 'dare', 'dēbēre'],
+            answer: 'capere',
           },
           {
             type: 'choice',
@@ -3108,6 +3337,30 @@ export const curriculum: Unit[] = [
             note: '«-que» non è una parola a sé: si attacca in fondo alla seconda parola. «Senātus populusque» = il senato E il popolo.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['et', 'e'],
+              ['sed', 'ma'],
+              ['nam', 'infatti'],
+              ['neque', 'e non, né'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['quod', 'perché (causa)'],
+              ['dum', 'mentre'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «e»?',
+            options: ['et', 'sed', 'dum'],
+            answer: 'et',
+          },
+          {
             type: 'info',
             icon: '🙃',
             title: 'Tre che non stanno mai per prime',
@@ -3141,6 +3394,30 @@ export const curriculum: Unit[] = [
               ['ibi', 'lì'],
             ],
             speakCols: [0],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['iam', 'già, ormai'],
+              ['semper', 'sempre'],
+              ['saepe', 'spesso'],
+              ['tum', 'allora'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['valdē', 'molto'],
+              ['ibi', 'lì'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «già, ormai»?',
+            options: ['iam', 'nōn', 'ibi'],
+            answer: 'iam',
           },
           {
             type: 'choice',
@@ -3486,6 +3763,31 @@ export const curriculum: Unit[] = [
             note: '«cognōscere» al perfetto («nōvī») vale «so», perché «sono venuto a sapere» è già un sapere acquisito. È un caso in cui il perfetto latino si traduce con un presente italiano.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['facere', 'fare'],
+              ['pōnere', 'porre'],
+              ['cōnstituere', 'decidere, stabilire'],
+              ['respondēre', 'rispondere'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['appellāre', 'chiamare, dare il nome di'],
+              ['accipere', 'ricevere, accogliere'],
+              ['incipere', 'cominciare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «fare»?',
+            options: ['facere', 'pōnere', 'incipere'],
+            answer: 'facere',
+          },
+          {
             type: 'table',
             title: 'Guerra e movimento',
             lessico: true,
@@ -3506,6 +3808,33 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«trādere» è insieme «consegnare al nemico» (da cui «tradire») e «tramandare ai posteri»: lo stesso gesto di passare qualcosa a qualcun altro.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['interficere', 'uccidere'],
+              ['expugnāre', 'espugnare, prendere d’assalto'],
+              ['vastāre', 'devastare'],
+              ['servāre', 'salvare, custodire'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['occīdere', 'uccidere, abbattere'],
+              ['reddere', 'restituire'],
+              ['contendere', 'affrettarsi; combattere'],
+              ['pervenīre', 'giungere'],
+              ['perterrēre', 'spaventare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «uccidere»?',
+            options: ['interficere', 'expugnāre', 'perterrēre'],
+            answer: 'interficere',
           },
           {
             type: 'choice',
@@ -3943,6 +4272,21 @@ export const curriculum: Unit[] = [
             note: '«negāre» non si traduce con «negare»: vale «dire che NON». «Negat sē vēnisse» non è «nega di essere venuto» ma, più naturalmente, «dice di non essere venuto». Il latino mette la negazione nel verbo, l’italiano nella subordinata.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['prōmittere', 'promettere'],
+              ['imperāre', 'comandare (+ dativo)'],
+              ['cōnfirmāre', 'assicurare; rafforzare'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «annunciare, riferire»?',
+            options: ['nūntiāre', 'negāre', 'cōnfirmāre'],
+            answer: 'nūntiāre',
+          },
+          {
             type: 'table',
             title: 'Sapere, volere, bisognare',
             lessico: true,
@@ -3961,6 +4305,21 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«oportet» e «licet» si trovano solo alla 3ª persona singolare: sono verbi IMPERSONALI, come l’italiano «bisogna» e «si può». Non hanno un soggetto che agisce, e reggono l’accusativo + infinito: «oportet tē venīre» = bisogna che tu venga.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['optāre', 'desiderare, scegliere'],
+              ['iūdicāre', 'giudicare'],
+              ['appārēre', 'apparire; risultare chiaro'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «sapere»?',
+            options: ['scīre', 'nescīre', 'licet'],
+            answer: 'scīre',
           },
           {
             type: 'choice',
@@ -4595,6 +4954,22 @@ export const curriculum: Unit[] = [
             note: 'Solo i primi tre numeri si declinano: da «quattuor» in poi la parola non cambia mai, in nessun caso. «Mīlle» al singolare è invariabile, ma al plurale diventa un neutro («mīlia») che regge il genitivo: «decem mīlia mīlitum» = diecimila soldati, alla lettera «dieci migliaia DI soldati».',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ūnus', 'uno'],
+              ['duo', 'due'],
+              ['quattuor', 'quattro'],
+              ['sex', 'sei'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «uno»?',
+            options: ['ūnus', 'duo', 'prīmus'],
+            answer: 'ūnus',
+          },
+          {
             type: 'table',
             title: 'Quanti, quali, quanto',
             lessico: true,
@@ -4613,6 +4988,22 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Questi aggettivi sembrano della 1ª classe, ma al genitivo e al dativo singolare seguono i PRONOMI: genitivo in -īus («ūnīus», «tōtīus», «alterīus»), dativo in -ī («ūnī», «tōtī», «alterī»). Sono nove in tutto e si imparano insieme: ūnus, sōlus, tōtus, ūllus, nūllus, alter, uter, neuter, alius.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['nūllus', 'nessuno'],
+              ['sōlus', 'solo, unico'],
+              ['tōtus', 'tutto intero'],
+              ['nihil', 'niente'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «un altro (fra molti)»?',
+            options: ['alius', 'alter', 'paucī'],
+            answer: 'alius',
           },
           {
             type: 'choice',
@@ -5084,6 +5475,31 @@ export const curriculum: Unit[] = [
             note: 'I tre plurali sono la trappola: «castra» è UN accampamento, non «gli accampamenti»; «cōpiae» sono le truppe (al singolare «cōpia» vuol dire abbondanza); «arma» sono le armi e basta. Tradurli al plurale letterale fa dire sciocchezze.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['arma', 'le armi'],
+              ['legiō', 'legione'],
+              ['equitātus', 'cavalleria'],
+              ['tēlum', 'arma da lancio, dardo'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['gladius', 'spada'],
+              ['scūtum', 'scudo'],
+              ['caedēs', 'strage'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «l’accampamento»?',
+            options: ['castra', 'cōpiae', 'praeda'],
+            answer: 'castra',
+          },
+          {
             type: 'table',
             title: 'Lo Stato',
             lessico: true,
@@ -5102,6 +5518,22 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«imperātor» in Cesare non è ancora «l’imperatore»: è il generale vittorioso acclamato dai soldati. Il senso moderno arriva dopo. E «honor» è più spesso la carica pubblica che il sentimento.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['magistrātus', 'magistrato, carica pubblica'],
+              ['honor', 'carica pubblica; onore'],
+              ['imperium', 'comando, potere'],
+              ['auctōritās', 'autorevolezza, prestigio'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «comandante (poi: imperatore)»?',
+            options: ['imperātor', 'magistrātus', 'auctōritās'],
+            answer: 'imperātor',
           },
           {
             type: 'choice',
@@ -5596,6 +6028,22 @@ export const curriculum: Unit[] = [
             note: '«bōs, bovis» è irregolare: il tema del nominativo (bō-) non è quello degli altri casi (bov-), e al genitivo plurale fa «boum». È una delle poche parole che vanno imparate a memoria così com’è.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['canis', 'cane'],
+              ['piscis', 'pesce'],
+              ['serpēns', 'serpente'],
+              ['cervus', 'cervo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «cane»?',
+            options: ['canis', 'lupus', 'cervus'],
+            answer: 'canis',
+          },
+          {
             type: 'table',
             title: 'La natura',
             lessico: true,
@@ -5614,6 +6062,23 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«arbor» è FEMMINILE, anche se finisce in -or come «dolor» e «honor», che sono maschili: «alta arbor» = l’albero alto, con l’aggettivo al femminile. «Mare» è neutro e appartiene ai neutri della 3ª in -e, con l’ablativo in -ī: «in marī» = in mare.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['flōs', 'fiore'],
+              ['herba', 'erba'],
+              ['ventus', 'vento'],
+              ['unda', 'onda'],
+              ['sōl', 'sole'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «albero»?',
+            options: ['arbor', 'flōs', 'sōl'],
+            answer: 'arbor',
           },
           {
             type: 'choice',
@@ -6129,6 +6594,32 @@ export const curriculum: Unit[] = [
             note: '«prīmā lūce» è un ablativo di tempo: niente preposizione, e vale «alle prime luci». Le indicazioni di tempo in latino stanno spesso in ablativo da sole — «eō annō» = in quell’anno, «hieme» = d’inverno.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['annus', 'anno'],
+              ['mēnsis', 'mese'],
+              ['lūx', 'luce'],
+              ['hodiē', 'oggi'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['herī', 'ieri'],
+              ['crās', 'domani'],
+              ['cotīdiē', 'ogni giorno'],
+              ['prīdiē', 'il giorno prima'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «anno»?',
+            options: ['annus', 'mēnsis', 'prīdiē'],
+            answer: 'annus',
+          },
+          {
             type: 'table',
             title: 'Il luogo',
             lessico: true,
@@ -6149,6 +6640,32 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«fīnēs» al plurale non sono «i confini» ma il territorio che quei confini racchiudono: «in fīnēs Helvētiōrum» = nel territorio degli Elvezi.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['locus', 'luogo (al plurale: «loca», neutro)'],
+              ['ager', 'campo; territorio'],
+              ['rūs', 'la campagna'],
+              ['domus', 'casa'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['castellum', 'fortino'],
+              ['prope', 'vicino'],
+              ['unde', 'da dove'],
+              ['hīc', 'qui'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «campo; territorio»?',
+            options: ['ager', 'locus', 'hīc'],
+            answer: 'ager',
           },
           {
             type: 'info',
@@ -6631,6 +7148,21 @@ export const curriculum: Unit[] = [
             note: 'Attenzione a «ōs, ōris» (bocca, neutro) e «os, ossis» (osso, neutro): cambia solo la lunghezza della vocale, che nei testi non è segnata. Le distingui dal genitivo — «ōris» contro «ossis» — e dal senso della frase.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['oculus', 'occhio'],
+              ['auris', 'orecchio'],
+              ['vultus', 'volto, espressione'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «testa; capo»?',
+            options: ['caput', 'oculus', 'vultus'],
+            answer: 'caput',
+          },
+          {
             type: 'table',
             title: 'I sentimenti',
             lessico: true,
@@ -6649,6 +7181,21 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«audācia» in latino è quasi sempre negativa: non il coraggio (che è «virtūs» o «fortitūdō») ma la sfrontatezza di chi osa troppo. E «invidia» spesso non è il sentimento di chi invidia, ma l’odio che uno si tira addosso: «in invidiā esse» = essere malvisto.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['gaudium', 'gioia'],
+              ['amor', 'amore'],
+              ['cupiditās', 'desiderio, brama'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «gioia»?',
+            options: ['gaudium', 'dolor', 'invidia'],
+            answer: 'gaudium',
           },
           {
             type: 'choice',
@@ -6864,6 +7411,22 @@ export const curriculum: Unit[] = [
             note: '«manus» e «cornū» hanno un secondo senso militare che nelle versioni è più frequente del primo: «manus mīlitum» è un drappello, «in dextrō cornū» vuol dire «all’ala destra».',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['senātus', 'senato'],
+              ['portus', 'porto'],
+              ['cōnsulātus', 'consolato'],
+              ['manus', 'mano'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «esercito»?',
+            options: ['exercitus', 'impetus', 'cornū'],
+            answer: 'exercitus',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «exercitūs» (genitivo)?',
             focus: 'exercitūs',
@@ -7065,6 +7628,30 @@ export const curriculum: Unit[] = [
             note: '«nōbilis» non è il nobile di sangue ma chi è conosciuto, illustre (viene da «nōscere», conoscere). «ācer» descrive una battaglia accanita più spesso di un sapore acuto.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['omnis', 'tutto, ogni'],
+              ['fortis', 'forte, coraggioso'],
+              ['brevis', 'breve'],
+              ['facilis', 'facile'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['difficilis', 'difficile'],
+              ['potēns', 'potente'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «tutto, ogni»?',
+            options: ['omnis', 'fortis', 'potēns'],
+            answer: 'omnis',
+          },
+          {
             type: 'choice',
             prompt: 'Cosa significa «omnēs mīlitēs»?',
             focus: 'omnēs mīlitēs',
@@ -7212,6 +7799,21 @@ export const curriculum: Unit[] = [
             note: 'I due falsi amici: «līberī» sono i figli, non «i liberi» (erano i figli liberi del padrone, in contrapposizione ai servi). E «familia» è l’insieme dei servi e dei beni di una casa — la famiglia come la intendiamo noi si dice piuttosto «domus».',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['coniūnx', 'coniuge (marito o moglie)'],
+              ['familia', 'la servitù di casa; il casato'],
+              ['iuvenis', 'giovane'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «moglie»?',
+            options: ['uxor', 'coniūnx', 'incola'],
+            answer: 'uxor',
+          },
+          {
             type: 'table',
             title: 'Mestieri e folla',
             lessico: true,
@@ -7230,6 +7832,22 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: 'Guarda i primi tre: finiscono in -a come «rosa» e si declinano come lei, ma sono MASCHILI — «nauta bonus», non «nauta bona». Il genere di un nome non si deduce dalla desinenza: va imparato con la parola.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['scrība', 'scrivano'],
+              ['inimīcus', 'nemico personale'],
+              ['multitūdō', 'moltitudine'],
+              ['servitūs', 'schiavitù'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «marinaio»?',
+            options: ['nauta', 'agricola', 'servitūs'],
+            answer: 'nauta',
           },
           {
             type: 'choice',
@@ -7599,6 +8217,40 @@ export const curriculum: Unit[] = [
             note: '«ūtor» regge l’ablativo, non l’accusativo: «gladiō ūtitur» = usa la spada (alla lettera «si serve con la spada»). È l’unico che chiede attenzione al caso.',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['hortor', 'esortare, incoraggiare'],
+              ['sequor', 'seguire'],
+              ['loquor', 'parlare'],
+              ['morior', 'morire'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina il significato',
+            pairs: [
+              ['patior', 'subire, sopportare'],
+              ['ūtor', 'usare (+ ablativo)'],
+              ['proficīscor', 'partire'],
+              ['arbitror', 'ritenere, giudicare'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Che cosa vogliono dire?',
+            pairs: [
+              ['vereor', 'temere'],
+              ['nāscor', 'nascere'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «esortare, incoraggiare»?',
+            options: ['hortor', 'sequor', 'nāscor'],
+            answer: 'hortor',
+          },
+          {
             type: 'info',
             icon: '⚠️',
             title: 'Il participio dei deponenti è attivo',
@@ -7690,6 +8342,20 @@ export const curriculum: Unit[] = [
             note: '«ratiō» è camaleontica quanto «rēs»: è la ragione, ma anche il metodo, il piano, e perfino il conto in denaro. «Quā ratiōne?» non è «per quale ragione?» ma «in che modo?».',
           },
           {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['cōnsilium', 'decisione, piano'],
+              ['causa', 'motivo'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «mente, intenzione»?',
+            options: ['mēns', 'ratiō', 'causa'],
+            answer: 'mēns',
+          },
+          {
             type: 'table',
             title: 'Forza, ordine, costume',
             lessico: true,
@@ -7708,6 +8374,23 @@ export const curriculum: Unit[] = [
             ],
             speakCols: [0],
             note: '«vīs» è irregolare e cortissima: al singolare fa «vīs, vim, vī», al plurale cambia tema e diventa «vīrēs». E «salūs» è più spesso la salvezza (scampare a un pericolo) che la salute del corpo.',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['vīrēs', 'le forze fisiche'],
+              ['salūs', 'salvezza; salute'],
+              ['mōs', 'costume, usanza'],
+              ['fīnis', 'fine, limite'],
+              ['numerus', 'numero'],
+            ],
+          },
+          {
+            type: 'choice',
+            prompt: 'Quale significa «forza, violenza»?',
+            options: ['vīs', 'vīrēs', 'numerus'],
+            answer: 'vīs',
           },
           {
             type: 'choice',
