@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (21 sezioni, 83 lezioni, ~250 vocaboli + i pronomi)
+### Contenuti (21 sezioni, 88 lezioni, ~375 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -59,8 +59,12 @@ Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 Accanto alla grammatica c'è un **binario di lessico**: lezioni di vocaboli con
 audio, agganciate all'unità che ne insegna la forma — preposizioni (U4), nomi
 della 1ª (U5), della 2ª (U6), aggettivi (U7), verbi (U8), nomi della 3ª (U9),
-congiunzioni e avverbi (U11). Ognuna segnala i **falsi amici** (*virtūs* =
-valore, *cōnsilium* = decisione, *fāma* = diceria).
+congiunzioni e avverbi (U11). Poi un **secondo giro** su temi: altri verbi
+(U12), la guerra e lo Stato (U15), il tempo e il luogo (U17), persone e
+società (U19), le parole astratte (U20). Ognuna segnala i **falsi amici**
+(*virtūs* = valore, *cōnsilium* = decisione, *līberī* = i figli, *familia* =
+la servitù) e le trappole di forma (i plurali *castra*/*cōpiae*/*fīnēs*, i
+maschili della 1ª come *nauta* e *agricola*).
 
 ### Funzionalità
 
@@ -111,8 +115,8 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
 - ⬜ **Traduzione graduata**: dalle frasi ai **brani adattati** ad autori facili
   (Eutropio, *Fabulae*, Cesare semplificato)
-- ⬜ **Lessico, secondo giro**: da ~230 a ~400 vocaboli (è la soglia sotto cui
-  una versione resta illeggibile anche sapendo tutta la grammatica)
+- ✅ **Lessico, secondo giro**: ~375 vocaboli (la soglia utile per leggere una
+  versione facile è intorno ai 400: ci siamo quasi)
 
 ---
 
@@ -137,8 +141,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - La morfologia è **completa**: cinque declinazioni, due classi di aggettivi,
   tutti i tempi dell'indicativo e del congiuntivo, attivi e passivi, participi,
   irregolari e deponenti, più i costrutti (ablativo assoluto, acc.+inf.,
-  subordinate). Il collo di bottiglia ora è **uno solo, il lessico**: ~250
-  vocaboli non bastano per una versione autentica, che ne chiede almeno 400.
+  subordinate), e il lessico è a ~375 vocaboli, vicino alla soglia utile.
+  Quello che manca ora non è più materiale ma **pratica su testo continuo**:
+  la modalità «Versione».
 
 ---
 

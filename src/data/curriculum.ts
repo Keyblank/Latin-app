@@ -3024,6 +3024,101 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u12v',
+        title: 'Verbi, secondo giro',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Altri ventiquattro verbi',
+            body:
+              'I verbi dell’unità 8 erano il nucleo. Questi sono quelli che ' +
+              'incontri subito dopo aprendo una pagina di storia: azioni di ' +
+              'guerra, di decisione, di movimento.\n\n' +
+              'Molti sono composti di verbi che già conosci — «per-venīre», ' +
+              '«re-linquere», «con-ficere» — e riconoscere il pezzo di base ' +
+              'aiuta a indovinare il senso anche senza vocabolario.',
+          },
+          {
+            type: 'table',
+            title: 'Fare, decidere, dire',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['facere', 'fare'],
+              ['pōnere', 'porre — «castra pōnere» = accamparsi'],
+              ['cōnstituere', 'decidere, stabilire'],
+              ['cōgere', 'costringere; radunare'],
+              ['iubēre', 'ordinare'],
+              ['respondēre', 'rispondere'],
+              ['appellāre', 'chiamare, dare il nome di'],
+              ['exīstimāre', 'ritenere, giudicare'],
+              ['intellegere', 'capire'],
+              ['cognōscere', 'venire a sapere'],
+              ['accipere', 'ricevere, accogliere'],
+              ['incipere', 'cominciare'],
+            ],
+            speakCols: [0],
+            note: '«cognōscere» al perfetto («nōvī») vale «so», perché «sono venuto a sapere» è già un sapere acquisito. È un caso in cui il perfetto latino si traduce con un presente italiano.',
+          },
+          {
+            type: 'table',
+            title: 'Guerra e movimento',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['interficere', 'uccidere'],
+              ['occīdere', 'uccidere, abbattere'],
+              ['expugnāre', 'espugnare, prendere d’assalto'],
+              ['vastāre', 'devastare'],
+              ['servāre', 'salvare, custodire'],
+              ['relinquere', 'lasciare, abbandonare'],
+              ['trādere', 'consegnare; tramandare'],
+              ['reddere', 'restituire'],
+              ['contendere', 'affrettarsi; combattere'],
+              ['pervenīre', 'giungere'],
+              ['discēdere', 'allontanarsi, andarsene'],
+              ['perterrēre', 'spaventare'],
+            ],
+            speakCols: [0],
+            note: '«trādere» è insieme «consegnare al nemico» (da cui «tradire») e «tramandare ai posteri»: lo stesso gesto di passare qualcosa a qualcun altro.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «castra posuērunt»?',
+            focus: 'castra posuērunt',
+            options: ['posero l’accampamento', 'presero l’accampamento', 'lasciarono l’accampamento'],
+            answer: 'posero l’accampamento',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «pervēnērunt»?',
+            focus: 'pervēnērunt',
+            options: ['giunsero', 'partirono', 'vinsero'],
+            answer: 'giunsero',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['relinquere', 'abbandonare'],
+              ['cōgere', 'costringere'],
+              ['iubēre', 'ordinare'],
+              ['discēdere', 'andarsene'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['intellegere', 'capire'],
+              ['cognōscere', 'venire a sapere'],
+              ['exīstimāre', 'ritenere'],
+              ['trādere', 'consegnare'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u12l4',
         title: 'Analizza e traduci',
         icon: '📖',
@@ -4254,6 +4349,102 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u15v',
+        title: 'La guerra e lo Stato',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Il vocabolario delle versioni',
+            body:
+              'Se la versione è di storia — e quasi sempre lo è — queste parole ' +
+              'compaiono nella prima riga. Vale la pena averle già in tasca.\n\n' +
+              'Attenzione a un gruppetto particolare: alcune esistono solo al ' +
+              'PLURALE, e al plurale significano una cosa diversa da quello che ' +
+              'ti aspetteresti.',
+          },
+          {
+            type: 'table',
+            title: 'L’esercito',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['castra, -ōrum (n. pl.)', 'l’accampamento'],
+              ['cōpiae, -ārum (f. pl.)', 'le truppe'],
+              ['arma, -ōrum (n. pl.)', 'le armi'],
+              ['legiō, legiōnis', 'legione'],
+              ['equitātus, -ūs', 'cavalleria'],
+              ['praesidium', 'presidio, guarnigione'],
+              ['tēlum', 'arma da lancio, dardo'],
+              ['gladius', 'spada'],
+              ['scūtum', 'scudo'],
+              ['vulnus, vulneris', 'ferita'],
+              ['caedēs, caedis', 'strage'],
+              ['praeda', 'bottino'],
+            ],
+            speakCols: [0],
+            note: 'I tre plurali sono la trappola: «castra» è UN accampamento, non «gli accampamenti»; «cōpiae» sono le truppe (al singolare «cōpia» vuol dire abbondanza); «arma» sono le armi e basta. Tradurli al plurale letterale fa dire sciocchezze.',
+          },
+          {
+            type: 'table',
+            title: 'Lo Stato',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['imperātor, -ōris', 'comandante (poi: imperatore)'],
+              ['magistrātus, -ūs', 'magistrato, carica pubblica'],
+              ['prōvincia', 'provincia'],
+              ['iūs, iūris', 'diritto'],
+              ['officium', 'dovere, incarico'],
+              ['honor, honōris', 'carica pubblica; onore'],
+              ['obses, obsidis', 'ostaggio'],
+              ['pāx, pācis', 'pace'],
+              ['imperium', 'comando, potere'],
+              ['auctōritās, -ātis', 'autorevolezza, prestigio'],
+            ],
+            speakCols: [0],
+            note: '«imperātor» in Cesare non è ancora «l’imperatore»: è il generale vittorioso acclamato dai soldati. Il senso moderno arriva dopo. E «honor» è più spesso la carica pubblica che il sentimento.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «castra»?',
+            focus: 'castra',
+            options: ['un accampamento', 'gli accampamenti', 'i castelli'],
+            answer: 'un accampamento',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione di Cesare, «imperātor» è…',
+            focus: 'imperātor',
+            options: [
+              'il generale, il comandante',
+              'l’imperatore di Roma',
+              'un magistrato civile',
+            ],
+            answer: 'il generale, il comandante',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['cōpiae', 'le truppe'],
+              ['praesidium', 'guarnigione'],
+              ['vulnus', 'ferita'],
+              ['praeda', 'bottino'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['iūs', 'diritto'],
+              ['officium', 'dovere'],
+              ['obses', 'ostaggio'],
+              ['pāx', 'pace'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u15l4',
         title: 'Analizza e traduci',
         icon: '📖',
@@ -5038,6 +5229,120 @@ export const curriculum: Unit[] = [
               ['quid', 'che cosa'],
               ['cūr', 'perché'],
               ['quandō', 'quando'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u17v',
+        title: 'Quando e dove',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Le coordinate del racconto',
+            body:
+              'Una versione storica dice in continuazione quando e dove succede ' +
+              'qualcosa. Sono parole corte, si saltano leggendo — e poi la ' +
+              'traduzione non torna.',
+          },
+          {
+            type: 'table',
+            title: 'Il tempo',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['annus', 'anno'],
+              ['mēnsis, mēnsis', 'mese'],
+              ['aestās, aestātis', 'estate'],
+              ['hiems, hiemis', 'inverno'],
+              ['lūx, lūcis', 'luce — «prīmā lūce» = all’alba'],
+              ['hodiē', 'oggi'],
+              ['herī', 'ieri'],
+              ['crās', 'domani'],
+              ['mox', 'presto, fra poco'],
+              ['tandem', 'finalmente, alla fine'],
+              ['cotīdiē', 'ogni giorno'],
+              ['prīdiē', 'il giorno prima'],
+            ],
+            speakCols: [0],
+            note: '«prīmā lūce» è un ablativo di tempo: niente preposizione, e vale «alle prime luci». Le indicazioni di tempo in latino stanno spesso in ablativo da sole — «eō annō» = in quell’anno, «hieme» = d’inverno.',
+          },
+          {
+            type: 'table',
+            title: 'Il luogo',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['locus, locī', 'luogo (al plurale: «loca», neutro)'],
+              ['ager, agrī', 'campo; territorio'],
+              ['fīnēs, fīnium (pl.)', 'il territorio, i confini'],
+              ['rūs, rūris', 'la campagna'],
+              ['domus, domūs', 'casa'],
+              ['castellum', 'fortino'],
+              ['prope', 'vicino'],
+              ['procul', 'lontano'],
+              ['inde', 'da lì'],
+              ['unde', 'da dove'],
+              ['ubīque', 'dappertutto'],
+              ['hīc', 'qui'],
+            ],
+            speakCols: [0],
+            note: '«fīnēs» al plurale non sono «i confini» ma il territorio che quei confini racchiudono: «in fīnēs Helvētiōrum» = nel territorio degli Elvezi.',
+          },
+          {
+            type: 'info',
+            icon: '📍',
+            title: 'Le città non vogliono preposizione',
+            body:
+              'Una regola piccola che nelle versioni serve a ogni pagina.\n\n' +
+              'Con i nomi di CITTÀ (e con «domus» e «rūs») il latino NON mette ' +
+              'la preposizione:\n\n' +
+              '«Rōmam vēnit» = venne a Roma (accusativo, moto a luogo)\n' +
+              '«Rōmā discessit» = partì da Roma (ablativo, moto da luogo)\n' +
+              '«Rōmae fuit» = fu a Roma\n\n' +
+              'Quel «Rōmae» non è un genitivo: è un caso in più, sopravvissuto ' +
+              'solo qui, che si chiama LOCATIVO. Vale anche per «domī» (a casa) ' +
+              'e «rūrī» (in campagna).',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Rōmam vēnit»?',
+            focus: 'Rōmam vēnit',
+            options: ['Venne a Roma', 'Venne da Roma', 'Fu a Roma'],
+            answer: 'Venne a Roma',
+          },
+          {
+            type: 'choice',
+            prompt: 'E «domī manēbat»?',
+            focus: 'domī manēbat',
+            options: ['Restava a casa', 'Tornava a casa', 'Usciva di casa'],
+            answer: 'Restava a casa',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «prīmā lūce»?',
+            focus: 'prīmā lūce',
+            options: ['all’alba', 'a mezzogiorno', 'con la prima luce accesa'],
+            answer: 'all’alba',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['hiems', 'inverno'],
+              ['aestās', 'estate'],
+              ['tandem', 'finalmente'],
+              ['mox', 'fra poco'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['procul', 'lontano'],
+              ['inde', 'da lì'],
+              ['ubīque', 'dappertutto'],
+              ['fīnēs', 'il territorio'],
             ],
           },
         ],
@@ -5852,6 +6157,92 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u19v',
+        title: 'Persone e società',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Chi popola i testi',
+            body:
+              'Le persone che compaiono nelle versioni non sono solo re e ' +
+              'soldati. E qui si nascondono due dei falsi amici peggiori del ' +
+              'latino, che sembrano trasparenti e non lo sono affatto.',
+          },
+          {
+            type: 'table',
+            title: 'La famiglia',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['uxor, uxōris', 'moglie'],
+              ['coniūnx, coniugis', 'coniuge (marito o moglie)'],
+              ['līberī, -ōrum (pl.)', 'i figli'],
+              ['familia', 'la servitù di casa; il casato'],
+              ['mulier, mulieris', 'donna'],
+              ['senex, senis', 'vecchio'],
+              ['iuvenis, iuvenis', 'giovane'],
+              ['incola, -ae', 'abitante'],
+            ],
+            speakCols: [0],
+            note: 'I due falsi amici: «līberī» sono i figli, non «i liberi» (erano i figli liberi del padrone, in contrapposizione ai servi). E «familia» è l’insieme dei servi e dei beni di una casa — la famiglia come la intendiamo noi si dice piuttosto «domus».',
+          },
+          {
+            type: 'table',
+            title: 'Mestieri e folla',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['nauta, -ae (m.)', 'marinaio'],
+              ['agricola, -ae (m.)', 'contadino'],
+              ['scrība, -ae (m.)', 'scrivano'],
+              ['sacerdōs, sacerdōtis', 'sacerdote'],
+              ['dea, -ae', 'dea'],
+              ['inimīcus', 'nemico personale'],
+              ['turba, -ae', 'folla'],
+              ['multitūdō, -inis', 'moltitudine'],
+              ['plēbs, plēbis', 'plebe'],
+              ['servitūs, -ūtis', 'schiavitù'],
+            ],
+            speakCols: [0],
+            note: 'Guarda i primi tre: finiscono in -a come «rosa» e si declinano come lei, ma sono MASCHILI — «nauta bonus», non «nauta bona». Il genere di un nome non si deduce dalla desinenza: va imparato con la parola.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «līberī»?',
+            focus: 'līberī',
+            options: ['i figli', 'gli uomini liberi', 'i libri'],
+            answer: 'i figli',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si dice «il buon marinaio»?',
+            focus: 'nauta',
+            options: ['nauta bonus', 'nauta bona', 'nautus bonus'],
+            answer: 'nauta bonus',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['uxor', 'moglie'],
+              ['mulier', 'donna'],
+              ['senex', 'vecchio'],
+              ['incola', 'abitante'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['agricola', 'contadino'],
+              ['sacerdōs', 'sacerdote'],
+              ['turba', 'folla'],
+              ['plēbs', 'plebe'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u19l5',
         title: 'Analizza e traduci',
         icon: '📖',
@@ -6186,6 +6577,101 @@ export const curriculum: Unit[] = [
               ['sequitur', 'segue'],
               ['moritur', 'muore'],
               ['proficīscitur', 'parte'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u20v',
+        title: 'Le parole delle idee',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Gli astratti, e perché sono difficili',
+            body:
+              'Ultimo gruppo, e il più insidioso. Sono parole astratte, quindi ' +
+              'quasi tutte hanno passato la loro forma all’italiano — e quasi ' +
+              'tutte hanno cambiato senso per strada.\n\n' +
+              'Con queste, la regola dell’unità 1 vale al massimo grado: se una ' +
+              'parola ti sembra ovvia, controllala lo stesso.',
+          },
+          {
+            type: 'table',
+            title: 'Mente e parola',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['mēns, mentis', 'mente, intenzione'],
+              ['ratiō, ratiōnis', 'ragione; metodo; conto'],
+              ['cōnsilium', 'decisione, piano'],
+              ['sententia', 'opinione, parere'],
+              ['ōrātiō, ōrātiōnis', 'discorso'],
+              ['memoria', 'memoria, ricordo'],
+              ['exemplum', 'esempio, precedente'],
+              ['causa', 'motivo — «meā causā» = per causa mia'],
+            ],
+            speakCols: [0],
+            note: '«ratiō» è camaleontica quanto «rēs»: è la ragione, ma anche il metodo, il piano, e perfino il conto in denaro. «Quā ratiōne?» non è «per quale ragione?» ma «in che modo?».',
+          },
+          {
+            type: 'table',
+            title: 'Forza, ordine, costume',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['vīs (vim, vī)', 'forza, violenza'],
+              ['vīrēs, vīrium (pl.)', 'le forze fisiche'],
+              ['salūs, salūtis', 'salvezza; salute'],
+              ['mōs, mōris', 'costume, usanza'],
+              ['mōrēs, mōrum (pl.)', 'il carattere, i costumi'],
+              ['ōrdō, ōrdinis', 'ordine, fila; ceto sociale'],
+              ['genus, generis', 'stirpe, genere, specie'],
+              ['initium', 'inizio'],
+              ['fīnis, fīnis', 'fine, limite'],
+              ['numerus', 'numero'],
+            ],
+            speakCols: [0],
+            note: '«vīs» è irregolare e cortissima: al singolare fa «vīs, vim, vī», al plurale cambia tema e diventa «vīrēs». E «salūs» è più spesso la salvezza (scampare a un pericolo) che la salute del corpo.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Quā ratiōne id fēcit?»',
+            focus: 'Quā ratiōne',
+            options: ['In che modo lo fece?', 'Per quale ragione lo fece?', 'Con quale conto lo fece?'],
+            answer: 'In che modo lo fece?',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «salūtem petīvērunt», che cosa cercavano?',
+            focus: 'salūtem petīvērunt',
+            options: ['la salvezza', 'la salute', 'il saluto'],
+            answer: 'la salvezza',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa sono i «mōrēs» di un popolo?',
+            focus: 'mōrēs',
+            options: ['i costumi, il carattere', 'le mura', 'le morti'],
+            answer: 'i costumi, il carattere',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['mēns', 'mente'],
+              ['ōrātiō', 'discorso'],
+              ['sententia', 'parere'],
+              ['exemplum', 'precedente'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['vīs', 'violenza'],
+              ['ōrdō', 'ceto sociale'],
+              ['genus', 'stirpe'],
+              ['initium', 'inizio'],
             ],
           },
         ],

@@ -188,14 +188,21 @@ esempi già presenti.
 
 ### Il lessico
 
-Accanto alla grammatica c'è un **binario di vocaboli** (~200 parole in tutto):
+Accanto alla grammatica c'è un **binario di vocaboli** (~375 parole in tutto):
 lezioni di lessico con audio, agganciate all'unità che ne insegna la forma —
 **preposizioni** e il caso che reggono (U4), nomi della **1ª** (U5) e della
 **2ª** (U6), **aggettivi** (U7), **verbi** per coniugazione (U8), nomi della
-**3ª** con il genitivo (U9), **congiunzioni e avverbi** (U11). Ogni lezione
-segnala i **falsi amici**, quelli che nelle versioni fanno perdere punti:
-*virtūs* = valore (non «virtù»), *cōnsilium* = decisione, *fāma* = diceria,
-*casa* = capanna.
+**3ª** con il genitivo (U9), **congiunzioni e avverbi** (U11). Poi un secondo
+giro per temi: altri **verbi** (U12), **la guerra e lo Stato** (U15), **il
+tempo e il luogo** (U17), **persone e società** (U19), **le parole astratte**
+(U20).
+
+Ogni lezione segnala i **falsi amici**, quelli che nelle versioni fanno perdere
+punti: *virtūs* = valore (non «virtù»), *cōnsilium* = decisione, *fāma* =
+diceria, *līberī* = i figli (non «i liberi»), *familia* = la servitù di casa,
+*casa* = capanna. E le trappole di forma: i plurali che cambiano senso
+(*castra* = **un** accampamento, *cōpiae* = le truppe, *fīnēs* = il
+territorio) e i maschili della 1ª declinazione (*nauta bonus*, non *bona*).
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia
