@@ -10,6 +10,15 @@ università (che non hanno mai fatto latino) fino a essere in grado di
 **tradurre versioni** — cioè leggere e volgere in italiano brani latini,
 tipicamente narrativi (storici, favole).
 
+**Caso d'uso principale**: uno studente che deve affrontare *letteratura latina*
+all'università **senza aver mai fatto latino**. All'esame la storia letteraria
+si studia in italiano; il vero scoglio è la **lingua**, cioè tradurre i brani
+in programma (spesso di autori precisi: Cicerone, Virgilio, Seneca, Cesare…) ed
+eventualmente superare una **prova/idoneità di latino**. L'app punta a questo:
+dare grammatica e pratica di **traduzione**. Per questo motivo, oltre ai
+contenuti, hanno **alta priorità** due strumenti: la sezione «Grammatica»
+consultabile e la modalità «Versione».
+
 Principi guida:
 - **Non dare nulla per scontato**: ogni termine tecnico va definito la prima
   volta che compare, partendo sempre dall'italiano che già si conosce.
@@ -86,9 +95,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 ## 🛠️ Dove andiamo (piano funzionalità)
 
-- ⬜ **Sezione "Grammatica" consultabile** — tutte le tabelle sempre a portata,
-  come un mini-manuale (fondamentale per chi traduce)
-- ⬜ **Modalità "Versione"** — un brano latino con aiuti sulle parole al tocco,
+- ⬜ **Sezione "Grammatica" consultabile** ⭐ — tutte le tabelle sempre a portata,
+  come un mini-manuale (fondamentale per chi traduce all'università)
+- ⬜ **Modalità "Versione"** ⭐ — un brano latino con aiuti sulle parole al tocco,
   poi confronto con la traduzione: il ponte verso l'esame
 - ⬜ **Badge / traguardi** latini da collezionare
 - ⬜ Più esercizi **latino → italiano** e un esercizio di **analisi** dedicato
