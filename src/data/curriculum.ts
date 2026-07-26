@@ -629,6 +629,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Preposizioni con l’ACCUSATIVO (dove si va)',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['ad', 'verso, presso'],
@@ -648,6 +649,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Preposizioni con l’ABLATIVO (dove si sta, da dove si viene)',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['in', 'in, dentro (senza movimento)'],
@@ -851,6 +853,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Nomi della 1ª declinazione (1)',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['via', 'strada, via'],
@@ -869,6 +872,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Nomi della 1ª declinazione (2)',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['vīta', 'vita'],
@@ -1168,6 +1172,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Maschili in -us',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['fīlius', 'figlio'],
@@ -1187,6 +1192,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Neutri in -um',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['oppidum', 'città fortificata'],
@@ -1449,6 +1455,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Aggettivi della 1ª classe',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['bonus', 'buono'],
@@ -1784,6 +1791,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: '1ª e 2ª coniugazione',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['portāre', 'portare'],
@@ -1804,6 +1812,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: '3ª e 4ª coniugazione',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['dūcere', 'condurre, guidare'],
@@ -2120,6 +2129,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Persone',
+            lessico: true,
             columns: ['Latino', 'Genitivo', 'Italiano'],
             rows: [
               ['homō', 'hominis', 'uomo, essere umano'],
@@ -2138,6 +2148,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Cose e idee',
+            lessico: true,
             columns: ['Latino', 'Genitivo', 'Italiano'],
             rows: [
               ['urbs', 'urbis', 'città'],
@@ -2689,6 +2700,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Congiunzioni',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['et, -que, atque', 'e'],
@@ -2726,6 +2738,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Avverbi',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['nōn', 'non'],
@@ -3043,6 +3056,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Fare, decidere, dire',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['facere', 'fare'],
@@ -3064,6 +3078,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Guerra e movimento',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['interficere', 'uccidere'],
@@ -4367,6 +4382,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'L’esercito',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['castra, -ōrum (n. pl.)', 'l’accampamento'],
@@ -4388,6 +4404,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Lo Stato',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['imperātor, -ōris', 'comandante (poi: imperatore)'],
@@ -5250,6 +5267,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Il tempo',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['annus', 'anno'],
@@ -5271,6 +5289,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Il luogo',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['locus, locī', 'luogo (al plurale: «loca», neutro)'],
@@ -5827,6 +5846,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Parole della 4ª declinazione',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['exercitus', 'esercito'],
@@ -5932,6 +5952,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Parole della 5ª declinazione',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['rēs', 'cosa, fatto, situazione'],
@@ -6025,6 +6046,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Aggettivi della 2ª classe da sapere',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['omnis, omne', 'tutto, ogni'],
@@ -6173,6 +6195,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'La famiglia',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['uxor, uxōris', 'moglie'],
@@ -6190,6 +6213,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Mestieri e folla',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['nauta, -ae (m.)', 'marinaio'],
@@ -6508,6 +6532,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'I deponenti che incontrerai',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['hortor, hortārī', 'esortare, incoraggiare'],
@@ -6600,6 +6625,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Mente e parola',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['mēns, mentis', 'mente, intenzione'],
@@ -6617,6 +6643,7 @@ export const curriculum: Unit[] = [
           {
             type: 'table',
             title: 'Forza, ordine, costume',
+            lessico: true,
             columns: ['Latino', 'Italiano'],
             rows: [
               ['vīs (vim, vī)', 'forza, violenza'],

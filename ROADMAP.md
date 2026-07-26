@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (21 sezioni, 88 lezioni, ~375 vocaboli + i pronomi)
+### Contenuti (21 sezioni, 88 lezioni, 306 vocaboli + i pronomi)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -81,6 +81,8 @@ maschili della 1ª come *nauta* e *agricola*).
 - ✅ **Mascotte** (busto di marmo, 3 umori animati) + **battute ironiche**
 - ✅ **Suoni ed effetti a tema romano** (lira / corno / fanfara, coriandoli di
   alloro e oro), con interruttore
+- ✅ **Vocābula** — ripasso del lessico a scadenze crescenti (1, 3, 7, 16, 35,
+  90 giorni), 5 parole nuove al giorno
 - ✅ Salvataggio locale dei progressi
 - ✅ **Pubblicazione**: sito pubblico su GitHub Pages (auto-deploy a ogni push)
   + build a file singolo
@@ -116,7 +118,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ✅ **Traduzione graduata**: sette **brani adattati**, dalla favola di Fedro
   all'oratoria di Cicerone, sbloccati man mano che il corso spiega ciò che
   contengono
-- ✅ **Lessico, secondo giro**: ~375 vocaboli (la soglia utile per leggere una
+- ✅ **Lessico, secondo giro**: 306 voci (la soglia utile per leggere una
   versione facile è intorno ai 400: ci siamo quasi)
 
 ---
@@ -128,6 +130,10 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
   lezioni, quindi sempre allineata
 - ✅ **Modalità "Versione"** ⭐ — sette brani adattati con il vocabolario al
   tocco, traduzione frase per frase e nota sul punto difficile
+- ✅ **Ripasso del lessico a distanza** (*Vocābula*) ⭐ — ogni parola ha una
+  scadenza che si allunga se la ricordi (1, 3, 7, 16, 35, 90 giorni) e torna a
+  zero se la sbagli; 5 parole nuove al giorno, 12 per sessione. Le 306 voci
+  sono lette dalle tabelle marcate `lessico: true`, non da un elenco a parte
 - ⬜ **Badge / traguardi** latini da collezionare
 - ⬜ Più esercizi **latino → italiano** e un esercizio di **analisi** dedicato
   (di' caso, numero, tempo…)
@@ -143,10 +149,9 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - La morfologia è **completa**: cinque declinazioni, due classi di aggettivi,
   tutti i tempi dell'indicativo e del congiuntivo, attivi e passivi, participi,
   irregolari e deponenti, più i costrutti (ablativo assoluto, acc.+inf.,
-  subordinate), il lessico è a ~375 vocaboli e ci sono sette versioni. Restano
-  aperto soprattutto il **ripasso del lessico a distanza**: oggi tornano solo
-  gli esercizi sbagliati, quindi una parola indovinata per caso non si rivede
-  più.
+  subordinate), il lessico è a 306 voci con il ripasso a distanza, e ci sono
+  sette versioni. Restano aperti soprattutto i **numerali** in modo sistematico
+  e un esercizio di **analisi** dedicato (di' caso, numero, tempo…).
 
 ---
 
@@ -156,3 +161,8 @@ Tutto il contenuto è in **`src/data/curriculum.ts`** (unità → lezioni →
 esercizi). I tipi di esercizio sono in `src/types.ts`. Le regole di gioco
 (ranghi, obiettivo) in `src/gamification.ts`, le battute in `src/quips.ts`.
 Basta seguire gli esempi già presenti.
+
+Se aggiungi una tabella di **vocaboli**, marcala con `lessico: true` (prima
+colonna «Latino», ultima «Italiano»): così entra da sola nel ripasso *Vocābula*
+e nella sezione Grammatica. Se te ne dimentichi, `npm run check` se ne accorge
+e si ferma.

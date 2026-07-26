@@ -31,6 +31,15 @@ la lingua. Interfaccia in italiano.
   si traduce davvero. Sette brani, dalla favola di Fedro all'oratoria di
   Cicerone, ognuno sbloccato solo dopo che il corso ha spiegato tutto quello
   che contiene. Sono in `src/data/versiones.ts`.
+- **Vocābula** 🧠: il **ripasso del lessico a distanza**. Il *Repetitio*
+  riprende solo le domande sbagliate: una parola indovinata per caso esce dal
+  corso e non torna più. Qui invece ogni parola ha una sua scadenza, che si
+  allunga ogni volta che la ricordi (**1, 3, 7, 16, 35, 90 giorni**) e torna a
+  zero quando la sbagli. Si incontrano al massimo **5 parole nuove al giorno** e
+  se ne ripassano **12 per sessione**: poche parole riviste a distanza si
+  ricordano, molte in una sera no. Il pulsante compare solo quando c'è
+  qualcosa in scadenza. L'elenco non è scritto a mano: le 306 voci sono lette
+  dalle tabelle del corso marcate `lessico: true`.
 - **Grammatica** 📚: un mini-manuale consultabile in qualunque momento, con
   **tutte le 89 tabelle** del corso raccolte per unità e la ricerca per forma —
   scrivi `eius` o `ibus` e trovi le tabelle che la contengono, senza doverti
@@ -110,6 +119,13 @@ la risposta fra le opzioni, che le parole delle traduzioni da comporre siano
 nel banco, che non ci siano coppie di abbinamento inutili (*rosa → rosa*) o id
 di lezione ripetuti. E per le **versioni**: che ogni parola del brano abbia la
 sua voce nel glossario, e che il glossario non contenga parole assenti dal testo.
+
+Un controllo merita una parola in più, perché protegge da un errore *silenzioso*:
+ogni tabella con le colonne «Latino … Italiano» dev'essere o marcata
+`lessico: true` (e allora finisce nel ripasso *Vocābula*) o dichiarata
+esplicitamente come non-lessico dentro lo script. Senza questo, una tabella di
+vocaboli aggiunta e non marcata non darebbe nessun errore: semplicemente quelle
+parole non si ripasserebbero mai, e non se ne accorgerebbe nessuno.
 
 Gira anche a ogni push, prima della pubblicazione: se una forma latina è
 sbagliata, il sito non viene aggiornato.
@@ -201,7 +217,7 @@ esempi già presenti.
 
 ### Il lessico
 
-Accanto alla grammatica c'è un **binario di vocaboli** (~375 parole in tutto):
+Accanto alla grammatica c'è un **binario di vocaboli** (306 voci distinte):
 lezioni di lessico con audio, agganciate all'unità che ne insegna la forma —
 **preposizioni** e il caso che reggono (U4), nomi della **1ª** (U5) e della
 **2ª** (U6), **aggettivi** (U7), **verbi** per coniugazione (U8), nomi della
@@ -226,12 +242,17 @@ e l'analisi, il vero cuore dello studio del latino.
 ```
 src/
   data/curriculum.ts   → il contenuto del corso (parole, frasi, esercizi)
+  data/versiones.ts    → i brani da tradurre, con glossario e traduzione
   types.ts             → i tipi degli esercizi
+  vocabolario.ts       → il lessico ricavato dal corso + le scadenze del ripasso
   useProgress.ts       → salvataggio progressi, XP e streak
   components/
     Home.tsx           → mappa delle lezioni
     LessonPlayer.tsx   → svolgimento di una lezione
-    Exercises.tsx      → i quattro tipi di esercizio
+    Exercises.tsx      → i cinque tipi di esercizio
+    Versio.tsx         → la traduzione di un brano, frase per frase
+    Grammatica.tsx     → il mini-manuale consultabile
+    Vocabula.tsx       → il ripasso del lessico
   styles.css           → grafica e identità visiva di Ianua
 ```
 

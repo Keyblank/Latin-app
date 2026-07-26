@@ -7,6 +7,7 @@ import { Mascot } from './Mascot'
 import { pickQuip } from '../quips'
 import { sfxEnabled, setSfxEnabled } from '../sfx'
 import { versiones } from '../data/versiones'
+import { quanteOggi, nuoveRimasteOggi } from '../vocabolario'
 import type { Versio } from '../data/versiones'
 
 interface Props {
@@ -17,6 +18,7 @@ interface Props {
   onOpenCity: () => void
   onStartVersio: (v: Versio) => void
   onOpenGrammatica: () => void
+  onOpenVocab: () => void
   onReset: () => void
   onToggleFreeMode: () => void
 }
@@ -29,6 +31,7 @@ export function Home({
   onOpenCity,
   onStartVersio,
   onOpenGrammatica,
+  onOpenVocab,
   onReset,
   onToggleFreeMode,
 }: Props) {
@@ -37,6 +40,13 @@ export function Home({
   const currentLesson = allLessons.find((l) => !progress.completed.includes(l.id))
 
   const lezioniFatte = progress.completed.length
+
+  const inScadenza = quanteOggi(
+    progress.vocab,
+    lezioniFatte,
+    progress.freeMode,
+    nuoveRimasteOggi(progress.vocabNuove),
+  )
 
   const [sfxOn, setSfxOn] = useState(sfxEnabled)
 
@@ -85,6 +95,18 @@ export function Home({
             </span>
           </span>
         </button>
+
+        {inScadenza > 0 && (
+          <button className="voc-btn" onClick={onOpenVocab}>
+            <span className="urbs-icon">🧠</span>
+            <span className="urbs-text">
+              <span className="latin-label">Vocābula · ripassa le parole</span>
+              <span className="urbs-count">
+                {inScadenza} {inScadenza === 1 ? 'parola aspetta' : 'parole aspettano'} oggi
+              </span>
+            </span>
+          </button>
+        )}
 
         <button className="gram-btn" onClick={onOpenGrammatica}>
           <span className="urbs-icon">📚</span>

@@ -760,3 +760,15 @@ button { font-family: inherit; cursor: pointer; }
 }
 .gram-btn:active { transform: translateY(2px); }
 .gram-btn .urbs-count { color: var(--primary); }
+
+/* Vocābula: il ripasso del lessico */
+.voc-btn {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: left;
+  background: linear-gradient(180deg, #fff, #eefaf3);
+  border: 2px solid var(--green); border-bottom-width: 5px;
+  border-radius: 16px; padding: 14px 18px; margin-bottom: 20px;
+  color: var(--text);
+}
+.voc-btn:active { transform: translateY(2px); }
+.voc-btn .urbs-count { color: var(--green-dark); }
+.voc-parola { font-family: var(--serif); font-size: 26px; }

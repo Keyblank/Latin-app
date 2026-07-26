@@ -6,6 +6,7 @@ import { LessonPlayer } from './components/LessonPlayer'
 import { City } from './components/City'
 import { Versio } from './components/Versio'
 import { Grammatica } from './components/Grammatica'
+import { Vocabula } from './components/Vocabula'
 import type { Versio as VersioType } from './data/versiones'
 import type { Lesson, Exercise } from './types'
 
@@ -25,6 +26,7 @@ export default function App() {
     progress,
     finishLesson,
     finishVersio,
+    finishVocab,
     recordMistakes,
     build,
     demolish,
@@ -39,6 +41,7 @@ export default function App() {
   const [showCity, setShowCity] = useState(false)
   const [versio, setVersio] = useState<VersioType | null>(null)
   const [showGrammatica, setShowGrammatica] = useState(false)
+  const [showVocab, setShowVocab] = useState(false)
 
   function startLesson(lesson: Lesson) {
     setIsReview(false)
@@ -71,6 +74,22 @@ export default function App() {
           finishLesson({ lessonId: isReview ? null : activeLesson.id, xp, wrong, correct })
           close()
         }}
+      />
+    )
+  }
+
+  if (showVocab) {
+    return (
+      <Vocabula
+        memoria={progress.vocab}
+        nuoveOggi={progress.vocabNuove}
+        lezioniFatte={progress.completed.length}
+        libero={progress.freeMode}
+        onFinish={(esiti, xp, denarii) => {
+          finishVocab(esiti, xp, denarii)
+          setShowVocab(false)
+        }}
+        onBack={() => setShowVocab(false)}
       />
     )
   }
@@ -115,6 +134,7 @@ export default function App() {
       onOpenCity={() => setShowCity(true)}
       onStartVersio={setVersio}
       onOpenGrammatica={() => setShowGrammatica(true)}
+      onOpenVocab={() => setShowVocab(true)}
       onReset={reset}
       onToggleFreeMode={toggleFreeMode}
     />

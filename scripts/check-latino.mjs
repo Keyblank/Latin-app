@@ -10,6 +10,7 @@
 //
 import { curriculum } from '../src/data/curriculum.ts'
 import { versiones } from '../src/data/versiones.ts'
+import { vocabolario } from '../src/vocabolario.ts'
 
 // ─────────────────── i paradigmi di riferimento ───────────────────
 // Le forme sono elencate nell'ordine in cui compaiono nella tabella, lette
@@ -283,11 +284,64 @@ for (let k = 1; k < versiones.length; k++) {
   }
 }
 
+// ─────────────────── 5. il lessico ───────────────────
+//
+// Il ripasso delle parole (Vocābula) pesca dalle tabelle marcate «lessico:
+// true». Il rischio è il silenzio: una tabella di vocaboli aggiunta senza il
+// marchio non dà errore, semplicemente non entra mai nel ripasso. Qui sotto
+// ogni tabella «Latino … Italiano» deve essere o marcata, o dichiarata come
+// non-lessico: così una tabella nuova costringe a decidere.
+
+const NON_LESSICO = new Set([
+  'amāre al presente passivo',
+  'Chi agisce: persona o cosa',
+  'Il perfetto passivo di amāre',
+  'esse — presente congiuntivo',
+  'esse — futuro',
+])
+
+for (const u of curriculum) {
+  for (const l of u.lessons) {
+    for (const ex of l.exercises) {
+      if (ex.type !== 'table') continue
+      const primaLat = /latino/i.test(ex.columns[0] ?? '')
+      const ultimaIta = /italiano/i.test(ex.columns[ex.columns.length - 1] ?? '')
+      const dove = `${u.id} · ${l.id} · tabella «${ex.title}»`
+      if (ex.lessico) {
+        if (!primaLat || !ultimaIta) {
+          segnala(dove, `è marcata «lessico» ma le colonne sono ${JSON.stringify(ex.columns)}: servono Latino … Italiano`)
+        }
+        for (const r of ex.rows) {
+          if (!String(r[0] ?? '').trim() || !String(r[r.length - 1] ?? '').trim()) {
+            segnala(dove, `la riga ${JSON.stringify(r)} ha una cella vuota`)
+          }
+        }
+      } else if (primaLat && ultimaIta && !NON_LESSICO.has(ex.title)) {
+        segnala(dove, 'ha colonne Latino/Italiano ma non è marcata «lessico: true»: se sono vocaboli aggiungi il marchio, altrimenti mettila in NON_LESSICO dentro questo script')
+      }
+    }
+  }
+}
+
+// Due voci per la stessa parola vogliono dire chiederla due volte nel ripasso.
+const senzaLineette = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '')
+const chiavi = new Map()
+for (const v of vocabolario) {
+  const k = senzaLineette(v.lat).split(/[,\s(]/)[0].toLowerCase()
+  if (chiavi.has(k)) segnala('vocabolario', `«${v.lat}» e «${chiavi.get(k)}» sono la stessa parola: nel ripasso uscirebbe due volte`)
+  else chiavi.set(k, v.lat)
+  if (/\s/.test(v.lat) && !v.lat.includes(',')) {
+    segnala('vocabolario', `«${v.lat}» sembra una forma coniugata, non una voce da vocabolario`)
+  }
+  if (!v.ita.trim()) segnala('vocabolario', `«${v.lat}» non ha significato`)
+}
+
 // ─────────────────── esito ───────────────────
 
 console.log(`Corso: ${curriculum.length} sezioni, ${lezioni} lezioni, ${esercizi} esercizi.`)
 console.log(`Paradigmi latini verificati: ${tabelleControllate}.`)
 console.log(`Versioni: ${versiones.length}, ${versioParole} parole tutte glossate.`)
+console.log(`Lessico da ripassare: ${vocabolario.length} vocaboli.`)
 
 if (problemi.length) {
   console.log(`\n${problemi.length} problemi:\n`)

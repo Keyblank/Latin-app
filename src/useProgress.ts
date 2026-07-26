@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Exercise } from './types'
+import type { Memoria } from './vocabolario'
+import { avanza } from './vocabolario'
 
 /** Una casella di strada: dove, e di che tipo. */
 export interface Road {
@@ -50,6 +52,11 @@ export interface Progress {
   freeMode: boolean
   /** ID delle versioni già tradotte. */
   versiones: string[]
+  /** Per ogni vocabolo: quanto lo sai e quando va rivisto. */
+  vocab: Record<string, Memoria>
+  /** Parole nuove già incontrate oggi, e in che giorno: serve a non
+   *  divorare tutto il vocabolario in una sera. */
+  vocabNuove: { data: string; n: number }
 }
 
 const emptyProgress: Progress = {
@@ -66,6 +73,8 @@ const emptyProgress: Progress = {
   land: 0,
   freeMode: false,
   versiones: [],
+  vocab: {},
+  vocabNuove: { data: '', n: 0 },
 }
 
 function load(): Progress {
@@ -232,6 +241,33 @@ export function useProgress() {
     })
   }, [])
 
+  /** Registra un ripasso di lessico: aggiorna la scadenza di ogni parola. */
+  const finishVocab = useCallback(
+    (esiti: Record<string, boolean>, xp: number, denarii: number) => {
+      setProgress((prev) => {
+        const vocab = { ...prev.vocab }
+        let nuove = 0
+        for (const [parola, giusta] of Object.entries(esiti)) {
+          if (!prev.vocab[parola]) nuove++
+          vocab[parola] = avanza(prev.vocab[parola], giusta)
+        }
+        const g = todayKey()
+        const stesso = prev.dailyDate === g
+        const contate = prev.vocabNuove.data === g ? prev.vocabNuove.n : 0
+        return {
+          ...prev,
+          vocab,
+          vocabNuove: { data: g, n: contate + nuove },
+          xp: prev.xp + xp,
+          denarii: prev.denarii + denarii,
+          dailyXp: (stesso ? prev.dailyXp : 0) + xp,
+          dailyDate: g,
+        }
+      })
+    },
+    [],
+  )
+
   /** Attiva/disattiva lo sblocco di tutte le lezioni. */
   const toggleFreeMode = useCallback(() => {
     setProgress((prev) => ({ ...prev, freeMode: !prev.freeMode }))
@@ -246,6 +282,7 @@ export function useProgress() {
     progress,
     finishLesson,
     finishVersio,
+    finishVocab,
     recordMistakes,
     build,
     demolish,

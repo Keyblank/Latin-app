@@ -49,6 +49,13 @@ export interface TableExercise {
   columns: string[]
   /** Righe della tabella; ogni riga ha una cella per colonna. */
   rows: string[][]
+  /**
+   * Vero se la tabella è un elenco di **vocaboli** (non una declinazione o una
+   * coniugazione). Solo queste finiscono nel ripasso del lessico: «rosa, rosae
+   * = la rosa» è una parola da sapere, «amātus es = sei stato amato» no.
+   * La prima colonna è il latino, l'ultima l'italiano.
+   */
+  lessico?: boolean
   /** Nota o spiegazione mostrata sotto la tabella. */
   note?: string
   /** Indici delle colonne le cui celle sono pronunciabili (pulsante 🔊). */
