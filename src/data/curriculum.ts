@@ -608,6 +608,109 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u4v',
+        title: 'Le preposizioni',
+        icon: '🧭',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Preposizioni: parole che reggono un caso',
+            body:
+              'Hai visto che il caso da solo può esprimere un complemento. Ma il ' +
+              'latino usa anche le PREPOSIZIONI, come l’italiano: a, da, con, in, ' +
+              'per…\n\n' +
+              'Con una differenza che devi sapere subito: ogni preposizione ' +
+              'latina PRETENDE un CASO preciso per la parola che segue. Non puoi ' +
+              'sceglierlo tu.\n\n' +
+              'Sono quasi tutte accusativo oppure ablativo. Le prime dicono ' +
+              'movimento e direzione, le seconde stato e provenienza.',
+          },
+          {
+            type: 'table',
+            title: 'Preposizioni con l’ACCUSATIVO (dove si va)',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['ad', 'verso, presso'],
+              ['in', 'verso, contro (con movimento)'],
+              ['per', 'attraverso, per mezzo di'],
+              ['ante', 'davanti a, prima di'],
+              ['post', 'dietro a, dopo'],
+              ['inter', 'fra, tra'],
+              ['apud', 'presso, in casa di'],
+              ['contrā', 'contro'],
+              ['propter', 'a causa di'],
+              ['trāns', 'oltre, al di là di'],
+            ],
+            speakCols: [0],
+            note: 'Esempio: «ad villam» = verso la fattoria («villam» è accusativo).',
+          },
+          {
+            type: 'table',
+            title: 'Preposizioni con l’ABLATIVO (dove si sta, da dove si viene)',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['in', 'in, dentro (senza movimento)'],
+              ['ab, ā', 'da (provenienza, e «da parte di»)'],
+              ['ex, ē', 'da, fuori da'],
+              ['cum', 'con'],
+              ['dē', 'giù da; riguardo a'],
+              ['prō', 'davanti a; in favore di'],
+              ['sine', 'senza'],
+              ['sub', 'sotto'],
+            ],
+            speakCols: [0],
+            note: 'Esempio: «in villā» = nella fattoria («villā» è ablativo). «ab» ed «ex» diventano «ā» ed «ē» davanti a consonante: «ā Rōmā», «ē silvā».',
+          },
+          {
+            type: 'info',
+            icon: '↔️',
+            title: 'Il caso di «in» cambia il senso',
+            body:
+              'Questa la trovi in ogni versione, e chi non la sa sbaglia.\n\n' +
+              '«in» regge tutti e due i casi, e il caso decide il significato:\n\n' +
+              '«in villam» (accusativo) = VERSO la fattoria — ci sto andando\n' +
+              '«in villā» (ablativo) = NELLA fattoria — ci sono già\n\n' +
+              'Stessa parolina, due sensi opposti: a distinguerli è la desinenza. ' +
+              'Un altro motivo per guardare sempre la fine delle parole.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «in silvam»? («silvam» è accusativo)',
+            focus: 'in silvam',
+            options: ['verso il bosco', 'nel bosco', 'dal bosco'],
+            answer: 'verso il bosco',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «cum amīcō»?',
+            focus: 'cum amīcō',
+            options: ['con l’amico', 'verso l’amico', 'senza l’amico'],
+            answer: 'con l’amico',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['sine', 'senza'],
+              ['trāns', 'oltre'],
+              ['propter', 'a causa di'],
+              ['apud', 'presso'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['ex silvā', 'fuori dal bosco'],
+              ['ad silvam', 'verso il bosco'],
+              ['in silvā', 'nel bosco'],
+              ['per silvam', 'attraverso il bosco'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u4l3',
         title: 'Di chi? A chi? Con che cosa?',
         icon: '🔑',
@@ -726,6 +829,99 @@ export const curriculum: Unit[] = [
             prompt: 'Qual è il GENITIVO singolare di «rosa»?',
             options: ['rosae', 'rosam', 'rosārum'],
             answer: 'rosae',
+          },
+        ],
+      },
+      {
+        id: 'u5v',
+        title: 'Parole della prima',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Venti parole del modello «rosa»',
+            body:
+              'Lo schema lo sai: ora servono le parole su cui applicarlo. Queste ' +
+              'venti seguono tutte la prima DECLINAZIONE e sono quasi tutte ' +
+              'femminili.\n\n' +
+              'Non impararle a memoria tutte adesso: leggile, ascoltale, e ' +
+              'torneranno negli esercizi.',
+          },
+          {
+            type: 'table',
+            title: 'Nomi della 1ª declinazione (1)',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['via', 'strada, via'],
+              ['terra', 'terra'],
+              ['patria', 'patria'],
+              ['īnsula', 'isola — e anche il palazzo d’affitto'],
+              ['porta', 'porta, ingresso'],
+              ['mēnsa', 'tavola'],
+              ['epistula', 'lettera'],
+              ['ancilla', 'serva'],
+              ['stēlla', 'stella'],
+              ['lūna', 'luna'],
+            ],
+            speakCols: [0],
+          },
+          {
+            type: 'table',
+            title: 'Nomi della 1ª declinazione (2)',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['vīta', 'vita'],
+              ['fōrma', 'forma, aspetto, bellezza'],
+              ['fāma', 'fama — ma spesso «voce, diceria»'],
+              ['glōria', 'gloria'],
+              ['victōria', 'vittoria'],
+              ['fortūna', 'sorte (buona o cattiva)'],
+              ['cūra', 'cura, preoccupazione'],
+              ['īra', 'ira, collera'],
+              ['poena', 'punizione, castigo'],
+              ['hōra', 'ora'],
+            ],
+            speakCols: [0],
+            note: 'Tre da non fraintendere: «fāma» è spesso la voce che gira, non la celebrità; «fortūna» da sola è la sorte, che può essere pessima; «poena» è la punizione (da lì «pena»).',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «epistulam»?',
+            focus: 'epistulam',
+            options: ['la lettera (oggetto)', 'la lettera (soggetto)', 'delle lettere'],
+            answer: 'la lettera (oggetto)',
+          },
+          {
+            type: 'choice',
+            prompt: 'In una versione trovi «magna fāma». Cosa vuol dire, probabilmente?',
+            focus: 'magna fāma',
+            options: [
+              'una voce diffusa, una gran diceria',
+              'una donna famosa',
+              'una grande fame',
+            ],
+            answer: 'una voce diffusa, una gran diceria',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['via', 'strada'],
+              ['mēnsa', 'tavola'],
+              ['ancilla', 'serva'],
+              ['poena', 'punizione'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['īra', 'collera'],
+              ['cūra', 'preoccupazione'],
+              ['fōrma', 'aspetto'],
+              ['fāma', 'diceria'],
+            ],
           },
         ],
       },
@@ -950,6 +1146,100 @@ export const curriculum: Unit[] = [
             source: "L'amico vede il tempio",
             answer: ['Amicus', 'templum', 'videt'],
             extra: ['templa', 'amicum'],
+          },
+        ],
+      },
+      {
+        id: 'u6v',
+        title: 'Parole della seconda',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Maschili in -us, neutri in -um',
+            body:
+              'Stesso lavoro dell’unità scorsa, per la seconda DECLINAZIONE. Le ' +
+              'divido come si dividono da sole: prima i maschili in -us, poi i ' +
+              'neutri in -um.\n\n' +
+              'Molti di questi nomi sono parole della guerra e della politica: è ' +
+              'il vocabolario di Cesare e di Livio, cioè quello delle versioni.',
+          },
+          {
+            type: 'table',
+            title: 'Maschili in -us',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['fīlius', 'figlio'],
+              ['equus', 'cavallo'],
+              ['mūrus', 'muro'],
+              ['populus', 'popolo'],
+              ['animus', 'animo, coraggio'],
+              ['deus', 'dio'],
+              ['hortus', 'giardino'],
+              ['campus', 'campo, pianura'],
+              ['lēgātus', 'luogotenente; ambasciatore'],
+              ['socius', 'alleato, compagno'],
+            ],
+            speakCols: [0],
+            note: 'Un paio finiscono in -er ma sono di questa declinazione: «puer, puerī» (ragazzo) e «liber, librī» (libro). Il genitivo in -ī li smaschera.',
+          },
+          {
+            type: 'table',
+            title: 'Neutri in -um',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['oppidum', 'città fortificata'],
+              ['rēgnum', 'regno'],
+              ['perīculum', 'pericolo'],
+              ['cōnsilium', 'decisione, piano — e consiglio'],
+              ['auxilium', 'aiuto'],
+              ['proelium', 'battaglia'],
+              ['imperium', 'comando, potere'],
+              ['caelum', 'cielo'],
+              ['vīnum', 'vino'],
+              ['forum', 'piazza, foro'],
+            ],
+            speakCols: [0],
+            note: 'Attenzione a «cōnsilium»: nelle versioni è quasi sempre «il piano, la decisione» («cōnsilium capere» = prendere una decisione), non «il consiglio» che dai a un amico.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «oppidum»?',
+            focus: 'oppidum',
+            options: ['una città fortificata', 'un accampamento', 'una casa'],
+            answer: 'una città fortificata',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Caesar cōnsilium cēpit», che cosa fa Cesare? («cēpit» = prese)',
+            focus: 'cōnsilium cēpit',
+            options: [
+              'prese una decisione',
+              'ricevette un consiglio',
+              'raccolse un’assemblea',
+            ],
+            answer: 'prese una decisione',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['equus', 'cavallo'],
+              ['lēgātus', 'luogotenente'],
+              ['socius', 'alleato'],
+              ['animus', 'coraggio'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['proelium', 'battaglia'],
+              ['perīculum', 'pericolo'],
+              ['auxilium', 'aiuto'],
+              ['imperium', 'comando'],
+            ],
           },
         ],
       },
@@ -1477,6 +1767,98 @@ export const curriculum: Unit[] = [
         ],
       },
       {
+        id: 'u8v',
+        title: 'Verbi da sapere',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Il motore della frase',
+            body:
+              'Il verbo è la parola che regge tutto: se lo riconosci, la frase si ' +
+              'apre. Eccone ventiquattro fra i più frequenti, divisi per ' +
+              'CONIUGAZIONE — così vedi anche a quale gruppo appartengono.\n\n' +
+              'Li do all’INFINITO, come li trovi sul vocabolario.',
+          },
+          {
+            type: 'table',
+            title: '1ª e 2ª coniugazione',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['portāre', 'portare'],
+              ['laudāre', 'lodare'],
+              ['pugnāre', 'combattere'],
+              ['vocāre', 'chiamare'],
+              ['nārrāre', 'raccontare'],
+              ['parāre', 'preparare'],
+              ['superāre', 'superare, vincere'],
+              ['habēre', 'avere'],
+              ['tenēre', 'tenere'],
+              ['timēre', 'temere'],
+              ['docēre', 'insegnare'],
+              ['manēre', 'restare'],
+            ],
+            speakCols: [0],
+          },
+          {
+            type: 'table',
+            title: '3ª e 4ª coniugazione',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['dūcere', 'condurre, guidare'],
+              ['dīcere', 'dire'],
+              ['mittere', 'mandare'],
+              ['scrībere', 'scrivere'],
+              ['vincere', 'vincere'],
+              ['agere', 'fare, spingere, trattare'],
+              ['gerere', 'portare; fare (la guerra)'],
+              ['petere', 'chiedere; dirigersi verso'],
+              ['venīre', 'venire'],
+              ['invenīre', 'trovare'],
+              ['mūnīre', 'fortificare'],
+              ['sentīre', 'sentire, accorgersi'],
+            ],
+            speakCols: [0],
+            note: 'Due espressioni da riconoscere al volo: «bellum gerere» = fare la guerra, «cōnsilium capere» = prendere una decisione. In latino tanti significati nascono dall’accoppiata verbo + nome.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «mittere»?',
+            focus: 'mittere',
+            options: ['mandare', 'mettere', 'mietere'],
+            answer: 'mandare',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «bellum gerunt»?',
+            focus: 'bellum gerunt',
+            options: ['fanno la guerra', 'portano la guerra in spalla', 'temono la guerra'],
+            answer: 'fanno la guerra',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['dūcere', 'guidare'],
+              ['petere', 'chiedere'],
+              ['manēre', 'restare'],
+              ['timēre', 'temere'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['invenīre', 'trovare'],
+              ['mūnīre', 'fortificare'],
+              ['superāre', 'vincere'],
+              ['nārrāre', 'raccontare'],
+            ],
+          },
+        ],
+      },
+      {
         id: 'u8l4',
         title: 'Analizza e traduci',
         icon: '📖',
@@ -1714,6 +2096,98 @@ export const curriculum: Unit[] = [
               ['nomen', 'il nome'],
               ['corpus', 'il corpo'],
               ['tempus', 'il tempo'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u9v',
+        title: 'Parole della terza',
+        icon: '🗂️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🗂️',
+            title: 'Le più frequenti di tutte',
+            body:
+              'La terza DECLINAZIONE è la più affollata, e le sue parole sono ' +
+              'quelle che incontrerai più spesso. Come sai, di ognuna si imparano ' +
+              'DUE forme: il nominativo e il GENITIVO, perché è il genitivo a ' +
+              'darti il TEMA.\n\n' +
+              'Guarda quanto cambiano: «rēx» → «rēg-is», «iter» → «itiner-is». ' +
+              'Senza il genitivo non sapresti nemmeno da dove partire.',
+          },
+          {
+            type: 'table',
+            title: 'Persone',
+            columns: ['Latino', 'Genitivo', 'Italiano'],
+            rows: [
+              ['homō', 'hominis', 'uomo, essere umano'],
+              ['pater', 'patris', 'padre'],
+              ['māter', 'mātris', 'madre'],
+              ['frāter', 'frātris', 'fratello'],
+              ['soror', 'sorōris', 'sorella'],
+              ['dux', 'ducis', 'comandante'],
+              ['cōnsul', 'cōnsulis', 'console'],
+              ['cīvis', 'cīvis', 'cittadino'],
+              ['hostis', 'hostis', 'nemico (in guerra)'],
+            ],
+            speakCols: [0],
+            note: '«hostis» è il nemico pubblico, quello contro cui si combatte; il nemico personale è «inimīcus».',
+          },
+          {
+            type: 'table',
+            title: 'Cose e idee',
+            columns: ['Latino', 'Genitivo', 'Italiano'],
+            rows: [
+              ['urbs', 'urbis', 'città'],
+              ['pars', 'partis', 'parte'],
+              ['mors', 'mortis', 'morte'],
+              ['nox', 'noctis', 'notte'],
+              ['vōx', 'vōcis', 'voce'],
+              ['mōns', 'montis', 'monte'],
+              ['flūmen', 'flūminis', 'fiume'],
+              ['iter', 'itineris', 'viaggio, marcia'],
+              ['tempus', 'temporis', 'tempo'],
+              ['opus', 'operis', 'opera, lavoro'],
+              ['virtūs', 'virtūtis', 'valore, coraggio'],
+              ['lībertās', 'lībertātis', 'libertà'],
+            ],
+            speakCols: [0],
+            note: '«virtūs» è il grande falso amico del latino: non è la virtù morale, è il VALORE, il coraggio del soldato (viene da «vir», l’uomo). «Magna virtūs» è un gran coraggio, non una gran bontà.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «virtūs» in una versione di storia?',
+            focus: 'virtūs',
+            options: ['il valore, il coraggio', 'la virtù morale', 'la forza fisica'],
+            answer: 'il valore, il coraggio',
+          },
+          {
+            type: 'choice',
+            prompt: 'Qual è il tema di «iter, itineris»?',
+            focus: 'iter, itineris',
+            options: ['itiner-', 'iter-', 'it-'],
+            answer: 'itiner-',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['dux', 'comandante'],
+              ['hostis', 'nemico'],
+              ['cīvis', 'cittadino'],
+              ['homō', 'essere umano'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['flūmen', 'fiume'],
+              ['mōns', 'monte'],
+              ['nox', 'notte'],
+              ['iter', 'marcia'],
             ],
           },
         ],
@@ -2191,6 +2665,120 @@ export const curriculum: Unit[] = [
               ['cuius', 'di cui'],
               ['cui', 'a cui'],
               ['quem', 'che (oggetto)'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u11v',
+        title: 'Le paroline che legano',
+        icon: '🔗',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🔗',
+            title: 'Piccole, e decisive',
+            body:
+              'Sono le parole più corte del latino e le più sottovalutate: ' +
+              'congiunzioni e avverbi. Non si declinano, non si coniugano, non ' +
+              'cambiano mai — c’è solo da riconoscerle.\n\n' +
+              'Sono però quelle che dicono come sta insieme il discorso: «ma», ' +
+              '«dunque», «infatti», «dopo che». Chi non le sa traduce parole ' +
+              'giuste in un ordine che non significa niente.',
+          },
+          {
+            type: 'table',
+            title: 'Congiunzioni',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['et, -que, atque', 'e'],
+              ['sed', 'ma'],
+              ['autem', 'però, invece'],
+              ['tamen', 'tuttavia'],
+              ['nam, enim', 'infatti'],
+              ['itaque, igitur', 'dunque, perciò'],
+              ['aut, vel', 'oppure'],
+              ['neque, nec', 'e non, né'],
+              ['sī', 'se'],
+              ['nisi', 'se non, a meno che'],
+              ['quod, quia', 'perché (causa)'],
+              ['ubi', 'quando; dove'],
+              ['postquam', 'dopo che'],
+              ['dum', 'mentre'],
+            ],
+            speakCols: [0],
+            note: '«-que» non è una parola a sé: si attacca in fondo alla seconda parola. «Senātus populusque» = il senato E il popolo.',
+          },
+          {
+            type: 'info',
+            icon: '🙃',
+            title: 'Tre che non stanno mai per prime',
+            body:
+              'Una stranezza che spiazza: «autem», «enim» e «igitur» non si ' +
+              'mettono all’inizio della frase. Il latino le piazza al SECONDO ' +
+              'posto, dopo la prima parola.\n\n' +
+              '«Caesar autem vēnit» = Cesare però venne\n' +
+              '«Erat enim fortis» = era infatti coraggioso\n\n' +
+              'Traducendo le sposti dove servono in italiano. Se in una versione ' +
+              'trovi una parola strana in seconda posizione, è quasi sempre una ' +
+              'di queste.',
+          },
+          {
+            type: 'table',
+            title: 'Avverbi',
+            columns: ['Latino', 'Italiano'],
+            rows: [
+              ['nōn', 'non'],
+              ['iam', 'già, ormai'],
+              ['semper', 'sempre'],
+              ['saepe', 'spesso'],
+              ['numquam', 'mai'],
+              ['statim', 'subito'],
+              ['deinde', 'poi, in seguito'],
+              ['tum, tunc', 'allora'],
+              ['ita, sīc', 'così'],
+              ['diū', 'a lungo'],
+              ['valdē', 'molto'],
+              ['ibi', 'lì'],
+            ],
+            speakCols: [0],
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «Caesar autem vēnit»?',
+            focus: 'Caesar autem vēnit',
+            options: ['Cesare però venne', 'Cesare venne da solo', 'Anche Cesare venne'],
+            answer: 'Cesare però venne',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «senātus populusque»?',
+            focus: 'senātus populusque',
+            options: [
+              'il senato e il popolo',
+              'il senato del popolo',
+              'il senato o il popolo',
+            ],
+            answer: 'il senato e il popolo',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['postquam', 'dopo che'],
+              ['tamen', 'tuttavia'],
+              ['nisi', 'se non'],
+              ['itaque', 'perciò'],
+            ],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina all’italiano',
+            pairs: [
+              ['statim', 'subito'],
+              ['numquam', 'mai'],
+              ['deinde', 'poi'],
+              ['diū', 'a lungo'],
             ],
           },
         ],

@@ -129,6 +129,17 @@ esempi già presenti.
   (*Dīcō Caesarem venīre* = «dico che Cesare viene»), con il tempo relativo
   (contemporaneo / anteriore) e il caso di *sē*.
 
+### Il lessico
+
+Accanto alla grammatica c'è un **binario di vocaboli** (~195 parole in tutto):
+lezioni di lessico con audio, agganciate all'unità che ne insegna la forma —
+**preposizioni** e il caso che reggono (U4), nomi della **1ª** (U5) e della
+**2ª** (U6), **aggettivi** (U7), **verbi** per coniugazione (U8), nomi della
+**3ª** con il genitivo (U9), **congiunzioni e avverbi** (U11). Ogni lezione
+segnala i **falsi amici**, quelli che nelle versioni fanno perdere punti:
+*virtūs* = valore (non «virtù»), *cōnsilium* = decisione, *fāma* = diceria,
+*casa* = capanna.
+
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia
 e l'analisi, il vero cuore dello studio del latino.

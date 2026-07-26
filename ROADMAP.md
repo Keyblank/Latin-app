@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (14 sezioni, ~38 lezioni)
+### Contenuti (14 sezioni, 52 lezioni, ~195 vocaboli)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -48,6 +48,12 @@ Principi guida:
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
+
+Accanto alla grammatica c'è un **binario di lessico**: lezioni di vocaboli con
+audio, agganciate all'unità che ne insegna la forma — preposizioni (U4), nomi
+della 1ª (U5), della 2ª (U6), aggettivi (U7), verbi (U8), nomi della 3ª (U9),
+congiunzioni e avverbi (U11). Ognuna segnala i **falsi amici** (*virtūs* =
+valore, *cōnsilium* = decisione, *fāma* = diceria).
 
 ### Funzionalità
 
@@ -95,6 +101,8 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ⬜ **Numerali, avverbi, preposizioni** (in modo sistematico)
 - ⬜ **Traduzione graduata**: dalle frasi ai **brani adattati** ad autori facili
   (Eutropio, *Fabulae*, Cesare semplificato)
+- ⬜ **Lessico, secondo giro**: da ~195 a ~400 vocaboli (è la soglia sotto cui
+  una versione resta illeggibile anche sapendo tutta la grammatica)
 
 ---
 
