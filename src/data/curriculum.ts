@@ -163,7 +163,7 @@ export const curriculum: Unit[] = [
           {
             type: 'info',
             icon: '👋',
-            title: 'Benvenutə!',
+            title: 'Si comincia',
             body: 'Il latino usa poche parole per salutare.\n\n• «Salve» = Ciao / Salve\n• «Vale» = Arrivederci (a una persona)\n\nNon serve sapere altro: iniziamo!',
           },
           {
@@ -204,11 +204,11 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🧒',
             title: 'Parole nuove',
-            body: 'In latino la parola cambia a seconda del genere:\n\n• «puer» = bambino / ragazzo\n• «puella» = bambina / ragazza\n• «vir» = uomo\n• «femina» = donna',
+            body: 'In latino la parola cambia a seconda del genere:\n\n• «puer» = ragazzo, bambino\n• «puella» = ragazza, bambina\n• «vir» = uomo\n• «femina» = donna',
           },
           {
             type: 'choice',
-            prompt: 'Quale significa «bambina»?',
+            prompt: 'Quale significa «ragazza»?',
             options: ['puer', 'puella', 'vir'],
             answer: 'puella',
           },
@@ -216,15 +216,15 @@ export const curriculum: Unit[] = [
             type: 'choice',
             prompt: 'Cosa significa «vir»?',
             focus: 'vir',
-            options: ['uomo', 'donna', 'bambino'],
+            options: ['uomo', 'donna', 'ragazzo'],
             answer: 'uomo',
           },
           {
             type: 'match',
             prompt: 'Abbina le parole',
             pairs: [
-              ['puer', 'bambino'],
-              ['puella', 'bambina'],
+              ['puer', 'ragazzo'],
+              ['puella', 'ragazza'],
               ['femina', 'donna'],
             ],
           },
@@ -365,7 +365,7 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Quale frase significa «I bambini sono»?',
+            prompt: 'Quale frase significa «I ragazzi sono»?',
             options: ['Pueri sunt', 'Puer est', 'Puella est'],
             answer: 'Pueri sunt',
           },
@@ -473,7 +473,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '💬',
             title: 'Soggetto + verbo + oggetto',
-            body: 'Finora le parole erano il soggetto (chi compie l’azione). Ora aggiungiamo l’OGGETTO: chi o che cosa subisce l’azione.\n\nPiccola magia del latino: quando una parola è oggetto, cambia la sua fine. Molte parole femminili prendono la desinenza «-am»:\n• «rosa» → «rosam» (la rosa, come oggetto)\n• «aqua» → «aquam» (l’acqua, come oggetto)\n\nL’ordine tipico della frase latina è dunque: soggetto, oggetto e VERBO in fondo.\n\n«Puella rosam amat» = La ragazza ama la rosa (alla lettera: «la ragazza la rosa ama»).\n(«puella» è soggetto, «rosam» è oggetto: lo vedi dalla -m finale.)\n\nStudieremo tutto questo con calma più avanti: per ora basta riconoscere la -m dell’oggetto e ricordare che il verbo va per ultimo.',
+            body: 'Finora le parole erano il soggetto (chi compie l’azione). Ora aggiungiamo l’OGGETTO: chi o che cosa subisce l’azione.\n\nEcco il meccanismo centrale del latino: quando una parola è oggetto, cambia la sua fine. Molte parole femminili prendono la desinenza «-am»:\n• «rosa» → «rosam» (la rosa, come oggetto)\n• «aqua» → «aquam» (l’acqua, come oggetto)\n\nL’ordine tipico della frase latina è dunque: soggetto, oggetto e VERBO in fondo.\n\n«Puella rosam amat» = La ragazza ama la rosa (alla lettera: «la ragazza la rosa ama»).\n(«puella» è soggetto, «rosam» è oggetto: lo vedi dalla -m finale.)\n\nStudieremo tutto questo per bene più avanti: per ora basta riconoscere la -m dell’oggetto e ricordare che il verbo va per ultimo.',
           },
           {
             type: 'build',
@@ -487,11 +487,11 @@ export const curriculum: Unit[] = [
             prompt: 'Cosa significa «Puer rosam portat»?',
             focus: 'Puer rosam portat',
             options: [
-              'Il bambino porta la rosa',
-              'La rosa vede il bambino',
-              'Il bambino ama la rosa',
+              'Il ragazzo porta la rosa',
+              'La rosa vede il ragazzo',
+              'Il ragazzo ama la rosa',
             ],
-            answer: 'Il bambino porta la rosa',
+            answer: 'Il ragazzo porta la rosa',
           },
           {
             type: 'build',
@@ -526,13 +526,13 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🧩',
             title: 'La grande idea',
-            body: 'Partiamo dall’italiano, che già conosci.\n\nIn una frase, il SOGGETTO è chi compie l’azione; l’OGGETTO è chi o che cosa la subisce:\n«La ragazza vede la rosa» → «la ragazza» è il soggetto (vede lei), «la rosa» è l’oggetto (è vista).\n\nIn italiano capiamo chi è chi dall’ORDINE delle parole. Se lo cambi, cambia il senso: «La rosa vede la ragazza» dice il contrario!\n\nIl latino fa diversamente: non conta l’ordine, ma la FINE della parola. Questa parte finale che cambia si chiama DESINENZA. È la desinenza a dirti se una parola è soggetto, oggetto, ecc.\n\nLe diverse forme che una parola assume si chiamano CASI. Impararli è il cuore del latino: partiamo con calma.',
+            body: 'Partiamo dall’italiano, che già conosci.\n\nIn una frase, il SOGGETTO è chi compie l’azione; l’OGGETTO è chi o che cosa la subisce:\n«La ragazza vede la rosa» → «la ragazza» è il soggetto (vede lei), «la rosa» è l’oggetto (è vista).\n\nIn italiano capiamo chi è chi dall’ORDINE delle parole. Se lo cambi, cambia il senso: «La rosa vede la ragazza» dice il contrario!\n\nIl latino fa diversamente: non conta l’ordine, ma la FINE della parola. Questa parte finale che cambia si chiama DESINENZA. È la desinenza a dirti se una parola è soggetto, oggetto, ecc.\n\nLe diverse forme che una parola assume si chiamano CASI. Impararli è il cuore del latino: si parte da qui.',
           },
           {
             type: 'info',
             icon: '📋',
             title: 'I sei casi',
-            body: 'I casi in latino sono sei. Il modo più facile per ricordarli è legarli a una DOMANDA: la risposta a quella domanda va in quel caso.\n\n• NOMINATIVO → chi? (il soggetto)\n• GENITIVO → di chi? («la casa DI Marco»)\n• DATIVO → a chi? («do il libro A Marco»)\n• ACCUSATIVO → chi/che cosa? (l’oggetto)\n• ABLATIVO → con/da/in che cosa?\n• VOCATIVO → per chiamare qualcuno («o Marco!»)\n\nNon spaventarti: non vanno imparati tutti oggi. Li incontreremo uno alla volta, con calma.',
+            body: 'I casi in latino sono sei. Il modo più efficace per ricordarli è legarli a una DOMANDA: la risposta a quella domanda va in quel caso.\n\n• NOMINATIVO → chi? (il soggetto)\n• GENITIVO → di chi? («la casa DI Marco»)\n• DATIVO → a chi? («do il libro A Marco»)\n• ACCUSATIVO → chi/che cosa? (l’oggetto)\n• ABLATIVO → con/da/in che cosa?\n• VOCATIVO → per chiamare qualcuno («o Marco!»)\n\nNon vanno imparati tutti oggi: li incontrerai uno alla volta, ognuno quando serve.',
           },
           {
             type: 'table',
@@ -719,7 +719,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🔑',
             title: 'Oltre soggetto e oggetto',
-            body: 'Finora abbiamo visto due casi: nominativo (soggetto) e accusativo (oggetto). Ma nelle frasi diciamo anche «DI chi», «A chi», «CON che cosa»…\n\nIn italiano queste sfumature le rendiamo con le preposizioni (di, a, con, da, in). Il latino, invece, usa altri tre casi. Vediamoli uno alla volta, con calma.',
+            body: 'Finora abbiamo visto due casi: nominativo (soggetto) e accusativo (oggetto). Ma nelle frasi diciamo anche «DI chi», «A chi», «CON che cosa»…\n\nIn italiano queste sfumature le rendiamo con le preposizioni (di, a, con, da, in). Il latino, invece, usa altri tre casi. Vediamoli uno alla volta.',
           },
           {
             type: 'info',
@@ -744,7 +744,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🛠️',
             title: 'L’ablativo — «con / da / in»',
-            body: 'L’ABLATIVO è il più versatile: dice CON che cosa, DA dove, IN quale luogo, QUANDO… In italiano usiamo preposizioni come «con, da, in»:\n• scrivo CON la penna (mezzo)\n• vengo DA Roma (origine)\n• sono IN casa (luogo)\n\nIn latino «puella» all’ablativo è «puellā», e spesso lo trovi dopo una preposizione:\n→ «in villā» = nella casa.\n\nNon preoccuparti di tutti i suoi usi ora: per iniziare, pensa «con / da / in».',
+            body: 'L’ABLATIVO è il più versatile: dice CON che cosa, DA dove, IN quale luogo, QUANDO… In italiano usiamo preposizioni come «con, da, in»:\n• scrivo CON la penna (mezzo)\n• vengo DA Roma (origine)\n• sono IN casa (luogo)\n\nIn latino «puella» all’ablativo è «puellā», e spesso lo trovi dopo una preposizione:\n→ «in villā» = nella casa.\n\nGli usi dell’ablativo sono molti e li incontrerai a mano a mano: per iniziare tieni «con / da / in».',
           },
           {
             type: 'choice',
@@ -1322,7 +1322,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🎨',
             title: 'Che cos’è un aggettivo',
-            body: 'L’AGGETTIVO è una parola che descrive un nome: grande, buono, piccolo, bello…\n\nGià in italiano l’aggettivo si adatta al nome: diciamo «un bambino buono» ma «una bambina buona». Questo adattarsi si chiama CONCORDANZA.\n\nIl latino fa lo stesso, ma in modo ancora più preciso. Vediamo come.',
+            body: 'L’AGGETTIVO è una parola che descrive un nome: grande, buono, piccolo, bello…\n\nGià in italiano l’aggettivo si adatta al nome: diciamo «un ragazzo buono» ma «una ragazza buona». Questo adattarsi si chiama CONCORDANZA.\n\nIl latino fa lo stesso, ma in modo ancora più preciso. Vediamo come.',
           },
           {
             type: 'info',
@@ -1505,7 +1505,7 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina all’italiano',
             pairs: [
               ['magna villa', 'la grande fattoria'],
-              ['parva puella', 'la bambina piccola'],
+              ['parva puella', 'la ragazza piccola'],
               ['antīquum templum', 'il tempio antico'],
               ['malus dominus', 'il padrone cattivo'],
             ],
