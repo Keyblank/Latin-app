@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { BUILDINGS, LAND_COSTS, LAND_SIZES, ROAD_COST } from '../data/city'
+import { BUILDINGS, LAND_COSTS, LAND_SIZES, ROAD_KINDS } from '../data/city'
 import type { Building } from '../data/city'
 import type { Progress } from '../useProgress'
 import { playCorrect, playWrong } from '../sfx'
@@ -10,8 +10,8 @@ interface Props {
   progress: Progress
   onBuild: (id: string, cost: number, r: number, c: number, rot: 0 | 1) => void
   onDemolish: (index: number, refund: number) => void
-  onAddRoad: (key: string, cost: number) => void
-  onRemoveRoad: (key: string, refund: number) => void
+  onAddRoad: (r: number, c: number, t: 0 | 1 | 2, cost: number) => void
+  onRemoveRoad: (r: number, c: number, refund: number) => void
   onExpandLand: (cost: number) => void
   onBack: () => void
 }
@@ -32,6 +32,7 @@ export function City({
   const [mode, setMode] = useState<CityMode>('view')
   const [pending, setPending] = useState<Building | null>(null)
   const [rot, setRot] = useState<0 | 1>(0)
+  const [roadKind, setRoadKind] = useState<0 | 1 | 2>(0)
   const mapRef = useRef<HTMLDivElement>(null)
 
   // Quando entri in una modalità operativa, porta la mappa in vista.
@@ -102,10 +103,12 @@ export function City({
               setMode('view')
             }}
             onRoad={(r, c) => {
-              const key = `${r},${c}`
-              if (progress.roads.includes(key) || buildingAt(r, c)) return
-              if (progress.denarii < ROAD_COST) return
-              onAddRoad(key, ROAD_COST)
+              if (buildingAt(r, c)) return
+              const kind = ROAD_KINDS[roadKind]
+              const existing = progress.roads.find((x) => x.r === r && x.c === c)
+              if (existing?.t === roadKind) return
+              if (progress.denarii < kind.cost) return
+              onAddRoad(r, c, roadKind, kind.cost)
             }}
             onDemolish={(r, c) => {
               const hit = buildingAt(r, c)
@@ -114,9 +117,9 @@ export function City({
                 playWrong()
                 return
               }
-              const key = `${r},${c}`
-              if (progress.roads.includes(key)) {
-                onRemoveRoad(key, Math.floor(ROAD_COST / 2))
+              const road = progress.roads.find((x) => x.r === r && x.c === c)
+              if (road) {
+                onRemoveRoad(r, c, Math.floor(ROAD_KINDS[road.t].cost / 2))
                 playWrong()
               }
             }}
@@ -130,7 +133,7 @@ export function City({
             onClick={() => setTool('road')}
             title="Traccia strade"
           >
-            🛣️ Via <small>🪙{ROAD_COST}</small>
+            🛣️ Vie
           </button>
           <button
             className={`tool ${mode === 'demolish' ? 'on' : ''}`}
@@ -156,10 +159,29 @@ export function City({
             </button>
           </div>
         ) : mode === 'road' ? (
-          <div className="place-bar">
-            <span>Trascina sulla mappa per tracciare la <b>via</b></span>
-            <button className="place-cancel" onClick={() => setMode('view')}>Fine</button>
-          </div>
+          <>
+            <div className="road-picker">
+              {ROAD_KINDS.map((k) => {
+                const locked = done < k.unlock
+                return (
+                  <button
+                    key={k.id}
+                    className={`road-chip ${roadKind === k.id ? 'on' : ''} ${locked ? 'off' : ''}`}
+                    disabled={locked}
+                    onClick={() => setRoadKind(k.id)}
+                  >
+                    <span className="road-name">{locked ? '🔒' : k.icon} {k.name}</span>
+                    <span className="road-gloss">«{k.gloss}»</span>
+                    <span className="road-cost">{locked ? `${k.unlock} lezioni` : `🪙 ${k.cost}`}</span>
+                  </button>
+                )
+              })}
+            </div>
+            <div className="place-bar">
+              <span>Trascina sulla mappa per tracciare la <b>{ROAD_KINDS[roadKind].name}</b></span>
+              <button className="place-cancel" onClick={() => setMode('view')}>Fine</button>
+            </div>
+          </>
         ) : mode === 'demolish' ? (
           <div className="place-bar demolish">
             <span>Tocca un edificio per <b>demolirlo</b> (metà rimborso)</span>

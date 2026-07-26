@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 import type { Building } from '../data/city'
 import { BUILDINGS, GRID_MAX, LAND_SIZES, landBounds } from '../data/city'
-import type { Placed } from '../useProgress'
+import type { Placed, Road } from '../useProgress'
 
 // Vista 3D della città in stile diorama, con POSIZIONAMENTO LIBERO:
 // scegli un edificio nel negozio e lo appoggi dove vuoi sulla griglia
@@ -30,6 +30,18 @@ const PAL = {
 }
 
 const byId = new Map(BUILDINGS.map((b) => [b.id, b]))
+
+/** Aspetto delle tre strade: larghezza (frazione di cella) e colori.
+ *  Le strade occupano solo la parte centrale della cella, così resta
+ *  un margine d'erba e il tracciato si legge meglio. */
+const ROAD_STYLE = [
+  // Semita: sentiero sterrato, stretto e irregolare
+  { outer: 0.42, outerColor: 0xb59468, inner: 0, innerColor: 0, h: 0.05 },
+  // Via strata: lastricata in pietra grigia
+  { outer: 0.58, outerColor: 0xc6c0b1, inner: 0.46, innerColor: 0xb3ada0, h: 0.07 },
+  // Via consularis: carreggiata in basalto con marciapiedi chiari
+  { outer: 0.86, outerColor: 0xded7c5, inner: 0.58, innerColor: 0x9d9890, h: 0.09 },
+] as const
 
 /** Coordinata del centro della cella i sull'asse (spazio fisso GRID_MAX). */
 const off = (i: number) => (i - (GRID_MAX - 1) / 2) * TILE
@@ -391,8 +403,8 @@ export type CityMode = 'view' | 'build' | 'road' | 'demolish'
 
 interface Props {
   placed: Placed[]
-  /** Caselle di strada, come chiavi "riga,colonna". */
-  roads: string[]
+  /** Caselle di strada. */
+  roads: Road[]
   /** Livello di terreno acquistato. */
   land: number
   mode: CityMode
@@ -542,9 +554,8 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
         const [pw, pd] = footprint(pb, p.rot)
         if (c < p.c + pw && c + w > p.c && r < p.r + pd && r + d > p.r) return false
       }
-      for (const key of st.current.roads) {
-        const [rr, cc] = key.split(',').map(Number)
-        if (cc >= c && cc < c + w && rr >= r && rr < r + d) return false
+      for (const road of st.current.roads) {
+        if (road.c >= c && road.c < c + w && road.r >= r && road.r < r + d) return false
       }
       return true
     }
@@ -664,19 +675,58 @@ export function City3D({ placed, roads, land, mode, pending, rot, onPlace, onRoa
     a.render()
   }, [placed])
 
-  // ── Strade ──
+  // ── Strade: ogni casella si raccorda con quelle vicine ──
   useEffect(() => {
     const a = api.current
     if (!a) return
     a.ways.clear()
-    const geo = new THREE.BoxGeometry(TILE * 0.98, 0.06, TILE * 0.98)
-    const material = mat(0xd9c9a6)
-    for (const key of roads) {
-      const [r, c] = key.split(',').map(Number)
-      const t = new THREE.Mesh(geo, material)
-      t.receiveShadow = true
-      t.position.set(off(c), 0.03, off(r))
-      a.ways.add(t)
+    const at = new Map(roads.map((x) => [`${x.r},${x.c}`, x.t]))
+    const mats = ROAD_STYLE.map((s) => ({
+      outer: mat(s.outerColor),
+      inner: s.inner ? mat(s.innerColor) : null,
+    }))
+
+    /** Aggiunge un pezzo di strada (centro o braccio verso un vicino). */
+    const slab = (
+      w: number,
+      d: number,
+      x: number,
+      z: number,
+      y: number,
+      material: THREE.Material,
+    ) => {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(w, 0.02, d), material)
+      m.position.set(x, y, z)
+      m.receiveShadow = true
+      a.ways.add(m)
+    }
+
+    for (const road of roads) {
+      const st2 = ROAD_STYLE[road.t]
+      const x = off(road.c)
+      const z = off(road.r)
+      const dirs: [number, number][] = [
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1],
+      ]
+      const layers: [number, THREE.Material | null, number][] = [
+        [st2.outer, mats[road.t].outer, st2.h],
+        [st2.inner, mats[road.t].inner, st2.h + 0.012],
+      ]
+      for (const [width, material, y] of layers) {
+        if (!width || !material) continue
+        // blocco centrale
+        slab(width, width, x, z, y, material)
+        // bracci verso i vicini che hanno strada
+        for (const [dr, dc] of dirs) {
+          if (!at.has(`${road.r + dr},${road.c + dc}`)) continue
+          const len = TILE / 2
+          if (dc !== 0) slab(len, width, x + (dc * (TILE / 2 + width / 2)) / 2, z, y, material)
+          else slab(width, len, x, z + (dr * (TILE / 2 + width / 2)) / 2, y, material)
+        }
+      }
     }
     a.render()
   }, [roads])

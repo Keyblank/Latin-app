@@ -59,8 +59,24 @@ export const LAND_SIZES = [10, 14, 18]
 /** Costo per ampliare al livello successivo. */
 export const LAND_COSTS = [400, 900]
 
-/** Costo di una casella di strada. */
-export const ROAD_COST = 5
+/** I tre tipi di strada, dal sentiero alla via consolare. */
+export interface RoadKind {
+  id: 0 | 1 | 2
+  /** Nome latino. */
+  name: string
+  /** Traduzione italiana. */
+  gloss: string
+  icon: string
+  cost: number
+  /** Lezioni da completare per sbloccarla. */
+  unlock: number
+}
+
+export const ROAD_KINDS: RoadKind[] = [
+  { id: 0, name: 'Semita', gloss: 'sentiero sterrato', icon: '🟤', cost: 3, unlock: 1 },
+  { id: 1, name: 'Via strata', gloss: 'strada lastricata', icon: '⬜', cost: 8, unlock: 4 },
+  { id: 2, name: 'Via consularis', gloss: 'via consolare con marciapiedi', icon: '🛣️', cost: 18, unlock: 10 },
+]
 
 /** Estremi (inclusi) dell'area costruibile per un livello di terreno. */
 export function landBounds(land: number): { min: number; max: number } {

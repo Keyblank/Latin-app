@@ -502,6 +502,18 @@ button { font-family: inherit; cursor: pointer; }
 .tool:active { transform: translateY(2px); }
 .tool.on { border-color: var(--primary); background: #f6eefc; color: var(--primary); }
 
+.road-picker { display: flex; gap: 8px; margin-bottom: 10px; }
+.road-chip {
+  flex: 1; display: flex; flex-direction: column; gap: 2px; align-items: flex-start;
+  border: 2px solid var(--gray); border-bottom-width: 4px; background: #fff;
+  border-radius: 12px; padding: 9px 10px; text-align: left;
+}
+.road-chip.on { border-color: var(--primary); background: #f6eefc; }
+.road-chip.off { opacity: 0.55; cursor: not-allowed; }
+.road-name { font-weight: 800; font-size: 13px; color: var(--text); }
+.road-gloss { font-size: 11px; color: var(--text-soft); font-style: italic; line-height: 1.25; }
+.road-cost { font-size: 12px; font-weight: 800; color: var(--gold-dark); }
+
 .land-row {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   background: #fbf6ec; border: 2px solid var(--gold); border-radius: 14px;

@@ -1,6 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Exercise } from './types'
 
+/** Una casella di strada: dove, e di che tipo. */
+export interface Road {
+  r: number
+  c: number
+  /** 0 sterrato, 1 lastricata, 2 consolare. */
+  t: 0 | 1 | 2
+}
+
 /** Un edificio piazzato nella città: quale, dove, e come ruotato. */
 export interface Placed {
   /** id dell'edificio */
@@ -34,8 +42,8 @@ export interface Progress {
   denarii: number
   /** Edifici piazzati nella città (posizione scelta dal giocatore). */
   city: Placed[]
-  /** Caselle di strada, come chiavi "riga,colonna". */
-  roads: string[]
+  /** Caselle di strada. */
+  roads: Road[]
   /** Livello del terreno acquistato (0 = isola iniziale). */
   land: number
   /** Se true, tutte le lezioni sono sbloccate (navigazione libera). */
@@ -61,7 +69,14 @@ function load(): Progress {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return emptyProgress
-    return { ...emptyProgress, ...JSON.parse(raw) }
+    const saved = { ...emptyProgress, ...JSON.parse(raw) } as Progress
+    // Le prime versioni salvavano le strade come stringhe "riga,colonna".
+    saved.roads = (saved.roads as unknown as (string | Road)[]).map((x) => {
+      if (typeof x !== 'string') return x
+      const [r, c] = x.split(',').map(Number)
+      return { r, c, t: 1 as const }
+    })
+    return saved
   } catch {
     return emptyProgress
   }
@@ -158,19 +173,25 @@ export function useProgress() {
     }))
   }, [])
 
-  /** Costruisce una casella di strada. */
-  const addRoad = useCallback((key: string, cost: number) => {
+  /** Costruisce (o sostituisce) una casella di strada. */
+  const addRoad = useCallback((r: number, c: number, t: 0 | 1 | 2, cost: number) => {
     setProgress((prev) => {
-      if (prev.roads.includes(key) || prev.denarii < cost) return prev
-      return { ...prev, denarii: prev.denarii - cost, roads: [...prev.roads, key] }
+      const existing = prev.roads.find((x) => x.r === r && x.c === c)
+      if (existing?.t === t || prev.denarii < cost) return prev
+      const roads = prev.roads.filter((x) => !(x.r === r && x.c === c))
+      return { ...prev, denarii: prev.denarii - cost, roads: [...roads, { r, c, t }] }
     })
   }, [])
 
   /** Rimuove una casella di strada (rimborso indicato). */
-  const removeRoad = useCallback((key: string, refund: number) => {
+  const removeRoad = useCallback((r: number, c: number, refund: number) => {
     setProgress((prev) => {
-      if (!prev.roads.includes(key)) return prev
-      return { ...prev, denarii: prev.denarii + refund, roads: prev.roads.filter((k) => k !== key) }
+      if (!prev.roads.some((x) => x.r === r && x.c === c)) return prev
+      return {
+        ...prev,
+        denarii: prev.denarii + refund,
+        roads: prev.roads.filter((x) => !(x.r === r && x.c === c)),
+      }
     })
   }, [])
 
