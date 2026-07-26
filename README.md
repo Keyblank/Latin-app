@@ -106,6 +106,9 @@ esempi già presenti.
 - **Unità 11 — Il pronome relativo** — *qui, quae, quod*: le proposizioni
   relative, la regola d'oro (genere/numero dall'antecedente, caso dalla funzione)
   e i vari sensi (*che, di cui, a cui*).
+- **Unità 12 — Participi e ablativo assoluto** — participio presente (*amāns*) e
+  perfetto (*amātus*), e l'**ablativo assoluto** (*Urbe captā…*), il costrutto più
+  frequente nelle versioni.
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia

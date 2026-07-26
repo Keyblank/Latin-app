@@ -76,7 +76,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 - ⬜ **Pronomi**: personali (ego, tu), dimostrativi (is, hic, ille), riflessivi (se, suus)
 
 ### Fase C — gli "sblocca-lettura" *(priorità per le versioni)*
-- ⬜ **Participi** (presente e perfetto) → **Ablativo assoluto** ⭐
+- ✅ **Participi** (presente e perfetto) → **Ablativo assoluto**
 - ⬜ **Infinito** → **Accusativo + infinito** (discorso indiretto) ⭐
 - ⬜ **Congiuntivo** + subordinate: *cum* narrativo, finali (*ut/ne*),
   consecutive, temporali/causali
