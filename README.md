@@ -28,7 +28,9 @@ la lingua. Interfaccia in italiano.
   al tocco. Tocchi una parola e ottieni lemma, significato e analisi della
   forma; provi a tradurre la frase; poi scopri la traduzione e la nota che
   spiega il punto difficile. Si va **una frase alla volta**, perché è così che
-  si traduce davvero. I brani sono in `src/data/versiones.ts`.
+  si traduce davvero. Sette brani, dalla favola di Fedro all'oratoria di
+  Cicerone, ognuno sbloccato solo dopo che il corso ha spiegato tutto quello
+  che contiene. Sono in `src/data/versiones.ts`.
 - **Salvataggio automatico** dei progressi nel browser (localStorage).
 - **Mascotte animata** 🗿: un busto di marmo romano dall'aria sarcastica, con
   tre umori animati e **battute ironiche** a rotazione (saluti, feedback,

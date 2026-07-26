@@ -272,6 +272,15 @@ for (const v of versiones) {
     if (!usate.has(k)) segnala(dove, `il glossario ha «${k}» ma nel testo non compare`)
   }
   if (v.frasi.length < 3) segnala(dove, 'ha meno di tre frasi: è troppo corta per essere una versione')
+  // Uno sblocco più in là della fine del corso non arriverebbe mai.
+  if (v.unlock > lezioni) segnala(dove, `si sblocca alla lezione ${v.unlock}, ma il corso ne ha ${lezioni}`)
+}
+// L'elenco si legge dall'alto: se gli sblocchi non crescono, le versioni
+// compaiono in un ordine che non corrisponde alla difficoltà.
+for (let k = 1; k < versiones.length; k++) {
+  if (versiones[k].unlock < versiones[k - 1].unlock) {
+    segnala('versiones', `«${versiones[k].titolo}» si sblocca prima di «${versiones[k - 1].titolo}» ma viene dopo nell'elenco`)
+  }
 }
 
 // ─────────────────── esito ───────────────────
