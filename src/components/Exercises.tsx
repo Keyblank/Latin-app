@@ -202,28 +202,26 @@ export function Match({
   ex: MatchExercise
   onComplete: () => void
 }) {
-  const left = useMemo(() => shuffle(ex.pairs.map((p) => p[0])), [ex])
-  const right = useMemo(() => shuffle(ex.pairs.map((p) => p[1])), [ex])
-  const lookup = useMemo(() => new Map(ex.pairs.map((p) => [p[0], p[1]])), [ex])
+  // Le carte si identificano con l'INDICE della coppia, non con il testo:
+  // altrimenti una coppia come «rosa → rosa» (parola uguale nelle due lingue)
+  // conterebbe una volta sola e l'esercizio non si chiuderebbe mai.
+  const left = useMemo(() => shuffle(ex.pairs.map((p, i) => ({ i, text: p[0] }))), [ex])
+  const right = useMemo(() => shuffle(ex.pairs.map((p, i) => ({ i, text: p[1] }))), [ex])
 
-  const [selLeft, setSelLeft] = useState<string | null>(null)
-  const [selRight, setSelRight] = useState<string | null>(null)
-  const [matched, setMatched] = useState<Set<string>>(new Set())
-  const [wrong, setWrong] = useState<string | null>(null)
+  const [selLeft, setSelLeft] = useState<number | null>(null)
+  const [selRight, setSelRight] = useState<number | null>(null)
+  const [done, setDone] = useState<number[]>([])
+  const [wrong, setWrong] = useState<[number, number] | null>(null)
 
-  function tryMatch(l: string, r: string) {
-    if (lookup.get(l) === r) {
-      const next = new Set(matched)
-      next.add(l)
-      next.add(r)
-      setMatched(next)
+  function tryMatch(l: number, r: number) {
+    if (l === r) {
+      const next = [...done, l]
+      setDone(next)
       setSelLeft(null)
       setSelRight(null)
-      if (next.size === ex.pairs.length * 2) {
-        setTimeout(onComplete, 350)
-      }
+      if (next.length === ex.pairs.length) setTimeout(onComplete, 350)
     } else {
-      setWrong(`${l}|${r}`)
+      setWrong([l, r])
       setTimeout(() => {
         setWrong(null)
         setSelLeft(null)
@@ -232,20 +230,20 @@ export function Match({
     }
   }
 
-  function pickLeft(l: string) {
-    if (matched.has(l)) return
+  function pickLeft(l: number) {
+    if (done.includes(l)) return
     setSelLeft(l)
-    if (selRight) tryMatch(l, selRight)
+    if (selRight !== null) tryMatch(l, selRight)
   }
-  function pickRight(r: string) {
-    if (matched.has(r)) return
+  function pickRight(r: number) {
+    if (done.includes(r)) return
     setSelRight(r)
-    if (selLeft) tryMatch(selLeft, r)
+    if (selLeft !== null) tryMatch(selLeft, r)
   }
 
-  const cls = (v: string, sel: string | null) =>
-    `match-item ${matched.has(v) ? 'matched' : ''} ${sel === v ? 'sel' : ''} ${
-      wrong?.includes(v) ? 'wrong' : ''
+  const cls = (i: number, sel: number | null, side: 0 | 1) =>
+    `match-item ${done.includes(i) ? 'matched' : ''} ${sel === i ? 'sel' : ''} ${
+      wrong?.[side] === i ? 'wrong' : ''
     }`
 
   return (
@@ -253,16 +251,26 @@ export function Match({
       <h2 className="prompt">{ex.prompt}</h2>
       <div className="match-grid">
         <div className="match-col">
-          {left.map((l) => (
-            <button key={l} className={cls(l, selLeft)} onClick={() => pickLeft(l)} disabled={matched.has(l)}>
-              {l}
+          {left.map((it) => (
+            <button
+              key={it.i}
+              className={cls(it.i, selLeft, 0)}
+              onClick={() => pickLeft(it.i)}
+              disabled={done.includes(it.i)}
+            >
+              {it.text}
             </button>
           ))}
         </div>
         <div className="match-col">
-          {right.map((r) => (
-            <button key={r} className={cls(r, selRight)} onClick={() => pickRight(r)} disabled={matched.has(r)}>
-              {r}
+          {right.map((it) => (
+            <button
+              key={it.i}
+              className={cls(it.i, selRight, 1)}
+              onClick={() => pickRight(it.i)}
+              disabled={done.includes(it.i)}
+            >
+              {it.text}
             </button>
           ))}
         </div>

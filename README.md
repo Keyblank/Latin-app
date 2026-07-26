@@ -99,7 +99,8 @@ esempi già presenti.
 
 - **Pronuntiatio** — come si legge il latino: suoni particolari e accento (con audio).
 - **Unità 1–3** — primo contatto: saluti, persone, cose, il verbo *essere*,
-  aggettivi e prime frasi complete (livello «mai visto il latino»).
+  aggettivi e prime frasi complete (livello «mai visto il latino»), compresi i
+  primi **falsi amici** (*casa* = capanna, non «casa»).
 - **Unità 4 — I casi latini** — cosa sono i casi, la funzione di ognuno,
   soggetto/oggetto e i complementi (genitivo, dativo, ablativo).
 - **Unità 5 — La prima declinazione** — il modello *rosa, rosae*, le desinenze,

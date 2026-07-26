@@ -218,30 +218,53 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🌿',
             title: 'Parole nuove',
-            body: '• «aqua» = acqua\n• «rosa» = rosa\n• «terra» = terra\n• «villa» = casa di campagna',
+            body:
+              'Alcune parole latine si riconoscono al volo, altre no. Queste no:\n\n' +
+              '• «silva» = bosco, foresta\n' +
+              '• «ianua» = porta (sì: è il nome di questa app)\n' +
+              '• «villa» = casa di campagna, fattoria\n' +
+              '• «aqua» = acqua (questa era facile)',
           },
           {
             type: 'choice',
-            prompt: 'Quale significa «acqua»?',
-            options: ['rosa', 'aqua', 'terra'],
-            answer: 'aqua',
+            prompt: 'Quale significa «bosco»?',
+            options: ['silva', 'aqua', 'ianua'],
+            answer: 'silva',
+          },
+          {
+            type: 'info',
+            icon: '⚠️',
+            title: 'Attenzione: «casa» non è casa',
+            body:
+              'Ci sono parole latine identiche all’italiano che però significano ' +
+              'un’altra cosa: si chiamano FALSI AMICI, e nelle versioni fanno danni.\n\n' +
+              '• «casa» in latino = capanna, tugurio (non la casa dove abiti!)\n' +
+              '• la casa vera in città è «domus»; in campagna è «villa»\n\n' +
+              'Regola d’oro: se una parola ti sembra ovvia, controllala lo stesso.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «casa» in latino?',
+            focus: 'casa',
+            options: ['capanna', 'casa di città', 'famiglia'],
+            answer: 'capanna',
           },
           {
             type: 'match',
             prompt: 'Abbina le parole',
             pairs: [
-              ['aqua', 'acqua'],
-              ['rosa', 'rosa'],
-              ['terra', 'terra'],
+              ['silva', 'bosco'],
+              ['ianua', 'porta'],
+              ['casa', 'capanna'],
               ['villa', 'casa di campagna'],
             ],
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «villa»?',
-            focus: 'villa',
-            options: ['città', 'casa di campagna', 'strada'],
-            answer: 'casa di campagna',
+            prompt: 'In una versione trovi «domus». Cos’è?',
+            focus: 'domus',
+            options: ['la casa di città', 'la capanna', 'il bosco'],
+            answer: 'la casa di città',
           },
         ],
       },
