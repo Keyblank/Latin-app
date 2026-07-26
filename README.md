@@ -123,6 +123,11 @@ esempi già presenti.
 - **Unità 12 — Participi e ablativo assoluto** — participio presente (*amāns*) e
   perfetto (*amātus*), e l'**ablativo assoluto** (*Urbe captā…*), il costrutto più
   frequente nelle versioni.
+- **Unità 13 — L'infinito e l'accusativo + infinito** — l'infinito presente e
+  perfetto (*amāre / amāvisse*) e il **discorso indiretto**: il latino non ha il
+  «che», mette il soggetto in accusativo e il verbo all'infinito
+  (*Dīcō Caesarem venīre* = «dico che Cesare viene»), con il tempo relativo
+  (contemporaneo / anteriore) e il caso di *sē*.
 
 Le unità di grammatica sono pensate per chi deve affrontare un corso
 universitario di letteratura latina partendo da zero: introducono la morfologia

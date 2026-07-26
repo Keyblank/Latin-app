@@ -278,6 +278,13 @@ button { font-family: inherit; cursor: pointer; }
   background: #f3eefb; font-weight: 800; color: var(--primary); text-align: left;
 }
 .grammar-table tbody tr:nth-child(even) td:not(.row-label) { background: #fafafa; }
+/* Su schermo stretto le tabelle a 3 colonne uscivano dal bordo: stringiamo
+   un po' testo e spaziature invece di lasciarle tagliate. */
+@media (max-width: 460px) {
+  .grammar-table { font-size: 15px; }
+  .grammar-table th, .grammar-table td { padding: 9px 7px; }
+}
+
 .table-note {
   font-size: 15px; line-height: 1.5; color: var(--text-soft);
   background: #fff8e1; border-left: 4px solid #ffd43b;

@@ -2355,4 +2355,374 @@ export const curriculum: Unit[] = [
       },
     ],
   },
+  {
+    id: 'u13',
+    title: 'Unità 13 — L’infinito e l’accusativo + infinito',
+    subtitle: 'Come il latino dice «dico che…»',
+    color: '#8a5a2b',
+    lessons: [
+      {
+        id: 'u13l1',
+        title: 'L’infinito',
+        icon: '♾️',
+        exercises: [
+          {
+            type: 'info',
+            icon: '♾️',
+            title: 'Che cos’è l’infinito',
+            body:
+              'L’INFINITO è la forma «neutra» del verbo, quella che non dice chi ' +
+              'compie l’azione: in italiano è «amare», «vedere», «leggere», ' +
+              '«sentire».\n\nÈ la forma con cui cerchi un verbo sul vocabolario. ' +
+              'In latino la riconosci dalla terminazione:\n\n' +
+              '• «-āre, -ēre, -ere, -īre» — proprio come in italiano.',
+          },
+          {
+            type: 'table',
+            title: 'L’infinito presente nelle 4 coniugazioni',
+            columns: ['Coniugazione', 'Infinito', 'Significato'],
+            rows: [
+              ['1ª', 'amāre', 'amare'],
+              ['2ª', 'vidēre', 'vedere'],
+              ['3ª', 'legere', 'leggere'],
+              ['4ª', 'audīre', 'sentire, ascoltare'],
+              ['irregolare', 'esse', 'essere'],
+            ],
+            speakCols: [1],
+            note: 'Attenzione alla differenza tra 2ª e 3ª: «vidĒre» ha la e lunga e accentata, «lEgere» ha la e breve e l’accento si sposta indietro. Tocca 🔊.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «audīre»?',
+            focus: 'audīre',
+            options: ['sentire, ascoltare', 'ascolta', 'ho ascoltato'],
+            answer: 'sentire, ascoltare',
+          },
+          {
+            type: 'info',
+            icon: '⏮️',
+            title: 'C’è anche un infinito PERFETTO',
+            body:
+              'L’italiano ha «amare» ma anche «aver amato»: un infinito che ' +
+              'guarda al passato. Il latino pure, ed è una parola sola.\n\n' +
+              'Si fa con il TEMA DEL PERFETTO (quello dell’Unità 10) + «-isse»:\n' +
+              '• amāv- + isse → «amāvisse» = aver amato\n' +
+              '• vīd- + isse → «vīdisse» = aver visto\n\n' +
+              'Da «esse» viene «fuisse» = essere stato.',
+          },
+          {
+            type: 'table',
+            title: 'Infinito presente e perfetto',
+            columns: ['Verbo', 'Presente', 'Perfetto'],
+            rows: [
+              ['amāre', 'amāre (amare)', 'amāvisse (aver amato)'],
+              ['vidēre', 'vidēre (vedere)', 'vīdisse (aver visto)'],
+              ['legere', 'legere (leggere)', 'lēgisse (aver letto)'],
+              ['venīre', 'venīre (venire)', 'vēnisse (esser venuto)'],
+              ['esse', 'esse (essere)', 'fuisse (essere stato)'],
+            ],
+            note: 'La marca «-isse» è la stessa per tutti: se vedi -isse, sei davanti a un infinito perfetto.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «vēnisse»?',
+            focus: 'vēnisse',
+            options: ['esser venuto', 'venire', 'verrà'],
+            answer: 'esser venuto',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['legere', 'leggere'],
+              ['lēgisse', 'aver letto'],
+              ['esse', 'essere'],
+              ['fuisse', 'essere stato'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u13l2',
+        title: 'Dico che… (acc. + infinito)',
+        icon: '💬',
+        exercises: [
+          {
+            type: 'info',
+            icon: '💬',
+            title: 'Riferire le parole di qualcuno',
+            body:
+              'Quando racconti quello che qualcuno dice o pensa, puoi farlo in ' +
+              'due modi.\n\n' +
+              '• DISCORSO DIRETTO — riporti le parole tali e quali:\n' +
+              '  Marco dice: «Cesare viene».\n' +
+              '• DISCORSO INDIRETTO — le incastri nella tua frase:\n' +
+              '  Marco dice CHE Cesare viene.\n\n' +
+              'Il discorso indiretto è dappertutto nelle versioni: gli storici ' +
+              'passano il tempo a riferire discorsi, notizie, pensieri.',
+          },
+          {
+            type: 'info',
+            icon: '🚫',
+            title: 'In latino il «che» non c’è',
+            body:
+              'Ecco il punto che spiazza tutti: il latino NON usa una parolina ' +
+              'come «che» per introdurre il discorso indiretto.\n\n' +
+              'Fa una cosa diversa: mette il SOGGETTO della frase riferita in ' +
+              'ACCUSATIVO e il suo VERBO all’INFINITO.\n\n' +
+              '  Dico che Cesare viene → «Dīcō Caesarem venīre»\n' +
+              '  (alla lettera: «dico Cesare venire»)\n\n' +
+              'Questo costrutto si chiama ACCUSATIVO + INFINITO.',
+          },
+          {
+            type: 'table',
+            title: 'Italiano e latino a confronto',
+            columns: ['Italiano', 'Latino'],
+            rows: [
+              ['Dico che Cesare viene', 'Dīcō Caesarem venīre'],
+              ['Penso che la ragazza canta', 'Putō puellam cantāre'],
+              ['So che il re è buono', 'Sciō rēgem esse bonum'],
+            ],
+            speakCols: [1],
+            note: '«putō» = penso, «sciō» = so, «cantāre» = cantare. Nota che in latino sparisce il «che» e il soggetto cambia caso.',
+          },
+          {
+            type: 'info',
+            icon: '⚠️',
+            title: 'L’accusativo qui NON è l’oggetto',
+            body:
+              'È l’errore numero uno, e va capito bene.\n\n' +
+              'Fin qui l’accusativo era il complemento oggetto: «Puella rosam ' +
+              'amat» = la ragazza ama la rosa. Chi subisce l’azione.\n\n' +
+              'Nell’accusativo + infinito no: «Caesarem» in «Dīcō Caesarem ' +
+              'venīre» è il SOGGETTO di «venīre». Non è Cesare a essere detto: ' +
+              'è Cesare a venire.\n\n' +
+              'Se traducessi «dico Cesare» non avrebbe senso — ed è proprio ' +
+              'quel non-senso il segnale che sei davanti a un acc. + infinito.',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Dīcō Caesarem venīre», che funzione ha «Caesarem»?',
+            focus: 'Caesarem',
+            options: [
+              'è il soggetto di «venīre»',
+              'è il complemento oggetto di «dīcō»',
+              'è un complemento di luogo',
+            ],
+            answer: 'è il soggetto di «venīre»',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «Putō puellam cantāre»?',
+            focus: 'Putō puellam cantāre',
+            options: [
+              'Penso che la ragazza canti',
+              'Penso alla ragazza che canta',
+              'La ragazza pensa di cantare',
+            ],
+            answer: 'Penso che la ragazza canti',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «Dico che la ragazza canta»',
+            source: 'Dico che la ragazza canta',
+            answer: ['Dīcō', 'puellam', 'cantāre'],
+            extra: ['puella', 'cantat'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['Dīcō Caesarem venīre', 'Dico che Cesare viene'],
+              ['Sciō rēgem esse bonum', 'So che il re è buono'],
+              ['Putō puellam cantāre', 'Penso che la ragazza canti'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u13l3',
+        title: 'Prima o insieme?',
+        icon: '⏳',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🔔',
+            title: 'I verbi che lo fanno scattare',
+            body:
+              'L’accusativo + infinito non arriva a caso: lo introduce sempre un ' +
+              'verbo di DIRE, PENSARE o PERCEPIRE. Quando ne vedi uno, aspettati ' +
+              'il costrutto.\n\n' +
+              '• dire: «dīcō» (dico), «narrō» (racconto), «nūntiō» (annuncio)\n' +
+              '• pensare/sapere: «putō» (penso), «crēdō» (credo), «sciō» (so)\n' +
+              '• percepire: «videō» (vedo), «audiō» (sento)',
+          },
+          {
+            type: 'info',
+            icon: '⏳',
+            title: 'Il tempo dell’infinito è RELATIVO',
+            body:
+              'L’infinito qui non indica presente o passato in assoluto: indica il ' +
+              'rapporto con il verbo che regge la frase.\n\n' +
+              '• INFINITO PRESENTE → azione CONTEMPORANEA («che fa»)\n' +
+              '  Dīcō Caesarem venīre = dico che viene\n' +
+              '• INFINITO PERFETTO → azione ANTERIORE, avvenuta prima («che ha fatto»)\n' +
+              '  Dīcō Caesarem vēnisse = dico che è venuto\n\n' +
+              'Una sola sillaba (-isse) sposta l’azione nel passato: è lì che si ' +
+              'gioca la traduzione.',
+          },
+          {
+            type: 'table',
+            title: 'Contemporaneo o anteriore',
+            columns: ['Latino', 'Infinito', 'Traduzione'],
+            rows: [
+              ['Dīcō Caesarem venīre', 'presente', 'Dico che Cesare viene'],
+              ['Dīcō Caesarem vēnisse', 'perfetto', 'Dico che Cesare è venuto'],
+              ['Dīxī Caesarem venīre', 'presente', 'Dissi che Cesare veniva'],
+              ['Dīxī Caesarem vēnisse', 'perfetto', 'Dissi che Cesare era venuto'],
+            ],
+            speakCols: [0],
+            note: 'Guarda le ultime due: il verbo reggente è al passato («dīxī» = dissi), quindi anche la traduzione italiana slitta indietro. L’infinito, però, dice solo «insieme» o «prima».',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «Putō rēgem fuisse bonum»?',
+            focus: 'Putō rēgem fuisse bonum',
+            options: [
+              'Penso che il re sia stato buono',
+              'Penso che il re sia buono',
+              'Il re pensa di essere buono',
+            ],
+            answer: 'Penso che il re sia stato buono',
+          },
+          {
+            type: 'info',
+            icon: '🪞',
+            title: 'E se il soggetto è lo stesso?',
+            body:
+              'Se chi parla e chi compie l’azione sono la stessa persona, il latino ' +
+              'usa «sē» (= sé, lui stesso) in accusativo:\n\n' +
+              '«Caesar dīcit sē venīre» = Cesare dice che (lui) viene.\n\n' +
+              'Se invece trovi un altro nome in accusativo, il soggetto è un altro:\n' +
+              '«Caesar dīcit hostēs venīre» = Cesare dice che i nemici vengono.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Come si traduce «Caesar dīcit sē vēnisse»?',
+            focus: 'Caesar dīcit sē vēnisse',
+            options: [
+              'Cesare dice di essere venuto',
+              'Cesare dice che verrà',
+              'Dicono che Cesare viene',
+            ],
+            answer: 'Cesare dice di essere venuto',
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['Caesarem venīre', 'che Cesare viene'],
+              ['Caesarem vēnisse', 'che Cesare è venuto'],
+              ['rēgem esse bonum', 'che il re è buono'],
+              ['rēgem fuisse bonum', 'che il re è stato buono'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'u13l4',
+        title: 'Analizza e traduci',
+        icon: '📖',
+        exercises: [
+          {
+            type: 'info',
+            icon: '🧭',
+            title: 'Il metodo, in tre mosse',
+            body:
+              '1. Trova il verbo reggente: è di dire, pensare o percepire? ' +
+              '(dīcō, putō, sciō, videō, audiō…)\n' +
+              '2. Cerca la coppia ACCUSATIVO + INFINITO che lo segue.\n' +
+              '3. Traduci mettendoci tu il «che»: l’accusativo diventa il ' +
+              'soggetto italiano, l’infinito il verbo coniugato.\n\n' +
+              'E controlla la desinenza dell’infinito: «-isse» = azione già ' +
+              'avvenuta.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Magister dīcit discipulōs legere»? («magister» = maestro, «discipulōs» = allievi)',
+            focus: 'Magister dīcit discipulōs legere',
+            options: [
+              'Il maestro dice che gli allievi leggono',
+              'Il maestro dice agli allievi di leggere',
+              'Gli allievi dicono che il maestro legge',
+            ],
+            answer: 'Il maestro dice che gli allievi leggono',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa significa «Nūntius dīcit urbem captam esse»? («nūntius» = messaggero)',
+            focus: 'Nūntius dīcit urbem captam esse',
+            options: [
+              'Il messaggero dice che la città è stata presa',
+              'Il messaggero dice che la città prende',
+              'Il messaggero prende la città',
+            ],
+            answer: 'Il messaggero dice che la città è stata presa',
+          },
+          {
+            type: 'info',
+            icon: '🧩',
+            title: 'Da dove viene «captam esse»',
+            body:
+              'Due pezzi che conosci già, messi insieme:\n\n' +
+              '• «captam» = participio perfetto di «capere», concordato con ' +
+              '«urbem» (femminile, accusativo);\n' +
+              '• «esse» = l’infinito di essere.\n\n' +
+              'Participio perfetto + esse = infinito perfetto PASSIVO: ' +
+              '«essere stata presa». Nelle versioni di guerra lo trovi a ogni riga.',
+          },
+          {
+            type: 'choice',
+            prompt: 'In «Sciō puerum rosam amāre», chi ama chi?',
+            focus: 'Sciō puerum rosam amāre',
+            options: [
+              'il ragazzo ama la rosa',
+              'la rosa ama il ragazzo',
+              'io amo il ragazzo e la rosa',
+            ],
+            answer: 'il ragazzo ama la rosa',
+          },
+          {
+            type: 'info',
+            icon: '🔍',
+            title: 'Due accusativi: come si distinguono',
+            body:
+              'In «Sciō puerum rosam amāre» ci sono DUE accusativi. Come sai qual ' +
+              'è il soggetto?\n\n' +
+              'Con il buon senso, e con l’ordine: il primo accusativo dopo il verbo ' +
+              'reggente è di solito il soggetto, l’altro è l’oggetto. Poi verifica ' +
+              'se il senso regge: una rosa che ama un ragazzo è poesia, non ' +
+              'traduzione.',
+          },
+          {
+            type: 'build',
+            prompt: 'Traduci: «So che Cesare è venuto»',
+            source: 'So che Cesare è venuto',
+            answer: ['Sciō', 'Caesarem', 'vēnisse'],
+            extra: ['venīre', 'Caesar'],
+          },
+          {
+            type: 'match',
+            prompt: 'Abbina alla traduzione',
+            pairs: [
+              ['Sciō rēgem venīre', 'So che il re viene'],
+              ['Audiō hostēs fūgisse', 'Sento che i nemici sono fuggiti'],
+              ['Videō puerōs legere', 'Vedo che i ragazzi leggono'],
+              ['urbem captam esse', 'che la città è stata presa'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]

@@ -31,7 +31,7 @@ Principi guida:
 
 ## ✅ Dove siamo (fatto)
 
-### Contenuti (12 sezioni, ~30 lezioni)
+### Contenuti (14 sezioni, ~38 lezioni)
 
 - ✅ **Pronuntiatio** — suoni e accento (pronuncia ecclesiastica), con audio
 - ✅ **U1–U3** — vocaboli, verbo *essere* (est/sunt), verbi base, frase S-V-O
@@ -43,6 +43,8 @@ Principi guida:
 - ✅ **U9 — 3ª declinazione** (tema dal genitivo; *rex, regis*; neutri)
 - ✅ **U10 — Il passato** (imperfetto e perfetto)
 - ✅ **U11 — Il pronome relativo** (*qui, quae, quod*)
+- ✅ **U12 — Participi e ablativo assoluto**
+- ✅ **U13 — Infinito e accusativo + infinito** (discorso indiretto)
 
 Ogni unità di grammatica chiude con una lezione **"Analizza e traduci"**
 (anche latino → italiano, il verso della versione).
@@ -80,7 +82,7 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 ### Fase C — gli "sblocca-lettura" *(priorità per le versioni)*
 - ✅ **Participi** (presente e perfetto) → **Ablativo assoluto**
-- ⬜ **Infinito** → **Accusativo + infinito** (discorso indiretto) ⭐
+- ✅ **Infinito** (presente e perfetto) → **Accusativo + infinito** (discorso indiretto) ⭐
 - ⬜ **Congiuntivo** + subordinate: *cum* narrativo, finali (*ut/ne*),
   consecutive, temporali/causali
 - ⬜ **Il passivo** (presente e passato)
@@ -114,9 +116,10 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 - L'**accento** della pronuncia automatica non è sempre corretto (per le parole
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
-- I contenuti coprono le **fondamenta**: per tradurre versioni vere serve ancora
-  la Fase C (participi, acc.+inf., congiuntivo). È un percorso, non un traguardo
-  già raggiunto.
+- I contenuti coprono le **fondamenta** più i primi costrutti (participi,
+  ablativo assoluto, acc.+inf.): per tradurre versioni vere manca ancora il
+  resto della Fase C (congiuntivo e subordinate, passivo, futuro). È un
+  percorso, non un traguardo già raggiunto.
 
 ---
 
