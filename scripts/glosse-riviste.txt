@@ -148,6 +148,7 @@ imperium	comando, potere
 imperāre	comandare (+ dativo)
 imperātor, -ōris	comandante (poi: imperatore)
 impetus	assalto, carica
+in	dentro, in (con movimento)
 in	dentro, in (con movimento); contro
 incipere	cominciare
 incola, -ae	abitante

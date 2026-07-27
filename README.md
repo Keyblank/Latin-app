@@ -220,6 +220,19 @@ allarmi. Resta valida una direzione, ed è la più importante: la posizione può
 solo *allungare* una sillaba, mai accorciarla, quindi una vocale marcata breve
 è breve per natura senza discussione. Su quel verso il corso è pulito.
 
+Il verso opposto — la lineetta che **manca** — sembrava fuori portata, perché
+quando la fonte marca una vocale lunga non si sa se lo sia per natura o solo
+per posizione. C'è però un caso in cui si sa: la **sillaba aperta**. Se dopo la
+vocale c'è al più una consonante prima della vocale seguente (*a-mī-cus*,
+*nā-ti-o*), la sillaba non è chiusa da niente e la posizione non c'entra:
+quella lunga è per natura, e se il corso non ha messo la lineetta, manca. Il
+controllo gira su vocabolario, colonne latine delle tabelle e latino fra
+virgolette basse nelle schede. Ha trovato **amīcus** — scritto «amicus» perfino
+nella tabella dell'accento, dove la lineetta *è* la spiegazione del perché la
+voce batte su *-MÌ-* — più *dōnum*, *prōfectus*, *Fēmina*, *rēgnante*. Restano
+fuori le sillabe chiuse (*mēnsa*, *gēns*): lì il dubbio resta e non si segnala
+niente.
+
 ### Le frasi — [Whitaker's Words](https://github.com/mk270/whitakers-words)
 
 Le tabelle sono verificate, ma le **frasi** degli esercizi e delle versioni no:

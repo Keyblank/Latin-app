@@ -357,3 +357,156 @@ else {
   console.log(`\n${erroriDes.length} divergenze:\n`)
   for (const e of erroriDes) console.log('  • ' + e)
 }
+
+// ═══════════════ 3. le lineette che MANCANO (sillaba aperta) ═══════════════
+//
+// La sezione 1 dichiarava di poter controllare un verso solo: lineetta di
+// troppo su vocale breve. Il verso opposto — lineetta mancante — sembrava
+// fuori portata, perché quando la fonte marca una vocale lunga non si sa se
+// lo sia per natura o solo per posizione.
+//
+// C'è però un caso in cui si sa: la SILLABA APERTA. Se dopo la vocale c'è al
+// più una consonante prima della vocale seguente (a-mī-cus, nā-ti-o), la
+// sillaba non è chiusa da niente e la posizione non può averla allungata.
+// Quella lunga è per natura, e se il corso non ha messo la lineetta, manca.
+//
+// Trovati così: amīcus (scritto «amicus» perfino nella tabella dell'accento,
+// dove la lineetta È la spiegazione), dōnum, prōfectus, Fēmina, rēgnante.
+//
+// Restano fuori le sillabe chiuse (mēnsa, gēns): lì il dubbio resta e non si
+// segnala niente.
+
+/** Per ogni vocale: quantità, se la sillaba è aperta, se è un dittongo. */
+function profiloAperto(s) {
+  const d = s.normalize('NFD')
+  const lettere = []
+  for (let i = 0; i < d.length; i++) {
+    if (/[̀-ͯ]/.test(d[i])) continue
+    lettere.push([d[i], /[̀-ͯ]/.test(d[i + 1] ?? '') ? d[i + 1] : ''])
+  }
+  const out = []
+  for (let i = 0; i < lettere.length; i++) {
+    const [c, seg] = lettere[i]
+    if (!/[aeiouy]/i.test(c)) continue
+    let j = i + 1
+    let cons = ''
+    while (j < lettere.length && !/[aeiouy]/i.test(lettere[j][0])) { cons += lettere[j][0]; j++ }
+    out.push({
+      q: seg === '̄' ? 'L' : seg === '̆' ? 'B' : '?',
+      // l'ultima sillaba non si giudica: non ha una vocale dopo di sé
+      aperta: j < lettere.length && cons.length <= 1 && !/[xz]/i.test(cons),
+      dittongo: /[aeiouy]/i.test(lettere[i + 1]?.[0] ?? ''),
+      c,
+    })
+  }
+  return out
+}
+
+const rifAperto = new Map()
+for (const riga of readFileSync(FILE, 'utf8').split('\n')) {
+  if (!riga || riga.startsWith('!')) continue
+  const lemma = riga.split('|')[0]
+  if (!lemma) continue
+  for (const variante of lemma.split('=')) {
+    const k = chiave(variante)
+    if (k) rifAperto.set(k, [...(rifAperto.get(k) ?? []), profiloAperto(variante)])
+  }
+}
+
+/**
+ * Parole italiane che sono anche parole latine: «persona», «pace», «vita»,
+ * «cura» stanno nella colonna delle traduzioni, non in quella del latino, e
+ * il lessico latino non ha voce in capitolo su come si scrivono.
+ */
+const ITALIANE = new Set([
+  'prima', 'primo', 'solo', 'persona', 'pace', 'capo', 'mano', 'serio', 'marito',
+  'ceto', 'fiducia', 'audacia', 'castigo', 'rima', 'amando', 'amare', 'liberi',
+  'provincia', 'sentire', 'venire', 'dico', 'negare', 'muta', 'cena', 'vita',
+  'cura', 'fama', 'gloria', 'luna', 'ora', 'forma', 'ira',
+])
+
+/** Omografi: la grafia senza lineetta è una parola vera, e il lessico
+ *  conosce solo l'altra. */
+const CORTE_DAVVERO = {
+  utraque: 'nominativo di «uterque»; il lessico ha l’avverbio «utrāque» (da entrambe le parti)',
+  pedis: 'genitivo di «pēs, pedis» (la e è breve); il lessico ha «pēdis», il pidocchio',
+  eadem: 'nominativo femminile di «īdem» (a breve); il lessico ha l’ablativo «eādem»',
+  idem: 'il neutro «idem» ha la i breve; è il maschile a fare «īdem»',
+}
+
+const mancanti = []
+const notiCorti = []
+const vistiAperti = new Set()
+
+function controllaLineettaMancante(forma, dove) {
+  const f = (forma ?? '').trim()
+  if (f.length < 4 || !/^[A-Za-zĀ-ſ̀-ͯ]+$/.test(f.normalize('NFC'))) return
+  if (/[āēīōū]/i.test(f)) return
+  if (ITALIANE.has(f.toLowerCase())) return
+  const k = chiave(f)
+  if (vistiAperti.has(k)) return
+  const letture = rifAperto.get(k)
+  if (!letture) return
+  const mia = profiloAperto(f)
+  const buone = letture.filter((l) => l.length === mia.length)
+  if (!buone.length) return
+  for (let i = 0; i < mia.length; i++) {
+    if (buone.every((l) => l[i].q === 'L' && l[i].aperta && !l[i].dittongo)) {
+      vistiAperti.add(k)
+      const voce = { forma: f, dove, vocale: i + 1, lettera: buone[0][i].c }
+      if (CORTE_DAVVERO[f.toLowerCase()]) notiCorti.push(voce)
+      else mancanti.push(voce)
+      return
+    }
+  }
+}
+
+for (const v of vocabolario) {
+  for (const pezzo of v.lat.split(',')) controllaLineettaMancante(pezzo, `vocabolario · ${v.lat}`)
+}
+for (const u of curriculum) {
+  for (const l of u.lessons) {
+    for (const ex of l.exercises) {
+      const dove = `${u.id} · «${ex.title ?? ex.type}»`
+      if (ex.type === 'table') {
+        // nelle tabelle di lessico il latino è la prima colonna; nelle altre,
+        // tutte quelle che non sono la traduzione
+        const colonne = ex.lessico
+          ? [0]
+          : ex.columns
+              .map((c, i) => (/italiano|significato|domanda|ruolo|tipo|come si presenta/i.test(c) ? -1 : i))
+              .filter((i) => i >= 0)
+        for (const r of ex.rows) {
+          for (const i of colonne) {
+            for (const p of String(r[i] ?? '').split(/[^A-Za-zĀ-ſ̀-ͯ]+/)) {
+              controllaLineettaMancante(p, dove)
+            }
+          }
+        }
+      }
+      // nella prosa il latino è quello fra virgolette basse
+      const prosa = []
+      if (ex.type === 'info') prosa.push(ex.body ?? '')
+      if (ex.type === 'table' && ex.note) prosa.push(ex.note)
+      for (const t of prosa) {
+        for (const m of t.matchAll(/«([^»]+)»/g)) {
+          for (const p of m[1].split(/[^A-Za-zĀ-ſ̀-ͯ]+/)) controllaLineettaMancante(p, dove)
+        }
+      }
+    }
+  }
+}
+
+console.log(`\nForme esaminate per lineette mancanti in sillaba aperta: ${vistiAperti.size} segnalate.`)
+if (notiCorti.length) {
+  console.log(`\nGià verificate a mano (${notiCorti.length}):`)
+  for (const v of notiCorti) console.log(`  «${v.forma}» — ${CORTE_DAVVERO[v.forma.toLowerCase()]}`)
+}
+if (!mancanti.length) {
+  console.log('Nessuna lineetta mancante nuova.')
+} else {
+  console.log(`\n${mancanti.length} lineette che sembrano mancare:\n`)
+  for (const v of mancanti) {
+    console.log(`  «${v.forma}» — la ${v.vocale}ª vocale («${v.lettera}») è lunga in sillaba aperta   ${v.dove}`)
+  }
+}

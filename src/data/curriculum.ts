@@ -23,26 +23,50 @@ export const curriculum: Unit[] = [
             body: 'Useremo la pronuncia «ecclesiastica», quella usata in Italia. Il latino si legge quasi come l’italiano!\n\nCi sono solo poche regole particolari. Le vediamo — e puoi ascoltarle toccando il pulsante 🔊.',
           },
           {
+            type: 'info',
+            icon: '➖',
+            title: 'La lineetta sulle vocali: ā, ē, ī, ō, ū',
+            body:
+              'Prima ancora di cominciare, una cosa che vedrai in ogni pagina: ' +
+              'una lineetta sopra una vocale. «amāre», «rosā», «rēx». Non è un ' +
+              'accento e non è un errore di stampa: segna una vocale LUNGA, ' +
+              'cioè che si tiene un po’ più a lungo.\n\n' +
+              'Serve a due cose: ti dice come pronunciare, e — lo vedrai nella ' +
+              'prossima lezione — ti dice dove cade l’accento nelle parole ' +
+              'lunghe.\n\n' +
+              'Attenzione però: nei testi latini veri la lineetta NON c’è. La ' +
+              'mettono i manuali (e noi) per aiutarti. In una versione «rosa» e ' +
+              '«rosā» — due casi diversi — si scrivono identiche, e a distinguerle ' +
+              'sei tu, dal senso della frase.',
+          },
+          {
+            type: 'choice',
+            prompt: 'Cosa indica la lineetta in «rosā»?',
+            focus: 'rosā',
+            options: ['che la vocale è lunga', 'che lì cade l’accento', 'che la parola è plurale'],
+            answer: 'che la vocale è lunga',
+          },
+          {
             type: 'table',
             title: 'Lettere e suoni particolari',
             columns: ['Lettera', 'Come si legge', 'Esempio'],
             rows: [
-              ['c + e, i', 'dolce, come «cena»', 'Cicero'],
+              ['c + e, i', 'dolce, come «cena»', 'Cicerō'],
               ['c + a, o, u', 'dura, come «cane»', 'caput'],
-              ['g + e, i', 'dolce, come «gelo»', 'gens'],
+              ['g + e, i', 'dolce, come «gelo»', 'gēns'],
               ['gn', 'come «gnocchi»', 'magnus'],
               ['ae, oe', 'si leggono «e»', 'caelum'],
-              ['ti + vocale', 'come «tsi»', 'natio'],
-              ['v', 'come «vino»', 'vinum'],
-              ['h', 'muta, non si sente', 'hora'],
+              ['ti + vocale', 'come «tsi»', 'nātiō'],
+              ['v', 'come «vino»', 'vīnum'],
+              ['h', 'muta, non si sente', 'hōra'],
             ],
             speakCols: [2],
             note: 'Regola d’oro: leggi come in italiano e ricorda queste eccezioni. Tocca 🔊 sugli esempi per sentirli.',
           },
           {
             type: 'choice',
-            prompt: 'Come si pronuncia «Cicero»?',
-            focus: 'Cicero',
+            prompt: 'Come si pronuncia «Cicerō»?',
+            focus: 'Cicerō',
             options: ['Cì-ce-ro (c dolce)', 'Kì-ke-ro', 'Sì-se-ro'],
             answer: 'Cì-ce-ro (c dolce)',
           },
@@ -55,8 +79,8 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'La «h» di «hora» come si pronuncia?',
-            focus: 'hora',
+            prompt: 'La «h» di «hōra» come si pronuncia?',
+            focus: 'hōra',
             options: ['non si sente (muta)', 'come una «k»', 'come una «f»'],
             answer: 'non si sente (muta)',
           },
@@ -80,7 +104,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🎵',
             title: 'Dove cade la voce',
-            body: 'In latino l’accento non si scrive, ma la voce cade su una sillaba precisa.\n\n• Parole di 2 sillabe → sempre sulla PRIMA: RÒ-sa, PÙ-er.\n• Parole più lunghe → di solito sulla penultima o terzultima sillaba.\n\nAll’inizio te lo indichiamo noi (in MAIUSCOLO), finché non ci fai l’orecchio.',
+            body: 'In latino l’accento non si scrive, ma la voce cade su una sillaba precisa.\n\n• Parole di 2 sillabe → sempre sulla PRIMA: RÒ-sa, PÙ-er.\n• Parole più lunghe → sulla penultima oppure sulla terzultima sillaba, mai altrove.\n\nQuale delle due? Lo decide la lineetta, e lo vedi fra due schermate. All’inizio te lo indichiamo noi (in MAIUSCOLO), finché non ci fai l’orecchio.',
           },
           {
             type: 'table',
@@ -90,7 +114,7 @@ export const curriculum: Unit[] = [
               ['rosa', 'RÒ-sa'],
               ['puella', 'pu-ÈL-la'],
               ['dominus', 'DÒ-mi-nus'],
-              ['amicus', 'a-MÌ-cus'],
+              ['amīcus', 'a-MÌ-cus'],
               ['templum', 'TÈM-plum'],
               ['fēmina', 'FÈ-mi-na'],
             ],
@@ -121,29 +145,40 @@ export const curriculum: Unit[] = [
           {
             type: 'info',
             icon: '➖',
-            title: 'La lineetta sulle vocali: ā, ē, ī, ō, ū',
+            title: 'A cosa serve la lineetta, qui',
             body:
-              'Da qui in avanti vedrai spesso una lineetta sopra una vocale: ' +
-              '«amāre», «rosā», «rēx». Non è un accento e non è un errore di ' +
-              'stampa: segna una vocale LUNGA, cioè che si tiene un po’ più a ' +
-              'lungo.\n\n' +
-              'Serve a due cose: ti dice come pronunciare, e soprattutto ti dice ' +
-              'dove cade l’accento nelle parole lunghe.\n\n' +
-              'Attenzione però: nei testi latini veri la lineetta NON c’è. La ' +
-              'mettono i manuali (e noi) per aiutarti. In una versione «rosa» e ' +
-              '«rosā» — due casi diversi — si scrivono identiche, e a distinguerle ' +
-              'sei tu, dal senso della frase.',
+              'Ecco perché la lineetta della lezione scorsa conta davvero: nelle ' +
+              'parole di tre sillabe o più è LEI a decidere dove batte la voce.\n\n' +
+              '• penultima sillaba con vocale lunga → l’accento cade lì: ' +
+              '«amīcus» → a-MÌ-cus, «fortūna» → for-TÙ-na\n' +
+              '• penultima con vocale breve → l’accento risale alla terzultima: ' +
+              '«dominus» → DÒ-mi-nus, «fēmina» → FÈ-mi-na\n\n' +
+              'Non c’è una terza possibilità: in latino l’accento non cade mai ' +
+              'sull’ultima sillaba, e mai più indietro della terzultima.\n\n' +
+              '(Vale anche se la penultima è chiusa da due consonanti: «pu-EL-la», ' +
+              '«ma-GIS-ter». Lì la sillaba è lunga anche con la vocale breve.)',
           },
           {
             type: 'choice',
-            prompt: 'Cosa indica la lineetta in «rosā»?',
-            focus: 'rosā',
+            prompt: 'In «fortūna» la ū ha la lineetta. Dove batte la voce?',
+            focus: 'fortūna',
             options: [
-              'che la vocale è lunga',
-              'che lì cade l’accento',
-              'che la parola è plurale',
+              'for-TÙ-na (penultima: è lunga)',
+              'FÒR-tu-na (terzultima)',
+              'for-tu-NÀ (ultima)',
             ],
-            answer: 'che la vocale è lunga',
+            answer: 'for-TÙ-na (penultima: è lunga)',
+          },
+          {
+            type: 'choice',
+            prompt: 'E in «fēmina», dove la penultima («mi») è breve?',
+            focus: 'fēmina',
+            options: [
+              'FÈ-mi-na: risale alla terzultima',
+              'fe-MÌ-na: resta sulla penultima',
+              'fe-mi-NÀ: scende sull’ultima',
+            ],
+            answer: 'FÈ-mi-na: risale alla terzultima',
           },
         ],
       },
@@ -552,7 +587,7 @@ export const curriculum: Unit[] = [
             type: 'build',
             prompt: 'Traduci: «La donna porta la rosa»',
             source: 'La donna porta la rosa',
-            answer: ['Femina', 'rosam', 'portat'],
+            answer: ['Fēmina', 'rosam', 'portat'],
             extra: ['aquam', 'videt'],
           },
         ],
@@ -652,8 +687,8 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'In «Femina aquam portat», qual è il SOGGETTO?',
-            focus: 'Femina aquam portat',
+            prompt: 'In «Fēmina aquam portat», qual è il SOGGETTO?',
+            focus: 'Fēmina aquam portat',
             options: ['fēmina', 'aquam', 'portat'],
             answer: 'fēmina',
           },
@@ -1028,7 +1063,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🎁',
             title: 'Il dativo — «a chi?»',
-            body: 'Il DATIVO indica a chi (o per chi) è diretta l’azione: chi riceve qualcosa. In italiano lo diciamo con «A» o «PER»:\n• do il libro A Marco\n• scrivo A mia madre\n• è un regalo PER te\n\nRisponde alla domanda «a chi? per chi?».\n\nIn latino «puella» al dativo è «puellae» (alla ragazza):\n→ «Femina puellae rosam dat» = la donna dà la rosa alla ragazza.\n(«dat» = dà.)',
+            body: 'Il DATIVO indica a chi (o per chi) è diretta l’azione: chi riceve qualcosa. In italiano lo diciamo con «A» o «PER»:\n• do il libro A Marco\n• scrivo A mia madre\n• è un regalo PER te\n\nRisponde alla domanda «a chi? per chi?».\n\nIn latino «puella» al dativo è «puellae» (alla ragazza):\n→ «Fēmina puellae rosam dat» = la donna dà la rosa alla ragazza.\n(«dat» = dà.)',
           },
           {
             type: 'info',
@@ -1473,8 +1508,8 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «Femina puellae aquam dat»? («dat» = dà)',
-            focus: 'Femina puellae aquam dat',
+            prompt: 'Cosa significa «Fēmina puellae aquam dat»? («dat» = dà)',
+            focus: 'Fēmina puellae aquam dat',
             options: [
               'La donna dà l’acqua alla ragazza',
               'La ragazza dà l’acqua alla donna',
@@ -1519,7 +1554,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '👨',
             title: 'Una nuova declinazione',
-            body: 'Finora le parole erano femminili (1ª declinazione). Ora vediamo la 2ª declinazione, che contiene molti MASCHILI in -us.\n\nParole nuove:\n• «dominus» = padrone, signore\n• «amicus» = amico\n• «servus» = servo\n• «amicus templum videt» = l’amico vede il tempio',
+            body: 'Finora le parole erano femminili (1ª declinazione). Ora vediamo la 2ª declinazione, che contiene molti MASCHILI in -us.\n\nParole nuove:\n• «dominus» = padrone, signore\n• «amīcus» = amico\n• «servus» = servo\n• «amīcus templum videt» = l’amico vede il tempio',
           },
           {
             type: 'table',
@@ -1557,9 +1592,9 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'In «Amicus dominum videt», qual è il complemento OGGETTO?',
-            focus: 'Amicus dominum videt',
-            options: ['dominum', 'amicus', 'videt'],
+            prompt: 'In «Amīcus dominum videt», qual è il complemento OGGETTO?',
+            focus: 'Amīcus dominum videt',
+            options: ['dominum', 'amīcus', 'videt'],
             answer: 'dominum',
           },
           {
@@ -1582,7 +1617,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '🏛️',
             title: 'Il genere neutro',
-            body: 'In italiano le parole hanno due generi: maschile (il libro) e femminile (la casa). Il «genere» è appunto questa categoria.\n\nIl latino ne ha uno in più: il NEUTRO — né maschile né femminile. Si usa per molte cose e concetti (spesso oggetti, luoghi, idee).\n\nParole nuove, tutte neutre:\n• «templum» = tempio\n• «bellum» = guerra\n• «donum» = dono\n• «verbum» = parola',
+            body: 'In italiano le parole hanno due generi: maschile (il libro) e femminile (la casa). Il «genere» è appunto questa categoria.\n\nIl latino ne ha uno in più: il NEUTRO — né maschile né femminile. Si usa per molte cose e concetti (spesso oggetti, luoghi, idee).\n\nParole nuove, tutte neutre:\n• «templum» = tempio\n• «bellum» = guerra\n• «dōnum» = dono\n• «verbum» = parola',
           },
           {
             type: 'info',
@@ -1626,7 +1661,7 @@ export const curriculum: Unit[] = [
             type: 'build',
             prompt: 'Traduci: «L’amico vede il tempio»',
             source: "L'amico vede il tempio",
-            answer: ['Amicus', 'templum', 'videt'],
+            answer: ['Amīcus', 'templum', 'videt'],
             extra: ['templa', 'amicum'],
           },
         ],
@@ -2093,7 +2128,7 @@ export const curriculum: Unit[] = [
             type: 'build',
             prompt: 'Traduci: «Il padrone porta il dono»',
             source: 'Il padrone porta il dono',
-            answer: ['Dominus', 'donum', 'portat'],
+            answer: ['Dominus', 'dōnum', 'portat'],
             extra: ['dominum', 'dona'],
           },
           {
@@ -2214,15 +2249,15 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Come si dice «Vedo la brava ragazza»? («video» = vedo)',
-            options: ['Puellam bonam video', 'Puella bona video', 'Puellae bonae video'],
-            answer: 'Puellam bonam video',
+            prompt: 'Come si dice «Vedo la brava ragazza»? («videō» = vedo)',
+            options: ['Puellam bonam videō', 'Puella bona videō', 'Puellae bonae videō'],
+            answer: 'Puellam bonam videō',
           },
           {
             type: 'build',
             prompt: 'Traduci: «Amo la grande casa» («villa» = casa)',
             source: 'Amo la grande casa',
-            answer: ['Villam', 'magnam', 'amo'],
+            answer: ['Villam', 'magnam', 'amō'],
             extra: ['magna', 'villa'],
           },
           {
@@ -2556,7 +2591,7 @@ export const curriculum: Unit[] = [
             title: 'amāre (amare) — presente',
             columns: ['Persona', 'Latino', 'Italiano'],
             rows: [
-              ['io', 'amō', 'amo'],
+              ['io', 'amō', 'amō'],
               ['tu', 'amās', 'ami'],
               ['lui/lei', 'amat', 'ama'],
               ['noi', 'amāmus', 'amiamo'],
@@ -2703,9 +2738,9 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'build',
-            prompt: 'Traduci: «Siamo Romani» («Romani» = Romani)',
+            prompt: 'Traduci: «Siamo Romani» («Rōmānī» = Romani)',
             source: 'Siamo Romani',
-            answer: ['Romani', 'sumus'],
+            answer: ['Rōmānī', 'sumus'],
             extra: ['estis', 'sunt'],
           },
           {
@@ -3813,7 +3848,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '⏳',
             title: 'Il tempo dello sfondo',
-            body: 'Finora i verbi erano al presente («amo»). Ora andiamo al passato.\n\nIl primo tempo passato è l’IMPERFETTO. Descrive un’azione che nel passato DURAVA, si RIPETEVA, o faceva da sfondo. In italiano lo rendi con «amavo», «stavo amando», «ero solito amare».',
+            body: 'Finora i verbi erano al presente («amō»). Ora andiamo al passato.\n\nIl primo tempo passato è l’IMPERFETTO. Descrive un’azione che nel passato DURAVA, si RIPETEVA, o faceva da sfondo. In italiano lo rendi con «amavo», «stavo amando», «ero solito amare».',
           },
           {
             type: 'info',
@@ -4446,7 +4481,7 @@ export const curriculum: Unit[] = [
             type: 'build',
             prompt: 'Traduci: «La donna che vede» («videt» = vede)',
             source: 'La donna che vede',
-            answer: ['Femina', 'quae', 'videt'],
+            answer: ['Fēmina', 'quae', 'videt'],
             extra: ['quī', 'quod'],
           },
         ],
@@ -4466,7 +4501,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '💡',
             title: 'Stesso antecedente, caso diverso',
-            body: '• «Puer quī legit» = il ragazzo che legge\n  → «quī» è maschile singolare (come puer), ma NOMINATIVO, perché è il soggetto di «legit» (chi legge? lui).\n\n• «Puer quem videō» = il ragazzo che vedo\n  → «quem» è sempre maschile singolare (come puer), ma ACCUSATIVO, perché è l’oggetto di «video» (vedo chi? lui).\n\nStesso antecedente, caso diverso: dipende dal ruolo nella relativa.',
+            body: '• «Puer quī legit» = il ragazzo che legge\n  → «quī» è maschile singolare (come puer), ma NOMINATIVO, perché è il soggetto di «legit» (chi legge? lui).\n\n• «Puer quem videō» = il ragazzo che vedo\n  → «quem» è sempre maschile singolare (come puer), ma ACCUSATIVO, perché è l’oggetto di «videō» (vedo chi? lui).\n\nStesso antecedente, caso diverso: dipende dal ruolo nella relativa.',
           },
           {
             type: 'table',
@@ -4487,22 +4522,22 @@ export const curriculum: Unit[] = [
             prompt: 'In «Puer quem videō», perché «quem» è accusativo?',
             focus: 'Puer quem videō',
             options: [
-              'perché è l’oggetto di «video»',
+              'perché è l’oggetto di «videō»',
               'perché puer è accusativo',
               'perché è femminile',
             ],
-            answer: 'perché è l’oggetto di «video»',
+            answer: 'perché è l’oggetto di «videō»',
           },
           {
             type: 'choice',
-            prompt: 'In «Femina quam amō», che caso è «quam» e perché?',
-            focus: 'Femina quam amō',
+            prompt: 'In «Fēmina quam amō», che caso è «quam» e perché?',
+            focus: 'Fēmina quam amō',
             options: [
-              'accusativo: è l’oggetto di «amo»',
+              'accusativo: è l’oggetto di «amō»',
               'nominativo: è il soggetto',
               'genitivo: indica possesso',
             ],
-            answer: 'accusativo: è l’oggetto di «amo»',
+            answer: 'accusativo: è l’oggetto di «amō»',
           },
           {
             type: 'choice',
@@ -5069,16 +5104,16 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Cosa significa «Femina quam vidēmus»? («vidēmus» = vediamo)',
-            focus: 'Femina quam vidēmus',
+            prompt: 'Cosa significa «Fēmina quam vidēmus»? («vidēmus» = vediamo)',
+            focus: 'Fēmina quam vidēmus',
             options: ['La donna che vediamo', 'La donna che vede', 'La donna di cui parliamo'],
             answer: 'La donna che vediamo',
           },
           {
             type: 'build',
-            prompt: 'Traduci: «Il tempio che vedo» («video» = vedo)',
+            prompt: 'Traduci: «Il tempio che vedo» («videō» = vedo)',
             source: 'Il tempio che vedo',
-            answer: ['Templum', 'quod', 'video'],
+            answer: ['Templum', 'quod', 'videō'],
             extra: ['quī', 'quem'],
           },
           {
@@ -5233,7 +5268,7 @@ export const curriculum: Unit[] = [
             columns: ['Latino', 'Traduzione'],
             rows: [
               ['Urbe captā', 'presa la città'],
-              ['Rēge regnante', 'mentre il re regnava'],
+              ['Rēge rēgnante', 'mentre il re regnava'],
               ['Signō datō', 'dato il segnale'],
             ],
             speakCols: [0],
@@ -5268,7 +5303,7 @@ export const curriculum: Unit[] = [
             prompt: 'Abbina alla traduzione',
             pairs: [
               ['Urbe captā', 'presa la città'],
-              ['Rēge regnante', 'mentre il re regnava'],
+              ['Rēge rēgnante', 'mentre il re regnava'],
               ['Bellō factō', 'fatta la guerra'],
             ],
           },
@@ -5305,7 +5340,7 @@ export const curriculum: Unit[] = [
               ['incipere', 'cominciare'],
             ],
             speakCols: [0],
-            note: '«cognōscere» al perfetto («nōvī») vale «so», perché «sono venuto a sapere» è già un sapere acquisito. È un caso in cui il perfetto latino si traduce con un presente italiano.',
+            note: '«cognōscere» al perfetto («cognōvī») vale «so», perché «sono venuto a sapere» è già un sapere acquisito. È un caso in cui il perfetto latino si traduce con un presente italiano. Lo stesso fa il verbo semplice «nōscō», il cui perfetto «nōvī» vale «conosco».',
           },
           {
             type: 'match',
@@ -6777,7 +6812,7 @@ export const curriculum: Unit[] = [
               'Prima di scoraggiarti davanti a tre tabelle: i pronomi hanno ' +
               'quasi tutti le STESSE due desinenze particolari, e sono le uniche ' +
               'davvero da ricordare.\n\n' +
-              '• GENITIVO singolare in «-īus» — uguale nei tre generi\n' +
+              '• GENITIVO singolare in «-ius» — uguale nei tre generi\n' +
               '• DATIVO singolare in «-ī» — uguale nei tre generi\n\n' +
               'Vale per «is», per «hic», per «ille» e anche per il relativo ' +
               '«quī» che già conosci. Tutto il resto assomiglia alle desinenze ' +
@@ -6794,7 +6829,7 @@ export const curriculum: Unit[] = [
               ['quī, quae, quod', 'cuius', 'cui'],
             ],
             speakCols: [1, 2],
-            note: 'Le riconosci a colpo d’occhio: se una parolina finisce in -ius è un genitivo, se finisce in -i è un dativo. E non ti dice il genere, quindi non perderci tempo.',
+            note: 'Il GENITIVO lo riconosci a colpo d’occhio: finisce sempre in -ius (eius, huius, illīus, cuius). Il DATIVO è più corto ma meno regolare — «eī» e «illī», ma anche «cui» e «huic» — e sono quattro forme in tutto: conviene impararle insieme. Nessuno dei due dice il genere, quindi non perderci tempo.',
           },
           {
             type: 'info',
@@ -10058,11 +10093,11 @@ export const curriculum: Unit[] = [
             prompt: 'E in «Vēnit ut librum legam»?',
             focus: 'ut librum legam',
             options: [
-              'congiuntivo: venne perché io legga il libro',
-              'futuro: venne e leggerò il libro',
+              'congiuntivo: è venuto perché io legga il libro',
+              'futuro: è venuto e leggerò il libro',
               'imperfetto',
             ],
-            answer: 'congiuntivo: venne perché io legga il libro',
+            answer: 'congiuntivo: è venuto perché io legga il libro',
           },
           {
             type: 'choice',
@@ -10656,7 +10691,7 @@ export const curriculum: Unit[] = [
             icon: '🎭',
             title: '«rēs» vuol dire tutto',
             body:
-              'Tradurre «rēs» con «cosa» funziona quasi mai. È una parola ' +
+              'Tradurre «rēs» con «cosa» non funziona quasi mai. È una parola ' +
               'passe-partout, e il senso lo dà il contesto:\n\n' +
               '• il fatto, l’avvenimento — «rēs gestae» = le imprese compiute\n' +
               '• la situazione — «rēs male sē habet» = la cosa va male\n' +
@@ -10846,8 +10881,13 @@ export const curriculum: Unit[] = [
               '  altus → «altior, altius»\n' +
               '• SUPERLATIVO: tema + «-issimus, -a, -um» = altissimo, il più alto\n' +
               '  altus → «altissimus»\n\n' +
-              'Il comparativo si declina come un aggettivo della 2ª classe ' +
-              '(genitivo «altiōris»); il superlativo come «bonus».',
+              'Il superlativo si declina come «bonus, bona, bonum», senza ' +
+              'sorprese. Il comparativo segue la 3ª declinazione (genitivo ' +
+              '«altiōris»), ma NON come gli aggettivi in «-is, -e» che hai ' +
+              'appena visto: fa l’ablativo singolare in «-e» («altiōre»), il ' +
+              'genitivo plurale in «-um» («altiōrum») e il neutro plurale in ' +
+              '«-a» («altiōra»). Cioè proprio le tre forme in cui «fortis» ' +
+              'faceva «-ī, -ium, -ia».',
           },
           {
             type: 'info',
@@ -11608,7 +11648,7 @@ export const curriculum: Unit[] = [
               'Conseguenza importante, e nelle versioni pesa: il participio ' +
               'perfetto di un deponente ha senso ATTIVO, non passivo.\n\n' +
               '«locūtus» = avendo parlato (non «essendo stato parlato»)\n' +
-              '«profectus» = essendo partito\n' +
+              '«prōfectus» = essendo partito\n' +
               '«secūtus» = avendo seguito\n\n' +
               'È uno dei pochi modi che il latino ha per dire «avendo fatto» ' +
               'riferito al soggetto — e per questo gli autori ne abusano.',
