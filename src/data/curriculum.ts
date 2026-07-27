@@ -691,7 +691,7 @@ export const curriculum: Unit[] = [
             columns: ['Latino', 'Italiano'],
             rows: [
               ['ad', 'verso, presso'],
-              ['in', 'verso, contro (con movimento)'],
+              ['in', 'dentro, in (con movimento); contro'],
               ['per', 'attraverso, per mezzo di'],
               ['ante', 'davanti a, prima di'],
               ['post', 'dietro a, dopo'],
@@ -718,7 +718,7 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina il significato',
             pairs: [
-              ['in', 'verso, contro (con movimento)'],
+              ['in', 'dentro, in (con movimento); contro'],
               ['inter', 'fra, tra'],
               ['apud', 'presso, in casa di'],
               ['contrā', 'contro'],
@@ -741,7 +741,7 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Quale significa «verso, contro (con movimento)»?',
+            prompt: 'Quale significa «dentro, in (con movimento); contro»?',
             options: ['in', 'ante', 'trāns'],
             answer: 'in',
           },
@@ -803,7 +803,7 @@ export const curriculum: Unit[] = [
               ['propter', 'a causa di'],
               ['trāns', 'oltre, al di là di'],
               ['ad', 'verso, presso'],
-              ['in', 'verso, contro (con movimento)'],
+              ['in', 'dentro, in (con movimento); contro'],
             ],
           },
           {
@@ -884,7 +884,7 @@ export const curriculum: Unit[] = [
             type: 'info',
             icon: '↔️',
             title: 'Il caso di «in» cambia il senso',
-            body: 'Questa la trovi in ogni versione, e chi non la sa sbaglia.\n\n«in» regge tutti e due i casi, e il caso decide il significato:\n\n«in villam» (accusativo) = VERSO la fattoria — ci sto andando\n«in villā» (ablativo) = NELLA fattoria — ci sono già\n\nStessa parolina, due sensi opposti: a distinguerli è la desinenza. Un altro motivo per guardare sempre la fine delle parole.',
+            body: 'Questa la trovi in ogni versione, e chi non la sa sbaglia.\n\n«in» regge tutti e due i casi, e il caso decide il significato:\n\n«in villam» (accusativo) = DENTRO la fattoria — ci entro\n«in villā» (ablativo) = NELLA fattoria — ci sono già\n\nStessa parolina, due situazioni diverse: a distinguerle è la desinenza. Un altro motivo per guardare sempre la fine delle parole.\n\nAttenzione a non confonderlo con «ad»: «ad villam eō» vuol dire che vado VERSO la fattoria — magari mi fermo davanti; «in villam eō» vuol dire che ci ENTRO.',
           },
           {
             type: 'match',
@@ -988,8 +988,8 @@ export const curriculum: Unit[] = [
             type: 'choice',
             prompt: 'Cosa significa «in silvam»? («silvam» è accusativo)',
             focus: 'in silvam',
-            options: ['verso il bosco', 'nel bosco', 'dal bosco'],
-            answer: 'verso il bosco',
+            options: ['dentro il bosco (entrandoci)', 'verso il bosco', 'nel bosco, fermo lì'],
+            answer: 'dentro il bosco (entrandoci)',
           },
           {
             type: 'choice',
