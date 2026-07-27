@@ -189,6 +189,47 @@ parole non si ripasserebbero mai, e non se ne accorgerebbe nessuno.
 Gira anche a ogni push, prima della pubblicazione: se una forma latina è
 sbagliata, il sito non viene aggiornato.
 
+## Controllo contro una fonte esterna
+
+```bash
+npm run lemmi           # scarica il lessico (una volta sola, va in .cache/)
+npm run check:quantita
+```
+
+Il controllo qui sopra verifica che il corso sia coerente **con sé stesso**.
+Questo verifica il latino contro qualcosa **di esterno**: il lessico di
+[**Collatinus**](https://github.com/biblissima/collatinus), il lemmatizzatore
+e analizzatore morfologico latino di Yves Ouvrard e Philippe Verkerk (GPL), che
+copre 24 000 lemmi con le quantità vocaliche e definisce le desinenze di ogni
+modello di flessione.
+
+Controlla due cose:
+
+**Le desinenze delle declinazioni.** È la verifica che vale di più, perché lì
+un errore sarebbe sistematico: sbagliata una desinenza, è sbagliata in ogni
+parola di quella declinazione. Le 71 celle delle cinque declinazioni del corso
+— compresi i neutri e le lineette — coincidono con i modelli di Collatinus.
+
+**Le lineette sulle vocali.** Qui la fonte va usata con cautela, e vale la pena
+spiegare perché. Collatinus marca le quantità per la **scansione metrica**, che
+include l'allungamento *per posizione*: scrive «tērra» perché la sillaba è
+chiusa, benché la *e* sia breve per natura. La lineetta del vocabolario indica
+invece solo la quantità **per natura**. Confrontarle alla cieca dà centinaia di
+falsi allarmi.
+
+Resta però una direzione affidabile, ed è la più importante: la posizione può
+solo *allungare* una sillaba, mai accorciarla. Quindi una vocale che la fonte
+marca breve è breve per natura senza discussione, e una lineetta lì è un errore.
+Lo script controlla solo quel verso, e solo quando tutte le letture di quella
+grafia sono d'accordo — «amēs» è il congiuntivo di *amō*, ma è anche il nome
+*ămĕs* «palo forcuto», e un omografo non è un errore.
+
+**Quello che questo controllo NON può fare**: trovare le lineette *mancanti*
+(servirebbe una fonte di quantità per natura), verificare le coniugazioni
+(Collatinus lemmatizza i verbi alla 1ª persona, non all'infinito), e giudicare
+se una frase d'esempio è buon latino. Per quello serve qualcuno che il latino
+lo sappia.
+
 ## Come aggiungere lezioni
 
 Tutto il corso è in un unico file, facile da modificare:

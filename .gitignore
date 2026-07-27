@@ -8,3 +8,4 @@ npm-debug.log*
 
 # build a file singolo
 dist-single
+.cache/
