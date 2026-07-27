@@ -189,46 +189,78 @@ parole non si ripasserebbero mai, e non se ne accorgerebbe nessuno.
 Gira anche a ogni push, prima della pubblicazione: se una forma latina è
 sbagliata, il sito non viene aggiornato.
 
-## Controllo contro una fonte esterna
+## Controllo contro fonti esterne
 
 ```bash
-npm run lemmi           # scarica il lessico (una volta sola, va in .cache/)
-npm run check:quantita
+npm run lemmi             # scarica i dati (una volta, vanno in .cache/)
+npm run check:quantita    # desinenze e lineette, contro Collatinus
+npm run check:morfologia  # le frasi, contro Whitaker's Words
 ```
 
-Il controllo qui sopra verifica che il corso sia coerente **con sé stesso**.
-Questo verifica il latino contro qualcosa **di esterno**: il lessico di
-[**Collatinus**](https://github.com/biblissima/collatinus), il lemmatizzatore
-e analizzatore morfologico latino di Yves Ouvrard e Philippe Verkerk (GPL), che
-copre 24 000 lemmi con le quantità vocaliche e definisce le desinenze di ogni
-modello di flessione.
+`npm run check` verifica che il corso sia coerente **con sé stesso**: i
+paradigmi giusti sono scritti dentro lo script, dalla stessa mano che ha
+scritto il corso. Questi due verificano il latino contro **fonti indipendenti**.
 
-Controlla due cose:
+### Le desinenze e le lineette — [Collatinus](https://github.com/biblissima/collatinus)
 
-**Le desinenze delle declinazioni.** È la verifica che vale di più, perché lì
-un errore sarebbe sistematico: sbagliata una desinenza, è sbagliata in ogni
-parola di quella declinazione. Le 71 celle delle cinque declinazioni del corso
-— compresi i neutri e le lineette — coincidono con i modelli di Collatinus.
+Il lessico del lemmatizzatore di Yves Ouvrard e Philippe Verkerk (GPL): 24 000
+lemmi con le quantità vocaliche e le desinenze di ogni modello di flessione.
 
-**Le lineette sulle vocali.** Qui la fonte va usata con cautela, e vale la pena
-spiegare perché. Collatinus marca le quantità per la **scansione metrica**, che
-include l'allungamento *per posizione*: scrive «tērra» perché la sillaba è
-chiusa, benché la *e* sia breve per natura. La lineetta del vocabolario indica
-invece solo la quantità **per natura**. Confrontarle alla cieca dà centinaia di
-falsi allarmi.
+**Le desinenze** sono la verifica che vale di più, perché lì un errore sarebbe
+sistematico: sbagliata una desinenza, è sbagliata in ogni parola di quella
+declinazione. Le 71 celle delle cinque declinazioni — neutri e lineette
+compresi — coincidono con i modelli.
 
-Resta però una direzione affidabile, ed è la più importante: la posizione può
-solo *allungare* una sillaba, mai accorciarla. Quindi una vocale che la fonte
-marca breve è breve per natura senza discussione, e una lineetta lì è un errore.
-Lo script controlla solo quel verso, e solo quando tutte le letture di quella
-grafia sono d'accordo — «amēs» è il congiuntivo di *amō*, ma è anche il nome
-*ămĕs* «palo forcuto», e un omografo non è un errore.
+**Le lineette** vanno prese con cautela, e vale la pena spiegare perché.
+Collatinus marca le quantità per la **scansione metrica**, che include
+l'allungamento *per posizione*: scrive «tērra» perché la sillaba è chiusa,
+benché la *e* sia breve per natura. La lineetta del vocabolario indica invece
+solo la quantità **per natura**. Confrontarle alla cieca dà centinaia di falsi
+allarmi. Resta valida una direzione, ed è la più importante: la posizione può
+solo *allungare* una sillaba, mai accorciarla, quindi una vocale marcata breve
+è breve per natura senza discussione. Su quel verso il corso è pulito.
 
-**Quello che questo controllo NON può fare**: trovare le lineette *mancanti*
-(servirebbe una fonte di quantità per natura), verificare le coniugazioni
-(Collatinus lemmatizza i verbi alla 1ª persona, non all'infinito), e giudicare
-se una frase d'esempio è buon latino. Per quello serve qualcuno che il latino
-lo sappia.
+### Le frasi — [Whitaker's Words](https://github.com/mk270/whitakers-words)
+
+Le tabelle sono verificate, ma le **frasi** degli esercizi e delle versioni no:
+sono scritte a mano, e un errore lì non lo vedeva nessuno.
+
+`scripts/morfologia.mjs` è un analizzatore morfologico latino costruito sui due
+archivi di William Whitaker (pubblico dominio): `INFLECTS.LAT`, che elenca ogni
+desinenza latina con la sua analisi, e `DICTLINE.GEN`, che elenca 39 000 lemmi
+con i loro temi. L'algoritmo è quello di Whitaker: si prova a spezzare la parola
+in tema + desinenza in tutti i modi possibili, e la lettura vale se la desinenza
+esiste per quella flessione e il tema è quello di un lemma della stessa
+flessione. Gestisce le enclitiche (*populusque*), i perfetti contratti
+(*trānsīsse* per *trānsiisse*) e le forme di *esse*, che Whitaker tiene fuori
+dal dizionario perché troppo irregolari.
+
+Con quello si controllano due cose:
+
+1. **Ogni parola latina delle frasi esiste?** 885 parole, tutte analizzabili.
+   I nomi propri stanno in un elenco esplicito nello script — non si ignora in
+   blocco tutto ciò che comincia per maiuscola, così una parola nuova che non
+   si analizza salta fuori.
+2. **Le analisi che il corso dichiara sono giuste?** Gli esercizi di analisi
+   affermano che una certa parola è accusativo singolare, o congiuntivo
+   imperfetto: sono l'unica parte del corso che fa un'affermazione
+   grammaticale verificabile parola per parola. Ventuno su ventidue sono
+   confermate dall'analizzatore (la ventiduesima è una forma composta, dove il
+   tempo appartiene alla coppia participio + *esse* e non al participio da solo).
+
+I due controlli sanno fallire: introducendo di proposito una forma inesistente
+(*rosābem*) e un'analisi sbagliata (*mīlitibus* dichiarato genitivo singolare),
+entrambi le segnalano.
+
+### Quello che nessuno di questi controlli può fare
+
+Dicono che ogni forma **esiste** e che ogni analisi dichiarata è **possibile**.
+Non dicono se una frase è *sintatticamente* corretta, se suona latina, o se la
+traduzione italiana è quella giusta. Per quello serve ancora qualcuno che il
+latino lo sappia.
+
+Nessuno dei due gira in CI: dipendono da risorse esterne e le divergenze vanno
+lette una per una.
 
 ## Come aggiungere lezioni
 

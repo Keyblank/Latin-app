@@ -9,8 +9,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "check": "node --experimental-strip-types scripts/check-latino.mjs",
-    "lemmi": "mkdir -p .cache && curl -sfL -o .cache/lemmes.la https://raw.githubusercontent.com/biblissima/collatinus/master/bin/data/lemmes.la && curl -sfL -o .cache/modeles.la https://raw.githubusercontent.com/biblissima/collatinus/master/bin/data/modeles.la && echo 'lessico di Collatinus scaricato in .cache/'",
-    "check:quantita": "node --experimental-strip-types scripts/check-quantita.mjs"
+    "lemmi": "mkdir -p .cache && curl -sfL -o .cache/lemmes.la https://raw.githubusercontent.com/biblissima/collatinus/master/bin/data/lemmes.la && curl -sfL -o .cache/modeles.la https://raw.githubusercontent.com/biblissima/collatinus/master/bin/data/modeles.la && curl -sfL -o .cache/INFLECTS.LAT https://raw.githubusercontent.com/mk270/whitakers-words/master/INFLECTS.LAT && curl -sfL -o .cache/DICTLINE.GEN https://raw.githubusercontent.com/mk270/whitakers-words/master/DICTLINE.GEN && echo 'dati latini scaricati in .cache/'",
+    "check:quantita": "node --experimental-strip-types scripts/check-quantita.mjs",
+    "check:morfologia": "node --experimental-strip-types scripts/check-morfologia.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

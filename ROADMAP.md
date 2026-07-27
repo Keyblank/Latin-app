@@ -101,9 +101,10 @@ maschili della 1ª come *nauta* e *agricola*).
   un quesito della sua lezione (prima 195 su 389 non lo erano)
 - ✅ **Tre passaggi per parola** dentro la lezione (riconoscere → richiamare →
   rimescolare), e una lezione per tabella invece di venti parole in blocco
-- ✅ **Controllo contro una fonte esterna** (`npm run check:quantita`): le
-  desinenze delle cinque declinazioni confrontate con i modelli di
-  **Collatinus** — 71 celle, tutte coincidenti, lineette comprese
+- ✅ **Controllo contro fonti esterne**: le desinenze delle cinque declinazioni
+  confrontate con i modelli di **Collatinus** (71 celle, lineette comprese), e
+  un **analizzatore morfologico** costruito sui dati di **Whitaker's Words**
+  che verifica le 885 parole delle frasi e le analisi dichiarate dagli esercizi
 - ✅ **Controllo automatico del latino** (`npm run check`): i paradigmi corretti
   sono scritti nello script e confrontati con le tabelle del corso; gira in CI
   prima del deploy
@@ -178,10 +179,11 @@ Ordine pensato per arrivare prima possibile a leggere testi narrativi.
 
 ## ⚠️ Limiti noti
 
-- **Nessuno che sappia il latino ha letto i contenuti.** I paradigmi sono
-  verificati (dallo script interno e da Collatinus), ma le frasi d'esempio
-  scritte per gli esercizi non le ha controllate un umano competente. È il
-  limite più serio che resta.
+- **Nessuno che sappia il latino ha letto i contenuti.** Le forme sono
+  verificate tre volte (script interno, Collatinus, analizzatore su Whitaker),
+  e ogni parola delle frasi esiste; ma nessun controllo automatico dice se una
+  frase è *sintatticamente* corretta, se suona latina o se la traduzione
+  italiana è quella giusta. È il limite più serio che resta.
 - L'**accento** della pronuncia automatica non è sempre corretto (per le parole
   con accento sulla terzultima): dove conta, lo mostriamo scritto in MAIUSCOLO.
 - La morfologia è **completa**: cinque declinazioni, due classi di aggettivi,
