@@ -54,30 +54,33 @@ la lingua. Interfaccia in italiano.
   si traduce davvero. Sette brani, dalla favola di Fedro all'oratoria di
   Cicerone, ognuno sbloccato solo dopo che il corso ha spiegato tutto quello
   che contiene. Sono in `src/data/versiones.ts`.
-- **Vocābula** 🧠: il **ripasso del lessico a distanza**. Quando finisci una
-  lezione, **le parole che ha insegnato entrano in calendario** e tornano il
-  giorno dopo: la lezione è la prima esposizione, l'apprendimento vero avviene
-  nelle settimane successive. E la stessa parola non viene chiesta sempre allo
-  stesso modo — si alternano i due versi, **latino → italiano** (riconoscerla
-  leggendo) e **italiano → latino** (tirarla fuori dal nulla), che sono due
-  abilità diverse. Dal terzo passaggio in poi, quando il corso ha una frase
-  che la contiene, la parola si chiede **dentro quella frase** e nella forma
-  in cui il testo la usa — «silvā», non «silva»: è così che dovrai
-  riconoscerla traducendo. Le frasi vengono dalle versioni, dove ogni parola
-  ha già lemma e analisi controllati (106 vocaboli su 390 ne hanno una). Il *Repetitio*
+- **Vocābula** 🧠: il **ripasso del lessico a distanza**. Il *Repetitio*
   riprende solo le domande sbagliate: una parola indovinata per caso esce dal
-  corso e non torna più. Qui invece ogni parola ha una sua scadenza, che si
-  allunga ogni volta che la ricordi (**1, 3, 7, 16, 35, 90 giorni**) e si
-  accorcia quando la sbagli. Gli intervalli non sono uguali per tutti: ogni
-  parola ha una **facilità** che sale se la indovini e scende se la manchi, e
-  moltiplica l'attesa — così due parole allo stesso livello tornano una fra
-  venticinque giorni e l'altra fra dieci, secondo quanto ti costano. E
-  sbagliare non azzera tutto: si scende di due livelli, perché una parola
-  tenuta per tre mesi e mancata una volta non è tornata sconosciuta. Si incontrano al massimo **5 parole nuove al giorno** e
-  se ne ripassano **12 per sessione**: poche parole riviste a distanza si
-  ricordano, molte in una sera no. Il pulsante compare solo quando c'è
-  qualcosa in scadenza. L'elenco non è scritto a mano: le 390 voci sono lette
-  dalle tabelle del corso marcate `lessico: true`.
+  corso e non torna più. Qui invece ogni parola ha una sua scadenza.
+
+  **Quando entrano.** Finita una lezione, le parole che ha insegnato entrano in
+  calendario e tornano il giorno dopo: la lezione è la prima esposizione,
+  l'apprendimento vero avviene nelle settimane successive.
+
+  **Quando tornano.** Gli intervalli crescono a ogni risposta giusta — 1, 3, 7,
+  16, 35, 90 giorni — ma non sono uguali per tutti: ogni parola ha una
+  **facilità** che sale se la indovini e scende se la manchi, e moltiplica
+  l'attesa. Due parole allo stesso livello tornano una fra venticinque giorni e
+  l'altra fra dieci, secondo quanto ti costano. Sbagliare non azzera tutto: si
+  scende di due livelli, perché una parola tenuta per tre mesi e mancata una
+  volta non è tornata sconosciuta.
+
+  **Come vengono chieste.** In tre modi, non sempre lo stesso: **latino →
+  italiano** (riconoscerla leggendo), **italiano → latino** (tirarla fuori dal
+  nulla) e — dal terzo passaggio, quando il corso ha una frase che la contiene
+  — **dentro quella frase**, nella forma in cui il testo la usa: «silvā», non
+  «silva». È così che dovrai riconoscerla traducendo. Le frasi vengono dalle
+  versioni, dove ogni parola ha già lemma e analisi controllati (106 vocaboli
+  su 390 ne hanno una).
+
+  Si incontrano al massimo **5 parole nuove al giorno** e se ne ripassano **12
+  per sessione**. L'elenco non è scritto a mano: le 390 voci sono lette dalle
+  tabelle del corso marcate `lessico: true`.
 - **Grammatica** 📚: un mini-manuale consultabile in qualunque momento, con
   **tutte le 103 tabelle** del corso raccolte per unità e la ricerca per forma —
   scrivi `eius` o `ibus` e trovi le tabelle che la contengono, senza doverti
