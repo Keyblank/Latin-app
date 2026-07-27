@@ -1,0 +1,19 @@
+# Collisioni di traduzione già esaminate e accettate.
+# Sono sinonimi veri, oppure omografie dell’ITALIANO: «porta» è tanto la
+# porta quanto «lui porta», e «parte» è tanto la parte quanto «lui parte».
+# Formato: traduzione <TAB> le espressioni latine che la condividono.
+amare	amare / amaret
+chiedere	petere / rogare
+donna	femina / mulier
+dovere	debere / officium
+forza, violenza	vis (vim / vis
+grande	magna / magnus
+molto	multus / valde
+nessuno	nullus / nemo
+parte	pars / proficiscitur
+paura	timor / metus
+porta	ianua / portat / fert
+ritenere, giudicare	existimare / arbitror
+temere	timere / vereor
+trovare	invenire / reperire
+vincere	superare / vincere

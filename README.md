@@ -252,6 +252,41 @@ I due controlli sanno fallire: introducendo di proposito una forma inesistente
 (*rosābem*) e un'analisi sbagliata (*mīlitibus* dichiarato genitivo singolare),
 entrambi le segnalano.
 
+### Gli errori di senso — `npm run check:sensi`
+
+L'errore su `in` non lo trovava nessun controllo: le forme erano tutte
+corrette, e sbagliata era solo la traduzione. Ma aveva **due firme
+riconoscibili**, e adesso le cerca uno script.
+
+**Due espressioni latine con la stessa identica traduzione italiana.** `ad
+silvam` e `in silvam` erano tutte e due «verso il bosco», nella stessa unità:
+una delle due doveva essere sbagliata. Lo script raccoglie ogni coppia
+latino → italiano del corso (abbinamenti, tabelle di lessico, domande di
+traduzione) e segnala le collisioni. Molte sono legittime — `timēre` e
+`vereor` sono davvero tutti e due «temere» — e stanno in un registro con il
+motivo, `scripts/collisioni-accettate.txt`, così restano visibili solo quelle
+nuove. Fra le accettate ci sono anche le omografie dell'**italiano**: «porta»
+è tanto la porta quanto «lui porta».
+
+**Le preposizioni contro il dizionario.** Sono una classe chiusa — una
+ventina di parole, sempre le stesse — e per quelle il confronto
+italiano/inglese si può fare davvero, con una tabellina di equivalenze
+scritta a mano: «verso» è *towards*, «dentro» è *into*, «sotto» è *under*. Se
+un senso che il corso attribuisce a una preposizione non compare nella voce
+del dizionario, viene segnalato. Con la vecchia glossa questo controllo
+diceva: *«in» — il corso dice «verso»*, e il dizionario per `in` non ha
+*towards* (ce l'ha per `ad`).
+
+Reintroducendo l'errore originale, **entrambi i meccanismi lo trovano**,
+indipendentemente l'uno dall'altro.
+
+Questo controllo ha anche stabilito una regola che vale la pena scrivere: la
+**glossa** — che è il dato controllato ed esercitato — contiene solo quello
+che una fonte conferma; i sensi secondari veri ma non attestati dal
+dizionario stanno nella **nota**, in prosa. Così `in` + accusativo vale
+«contro» in contesto di guerra (`in hostēs impetum fēcit`), ma lo dice la
+nota, non la glossa.
+
 ### I significati — il registro delle glosse
 
 ```bash

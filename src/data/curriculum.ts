@@ -691,7 +691,7 @@ export const curriculum: Unit[] = [
             columns: ['Latino', 'Italiano'],
             rows: [
               ['ad', 'verso, presso'],
-              ['in', 'dentro, in (con movimento); contro'],
+              ['in', 'dentro, in (con movimento)'],
               ['per', 'attraverso, per mezzo di'],
               ['ante', 'davanti a, prima di'],
               ['post', 'dietro a, dopo'],
@@ -702,7 +702,7 @@ export const curriculum: Unit[] = [
               ['trāns', 'oltre, al di là di'],
             ],
             speakCols: [0],
-            note: 'Esempio: «ad villam» = verso la fattoria («villam» è accusativo).',
+            note: 'Esempio: «ad villam» = verso la fattoria («villam» è accusativo).\n\nDue avvertenze su «in»: vuol dire DENTRO, non «verso» — «verso» è «ad», e confonderli cambia la frase. E in contesto di guerra «in» + accusativo vale «contro»: «in hostēs impetum fēcit» = fece un attacco contro i nemici.',
           },
           {
             type: 'match',
@@ -718,7 +718,7 @@ export const curriculum: Unit[] = [
             type: 'match',
             prompt: 'Abbina il significato',
             pairs: [
-              ['in', 'dentro, in (con movimento); contro'],
+              ['in', 'dentro, in (con movimento)'],
               ['inter', 'fra, tra'],
               ['apud', 'presso, in casa di'],
               ['contrā', 'contro'],
@@ -741,7 +741,7 @@ export const curriculum: Unit[] = [
           },
           {
             type: 'choice',
-            prompt: 'Quale significa «dentro, in (con movimento); contro»?',
+            prompt: 'Quale significa «dentro, in (con movimento)»?',
             options: ['in', 'ante', 'trāns'],
             answer: 'in',
           },
@@ -803,7 +803,7 @@ export const curriculum: Unit[] = [
               ['propter', 'a causa di'],
               ['trāns', 'oltre, al di là di'],
               ['ad', 'verso, presso'],
-              ['in', 'dentro, in (con movimento); contro'],
+              ['in', 'dentro, in (con movimento)'],
             ],
           },
           {

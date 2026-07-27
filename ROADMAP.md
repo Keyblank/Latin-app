@@ -101,6 +101,9 @@ maschili della 1ª come *nauta* e *agricola*).
   un quesito della sua lezione (prima 195 su 389 non lo erano)
 - ✅ **Tre passaggi per parola** dentro la lezione (riconoscere → richiamare →
   rimescolare), e una lezione per tabella invece di venti parole in blocco
+- ✅ **Ricerca automatica degli errori di senso** (`npm run check:sensi`): due
+  espressioni latine con la stessa traduzione italiana, e le preposizioni
+  confrontate col dizionario — le due firme dell'errore su «in silvam»
 - ✅ **Controllo contro fonti esterne**: le desinenze delle cinque declinazioni
   confrontate con i modelli di **Collatinus** (71 celle, lineette comprese), e
   un **analizzatore morfologico** costruito sui dati di **Whitaker's Words**
