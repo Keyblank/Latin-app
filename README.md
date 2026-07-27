@@ -252,12 +252,44 @@ I due controlli sanno fallire: introducendo di proposito una forma inesistente
 (*rosābem*) e un'analisi sbagliata (*mīlitibus* dichiarato genitivo singolare),
 entrambi le segnalano.
 
+### I significati — il registro delle glosse
+
+```bash
+npm run check:glosse
+```
+
+Gli altri controlli guardano le **forme**. Nessuno guarda il **senso**, ed è lì
+che è passato l'errore peggiore che abbiamo trovato: `in` + accusativo glossato
+«verso» invece che «dentro» — tutte le forme corrette, la traduzione sbagliata,
+e per giunta in concorrenza con `ad`, che «verso» lo significa davvero.
+
+Questo script mette ogni voce del vocabolario accanto alla glossa inglese di
+Whitaker. Il confronto italiano/inglese non si automatizza in modo affidabile,
+quindi lo script **non giudica: presenta**. Quello che automatizza è il
+*ricordarsi*: le voci già lette stanno in `scripts/glosse-riviste.txt` con la
+glossa approvata, e ricompaiono solo se la glossa cambia. Le 389 voci
+confrontabili sono state lette una per una; una parola nuova costa solo la sua
+riga.
+
+Lo stesso vale per le **regole** delle schede: le 189 affermazioni traducibili
+(«questa frase latina significa questo») sono state rilette una per una dopo
+l'errore su `in`. Non c'è modo di automatizzarlo — una regola non è una voce di
+dizionario — ma è un insieme finito, e sta scritto qui che è stato fatto.
+
 ### Quello che nessuno di questi controlli può fare
 
-Dicono che ogni forma **esiste** e che ogni analisi dichiarata è **possibile**.
-Non dicono se una frase è *sintatticamente* corretta, se suona latina, o se la
-traduzione italiana è quella giusta. Per quello serve ancora qualcuno che il
-latino lo sappia.
+Dicono che ogni forma **esiste**, che ogni analisi dichiarata è **possibile** e
+che ogni glossa è stata confrontata con un dizionario. Non dicono se una frase
+è *sintatticamente* corretta, se suona latina, o se una spiegazione è la più
+chiara possibile.
+
+E vale la pena essere espliciti su una cosa: il corso non è stato scritto
+copiando da una grammatica, ma **a memoria**. Per materiale standard da liceo
+quella memoria è affidabile, ma produce esattamente errori come quello su `in`:
+non forme sbagliate, ma glosse *quasi* giuste che sopravvivono perché suonano
+bene. I controlli esterni servono a spezzare quel circolo — il primo controllo
+automatico aveva lo stesso difetto, perché i paradigmi «corretti» dentro lo
+script li aveva scritti la stessa mano che aveva scritto il corso.
 
 Nessuno dei due gira in CI: dipendono da risorse esterne e le divergenze vanno
 lette una per una.

@@ -1,0 +1,392 @@
+# Voci del vocabolario già confrontate con il dizionario di Whitaker.
+# Formato: latino <TAB> glossa italiana approvata.
+# Se la glossa cambia, la voce torna da rileggere.
+ab, ā	da (provenienza, e «da parte di»)
+accipere	ricevere, accogliere
+aciēs	schieramento di battaglia
+ad	verso, presso
+adventus	arrivo
+aestās, aestātis	estate
+ager, agrī	campo; territorio
+agere	fare, spingere, trattare
+agnus, agnī	agnello
+agricola, -ae	contadino
+alius, alia, aliud	un altro (fra molti)
+alter, altera, alterum	l’altro (fra due)
+altus	alto
+amor, amōris	amore
+amāre	amare
+ancilla	serva
+animus	animo, coraggio
+annus	anno
+ante	davanti a, prima di
+antīquus	antico
+appellāre	chiamare, dare il nome di
+appārēre	apparire; risultare chiaro
+apud	presso, in casa di
+aqua	acqua
+arbitror, arbitrārī	ritenere, giudicare
+arbor, arboris	albero
+arma, -ōrum (n. pl.)	le armi
+auctōritās, -ātis	autorevolezza, prestigio
+audācia, audāciae	audacia, sfrontatezza
+audīre	ascoltare, sentire
+auris, auris	orecchio
+aut, vel	oppure
+autem	però, invece
+auxilium	aiuto
+avis, avis	uccello
+bonus	buono
+brevis, breve	breve
+bōs, bovis	bue
+caedēs, caedis	strage
+caelum	cielo
+campus	campo, pianura
+canis, canis	cane
+capere	prendere, catturare
+caput, capitis	testa; capo
+casa	capanna, tugurio
+castellum	fortino
+castra, -ōrum (n. pl.)	l’accampamento
+causa	motivo
+centum	cento
+cervus, cervī	cervo
+clāmāre	gridare
+clārus	luminoso, famoso
+cognōscere	venire a sapere
+coniūnx, coniugis	coniuge (marito o moglie)
+contendere	affrettarsi; combattere
+contrā	contro
+cor, cordis	cuore
+cornū	corno
+cotīdiē	ogni giorno
+crās	domani
+crēdere	credere (+ dativo)
+cum	con
+cupere	desiderare, bramare
+cupiditās, cupiditātis	desiderio, brama
+currere	correre
+cēterī, cēterae, cētera	gli altri, i restanti
+cīvis, cīvis	cittadino
+cōgere	costringere; radunare
+cōnfirmāre	assicurare; rafforzare
+cōnsilium	decisione, piano
+cōnstituere	decidere, stabilire
+cōnsul, cōnsulis	console
+cōnsulātus	consolato
+cōpiae, -ārum (f. pl.)	le truppe
+cūra	cura, preoccupazione
+dare	dare
+dea, -ae	dea
+decem	dieci
+deinde	poi, in seguito
+deus	dio
+difficilis, difficile	difficile
+discēdere	allontanarsi, andarsene
+diēs	giorno
+diū	a lungo
+docēre	insegnare
+dolor, dolōris	dolore
+dominus, dominī	il padrone
+domus, domūs	casa (di città)
+dubitāre	dubitare; esitare
+dum	mentre
+duo, duae, duo	due
+dux, ducis	comandante
+dē	giù da; riguardo a
+dēbēre	dovere
+dīcere	dire
+dūcere	condurre, guidare
+epistula	lettera
+equitātus, -ūs	cavalleria
+equus	cavallo
+et, -que, atque	e
+ex, ē	da, fuori da
+exemplum	esempio, precedente
+exercitus	esercito
+expugnāre	espugnare, prendere d’assalto
+exīstimāre	ritenere, giudicare
+facere	fare
+facilis, facile	facile
+familia	la servitù di casa; il casato
+fidēs	fedeltà, lealtà
+flōs, flōris	fiore
+flūmen, flūminis	fiume
+fortis, forte	forte, coraggioso
+fortūna	sorte (buona o cattiva)
+forum	piazza, foro
+frāter, frātris	fratello
+fugere	fuggire
+fāma	fama
+fēmina	donna
+fīlius	figlio
+fīnis, fīnis	fine, limite
+fīnēs, fīnium (pl.)	il territorio, i confini
+fōrma	forma, aspetto, bellezza
+gaudium, gaudiī	gioia
+genus, generis	stirpe, genere, specie
+gerere	portare; fare (la guerra)
+gladius	spada
+glōria	gloria
+gravis, grave	pesante, grave, serio
+habēre	avere
+herba, herbae	erba
+herī	ieri
+hiems, hiemis	inverno
+hodiē	oggi
+homō, hominis	uomo, essere umano
+honor, honōris	carica pubblica; onore
+hortor, hortārī	esortare, incoraggiare
+hortus	giardino
+hostis, hostis	nemico (in guerra)
+hīc	qui
+hōra	ora
+iam	già, ormai
+ibi	lì
+ignis, ignis	fuoco
+imperium	comando, potere
+imperāre	comandare (+ dativo)
+imperātor, -ōris	comandante (poi: imperatore)
+impetus	assalto, carica
+in	dentro, in (con movimento); contro
+incipere	cominciare
+incola, -ae	abitante
+inde	da lì
+ingēns, ingentis	enorme
+inimīcus	nemico personale
+initium	inizio
+intellegere	capire
+inter	fra, tra
+interficere	uccidere
+interrogāre	interrogare
+invenīre	trovare
+invidia, invidiae	invidia; odio altrui
+ita, sīc	così
+itaque, igitur	dunque, perciò
+iter, itineris	viaggio, marcia
+iubēre	ordinare
+iuvenis, iuvenis	giovane
+iānua	porta
+iūdicāre	giudicare
+iūrāre	giurare
+iūs, iūris	diritto
+laudāre	lodare
+legere	leggere; raccogliere
+legiō, legiōnis	legione
+leō, leōnis	leone
+licet	è permesso, è lecito
+locus, locī	luogo (al plurale: «loca», neutro)
+longus	lungo
+loquor, loquī	parlare
+lupus, lupī	lupo
+lēgātus	luogotenente; ambasciatore
+lībertās, lībertātis	libertà
+līberī, -ōrum (pl.)	i figli
+lūna	luna
+lūx, lūcis	luce
+magistrātus, -ūs	magistrato, carica pubblica
+magnus	grande
+malus	cattivo
+manus, manūs	la mano
+manēre	restare
+mare, maris	mare
+memoria	memoria, ricordo
+metus	paura
+mittere	mandare
+monēre	avvertire, ammonire
+morior, morī	morire
+mors, mortis	morte
+movēre	muovere
+mox	presto, fra poco
+mulier, mulieris	donna
+multitūdō, -inis	moltitudine
+multus	molto, numeroso
+māter, mātris	madre
+mēns, mentis	mente, intenzione
+mēnsa	tavola
+mēnsis, mēnsis	mese
+mīlle	mille
+mōns, montis	monte
+mōrēs, mōrum (pl.)	il carattere, i costumi
+mōs, mōris	costume, usanza
+mūnīre	fortificare
+mūrus	muro
+nam, enim	infatti
+nauta, -ae	marinaio
+negāre	negare, dire di no
+neque, nec	e non, né
+nescīre	non sapere, ignorare
+nihil	niente
+nisi	se non, a meno che
+novus	nuovo
+nox, noctis	notte
+numerus	numero
+numquam	mai
+nārrāre	raccontare
+nāscor, nāscī	nascere
+nēmō	nessuno (di persona)
+nōbilis, nōbile	famoso, illustre
+nōmen, nōminis	il nome
+nōn	non
+nūllus, nūlla, nūllum	nessuno
+nūntiāre	annunciare, riferire
+obses, obsidis	ostaggio
+occīdere	uccidere, abbattere
+oculus, oculī	occhio
+odium, odiī	odio
+officium	dovere, incarico
+omnis, omne	tutto, ogni
+oportet	bisogna, si deve
+oppidum	città fortificata
+optāre	desiderare, scegliere
+opus, operis	opera, lavoro
+ostendere	mostrare, far vedere
+ovis, ovis	pecora
+pars, partis	parte
+parvus	piccolo
+parāre	preparare
+pater, patris	padre
+patior, patī	subire, sopportare
+patria	patria
+paucī, paucae, pauca	pochi
+per	attraverso, per mezzo di
+perterrēre	spaventare
+pervenīre	giungere
+perīculum	pericolo
+petere	chiedere; dirigersi verso
+piscis, piscis	pesce
+plēbs, plēbis	plebe
+poena	punizione, castigo
+populus	popolo
+porta	porta, ingresso
+portus	porto
+portāre	portare
+post	dietro a, dopo
+postquam	dopo che
+potēns, potentis	potente
+praeda	bottino
+praesidium	presidio, guarnigione
+procul	lontano
+proelium	battaglia
+proficīscor, proficīscī	partire
+prope	vicino
+propter	a causa di
+prīdiē	il giorno prima
+prīmus, prīma, prīmum	primo
+prō	davanti a; in favore di
+prōmittere	promettere
+prōvincia	provincia
+puella	ragazza, bambina
+puer	ragazzo, bambino
+pugnāre	combattere
+putāre	pensare, ritenere
+pāx, pācis	pace
+pēs, pedis	piede
+pōnere	porre
+quattuor	quattro
+quod, quia	perché (causa)
+quīnque	cinque
+ratiō, ratiōnis	ragione; metodo; conto
+reddere	restituire
+relinquere	lasciare, abbandonare
+reperīre	trovare, scoprire
+respondēre	rispondere
+rogāre	chiedere, domandare
+rosa, rosae	la rosa
+rēgnum	regno
+rēs, reī	la cosa
+rēx, rēgis	il re
+rūs, rūris	la campagna
+sacerdōs, sacerdōtis	sacerdote
+saepe	spesso
+salvē	ciao, salve
+salūs, salūtis	salvezza; salute
+sanguis, sanguinis	sangue
+saxum, saxī	sasso, roccia
+scrība, -ae	scrivano
+scrībere	scrivere
+scīre	sapere
+scūtum	scudo
+sed	ma
+semper	sempre
+senex, senis	vecchio
+sententia	opinione, parere
+sentīre	sentire, accorgersi
+senātus	senato
+sequor, sequī	seguire
+serpēns, serpentis	serpente
+servitūs, -ūtis	schiavitù
+servāre	salvare, custodire
+sex	sei
+silva	bosco, foresta
+sine	senza
+socius	alleato, compagno
+soror, sorōris	sorella
+spērāre	sperare
+spēs	speranza
+statim	subito
+stāre	stare fermo, stare in piedi
+stēlla	stella
+sub	sotto
+superbia, superbiae	superbia, arroganza
+superāre	superare, vincere
+sī	se
+sōl, sōlis	sole
+sōlus, sōla, sōlum	solo, unico
+tamen	tuttavia
+tandem	finalmente, alla fine
+templum, templī	il tempio
+tempus, temporis	tempo
+tenēre	tenere
+terra	terra
+timor, timōris	paura
+timēre	temere
+trahere	trascinare, tirare
+trādere	consegnare; tramandare
+trāns	oltre, al di là di
+trēs, tria	tre
+tum, tunc	allora
+turba, -ae	folla
+tēlum	arma da lancio, dardo
+tōtus, tōta, tōtum	tutto intero
+ubi	quando; dove
+ubīque	dappertutto
+umbra, umbrae	ombra
+unda, undae	onda
+unde	da dove
+urbs, urbis	città
+uterque, utraque, utrumque	l’uno e l’altro, entrambi
+uxor, uxōris	moglie
+valdē	molto
+valē	arrivederci, addio
+vastāre	devastare
+ventus, ventī	vento
+venīre	venire
+vereor, verērī	temere
+vertere	volgere, girare
+vetāre	vietare
+via	strada, via
+victōria	vittoria
+vidēre	vedere
+villa	casa di campagna, fattoria
+vincere	vincere
+vir	uomo
+virtūs, virtūtis	valore, coraggio
+vocāre	chiamare
+voluptās, voluptātis	piacere
+vulnus, vulneris	ferita
+vultus, vultūs	volto, espressione
+vīnum	vino
+vīrēs, vīrium (pl.)	le forze fisiche
+vīta	vita
+vīvere	vivere
+vōx, vōcis	voce
+ācer, ācris, ācre	acuto, accanito
+īnsula	isola
+īra	ira, collera
+ōrdō, ōrdinis	ordine, fila; ceto sociale
+ōrāre	pregare, supplicare
+ōrātiō, ōrātiōnis	discorso
+ōs, ōris	bocca; volto
+ūnus, ūna, ūnum	uno
+ūtor, ūtī	usare (+ ablativo)
