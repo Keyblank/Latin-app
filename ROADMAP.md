@@ -89,9 +89,10 @@ maschili della 1ª come *nauta* e *agricola*).
 - ✅ **Suoni ed effetti a tema romano** (lira / corno / fanfara, coriandoli di
   alloro e oro), con interruttore
 - ✅ **Vocābula** — ripasso del lessico a scadenze crescenti (1, 3, 7, 16, 35,
-  90 giorni). Le parole entrano in calendario **quando finisci la lezione che
-  le insegna**, e vengono chieste alternando i due versi (latino → italiano e
-  italiano → latino)
+  90 giorni), **corretti dalla difficoltà della singola parola**. Le parole
+  entrano in calendario **quando finisci la lezione che le insegna**, e
+  vengono chieste in tre modi: latino → italiano, italiano → latino, e
+  **dentro una frase vera** presa dalle versioni
 - ✅ Salvataggio locale dei progressi, con **esporta/importa su file** e
   richiesta di archiviazione durevole al browser
 - ✅ **Pubblicazione**: sito pubblico su GitHub Pages (auto-deploy a ogni push)

@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react'
 import type { Memoria, Vocabolo } from '../vocabolario'
 import {
+  contestoPer,
   daRipassare,
   distrattori,
   distrattoriLatini,
   mescola,
   nuoveRimasteOggi,
 } from '../vocabolario'
+import { evidenzia } from './Exercises'
 import { Mascot } from './Mascot'
 import { Confetti } from './Confetti'
 import { SpeakButton } from './SpeakButton'
@@ -21,6 +23,10 @@ interface Domanda {
   mostra: string
   /** true se si chiede il latino partendo dall'italiano. */
   versoInverso: boolean
+  /** Se c'è, la parola va riconosciuta dentro questa frase, nella forma in
+   *  cui il testo la usa: «rēgem», non «rēx». */
+  frase?: string
+  forma?: string
   nuova: boolean
 }
 
@@ -67,6 +73,21 @@ export function Vocabula({
       // ogni ripasso chiede la stessa parola in un modo diverso.
       const liv = memoria[v.lat]?.liv ?? 0
       const versoInverso = !nuova && liv % 2 === 1
+      // Dal terzo passaggio in poi, quando la parola c'è, la si chiede dentro
+      // una frase vera: è lì che dovrai riconoscerla, declinata o coniugata.
+      const ctx = !nuova && !versoInverso && liv >= 2 ? contestoPer(v) : undefined
+      if (ctx) {
+        return {
+          v,
+          nuova,
+          versoInverso: false,
+          frase: ctx.frase,
+          forma: ctx.forma,
+          mostra: ctx.forma,
+          giusta: v.ita,
+          opzioni: mescola([v.ita, ...distrattori(v)]),
+        }
+      }
       return versoInverso
         ? {
             v,
@@ -188,12 +209,21 @@ export function Vocabula({
             ? 'Parola nuova: che cosa vuol dire?'
             : d.versoInverso
             ? 'Come si dice in latino?'
+            : d.frase
+            ? 'Che cosa significa, qui?'
             : 'Che cosa vuol dire?'}
         </h2>
-        <div className="focus-word voc-parola">
-          <span>{d.mostra}</span>
-          {!d.versoInverso && <SpeakButton text={d.v.lat} />}
-        </div>
+        {d.frase ? (
+          <p className="an-frase">
+            <span className="an-testo">{evidenzia(d.frase, d.forma!)}</span>
+            <SpeakButton text={d.frase} />
+          </p>
+        ) : (
+          <div className="focus-word voc-parola">
+            <span>{d.mostra}</span>
+            {!d.versoInverso && <SpeakButton text={d.v.lat} />}
+          </div>
+        )}
 
         <div className="options">
           {d.opzioni.map((opt) => (

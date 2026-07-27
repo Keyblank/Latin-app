@@ -376,7 +376,7 @@ export function Analysis({
 }
 
 /** La frase con la parola da analizzare messa in evidenza. */
-function evidenzia(frase: string, parola: string): ReactNode {
+export function evidenzia(frase: string, parola: string): ReactNode {
   const i = frase.indexOf(parola)
   if (i < 0) return frase
   return (

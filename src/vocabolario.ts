@@ -1,4 +1,5 @@
 import { curriculum } from './data/curriculum.ts'
+import { versiones } from './data/versiones.ts'
 
 /**
  * Il vocabolario del corso, ricavato dalle lezioni di lessico.
@@ -84,6 +85,47 @@ function estrai(): Vocabolo[] {
 
 export const vocabolario: Vocabolo[] = estrai()
 
+/**
+ * Una frase vera in cui la parola compare, presa dalle versioni.
+ *
+ * Chiedere «che cosa vuol dire rēx» è una cosa; riconoscere «rēgem» dentro
+ * una frase e capire che è lo stesso vocabolo è quello che serve davvero a
+ * tradurre. Le frasi non sono inventate qui: sono quelle dei brani, dove
+ * ogni parola ha già lemma e analisi controllati.
+ */
+export interface Contesto {
+  frase: string
+  /** La forma come compare nel testo: «rēgem», non «rēx». */
+  forma: string
+}
+
+const CONTESTI: Map<string, Contesto> = (() => {
+  const m = new Map<string, Contesto>()
+  const capo = (s: string) =>
+    s.replace(/\s*\((m|f|n)\.\)\s*/g, ' ').split(/[,(]/)[0].trim().normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  for (const v of versiones) {
+    for (const f of v.frasi) {
+      for (const parola of f.lat.split(/[\s.,;:!?«»]+/)) {
+        const g = v.parole[parola]
+        if (!g) continue
+        const k = capo(g.lemma)
+        // La prima frase che la contiene: le altre sono altrettanto buone e
+        // una basta.
+        if (k && !m.has(k)) m.set(k, { frase: f.lat, forma: parola })
+      }
+    }
+  }
+  return m
+})()
+
+/** La frase di contesto per un vocabolo, se il corso ne ha una. */
+export function contestoPer(v: Vocabolo): Contesto | undefined {
+  const k = v.lat.replace(/\s*\((m|f|n)\.\)\s*/g, ' ').split(/[,(]/)[0].trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  return CONTESTI.get(k)
+}
+
 /** Le parole insegnate da una lezione. */
 export function paroleDiLezione(lessonId: string): Vocabolo[] {
   return vocabolario.filter((v) => v.lezione === lessonId)
@@ -123,7 +165,26 @@ export interface Memoria {
   liv: number
   /** Quando va rivista (YYYY-MM-DD). */
   quando: string
+  /**
+   * Quanto quella parola ti riesce facile, da 0.5 a 1.6 (di partenza 1).
+   * Moltiplica l'intervallo: una parola che sbagli spesso torna prima di una
+   * che sai al volo, anche se sono allo stesso livello. Senza, tutte le
+   * parole salirebbero la stessa scala — e non è vero che costano uguale.
+   */
+  facilita?: number
 }
+
+const FACILITA_MIN = 0.5
+const FACILITA_MAX = 1.6
+/** Quanto scende la facilità quando sbagli, quanto sale quando indovini. */
+const GIU = 0.2
+const SU = 0.05
+/** Quanti livelli si perdono sbagliando.
+ *
+ *  Non si torna a zero: una parola tenuta per tre mesi e mancata una volta
+ *  non è tornata sconosciuta, e rifarle risalire tutta la scala sprecherebbe
+ *  ripassi che servono altrove. */
+const LIVELLI_PERSI = 2
 
 /**
  * Sceglie le parole della prossima sessione: prima quelle in scadenza (le più
@@ -166,14 +227,25 @@ export function quanteOggi(
   return scadute.length + nuove.length
 }
 
+/** L'intervallo vero: quello del livello, corretto da quanto la parola ti
+ *  riesce facile. Mai meno di un giorno. */
+export function giorniDiAttesa(liv: number, facilita: number): number {
+  const base = INTERVALLI[Math.min(liv, LIVELLO_MAX) - 1] ?? INTERVALLI[0]
+  return Math.max(1, Math.round(base * facilita))
+}
+
 /** Il nuovo stato di una parola dopo una risposta. */
 export function avanza(prec: Memoria | undefined, giusta: boolean): Memoria {
+  const facilitaPrec = prec?.facilita ?? 1
   if (!giusta) {
-    // Sbagliata: si torna in fondo e la si rivede domani. Niente sconti.
-    return { liv: 0, quando: fraGiorni(1) }
+    const facilita = Math.max(FACILITA_MIN, facilitaPrec - GIU)
+    const liv = Math.max(0, (prec?.liv ?? 0) - LIVELLI_PERSI)
+    // Comunque domani: sbagliata va rivista subito, qualunque livello avesse.
+    return { liv, quando: fraGiorni(1), facilita }
   }
+  const facilita = Math.min(FACILITA_MAX, facilitaPrec + SU)
   const liv = Math.min((prec?.liv ?? 0) + 1, LIVELLO_MAX)
-  return { liv, quando: fraGiorni(INTERVALLI[liv - 1]) }
+  return { liv, quando: fraGiorni(giorniDiAttesa(liv, facilita)), facilita }
 }
 
 /** Il primo significato di una glossa: «uccidere, abbattere» → «uccidere». */

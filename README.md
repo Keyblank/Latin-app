@@ -60,11 +60,20 @@ la lingua. Interfaccia in italiano.
   nelle settimane successive. E la stessa parola non viene chiesta sempre allo
   stesso modo — si alternano i due versi, **latino → italiano** (riconoscerla
   leggendo) e **italiano → latino** (tirarla fuori dal nulla), che sono due
-  abilità diverse. Il *Repetitio*
+  abilità diverse. Dal terzo passaggio in poi, quando il corso ha una frase
+  che la contiene, la parola si chiede **dentro quella frase** e nella forma
+  in cui il testo la usa — «silvā», non «silva»: è così che dovrai
+  riconoscerla traducendo. Le frasi vengono dalle versioni, dove ogni parola
+  ha già lemma e analisi controllati (106 vocaboli su 390 ne hanno una). Il *Repetitio*
   riprende solo le domande sbagliate: una parola indovinata per caso esce dal
   corso e non torna più. Qui invece ogni parola ha una sua scadenza, che si
-  allunga ogni volta che la ricordi (**1, 3, 7, 16, 35, 90 giorni**) e torna a
-  zero quando la sbagli. Si incontrano al massimo **5 parole nuove al giorno** e
+  allunga ogni volta che la ricordi (**1, 3, 7, 16, 35, 90 giorni**) e si
+  accorcia quando la sbagli. Gli intervalli non sono uguali per tutti: ogni
+  parola ha una **facilità** che sale se la indovini e scende se la manchi, e
+  moltiplica l'attesa — così due parole allo stesso livello tornano una fra
+  venticinque giorni e l'altra fra dieci, secondo quanto ti costano. E
+  sbagliare non azzera tutto: si scende di due livelli, perché una parola
+  tenuta per tre mesi e mancata una volta non è tornata sconosciuta. Si incontrano al massimo **5 parole nuove al giorno** e
   se ne ripassano **12 per sessione**: poche parole riviste a distanza si
   ricordano, molte in una sera no. Il pulsante compare solo quando c'è
   qualcosa in scadenza. L'elenco non è scritto a mano: le 390 voci sono lette
