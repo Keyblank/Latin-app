@@ -1015,3 +1015,17 @@ button { font-family: inherit; cursor: pointer; }
   background: #f6eefc; color: var(--primary); opacity: 1;
 }
 .segnala-apri-testo { font-size: 11px; font-weight: 800; letter-spacing: 0.2px; }
+
+/* Nel manuale il ⚑ galleggia sull’angolo della tabella: non c’è una barra in
+   alto dove metterlo, e una riga in più per ogni tabella sarebbe rumore. */
+.gram-tabella { position: relative; }
+.gram-tabella .segnala-apri {
+  position: absolute; top: 6px; right: 4px; z-index: 2;
+}
+
+/* Il pezzo evidenziato, dentro il foglio: si vede che è stato preso. */
+.segnala-dove-sel {
+  margin-top: 4px; padding-left: 8px;
+  border-left: 3px solid var(--primary);
+  font-size: 12px; line-height: 1.45; color: var(--text-soft); font-style: italic;
+}

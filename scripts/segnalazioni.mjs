@@ -99,6 +99,7 @@ function daFile(percorso) {
     categoria: s.categoria,
     testo: s.testo,
     estratto: s.posto?.estratto ?? '',
+    selezione: s.selezione,
     lezione: s.posto?.lezione,
     numero: s.posto?.numero ?? null,
   }))
@@ -116,11 +117,13 @@ function daTesto(testo) {
     const c = leggiCoordinata(intestazione)
     if (!c) continue
     const iInt = linee.indexOf(intestazione)
+    const iSel = linee.findIndex((l, k) => k > iInt && /^sul punto: /.test(l))
     out.push({
       versione: (/^\[ianua ([^\]]+)\]/.exec(intestazione) ?? [])[1],
       categoria: (linee[iInt + 1] ?? '').split(' — ')[0],
       estratto: (linee[iInt + 1] ?? '').split(' — ').slice(1).join(' — '),
-      testo: linee.slice(iInt + 2).join('\n').trim(),
+      selezione: iSel >= 0 ? linee[iSel].replace(/^sul punto: /, '').replace(/^«|»$/g, '') : undefined,
+      testo: linee.slice(iSel >= 0 ? iSel + 1 : iInt + 2).join('\n').trim(),
       ...c,
     })
   }
@@ -171,6 +174,7 @@ for (const [k, s] of segnalazioni.entries()) {
   if (s.versione) console.log(`versione:  ${s.versione}`)
   if (s.testo) console.log(`commento:  ${s.testo.replace(/\n/g, '\n           ')}`)
   if (s.estratto) console.log(`segnalava: ${s.estratto}`)
+  if (s.selezione) console.log(`sul punto: «${s.selezione}»`)
 
   if (!s.lezione) {
     console.log('posizione: sconosciuta\n')

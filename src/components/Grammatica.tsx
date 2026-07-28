@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import { curriculum } from '../data/curriculum'
 import type { TableExercise } from '../types'
 import { TableCard } from './Exercises'
+import { BottoneSegnala } from './Segnala'
+import { postoDiEsercizio } from '../segnalazioni'
 
 /** Toglie lineette e maiuscole: per cercare «rege» e trovare «rēge». */
 const norm = (s: string) =>
@@ -111,7 +113,16 @@ export function Grammatica({ onBack }: { onBack: () => void }) {
               {aperta && (
                 <div className="gram-tabelle">
                   {s.tabelle.map((t, i) => (
-                    <TableCard key={i} ex={t} />
+                    // Il manuale è dove le spiegazioni si rileggono a mente
+                    // fredda, cioè dove è più probabile accorgersi che una
+                    // nota dice una cosa storta.
+                    <div key={i} className="gram-tabella">
+                      <BottoneSegnala
+                        posto={postoDiEsercizio(t)}
+                        etichetta={`Segnala un errore in «${t.title}»`}
+                      />
+                      <TableCard ex={t} />
+                    </div>
                   ))}
                 </div>
               )}

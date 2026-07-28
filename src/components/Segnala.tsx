@@ -27,6 +27,7 @@ import {
  */
 export function BottoneSegnala({ posto, etichetta }: { posto: Posto; etichetta?: string }) {
   const [aperto, setAperto] = useState(false)
+  const [selezione, setSelezione] = useState('')
   // Finché non è mai stato usato porta la sua etichetta: una bandierina muta
   // in mezzo alle icone non la nota nessuno, e un pulsante che nessuno nota
   // vale come non averlo messo. Alla prima segnalazione si fa da parte.
@@ -36,6 +37,14 @@ export function BottoneSegnala({ posto, etichetta }: { posto: Posto; etichetta?:
     <>
       <button
         className={`segnala-apri ${maiUsato ? 'segnala-apri--nuovo' : ''}`}
+        // Su una scheda lunga «Scheda "Il participio perfetto"» non basta a
+        // capire dove guardare. Se prima di toccare il ⚑ si è evidenziata la
+        // frase incriminata, quella frase viaggia insieme alla segnalazione.
+        // Va letta PRIMA del click, che portando via il fuoco cancella la
+        // selezione.
+        onPointerDown={() =>
+          setSelezione((window.getSelection()?.toString() ?? '').replace(/\s+/g, ' ').trim().slice(0, 300))
+        }
         onClick={() => setAperto(true)}
         aria-label={etichetta ?? 'Segnala un errore'}
         title={etichetta ?? 'Segnala un errore'}
@@ -45,6 +54,7 @@ export function BottoneSegnala({ posto, etichetta }: { posto: Posto; etichetta?:
       {aperto && (
         <FoglioSegnala
           posto={posto}
+          selezione={selezione}
           onChiudi={() => setAperto(false)}
           onMandata={() => setMaiUsato(false)}
         />
@@ -55,10 +65,12 @@ export function BottoneSegnala({ posto, etichetta }: { posto: Posto; etichetta?:
 
 function FoglioSegnala({
   posto,
+  selezione,
   onChiudi,
   onMandata,
 }: {
   posto: Posto
+  selezione: string
   onChiudi: () => void
   onMandata: () => void
 }) {
@@ -70,7 +82,7 @@ function FoglioSegnala({
   async function invia() {
     if (!categoria || inCorso) return
     setInCorso(true)
-    const s = aggiungi(categoria, testo, posto)
+    const s = aggiungi(categoria, testo, posto, selezione || undefined)
     onMandata()
     const come = await manda(testoDi(s))
     setInCorso(false)
@@ -105,6 +117,7 @@ function FoglioSegnala({
             <p className="segnala-dove">
               <span className="segnala-dove-coord">{coordinata(posto)}</span>
               <span className="segnala-dove-testo">{posto.estratto}</span>
+              {selezione && <span className="segnala-dove-sel">«{selezione}»</span>}
             </p>
 
             <div className="segnala-categorie">
@@ -123,7 +136,11 @@ function FoglioSegnala({
             <textarea
               className="segnala-testo"
               rows={3}
-              placeholder="Facoltativo: due parole su cosa hai notato."
+              placeholder={
+                selezione
+                  ? 'Facoltativo: che cosa non torna in questo pezzo?'
+                  : 'Facoltativo: due parole su cosa hai notato.'
+              }
               value={testo}
               onChange={(e) => setTesto(e.target.value)}
             />
@@ -136,9 +153,10 @@ function FoglioSegnala({
               {categoria ? 'Manda la segnalazione' : 'Scegli il tipo di problema'}
             </button>
             <p className="segnala-nota">
-              Parte insieme alla posizione esatta di questo esercizio, così si
-              trova subito. Niente altro: nessun dato tuo, e non passa da nessun
-              server.
+              {selezione
+                ? 'Parte insieme al pezzo che hai evidenziato e alla posizione esatta: così si trova al primo colpo.'
+                : 'Parte insieme alla posizione esatta di questo esercizio. Se il problema è in un punto preciso di una spiegazione, evidenzia quella frase prima di toccare ⚑ e te la porta dietro.'}{' '}
+              Niente altro: nessun dato tuo, e non passa da nessun server.
             </p>
           </>
         )}

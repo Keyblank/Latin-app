@@ -374,9 +374,33 @@ e viene fuori `src/data/curriculum.ts:10932`, più l'esercizio **com'è adesso**
 — che serve, perché fra la segnalazione e la lettura può essere già stato
 corretto.
 
+**Anche le spiegazioni si segnalano**, e sono anzi il caso che conta di più,
+perché è l'unico che nessuno script sa controllare. Schede e tabelle sono
+esercizi come gli altri, quindi hanno il loro ⚑; ce l'ha anche ogni tabella
+della **Grammatica**, che è dove le spiegazioni si rileggono a mente fredda.
+
+Su una scheda lunga, però, «Scheda "Il participio perfetto"» non basta a dire
+dove guardare. Perciò: se prima di toccare ⚑ si **evidenzia** la frase
+incriminata, quella frase viaggia con la segnalazione —
+
+```
+[ianua abc1234] u12 · u12l2 · esercizio 1
+Spiegato male — Scheda «Il participio perfetto»
+
+sul punto: «Finisce in «-tus, -a, -um» (a volte «-sus»)»
+
+ma quando è -sus? non lo dice
+```
+
+— e lo script la ristampa insieme alla riga. La selezione si legge sul
+`pointerdown` del pulsante, prima che il click porti via il fuoco e la
+cancelli.
+
 Nel Repetitio gli esercizi arrivano sciolti, senza più la lezione da cui
 vengono: la posizione si ritrova confrontandoli per contenuto con il
-curriculum. Le segnalazioni restano nel browser di chi le fa (quaderno
+curriculum. Lo stesso indice serve alla Grammatica, dove la lezione non c'è
+affatto e la tabella si ritrova comunque. Le segnalazioni restano nel browser
+di chi le fa (quaderno
 «Segnalazioni» nella schermata iniziale, per mandarle in blocco a fine giro) e
 non passano da nessun server, come tutto il resto dell'app.
 

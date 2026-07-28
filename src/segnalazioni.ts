@@ -52,6 +52,8 @@ export interface Segnalazione {
   categoria: Categoria
   testo: string
   posto: Posto
+  /** Il pezzo di testo che chi segnala aveva selezionato, se l'aveva fatto. */
+  selezione?: string
   /** Versione dell'app: se una segnalazione arriva vecchia, si vede. */
   versione: string
 }
@@ -98,13 +100,19 @@ function estrattoDi(ex: Exercise): string {
   }
 }
 
-export function postoDiEsercizio(ex: Exercise, lezione: Lesson): Posto {
+/**
+ * `lezione` serve solo come ripiego: se l'esercizio non si ritrova nel corso
+ * (perché è stato modificato dopo essere finito nei progressi) resta almeno il
+ * nome della lezione da cui lo si stava facendo. Dalla Grammatica, dove la
+ * lezione non c'è, si omette.
+ */
+export function postoDiEsercizio(ex: Exercise, lezione?: Lesson): Posto {
   const trovato = posizioni.get(JSON.stringify(ex))
   return {
     schermata: 'lezione',
     unita: trovato?.unita,
     // Nel Repetitio `lezione.id` è «repetitio»: vale la posizione vera, se c'è.
-    lezione: trovato?.lezione ?? lezione.id,
+    lezione: trovato?.lezione ?? lezione?.id,
     numero: trovato?.numero,
     tipo: ex.type,
     estratto: estrattoDi(ex),
@@ -158,13 +166,19 @@ function scrivi(lista: Segnalazione[]): void {
   }
 }
 
-export function aggiungi(categoria: Categoria, testo: string, posto: Posto): Segnalazione {
+export function aggiungi(
+  categoria: Categoria,
+  testo: string,
+  posto: Posto,
+  selezione?: string,
+): Segnalazione {
   const s: Segnalazione = {
     id: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,
     quando: new Date().toISOString(),
     categoria,
     testo: testo.trim(),
     posto,
+    ...(selezione ? { selezione } : {}),
     versione: __VERSIONE__,
   }
   scrivi([...leggiSegnalazioni(), s])
@@ -194,6 +208,7 @@ export function testoDi(s: Segnalazione): string {
   return [
     `[ianua ${s.versione}] ${coordinata(s.posto)}`,
     `${etichetta(s.categoria)} — ${s.posto.estratto}`,
+    ...(s.selezione ? ['', `sul punto: «${s.selezione}»`] : []),
     '',
     s.testo || '(nessun commento)',
   ].join('\n')
