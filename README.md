@@ -374,6 +374,41 @@ e viene fuori `src/data/curriculum.ts:10932`, più l'esercizio **com'è adesso**
 — che serve, perché fra la segnalazione e la lettura può essere già stato
 corretto.
 
+### Il registro vero sono le issue
+
+Una segnalazione dentro una chat si perde; una issue no. Perciò le segnalazioni
+finiscono su GitHub, con l'etichetta `segnalazione` più una per categoria, e
+[il registro si guarda da lì](https://github.com/Keyblank/Latin-app/issues?q=label%3Asegnalazione).
+Ci si arriva per due strade, perché servono a due persone diverse.
+
+**Chi ha un account GitHub** usa il link «…oppure aprila su GitHub» dentro il
+foglio: apre una issue già compilata — titolo, corpo, etichette — e deve solo
+confermare. Nessun server, nessuna chiave: è GitHub stesso a leggere tutto
+dall'indirizzo.
+
+**Per tutti gli altri** — cioè quasi tutti gli amici — la segnalazione arriva
+come messaggio, e la si versa nel registro da qui:
+
+```bash
+GITHUB_TOKEN=github_pat_... npm run segnalazioni -- segnalazioni.json --github
+npm run segnalazioni -- segnalazioni.json --github --prova   # dice cosa aprirebbe
+```
+
+Il token è fine-grained, con accesso al solo `Keyblank/Latin-app` e il permesso
+`Issues: write`; sta in una variabile d'ambiente e non entra mai nel bundle.
+Ogni issue porta in fondo un'impronta `<!-- ianua:id -->`, e le impronte già
+presenti si saltano: reincollare due volte lo stesso messaggio non raddoppia
+niente. Il corpo della issue contiene anche il **link alla riga** di
+`curriculum.ts`.
+
+La prima esecuzione crea le etichette che mancano — senza, GitHub le ignora in
+silenzio.
+
+**Quello che questo giro non fa** è popolare il registro *da solo*, senza che
+nessuno tocchi niente: per farlo servirebbe una credenziale di scrittura
+raggiungibile dal browser, cioè un piccolo relay (una funzione serverless che
+tiene il token). È l'unica parte che richiederebbe un server, e per ora non c'è.
+
 **Anche le spiegazioni si segnalano**, e sono anzi il caso che conta di più,
 perché è l'unico che nessuno script sa controllare. Schede e tabelle sono
 esercizi come gli altri, quindi hanno il loro ⚑; ce l'ha anche ogni tabella

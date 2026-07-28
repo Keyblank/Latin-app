@@ -7,6 +7,7 @@ import {
   svuota,
   testoDiTutte,
   CATEGORIE,
+  URL_REGISTRO,
 } from '../segnalazioni'
 
 /**
@@ -107,6 +108,10 @@ export function Segnalazioni() {
       )}
 
       {avviso && <p className="salva-ok">{avviso}</p>}
+
+      <a className="link-btn" href={URL_REGISTRO} target="_blank" rel="noreferrer">
+        Vedi il registro su GitHub ↗
+      </a>
 
       <button className="link-btn" onClick={() => setAperto(false)}>
         Chiudi

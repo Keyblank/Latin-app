@@ -1,0 +1,56 @@
+name: Segnalazione su una lezione
+description: Qualcosa nel corso non torna — un errore di latino, una traduzione, un refuso, una spiegazione poco chiara.
+title: '[coordinata] '
+labels: ['segnalazione']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Se stai usando l'app, **non serve compilare questo modulo**: tocca il ⚑
+        in alto a destra dentro l'esercizio e la segnalazione si scrive da sola,
+        coordinata compresa.
+
+        Questo modulo serve a chi arriva da GitHub o sta rileggendo il corso dal
+        codice.
+
+  - type: input
+    id: dove
+    attributes:
+      label: Dove
+      description: >
+        La coordinata, se ce l'hai — la dà l'app, ed è la cosa che fa risparmiare
+        più tempo. Altrimenti va bene il titolo della lezione o della scheda.
+      placeholder: u19 · u19l4 · esercizio 5
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Che tipo di problema è
+      options:
+        - Errore di latino
+        - Traduzione sbagliata
+        - Refuso
+        - Spiegato male
+        - L'app non funziona bene
+        - Altro
+    validations:
+      required: true
+
+  - type: textarea
+    id: punto
+    attributes:
+      label: Il punto esatto
+      description: La frase o la riga che non va, incollata così com'è.
+      render: text
+
+  - type: textarea
+    id: cosa
+    attributes:
+      label: Che cosa non va
+      description: >
+        Anche una riga basta. Se sai qual è la forma giusta, dilla — ma non è
+        obbligatorio: serve più sapere dove guardare che avere già la risposta.
+    validations:
+      required: true

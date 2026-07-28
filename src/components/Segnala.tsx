@@ -6,6 +6,7 @@ import {
   leggiSegnalazioni,
   manda,
   testoDi,
+  urlIssue,
   type Categoria,
   type Posto,
 } from '../segnalazioni'
@@ -78,6 +79,9 @@ function FoglioSegnala({
   const [testo, setTesto] = useState('')
   const [esito, setEsito] = useState<string | null>(null)
   const [inCorso, setInCorso] = useState(false)
+  // Il link a GitHub si prepara solo quando lo si chiede: costruirlo vuol dire
+  // registrare la segnalazione, e non va fatto per un tocco andato a vuoto.
+  const [anteprima, setAnteprima] = useState<string | null>(null)
 
   async function invia() {
     if (!categoria || inCorso) return
@@ -103,6 +107,32 @@ function FoglioSegnala({
             <p className="segnala-fatto">✅ {esito}</p>
             <button className="btn btn-primary" onClick={onChiudi}>
               Torna all’esercizio
+            </button>
+          </>
+        ) : anteprima ? (
+          <>
+            <div className="segnala-testa">
+              <h2>Aprila su GitHub</h2>
+              <button className="close-btn" onClick={() => setAnteprima(null)} aria-label="Indietro">
+                ✕
+              </button>
+            </div>
+            <p className="segnala-nota">
+              Si apre GitHub con la segnalazione già scritta: basta confermare.
+              Serve un account — se non ce l’hai, torna indietro e usa il
+              pulsante grande, che funziona lo stesso.
+            </p>
+            <a
+              className="btn btn-primary"
+              href={anteprima}
+              target="_blank"
+              rel="noreferrer"
+              onClick={onChiudi}
+            >
+              Apri GitHub
+            </a>
+            <button className="link-btn" onClick={() => setAnteprima(null)}>
+              Indietro
             </button>
           </>
         ) : (
@@ -152,6 +182,19 @@ function FoglioSegnala({
             >
               {categoria ? 'Manda la segnalazione' : 'Scegli il tipo di problema'}
             </button>
+            {categoria && (
+              <button
+                className="link-btn"
+                onClick={() => {
+                  setAnteprima(
+                    urlIssue(aggiungi(categoria, testo, posto, selezione || undefined)),
+                  )
+                  onMandata()
+                }}
+              >
+                …oppure aprila su GitHub
+              </button>
+            )}
             <p className="segnala-nota">
               {selezione
                 ? 'Parte insieme al pezzo che hai evidenziato e alla posizione esatta: così si trova al primo colpo.'

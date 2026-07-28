@@ -16,10 +16,16 @@ import { curriculum } from './data/curriculum'
  * frase; chi corregge riceve una coordinata.
  *
  * Restano nel browser di chi segnala, come i progressi, e si mandano via a
- * mano: niente server, come tutto il resto dell'app.
+ * mano: niente server, come tutto il resto dell'app. Chi ha un account GitHub
+ * puo' aprirle direttamente come issue, che e' il registro vero; per tutti gli
+ * altri il tragitto passa da un messaggio e da `npm run segnalazioni`.
  */
 
 const CHIAVE = 'ianua-segnalazioni-v1'
+const REPO = 'Keyblank/Latin-app'
+
+/** Il registro pubblico: le segnalazioni diventano issue con l'etichetta. */
+export const URL_REGISTRO = `https://github.com/${REPO}/issues?q=label%3Asegnalazione`
 const MASSIMO = 200
 
 export type Categoria = 'latino' | 'traduzione' | 'refuso' | 'confuso' | 'tecnico' | 'altro'
@@ -212,6 +218,38 @@ export function testoDi(s: Segnalazione): string {
     '',
     s.testo || '(nessun commento)',
   ].join('\n')
+}
+
+/**
+ * Il link che apre una issue gia' compilata.
+ *
+ * Non serve nessun server e nessuna chiave: e' GitHub stesso a prendere titolo,
+ * corpo ed etichette dall'indirizzo. Il limite e' che chi la apre deve avere un
+ * account — percio' e' la strada secondaria, non quella principale.
+ *
+ * Il commento HTML in fondo e' un'impronta: serve a `npm run segnalazioni` per
+ * non riaprire due volte la stessa segnalazione.
+ */
+export function urlIssue(s: Segnalazione): string {
+  const titolo = `[${coordinata(s.posto)}] ${etichetta(s.categoria)} — ${s.posto.estratto}`
+  const corpo = [
+    `**Dove:** \`${coordinata(s.posto)}\`  ·  **tipo:** ${s.posto.tipo ?? '—'}  ·  **versione:** \`${s.versione}\``,
+    '',
+    `> ${s.posto.estratto}`,
+    ...(s.selezione ? ['', '**Sul punto:**', `> ${s.selezione}`] : []),
+    '',
+    '---',
+    '',
+    s.testo || '_(nessun commento)_',
+    '',
+    `<!-- ianua:${s.id} -->`,
+  ].join('\n')
+  const q = new URLSearchParams({
+    title: titolo.slice(0, 200),
+    body: corpo,
+    labels: ['segnalazione', s.categoria].join(','),
+  })
+  return `https://github.com/${REPO}/issues/new?${q}`
 }
 
 export function testoDiTutte(lista: Segnalazione[]): string {
