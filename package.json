@@ -13,7 +13,8 @@
     "check:quantita": "node --experimental-strip-types scripts/check-quantita.mjs",
     "check:morfologia": "node --experimental-strip-types scripts/check-morfologia.mjs",
     "check:glosse": "node --experimental-strip-types scripts/check-glosse.mjs",
-    "check:sensi": "node --experimental-strip-types scripts/check-sensi.mjs"
+    "check:sensi": "node --experimental-strip-types scripts/check-sensi.mjs",
+    "segnalazioni": "node --experimental-strip-types scripts/segnalazioni.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

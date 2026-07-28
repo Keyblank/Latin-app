@@ -5,6 +5,8 @@ import { Mascot } from './Mascot'
 import { Confetti } from './Confetti'
 import { pickQuip } from '../quips'
 import { playCorrect, playWrong, playWin } from '../sfx'
+import { BottoneSegnala } from './Segnala'
+import { postoDiEsercizio } from '../segnalazioni'
 
 /** Tetto delle vite. Nelle lezioni corte se ne danno meno: vedi sotto. */
 const MAX_HEARTS = 5
@@ -240,6 +242,7 @@ export function LessonPlayer({ lesson, reviewMode = false, onQuit, onFinish }: P
           />
         </div>
         <div className="hearts">❤️ {hearts}</div>
+        <BottoneSegnala posto={postoDiEsercizio(ex, lesson)} />
       </header>
 
       <main className="lesson-body" key={`${recupero ? 'r' : 'p'}${i}`}>

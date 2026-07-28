@@ -9,6 +9,7 @@ import { sfxEnabled, setSfxEnabled } from '../sfx'
 import { versiones } from '../data/versiones'
 import { quanteOggi, nuoveRimasteOggi } from '../vocabolario'
 import { Salvataggio } from './Salvataggio'
+import { Segnalazioni } from './Segnalazioni'
 
 interface Props {
   units: Unit[]
@@ -272,6 +273,7 @@ export function Home({
             {progress.freeMode ? '🔓 Tutte le lezioni sbloccate' : '🔒 Sblocca tutte le lezioni'}
           </button>
           <Salvataggio progress={progress} onImporta={onImporta} />
+          <Segnalazioni />
           <div>
             <button className="link-btn" onClick={onReset}>
               Ricomincia da capo

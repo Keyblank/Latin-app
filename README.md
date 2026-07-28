@@ -342,6 +342,44 @@ script li aveva scritti la stessa mano che aveva scritto il corso.
 Nessuno dei due gira in CI: dipendono da risorse esterne e le divergenze vanno
 lette una per una.
 
+### L'ultimo controllo sono le persone — il ⚑ dentro ogni esercizio
+
+Tutto quello che sta sopra verifica le **forme** e i **significati**. Restano
+fuori la sintassi delle frasi e la chiarezza delle spiegazioni, e lì l'unico
+strumento è qualcuno che legge. Perciò ogni esercizio ha una bandierina in alto
+a destra.
+
+Il punto delicato non è convincere qualcuno a segnalare: è che dalla
+segnalazione si arrivi alla correzione senza lavoro di mezzo. Perciò il foglio
+**non chiede in quale esercizio sei** — lo sa già, e allega la coordinata al
+messaggio:
+
+```
+[ianua 51712f3] u19 · u19l4 · esercizio 5
+Errore di latino — In «Caesar fortior Pompēiō erat», che funzione ha «Pompēiō»?
+
+secondo me qui manca una spiegazione
+```
+
+Quella prima riga è pensata per essere letta da uno script. Il messaggio si
+incolla così com'è:
+
+```bash
+pbpaste | npm run segnalazioni                    # incollato da WhatsApp
+npm run segnalazioni -- ianua-segnalazioni.json   # scaricato dal quaderno
+npm run segnalazioni -- u19l4 5                   # a mano
+```
+
+e viene fuori `src/data/curriculum.ts:10932`, più l'esercizio **com'è adesso**
+— che serve, perché fra la segnalazione e la lettura può essere già stato
+corretto.
+
+Nel Repetitio gli esercizi arrivano sciolti, senza più la lezione da cui
+vengono: la posizione si ritrova confrontandoli per contenuto con il
+curriculum. Le segnalazioni restano nel browser di chi le fa (quaderno
+«Segnalazioni» nella schermata iniziale, per mandarle in blocco a fine giro) e
+non passano da nessun server, come tutto il resto dell'app.
+
 ## Come aggiungere lezioni
 
 Tutto il corso è in un unico file, facile da modificare:

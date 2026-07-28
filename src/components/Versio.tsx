@@ -4,6 +4,8 @@ import { SpeakButton } from './SpeakButton'
 import { Mascot } from './Mascot'
 import { Confetti } from './Confetti'
 import { playCorrect, playWin } from '../sfx'
+import { BottoneSegnala } from './Segnala'
+import { postoDiVersione } from '../segnalazioni'
 
 /** Spezza una frase latina in parole e punteggiatura, senza perdere niente. */
 function tokenize(frase: string): string[] {
@@ -153,6 +155,9 @@ export function Versio({
         <span className="versio-conteggio">
           {i + 1}/{versio.frasi.length}
         </span>
+        <BottoneSegnala
+          posto={postoDiVersione(versio.id, versio.titolo, versio.frasi[i].lat)}
+        />
       </div>
 
       <div className="lesson-body">

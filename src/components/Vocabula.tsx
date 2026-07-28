@@ -13,6 +13,8 @@ import { Mascot } from './Mascot'
 import { Confetti } from './Confetti'
 import { SpeakButton } from './SpeakButton'
 import { playCorrect, playWrong, playWin } from '../sfx'
+import { BottoneSegnala } from './Segnala'
+import { postoDiVocabolo } from '../segnalazioni'
 
 interface Domanda {
   v: Vocabolo
@@ -201,6 +203,7 @@ export function Vocabula({
           <div className="progress-fill" style={{ width: `${(i / domande.length) * 100}%` }} />
         </div>
         <span className="versio-conteggio">{i + 1}/{domande.length}</span>
+        <BottoneSegnala posto={postoDiVocabolo(d.v.lat, d.v.ita, d.v.lezione)} />
       </div>
 
       <div className="lesson-body">

@@ -926,3 +926,92 @@ button { font-family: inherit; cursor: pointer; }
 .voc-btn:active { transform: translateY(2px); }
 .voc-btn .urbs-count { color: var(--green-dark); }
 .voc-parola { font-family: var(--serif); font-size: 26px; }
+
+/* ─────────────────── segnalare un errore ─────────────────── */
+
+/* Il ⚑ sta nella barra in alto di ogni esercizio: sempre nello stesso posto,
+   raggiungibile col pollice, ma spento — non deve competere con le vite. */
+.segnala-apri {
+  background: none; border: none; padding: 4px 2px;
+  font-size: 17px; line-height: 1; color: var(--gray-dark);
+  opacity: 0.75;
+}
+.segnala-apri:active { transform: translateY(1px); opacity: 1; }
+
+.segnala-velo {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex; align-items: flex-end; justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+.segnala-foglio {
+  width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto;
+  background: var(--bg); border-radius: 20px 20px 0 0;
+  padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 13px;
+  animation: salePiano 0.2s ease;
+}
+@keyframes salePiano { from { transform: translateY(30px); } to { transform: none; } }
+
+.segnala-testa { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.segnala-testa h2 { margin: 0; font-size: 20px; font-weight: 800; }
+
+/* La coordinata si vede: serve a far capire che l’app sa già dove sei, e che
+   non c’è niente da spiegare su «quale esercizio». */
+.segnala-dove {
+  margin: 0; display: flex; flex-direction: column; gap: 3px;
+  background: #f6eefc; border: 2px solid #e6d8f6; border-radius: 12px;
+  padding: 10px 12px;
+}
+.segnala-dove-coord {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.4px;
+  color: var(--primary); text-transform: uppercase;
+}
+.segnala-dove-testo { font-size: 13px; line-height: 1.45; color: var(--text); }
+
+.segnala-categorie { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.segnala-cat {
+  display: flex; align-items: center; gap: 7px; text-align: left;
+  border: 2px solid var(--gray); border-bottom-width: 3px; border-radius: 12px;
+  background: #fff; color: var(--text); font: inherit; font-weight: 700;
+  font-size: 13px; padding: 10px; line-height: 1.25;
+}
+.segnala-cat-ico { font-size: 16px; }
+.segnala-cat.scelta {
+  border-color: var(--primary); background: #f6eefc; color: var(--primary);
+}
+.segnala-cat:active { transform: translateY(2px); }
+
+.segnala-testo {
+  width: 100%; box-sizing: border-box; resize: vertical;
+  border: 2px solid var(--gray); border-radius: 12px; padding: 11px;
+  font: inherit; font-size: 15px; color: var(--text);
+}
+.segnala-testo:focus { outline: none; border-color: var(--primary); }
+
+.segnala-nota { margin: 0; font-size: 12px; line-height: 1.5; color: var(--text-soft); }
+.segnala-fatto { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.5; }
+
+/* ── il quaderno, nella schermata iniziale ── */
+.segnala-vuoto { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-soft); }
+.segnala-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.segnala-lista li { display: flex; gap: 9px; align-items: flex-start; }
+.segnala-lista-ico { font-size: 15px; line-height: 1.5; }
+.segnala-lista-testo { display: flex; flex-direction: column; gap: 2px; font-size: 12px; line-height: 1.45; }
+.segnala-lista-testo b { color: var(--primary); font-size: 11px; letter-spacing: 0.3px; text-transform: uppercase; }
+.segnala-lista-estratto { color: var(--text); }
+.segnala-lista-testo em { color: var(--text-soft); }
+
+@media (max-width: 360px) {
+  .segnala-categorie { grid-template-columns: 1fr; }
+}
+
+/* Alla prima apertura il ⚑ porta la sua etichetta: dentro una lezione nessuno
+   va a caccia di icone, e una segnalazione non fatta non serve a niente. */
+.segnala-apri--nuovo {
+  display: inline-flex; align-items: center; gap: 4px;
+  border: 2px solid #e6d8f6; border-radius: 999px;
+  padding: 4px 9px 4px 7px;
+  background: #f6eefc; color: var(--primary); opacity: 1;
+}
+.segnala-apri-testo { font-size: 11px; font-weight: 800; letter-spacing: 0.2px; }
