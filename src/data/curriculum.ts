@@ -7,7 +7,7 @@ import type { Unit } from '../types'
 export const curriculum: Unit[] = [
   {
     id: 'u0',
-    title: 'Pronuntiatio — Come si legge',
+    title: 'Prōnūntiātiō — Come si legge',
     subtitle: 'Ascolta e impara i suoni (tocca 🔊)',
     color: '#a9791d',
     lessons: [

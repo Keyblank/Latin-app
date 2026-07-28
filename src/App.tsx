@@ -64,7 +64,7 @@ export default function App() {
     const exercises: Exercise[] = shuffle(progress.mistakes).slice(0, REVIEW_SIZE)
     if (exercises.length === 0) return
     setIsReview(true)
-    setActiveLesson({ id: 'repetitio', title: 'Repetitio', icon: '🔁', exercises })
+    setActiveLesson({ id: 'repetitio', title: 'Repetītiō', icon: '🔁', exercises })
   }
 
   function close() {

@@ -154,7 +154,7 @@ export function Home({
           />
           <Tile
             icona="🔁"
-            titolo="Repetitio"
+            titolo="Repetītiō"
             nota={
               progress.mistakes.length > 0
                 ? `${progress.mistakes.length} ${progress.mistakes.length === 1 ? 'errore' : 'errori'} da rifare`
@@ -165,7 +165,7 @@ export function Home({
           />
           <Tile
             icona="📜"
-            titolo="Versiones"
+            titolo="Versiōnēs"
             nota={`${versioniAperte} di ${versiones.length} da tradurre`}
             attiva={versioniAperte > 0}
             onClick={onOpenVersiones}

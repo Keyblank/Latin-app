@@ -26,7 +26,7 @@ export function Versiones({
     <div className="app">
       <header className="topbar">
         <button className="close-btn" onClick={onBack} aria-label="Torna indietro">←</button>
-        <span className="brand">Versiones</span>
+        <span className="brand">Versiōnēs</span>
         <span className="gram-conta">{aperte}/{versiones.length}</span>
       </header>
 

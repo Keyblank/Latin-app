@@ -1,5 +1,18 @@
 // Le VERSIONI: brani latini continui da tradurre, con l'aiuto sulle parole.
 //
+// ►► SUL NOME ◄◄
+// «Versiōnēs» è latino, ma non classico. «Versiō, versiōnis» (dal supino di
+// «vertō, vertere, versum» = voltare) non compare in Cicerone né in Cesare: il
+// lessico di Collatinus, che raccoglie 24 000 lemmi classici, non ce l'ha, e
+// lo si trova solo in Whitaker, che arriva fino al latino tardo e medievale.
+// Cicerone per «traduzione» avrebbe detto «interpretātiō» o «conversiō».
+//
+// Lo teniamo lo stesso, e con cognizione di causa: è esattamente la parola da
+// cui viene l'italiano «versione», che è come gli studenti italiani chiamano
+// questo esercizio da secoli. Un nome medievale per una pratica scolastica
+// medievale. Ma se lo scrivessi in un tema di latino, un classicista lo
+// segnerebbe.
+//
 // È la differenza fra saper tradurre una frase e saper tradurre un testo: in
 // un brano le frasi si tengono, i soggetti restano sottintesi da una riga
 // all'altra, e bisogna decidere cosa sta con cosa. È quello che chiedono
