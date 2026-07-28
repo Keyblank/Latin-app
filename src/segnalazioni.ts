@@ -212,7 +212,10 @@ const etichetta = (c: Categoria) => CATEGORIE.find((x) => x.id === c)?.etichetta
  */
 export function testoDi(s: Segnalazione): string {
   return [
-    `[ianua ${s.versione}] ${coordinata(s.posto)}`,
+    // L'id sta nell'intestazione perche' la stessa segnalazione puo' arrivare
+    // due volte per due strade — incollata da una chat e dentro il file
+    // esportato — e senza di lui la seconda diventa una issue doppia.
+    `[ianua ${s.versione} · ${s.id}] ${coordinata(s.posto)}`,
     `${etichetta(s.categoria)} — ${s.posto.estratto}`,
     ...(s.selezione ? ['', `sul punto: «${s.selezione}»`] : []),
     '',

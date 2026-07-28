@@ -3,7 +3,8 @@
 // Le segnalazioni arrivano come le manda l'app: un messaggio su WhatsApp, o un
 // file scaricato dal quaderno. La prima riga contiene la coordinata:
 //
-//   [ianua 51712f3] u19 · u19l4 · esercizio 5
+//   [ianua 51712f3 · ms4jfyox-rb8dh] u19 · u19l4 · esercizio 5
+//    versione ─┘        id ─┘          unita'  lezione   esercizio
 //
 // Questo script la legge e stampa il numero di riga esatto dentro
 // src/data/curriculum.ts, più l'esercizio così com'è adesso — perché fra la
@@ -80,7 +81,7 @@ function esercizioOra(lezione, numero) {
 // ─────────────────── leggere le segnalazioni ───────────────────
 
 /**
- * «[ianua 51712f3] u19 · u19l4 · esercizio 5» → { lezione: 'u19l4', numero: 5 }
+ * «[ianua 51712f3 · abc] u19 · u19l4 · esercizio 5» → { lezione: 'u19l4', numero: 5 }
  *
  * I pezzi sono separati da «·». L'unità («u19») e la lezione («u19l4») si
  * somigliano, e la lezione è sempre l'ultimo identificatore prima del numero:
@@ -140,8 +141,12 @@ function daTesto(testo) {
     if (!c) continue
     const iInt = linee.indexOf(intestazione)
     const iSel = linee.findIndex((l, k) => k > iInt && /^sul punto: /.test(l))
+    // «[ianua 4ff224c · ms4jfyox-rb8dh]» — l'id manca nei messaggi vecchi, e
+    // in quel caso si ripiega sull'impronta calcolata dal contenuto.
+    const firma = /^\[ianua\s+([^\s·\]]+)(?:\s*·\s*([^\]]+))?\]/.exec(intestazione) ?? []
     out.push({
-      versione: (/^\[ianua ([^\]]+)\]/.exec(intestazione) ?? [])[1],
+      versione: firma[1],
+      id: firma[2]?.trim(),
       categoria: (linee[iInt + 1] ?? '').split(' — ')[0],
       estratto: (linee[iInt + 1] ?? '').split(' — ').slice(1).join(' — '),
       selezione: iSel >= 0 ? linee[iSel].replace(/^sul punto: /, '').replace(/^«|»$/g, '') : undefined,

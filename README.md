@@ -355,11 +355,16 @@ segnalazione si arrivi alla correzione senza lavoro di mezzo. Perciò il foglio
 messaggio:
 
 ```
-[ianua 51712f3] u19 · u19l4 · esercizio 5
+[ianua 51712f3 · ms4jfyox-rb8dh] u19 · u19l4 · esercizio 5
 Errore di latino — In «Caesar fortior Pompēiō erat», che funzione ha «Pompēiō»?
 
 secondo me qui manca una spiegazione
 ```
+
+Nella prima riga ci sono il commit da cui l'app è stata costruita e l'**id**
+della segnalazione. L'id serve perché la stessa segnalazione può arrivare due
+volte per due strade — incollata da una chat e dentro il file esportato — e
+senza di lui la seconda diventerebbe una issue doppia.
 
 Quella prima riga è pensata per essere letta da uno script. Il messaggio si
 incolla così com'è:
@@ -419,7 +424,7 @@ dove guardare. Perciò: se prima di toccare ⚑ si **evidenzia** la frase
 incriminata, quella frase viaggia con la segnalazione —
 
 ```
-[ianua abc1234] u12 · u12l2 · esercizio 1
+[ianua abc1234 · m1p9x-q4tz2] u12 · u12l2 · esercizio 1
 Spiegato male — Scheda «Il participio perfetto»
 
 sul punto: «Finisce in «-tus, -a, -um» (a volte «-sus»)»
