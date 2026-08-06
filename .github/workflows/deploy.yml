@@ -57,7 +57,18 @@ jobs:
           # quando Pages si e' impiantato, rinominare e' stata l'unica leva
           # rimasta, e un percorso scritto a mano l'avrebbe resa piu' cara.
           BASE_PATH: /${{ github.event.repository.name }}/
+      # `enablement: true` non e' un dettaglio: senza, l'azione si limita a
+      # LEGGERE la configurazione del sito e se e' sbagliata la lascia stare.
+      #
+      # Passando da «GitHub Actions» a «Deploy from a branch» e ritorno — cosa
+      # che si finisce per fare mentre si cerca di capire perche' non pubblica
+      # — il sito puo' restare registrato come `legacy`. Un sito legacy che
+      # riceve un artefatto di tipo `workflow` non lo elabora: il deployment
+      # entra in coda e ci resta finche' l'azione non va in timeout, senza mai
+      # un messaggio d'errore. Con `true` l'azione lo riporta a `workflow`.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
