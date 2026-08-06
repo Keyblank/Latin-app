@@ -446,45 +446,76 @@ non passano da nessun server, come tutto il resto dell'app.
 
 ## Se GitHub Pages smette di pubblicare
 
-Questa sezione esiste perché è costata una giornata, e fra sei mesi nessuno se
-la ricorderà.
+Questa sezione è costata una giornata intera. La causa vera è **una riga**, e
+sta in fondo — ma prima vengono i due depistaggi che ce l'hanno nascosta,
+perché sono quelli che fanno perdere tempo.
 
-**Non mettere privato un repository che pubblica con Pages.** Sul piano
-gratuito il sito viene *cancellato*, e rimettendo pubblico il repo **non viene
-ricreato**: le richieste di pubblicazione entrano in coda e non escono più. La
-build resta verde, l'artefatto viene caricato, e da fuori sembra tutto a posto
-tranne il sito — che è il modo peggiore in cui un guasto possa presentarsi.
+### Il sintomo
 
-Nel districare quella matassa sono emersi tre problemi impilati, e ognuno
-nascondeva il successivo:
+Il build è **verde**, l'artefatto viene caricato, e il `deploy` resta in
+`deployment_queued` per dieci minuti finché non va in timeout. Nessun errore,
+nessun messaggio. Da fuori sembra tutto a posto tranne il sito.
 
-1. **Il sito cancellato** dal passaggio a privato. Sintomo: `deploy-pages`
-   resta in `deployment_queued` per dieci minuti e poi va in timeout. Nella
-   pagina delle impostazioni manca il riquadro «Your site is live at…».
-2. **Deployment che si annullano a vicenda.** Su un sito Pages ne può vivere
-   uno solo. Spingere su due rami che attivano lo stesso workflow, o lasciare
-   che la pubblicazione «vecchio stile» parta mentre la nostra è in coda, fa
-   morire entrambe: «Deployment cancelled». Da qui la regola di **spingere su
-   un ramo solo**.
-3. **La regola dell'ambiente `github-pages`.** In *Settings → Environments*
-   l'ambiente ha una lista di rami autorizzati a pubblicare. Era stata scritta
-   quando l'unico ramo si chiamava `claude/duolingo-latin-app-pst7r4`, e ha
-   respinto ogni deploy da `main`. Il messaggio non è nei log del job ma negli
-   **annotamenti della run**: `Branch "main" is not allowed to deploy to
-   github-pages due to environment protection rules`.
+### La causa: `configure-pages` non configura niente
 
-**Dove guardare, in ordine.** Gli annotamenti della run (non solo i log), poi
-*Settings → Pages* (Source dev'essere «GitHub Actions»), poi *Settings →
-Environments → github-pages*.
+```yaml
+- uses: actions/configure-pages@v5
+  with:
+    enablement: true      # ← senza questo, l'azione LEGGE e basta
+```
 
-`BASE_PATH` si ricava da `github.event.repository.name`: rinominare il
-repository non rompe il sito. Serve davvero, perché rinominare — che crea un
-sito Pages con un'altra identità — è l'ultima leva quando la coda è inceppata.
+`enablement: false` è il valore predefinito e vuol dire: se la configurazione
+del sito è sbagliata, non toccarla. Il passo dura meno di un secondo e non
+stampa una riga — sembra funzionare.
 
-**E se non basta niente:** `npm run build:singlefile` impacchetta tutta l'app
-in un unico `index.html` da 2,6 MB, senza una singola richiesta esterna. Si
-apre con un doppio clic e si manda per messaggio. Un sito dipende da un
-servizio che può fermarsi; un file no.
+Quando un repository passa a privato e torna pubblico, o quando si tocca
+`Settings → Pages → Source`, il sito può restare registrato con un `build_type`
+che non corrisponde a quello che il workflow gli manda. Da quel momento i
+deployment vengono **accettati e mai elaborati**: entrano in coda e ci restano.
+Con `enablement: true` l'azione riscrive la configurazione, e il primo deploy
+successivo passa.
+
+### I due depistaggi
+
+**1. Un deployment può restare aperto per sempre.** `deploy-pages` apre un
+deployment e lo chiude alla fine; un job **annullato a metà non esegue la
+chiusura**. Il fantasma resta «in corso» e respinge tutti i successivi con
+`Deployment request failed due to in progress deployment`. Da qui
+`cancel-in-progress: false` nel workflow: meglio mettersi in coda che uccidere
+un deploy a metà.
+
+**2. Due rami non possono pubblicare lo stesso commit.** `deploy-pages` usa il
+**SHA come identificativo** del deployment: lo stesso commit spinto su due rami
+crea due deployment con lo stesso ID, e GitHub ne annulla uno. Da qui il
+workflow che ascolta **un ramo solo**.
+
+Insieme, questi due producono un effetto crudele: **ogni push fatto per
+“riprovare” peggiora la situazione**, perché uccide la run precedente e lascia
+un altro fantasma. Più si insiste, meno funziona.
+
+### Dove guardare, in ordine
+
+1. Gli **annotamenti della run**, non solo i log del job. Il messaggio
+   `Branch "x" is not allowed to deploy to github-pages due to environment
+   protection rules` compare **solo lì** — e l'ambiente `github-pages` ha una
+   lista di rami autorizzati, in *Settings → Environments*.
+2. Il log del job di **build**, non del deploy: è lì che `configure-pages` dice
+   (o tace) cosa pensa che sia il sito.
+3. *Settings → Pages*: `Source` dev'essere «GitHub Actions».
+4. La pagina **deployments** del repository: se c'è d'attivo un deployment
+   vecchio, blocca tutto.
+
+### Quello che NON era
+
+Non era la visibilità del repository, non era il ramo, non era il nome del
+repository, e non era un guasto di GitHub — tutte cose che abbiamo creduto a
+turno, e ognuna ci è costata dei tentativi. Rinominare il repo non serve: il
+sito nuovo eredita la stessa configurazione sbagliata.
+
+`BASE_PATH` si ricava comunque da `github.event.repository.name`, così
+rinominare non rompe niente. E `npm run build:singlefile` impacchetta l'app in
+un unico `index.html` senza richieste esterne: un sito dipende da un servizio,
+un file no.
 
 ## Come aggiungere lezioni
 
