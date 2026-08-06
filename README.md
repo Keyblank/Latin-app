@@ -382,85 +382,58 @@ corretto.
 ### Il registro vero sono le issue
 
 Una segnalazione dentro una chat si perde; una issue no. Perciò le segnalazioni
-finiscono su GitHub, con l'etichetta `segnalazione` più una per categoria, e
+finiscono su GitHub con l'etichetta `segnalazione` più una per categoria, e
 [il registro si guarda da lì](https://github.com/Keyblank/ianua/issues?q=label%3Asegnalazione).
-Ci si arriva per due strade, perché servono a due persone diverse.
 
-**Chi ha un account GitHub** usa il link «…oppure aprila su GitHub» dentro il
-foglio: apre una issue già compilata — titolo, corpo, etichette — e deve solo
-confermare. Nessun server, nessuna chiave: è GitHub stesso a leggere tutto
-dall'indirizzo.
+**La strada principale è automatica.** Chi tocca ⚑ e preme «Manda» non deve
+fare altro: la segnalazione diventa una issue e l'app risponde con il numero.
+Non serve un account GitHub, non serve incollare niente.
 
-**Per tutti gli altri** — cioè quasi tutti gli amici — la segnalazione arriva
-come messaggio, e la si versa nel registro da qui:
+Perché serve un pezzo in più per ottenerlo: Ianua è un sito statico, e per
+aprire una issue serve una credenziale di scrittura. Una credenziale dentro un
+bundle pubblicato è una credenziale regalata a chiunque. Sta quindi in mezzo un
+**relay** — `worker/segnalazioni.js`, una trentina di righe su Cloudflare
+Workers — che tiene lui il token e apre la issue per conto dell'app:
+
+```
+app  →  relay (tiene il token)  →  issue su GitHub
+```
+
+Il relay si difende da solo, perché è un indirizzo aperto sul web: rifiuta
+tutto ciò che non ha la forma esatta di una segnalazione, limita le richieste
+per indirizzo IP, e non rivela mai il motivo per cui GitHub ha detto di no —
+quel dettaglio resta nei suoi log. Le istruzioni per installarlo stanno in cima
+al file.
+
+Il relay serve anche a qualcosa che si vede solo dopo: quando il repository
+diventerà privato, il link «apri su GitHub» smetterà di funzionare per chi non
+ha accesso. Il relay no, perché scrive con il token dell'autore.
+
+**Se il relay non risponde**, o non è configurato, la segnalazione esce
+dall'altra strada senza che chi segnala se ne accorga: foglio di condivisione
+del telefono, appunti sul computer, e in ogni caso il quaderno locale da cui si
+esporta. Provato spegnendo il relay a metà: l'app ripiega e il messaggio arriva
+lo stesso. Un pulsante che fallisce in silenzio è meglio di uno che blocca chi
+voleva aiutarti.
+
+**Chi ha un account GitHub** ha anche il link «…oppure aprila su GitHub», che
+apre una issue già compilata da confermare.
+
+**Dalla riga di comando**, per le segnalazioni arrivate come messaggio:
 
 ```bash
-GITHUB_TOKEN=github_pat_... npm run segnalazioni -- segnalazioni.json --github
-npm run segnalazioni -- segnalazioni.json --github --prova   # dice cosa aprirebbe
+pbpaste | npm run segnalazioni                    # incollato da WhatsApp
+npm run segnalazioni -- ianua-segnalazioni.json   # scaricato dal quaderno
+npm run segnalazioni -- u19l4 5                   # a mano
+GITHUB_TOKEN=... npm run segnalazioni -- file.json --github   # le apre come issue
 ```
 
-Il token è fine-grained, con accesso al solo `Keyblank/ianua` e il permesso
-`Issues: write`; sta in una variabile d'ambiente e non entra mai nel bundle.
+Ne esce `src/data/curriculum.ts:10932`, più l'esercizio **com'è adesso** — che
+serve, perché fra la segnalazione e la lettura può essere già stato corretto.
+
 Ogni issue porta in fondo un'impronta `<!-- ianua:id -->`, e le impronte già
-presenti si saltano: reincollare due volte lo stesso messaggio non raddoppia
-niente. Il corpo della issue contiene anche il **link alla riga** di
-`curriculum.ts`.
-
-La prima esecuzione crea le etichette che mancano — senza, GitHub le ignora in
-silenzio.
-
-**Quello che questo giro non fa** è popolare il registro *da solo*, senza che
-nessuno tocchi niente: per farlo servirebbe una credenziale di scrittura
-raggiungibile dal browser, cioè un piccolo relay (una funzione serverless che
-tiene il token). È l'unica parte che richiederebbe un server, e per ora non c'è.
-
-**Anche le spiegazioni si segnalano**, e sono anzi il caso che conta di più,
-perché è l'unico che nessuno script sa controllare. Schede e tabelle sono
-esercizi come gli altri, quindi hanno il loro ⚑; ce l'ha anche ogni tabella
-della **Grammatica**, che è dove le spiegazioni si rileggono a mente fredda.
-
-Su una scheda lunga, però, «Scheda "Il participio perfetto"» non basta a dire
-dove guardare. Perciò: se prima di toccare ⚑ si **evidenzia** la frase
-incriminata, quella frase viaggia con la segnalazione —
-
-```
-[ianua abc1234 · m1p9x-q4tz2] u12 · u12l2 · esercizio 1
-Spiegato male — Scheda «Il participio perfetto»
-
-sul punto: «Finisce in «-tus, -a, -um» (a volte «-sus»)»
-
-ma quando è -sus? non lo dice
-```
-
-— e lo script la ristampa insieme alla riga. La selezione si legge sul
-`pointerdown` del pulsante, prima che il click porti via il fuoco e la
-cancelli.
-
-Nel Repetitio gli esercizi arrivano sciolti, senza più la lezione da cui
-vengono: la posizione si ritrova confrontandoli per contenuto con il
-curriculum. Lo stesso indice serve alla Grammatica, dove la lezione non c'è
-affatto e la tabella si ritrova comunque. Le segnalazioni restano nel browser
-di chi le fa (quaderno
-«Segnalazioni» nella schermata iniziale, per mandarle in blocco a fine giro) e
-non passano da nessun server, come tutto il resto dell'app.
-
-## Quando chiudere il repository
-
-Ianua è un prodotto in sviluppo, e il repository è pubblico **per scelta
-temporanea**: in questa fase il valore di farsi leggere e correggere supera il
-rischio che qualcuno copi il lavoro. Quel bilancio cambierà.
-
-**Il momento di chiudere** è quando una di queste diventa vera:
-
-- il corso è completo e rifinito al punto che copiarlo darebbe a un altro un
-  prodotto pronto, non un cantiere;
-- si comincia a parlare di pubblicarla su uno store, o di farci dei soldi;
-- entra nel progetto qualcosa che non è tuo da regalare — contenuti di terzi,
-  un accordo, un committente.
-
-Fino ad allora il repo aperto costa poco: chi passa di lì trova un cantiere
-con dentro 109 lezioni e tre livelli di verifica, e ricostruirlo gli costerebbe
-quanto è costato a noi.
+presenti si saltano: la stessa segnalazione non diventa mai due issue, da
+qualunque strada arrivi.
 
 ### Come si chiude, quando sarà il momento
 

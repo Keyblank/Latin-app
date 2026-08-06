@@ -265,6 +265,49 @@ export function testoDiTutte(lista: Segnalazione[]): string {
     .join('\n\n')
 }
 
+/**
+ * L'indirizzo del relay che apre le issue al posto nostro.
+ *
+ * Sta in una variabile di build, non nel codice: cosi' si cambia senza
+ * ricompilare a mano, e finche' e' vuota la funzione e' semplicemente spenta
+ * e le segnalazioni passano dal messaggio, come prima.
+ */
+const RELAY = (import.meta.env?.VITE_RELAY ?? '').trim()
+
+export const relayAttivo = () => RELAY !== ''
+
+/**
+ * Manda la segnalazione al relay, che la apre come issue.
+ *
+ * Non solleva mai: se il relay non risponde, non e' configurato o rifiuta, la
+ * segnalazione deve poter uscire lo stesso dall'altra strada. Un pulsante che
+ * fallisce in silenzio e' meglio di uno che blocca chi voleva aiutarti.
+ */
+export async function apriIssue(s: Segnalazione): Promise<number | null> {
+  if (!RELAY) return null
+  try {
+    const r = await fetch(RELAY, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        id: s.id,
+        categoria: s.categoria,
+        testo: s.testo,
+        selezione: s.selezione,
+        versione: s.versione,
+        posto: s.posto,
+      }),
+      // Se il relay tarda, non teniamo l'utente fermo a guardare.
+      signal: AbortSignal.timeout(8000),
+    })
+    if (!r.ok) return null
+    const dato = await r.json()
+    return typeof dato?.numero === 'number' ? dato.numero : null
+  } catch {
+    return null
+  }
+}
+
 export type EsitoInvio = 'condiviso' | 'copiato' | 'niente'
 
 /**

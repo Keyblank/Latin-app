@@ -4,7 +4,9 @@ import {
   aggiungi,
   coordinata,
   leggiSegnalazioni,
+  apriIssue,
   manda,
+  relayAttivo,
   testoDi,
   urlIssue,
   type Categoria,
@@ -88,6 +90,18 @@ function FoglioSegnala({
     setInCorso(true)
     const s = aggiungi(categoria, testo, posto, selezione || undefined)
     onMandata()
+
+    // Prima il relay: se funziona, la segnalazione e' gia' arrivata dove
+    // serve e chi segnala non deve fare altro.
+    const numero = relayAttivo() ? await apriIssue(s) : null
+    if (numero !== null) {
+      setInCorso(false)
+      setEsito(`Arrivata (#${numero}). Grazie: questa la sistemiamo.`)
+      return
+    }
+
+    // Il relay non c'e' o non ha risposto: si torna alla strada di sempre,
+    // che non dipende da niente.
     const come = await manda(testoDi(s))
     setInCorso(false)
     setEsito(
