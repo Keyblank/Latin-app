@@ -444,6 +444,48 @@ di chi le fa (quaderno
 «Segnalazioni» nella schermata iniziale, per mandarle in blocco a fine giro) e
 non passano da nessun server, come tutto il resto dell'app.
 
+## Se GitHub Pages smette di pubblicare
+
+Questa sezione esiste perché è costata una giornata, e fra sei mesi nessuno se
+la ricorderà.
+
+**Non mettere privato un repository che pubblica con Pages.** Sul piano
+gratuito il sito viene *cancellato*, e rimettendo pubblico il repo **non viene
+ricreato**: le richieste di pubblicazione entrano in coda e non escono più. La
+build resta verde, l'artefatto viene caricato, e da fuori sembra tutto a posto
+tranne il sito — che è il modo peggiore in cui un guasto possa presentarsi.
+
+Nel districare quella matassa sono emersi tre problemi impilati, e ognuno
+nascondeva il successivo:
+
+1. **Il sito cancellato** dal passaggio a privato. Sintomo: `deploy-pages`
+   resta in `deployment_queued` per dieci minuti e poi va in timeout. Nella
+   pagina delle impostazioni manca il riquadro «Your site is live at…».
+2. **Deployment che si annullano a vicenda.** Su un sito Pages ne può vivere
+   uno solo. Spingere su due rami che attivano lo stesso workflow, o lasciare
+   che la pubblicazione «vecchio stile» parta mentre la nostra è in coda, fa
+   morire entrambe: «Deployment cancelled». Da qui la regola di **spingere su
+   un ramo solo**.
+3. **La regola dell'ambiente `github-pages`.** In *Settings → Environments*
+   l'ambiente ha una lista di rami autorizzati a pubblicare. Era stata scritta
+   quando l'unico ramo si chiamava `claude/duolingo-latin-app-pst7r4`, e ha
+   respinto ogni deploy da `main`. Il messaggio non è nei log del job ma negli
+   **annotamenti della run**: `Branch "main" is not allowed to deploy to
+   github-pages due to environment protection rules`.
+
+**Dove guardare, in ordine.** Gli annotamenti della run (non solo i log), poi
+*Settings → Pages* (Source dev'essere «GitHub Actions»), poi *Settings →
+Environments → github-pages*.
+
+`BASE_PATH` si ricava da `github.event.repository.name`: rinominare il
+repository non rompe il sito. Serve davvero, perché rinominare — che crea un
+sito Pages con un'altra identità — è l'ultima leva quando la coda è inceppata.
+
+**E se non basta niente:** `npm run build:singlefile` impacchetta tutta l'app
+in un unico `index.html` da 2,6 MB, senza una singola richiesta esterna. Si
+apre con un doppio clic e si manda per messaggio. Un sito dipende da un
+servizio che può fermarsi; un file no.
+
 ## Come aggiungere lezioni
 
 Tutto il corso è in un unico file, facile da modificare:
