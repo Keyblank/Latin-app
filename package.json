@@ -14,7 +14,8 @@
     "check:morfologia": "node --experimental-strip-types scripts/check-morfologia.mjs",
     "check:glosse": "node --experimental-strip-types scripts/check-glosse.mjs",
     "check:sensi": "node --experimental-strip-types scripts/check-sensi.mjs",
-    "segnalazioni": "node --experimental-strip-types scripts/segnalazioni.mjs"
+    "segnalazioni": "node --experimental-strip-types scripts/segnalazioni.mjs",
+    "build:singlefile": "tsc && vite build --config vite.singlefile.config.ts"
   },
   "dependencies": {
     "react": "^18.3.1",
