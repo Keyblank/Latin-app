@@ -5,12 +5,14 @@ name: Deploy su GitHub Pages
 # `Source: GitHub Actions` funziona, perche' in quella modalita' non si
 # pubblica da un ramo ma dall'artefatto che il workflow carica.
 #
-# `main` e' stato aggiunto dopo, quando il sito ha smesso di pubblicarsi: un
-# repository il cui unico ramo si chiama `claude/...` e' un'anomalia, e la
-# prima creazione di un sito Pages passa dal ramo predefinito.
+# `main` esiste ed e' il ramo predefinito — serve agli strumenti che lo danno
+# per scontato — ma NON attiva la pubblicazione. Averlo messo fra i trigger e'
+# stato un errore: lo stesso commit spinto su due rami crea due deployment con
+# lo stesso identificativo (`deploy-pages` usa il SHA), e GitHub ne annulla
+# uno. Un ramo solo pubblica.
 on:
   push:
-    branches: [main, claude/duolingo-latin-app-pst7r4]
+    branches: [claude/duolingo-latin-app-pst7r4]
   workflow_dispatch:
 
 permissions:
@@ -18,10 +20,21 @@ permissions:
   pages: write
   id-token: write
 
-# Un solo deploy alla volta.
+# Un solo deploy alla volta — ma le run in corso NON si annullano.
+#
+# `cancel-in-progress: true` sembrava sensato e ci e' costato una giornata:
+# `deploy-pages` apre un deployment su GitHub e lo chiude alla fine, ma un job
+# annullato a meta' non esegue la chiusura. Il deployment resta «in corso» per
+# sempre, e da quel momento OGNI pubblicazione successiva viene respinta con
+#
+#   Deployment request failed due to in progress deployment.
+#   Please cancel <sha> first or wait for it to complete.
+#
+# Un push di troppo, e il sito non si aggiorna piu' finche' qualcuno non va a
+# cancellare a mano il deployment fantasma. Meglio mettersi in coda.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
