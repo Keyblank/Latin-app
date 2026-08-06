@@ -444,6 +444,44 @@ di chi le fa (quaderno
 «Segnalazioni» nella schermata iniziale, per mandarle in blocco a fine giro) e
 non passano da nessun server, come tutto il resto dell'app.
 
+## Quando chiudere il repository
+
+Ianua è un prodotto in sviluppo, e il repository è pubblico **per scelta
+temporanea**: in questa fase il valore di farsi leggere e correggere supera il
+rischio che qualcuno copi il lavoro. Quel bilancio cambierà.
+
+**Il momento di chiudere** è quando una di queste diventa vera:
+
+- il corso è completo e rifinito al punto che copiarlo darebbe a un altro un
+  prodotto pronto, non un cantiere;
+- si comincia a parlare di pubblicarla su uno store, o di farci dei soldi;
+- entra nel progetto qualcosa che non è tuo da regalare — contenuti di terzi,
+  un accordo, un committente.
+
+Fino ad allora il repo aperto costa poco: chi passa di lì trova un cantiere
+con dentro 109 lezioni e tre livelli di verifica, e ricostruirlo gli costerebbe
+quanto è costato a noi.
+
+### Come si chiude, quando sarà il momento
+
+1. `Settings → General → Change visibility → Private`.
+2. **GitHub Pages smette di pubblicare**: sul piano gratuito i siti da
+   repository privati non sono previsti. O si passa a GitHub Pro (~4 €/mese,
+   e non si tocca nient'altro), oppure si sposta il sito su **Cloudflare
+   Pages**, che è gratuito e funziona con i repository privati. La build è già
+   quella giusta: comando `npm run build`, cartella `dist`, e `NODE_VERSION=22`
+   fra le variabili. Il percorso base va bene così com'è, perché alla radice
+   di un dominio `'/'` è corretto.
+3. Nel foglio del ⚑, il collegamento **«…oppure aprila su GitHub»** va tolto o
+   riservato a chi ha accesso: su un repo privato non funziona per gli amici.
+   Le altre strade — il messaggio e il quaderno delle segnalazioni — reggono
+   da sole, ed erano già quelle principali.
+4. Aggiornare la prima riga del `LICENSE`, che dichiara il repository pubblico.
+
+**Quello che chiudere NON fa:** ritirare quello che è già stato pubblico. Il
+codice è stato leggibile da chiunque per settimane; renderlo privato protegge
+da lì in avanti e basta. È un motivo in più per non rimandare all'infinito.
+
 ## Se GitHub Pages smette di pubblicare
 
 Questa sezione è costata una giornata intera. La causa vera è **una riga**, e
