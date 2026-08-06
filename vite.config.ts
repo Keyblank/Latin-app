@@ -10,6 +10,11 @@ import react from '@vitejs/plugin-react'
  * finisce per ricontrollare cose a posto.
  */
 function versione(): string {
+  // Cloudflare Pages costruisce senza la cartella .git, ma passa il commit in
+  // una variabile d'ambiente. Senza questo, le segnalazioni che arrivano dal
+  // sito direbbero «locale» e non si saprebbe da quale versione vengono.
+  const daCloudflare = process.env.CF_PAGES_COMMIT_SHA
+  if (daCloudflare) return daCloudflare.slice(0, 7)
   try {
     return execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim()
   } catch {

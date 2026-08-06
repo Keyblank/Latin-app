@@ -1,0 +1,40 @@
+Copyright (c) 2026 Keyblank. Tutti i diritti riservati.
+
+Questo repository è pubblico perché il corso migliora se qualcuno lo legge e
+segnala gli errori. Pubblico non vuol dire libero: il codice sorgente, il testo
+delle lezioni, il vocabolario e le versioni restano dell'autore.
+
+COSA PUOI FARE, senza chiedere niente
+- usare l'app per studiare, quanto vuoi e per sempre;
+- darla a un'altra persona perché studi anche lei;
+- leggere il codice, e segnalare errori (il pulsante ⚑ dentro l'app, o le
+  issue del repository).
+
+COSA RICHIEDE IL PERMESSO DELL'AUTORE
+- ripubblicare l'app, in tutto o in parte, sotto un altro nome o a un altro
+  indirizzo;
+- riusare i contenuti del corso — lezioni, esercizi, glossari — in un'altra
+  opera, gratuita o a pagamento;
+- venderla.
+
+Per chiedere il permesso: apri una issue sul repository.
+
+────────────────────────────────────────────────────────────────────────────
+
+Questo software si appoggia a lavori di altri, con le loro licenze, e vanno
+riconosciuti:
+
+- COLLATINUS (Yves Ouvrard, Philippe Verkerk) — GPL. Il lessico con le
+  quantità vocaliche, usato dagli script di controllo.
+  https://github.com/biblissima/collatinus
+
+- WHITAKER'S WORDS (William Whitaker) — pubblico dominio. Gli archivi
+  morfologici e il dizionario, usati dall'analizzatore.
+  https://github.com/mk270/whitakers-words
+
+Nessuno dei due è incluso nel repository: si scaricano con `npm run lemmi` e
+servono solo alla verifica, non all'app pubblicata.
+
+I brani delle Versiones sono ADATTAMENTI da autori latini (Fedro, Cesare,
+Cicerone, Livio, Seneca) i cui testi originali sono di pubblico dominio.
+L'adattamento e le traduzioni sono dell'autore.
