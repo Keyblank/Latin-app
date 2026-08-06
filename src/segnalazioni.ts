@@ -22,6 +22,9 @@ import { curriculum } from './data/curriculum'
  */
 
 const CHIAVE = 'ianua-segnalazioni-v1'
+/** Il repository, per i link alle issue. Se un giorno cambia nome, GitHub
+ *  reindirizza il vecchio indirizzo: i link non si rompono subito, ma questa
+ *  riga va aggiornata lo stesso. */
 const REPO = 'Keyblank/Latin-app'
 
 /** Il registro pubblico: le segnalazioni diventano issue con l'etichetta. */

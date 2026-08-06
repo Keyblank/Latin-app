@@ -38,7 +38,12 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          BASE_PATH: /Latin-app/
+          # Il percorso base e' il NOME DEL REPOSITORY, preso da GitHub invece
+          # che scritto a mano: cosi' rinominare il repo non rompe il sito, e
+          # non resta una stringa da ricordarsi di aggiornare. Serve davvero —
+          # quando Pages si e' impiantato, rinominare e' stata l'unica leva
+          # rimasta, e un percorso scritto a mano l'avrebbe resa piu' cara.
+          BASE_PATH: /${{ github.event.repository.name }}/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
