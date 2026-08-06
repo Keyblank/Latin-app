@@ -25,7 +25,7 @@ const CHIAVE = 'ianua-segnalazioni-v1'
 /** Il repository, per i link alle issue. Se un giorno cambia nome, GitHub
  *  reindirizza il vecchio indirizzo: i link non si rompono subito, ma questa
  *  riga va aggiornata lo stesso. */
-const REPO = 'Keyblank/Latin-app'
+const REPO = 'Keyblank/ianua'
 
 /** Il registro pubblico: le segnalazioni diventano issue con l'etichetta. */
 export const URL_REGISTRO = `https://github.com/${REPO}/issues?q=label%3Asegnalazione`

@@ -159,7 +159,7 @@ function daTesto(testo) {
 
 // ─────────────────── il registro su GitHub ───────────────────
 
-const REPO = 'Keyblank/Latin-app'
+const REPO = 'Keyblank/ianua'
 
 const ETICHETTE = {
   segnalazione: ['6a3fb5', 'Arrivata dal ⚑ dentro l\u2019app'],

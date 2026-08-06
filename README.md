@@ -383,7 +383,7 @@ corretto.
 
 Una segnalazione dentro una chat si perde; una issue no. Perciò le segnalazioni
 finiscono su GitHub, con l'etichetta `segnalazione` più una per categoria, e
-[il registro si guarda da lì](https://github.com/Keyblank/Latin-app/issues?q=label%3Asegnalazione).
+[il registro si guarda da lì](https://github.com/Keyblank/ianua/issues?q=label%3Asegnalazione).
 Ci si arriva per due strade, perché servono a due persone diverse.
 
 **Chi ha un account GitHub** usa il link «…oppure aprila su GitHub» dentro il
@@ -399,7 +399,7 @@ GITHUB_TOKEN=github_pat_... npm run segnalazioni -- segnalazioni.json --github
 npm run segnalazioni -- segnalazioni.json --github --prova   # dice cosa aprirebbe
 ```
 
-Il token è fine-grained, con accesso al solo `Keyblank/Latin-app` e il permesso
+Il token è fine-grained, con accesso al solo `Keyblank/ianua` e il permesso
 `Issues: write`; sta in una variabile d'ambiente e non entra mai nel bundle.
 Ogni issue porta in fondo un'impronta `<!-- ianua:id -->`, e le impronte già
 presenti si saltano: reincollare due volte lo stesso messaggio non raddoppia
