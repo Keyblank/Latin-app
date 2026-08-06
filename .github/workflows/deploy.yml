@@ -1,8 +1,16 @@
 name: Deploy su GitHub Pages
 
+# Il ramo di lavoro e' `claude/duolingo-latin-app-pst7r4` — per molto tempo e'
+# stato l'UNICO ramo del repository, e il sito veniva pubblicato da li'. Con
+# `Source: GitHub Actions` funziona, perche' in quella modalita' non si
+# pubblica da un ramo ma dall'artefatto che il workflow carica.
+#
+# `main` e' stato aggiunto dopo, quando il sito ha smesso di pubblicarsi: un
+# repository il cui unico ramo si chiama `claude/...` e' un'anomalia, e la
+# prima creazione di un sito Pages passa dal ramo predefinito.
 on:
   push:
-    branches: [claude/duolingo-latin-app-pst7r4]
+    branches: [main, claude/duolingo-latin-app-pst7r4]
   workflow_dispatch:
 
 permissions:
